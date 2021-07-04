@@ -1,14 +1,13 @@
 /** 
- * @file YFE06.ts
- * @brief Customize YFROBOT's YFE06 makecode library.
- * @n This is a MakeCode graphics programming extension 
- *    for MicroBit motor drive expansion board.
+ * @file legosensor
+ * @brief YFROBOT's lego sensors makecode library.
+ * @n This is a MakeCode graphics programming extension for lego sensors module.
  * 
  * @copyright    YFROBOT,2021
  * @copyright    MIT Lesser General Public License
  * 
  * @author [email](yfrobot@qq.com)
- * @date  2021-06-11
+ * @date  2021-07-04
 */
 
 // motor pin 
