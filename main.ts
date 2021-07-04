@@ -210,6 +210,20 @@ namespace YFSENSORS {
 
     ///////////////////// Input Sensors ///////////////////////
     /**
+     * Checks whether the button is is currently pressed.
+     */
+    //% group="Input"
+    //% blockId=YFSENSORS_btn weight=80 blockGap=30
+    //% block="button at pin %p pressed"
+    //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4 
+    export function buttonSensor(p: DigitalPin): boolean {
+        let a: number = pins.digitalReadPin(p);
+        if (a == 1) {
+            return true;
+        } else return false;
+    }
+
+    /**
      * Read the Collision Switch.
      * @param pincs collision Switch pin. eg: DigitalPin.P8
      * @returns the Collision Switch Value.
@@ -248,8 +262,6 @@ namespace YFSENSORS {
             return true;
         } else return false;
     }
-
-
     
     /**
      * Read Potentiometer.
