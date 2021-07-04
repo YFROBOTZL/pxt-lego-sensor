@@ -213,6 +213,7 @@ namespace YFSENSORS {
      * @returns the Collision Switch Value.
      */
     //% weight=60
+    //% group="Input Advanced"
     //% blockId=YFSENSORS_readCollisionSwitch
     //% block="Read Collision Switch on %pincs"
     //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4 
@@ -226,6 +227,7 @@ namespace YFSENSORS {
      * @returns the Potentiometer Value.
      */
     //% weight=53
+    //% group="Input Advanced"
     //% blockId=YFSENSORS_readPotentiometer
     //% block="Read Potentiometer on %pinpt"
     //% piny.fieldEditor="gridpicker" piny.fieldOptions.columns=4 
@@ -239,6 +241,7 @@ namespace YFSENSORS {
      * @returns the Infrared Sensor Value.
      */
     //% weight=60
+    //% group="Input Advanced"
     //% blockId=YFSENSORS_readInfraredSensor
     //% block="Read Infrared Sensor on %pinir"
     //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4 
