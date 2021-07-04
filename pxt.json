@@ -1,0 +1,26 @@
+{
+    "name": "YFE06",
+    "version": "0.0.3",
+    "description": "Customize YFRobot motorbit MakeCode Extensions For Micro:bit",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*",
+        "microphone": "*"
+    },
+    "files": [
+        "main.ts",
+        "README.md",
+        "_locales/zh-cn/YFE06-strings.json",
+        "_locales/zh-cn/YFE06-jsdoc-strings.json",
+        "_locales/zh-tw/YFE06-strings.json",
+        "_locales/zh-tw/YFE06-jsdoc-strings.json"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": true,
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
+}
