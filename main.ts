@@ -207,6 +207,8 @@ namespace YFSENSORS {
         motorRun(motor, 0, 0);
     }
 
+
+    ///////////////////// Input Sensors ///////////////////////
     /**
      * Read the Collision Switch.
      * @param pincs collision Switch pin. eg: DigitalPin.P8
@@ -220,6 +222,34 @@ namespace YFSENSORS {
     export function readCollisionSwitch(pincs: DigitalPin): number {
         return pins.digitalReadPin(pincs)
     }
+
+    /**
+     * Checks whether the crash sensor is currently pressed.
+     */
+    //% group="Input"
+    //% blockId=YFSENSORS_crash weight=70 blockGap=30
+    //% block="crash sensor pressed"
+    export function crashSensor(): boolean {
+        let a: number = pins.digitalReadPin(crashSensorPin);
+        if (a == 0) {
+            return true;
+        } else return false;
+    }
+
+    /**
+     * Checks whether the motion sensor is currently detecting any motion.
+     */
+    //% group="Input"
+    //% blockId=YFSENSORS_pir weight=80 blockGap=30
+    //% block="motion detector at pin %p | detects motion"
+    export function PIRSensor(p: DigitalPin): boolean {
+        let a: number = pins.digitalReadPin(p);
+        if (a == 1) {
+            return true;
+        } else return false;
+    }
+
+
     
     /**
      * Read Potentiometer.
@@ -278,6 +308,25 @@ namespace YFSENSORS {
             case PingUnit.Centimeters: return Math.idiv(d, 58);
             case PingUnit.Inches: return Math.idiv(d, 148);
             default: return d ;
+        }
+    }
+
+    ///////////////////// Output Sensors ///////////////////////
+    /**
+    * toggle led
+    */
+    //% blockId=YFSENSORS_readInfraredSensor
+    //% block="LED %pin toggle to %ledstate || brightness %brightness \\%"
+    //% brightness.min=0 brightness.max=100
+    //% ledstate.shadow="toggleOnOff"
+    //% expandableArgumentMode="toggle"
+    export function ledBrightness(pin: AnalogPin, ledstate: boolean, brightness: number = 100): void {
+        if (ledstate) {
+            pins.analogSetPeriod(pin, 100)
+            pins.analogWritePin(pin, Math.map(brightness, 0, 100, 0, 1023))
+        } else {
+            pins.analogWritePin(pin, 0)
+            brightness = 0
         }
     }
 
