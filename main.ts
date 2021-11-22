@@ -119,6 +119,14 @@ namespace YFSENSORS {
     }
     /////////////////////// IR ///////////////////////
 
+    
+    export enum SwitchState {
+        //% blockId="YF_ON" block="ON"
+        ON = 0x0,
+        //% blockId="YF_OFF" block="OFF"
+        OFF = 0x1
+    }
+
     export enum Motors {
         //% blockId="M1Motor" block="M1"
         M1 = 0,
@@ -162,6 +170,21 @@ namespace YFSENSORS {
     
     function clamp(value: number, min: number, max: number): number {
         return Math.max(Math.min(max, value), min);
+    }
+
+
+    ///////////////////// Output Sensors ///////////////////////
+    /**
+     * Light the LED
+     * @param p pin. eg: DigitalPin.P2
+     * @param sws switch state. eg: SwitchState.OFF
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_ledModule weight=80 blockGap=30
+    //% block="led at pin %p %sws"
+    //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=2
+    export function ledModule(p: DigitalPin, sws: SwitchState): void {
+        pins.digitalWritePin(p, sws);
     }
 
     /**
