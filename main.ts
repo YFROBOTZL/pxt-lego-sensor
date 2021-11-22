@@ -259,22 +259,20 @@ namespace YFSENSORS {
         motorRun(motor, 0, 0);
     }
 
-    
-
     ///////////////////// Input Analog Sensors ///////////////////////
     /**
-     * Read the Analog Input Module.
+     * Read the Analog Input Sensor Module.
      * @param aimPin pin. eg: AnalogPin.P1
-     * @param aim pin. eg: AnalogInputModule.LED
+     * @param aim pin. eg: AnalogInputModule.LIGHT
      */
     //% group="Input Analog"
     //% blockId=YFSENSORS_analogInputModule weight=100 blockGap=30
     //% block="at pin %aimPin| %aim| module"
     //% aimPin.fieldEditor="gridpicker" aimPin.fieldOptions.columns=4
     //% aim.fieldEditor="gridpicker" aim.fieldOptions.columns=2
-    export function analogInputModule(aimPin: AnalogPin, aim: DigitalOutputModule): number {
+    export function analogInputModule(aimPin: AnalogPin, aim: AnalogInputModule): number {
         let aimM = aim;  // no work
-        return pins.analogReadPin(aimPin)
+        return pins.analogReadPin(aimPin);
     }
 
 
@@ -353,7 +351,7 @@ namespace YFSENSORS {
      * @returns the Infrared Sensor Value.
      */
     //% weight=60
-    //% group="Input Analog"
+    //% group="Input Digital"
     //% blockId=YFSENSORS_readInfraredSensor
     //% block="Read Infrared Sensor on %pinir"
     //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4 
