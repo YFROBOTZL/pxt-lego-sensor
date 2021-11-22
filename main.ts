@@ -132,6 +132,19 @@ namespace YFSENSORS {
         VIBRATION_MOTOR = 0x4,
     }
 
+    export enum AnalogInputModule {
+        //% blockId="YFAIM_LIGHT" block="LIGHT"
+        LIGHT = 0x0,
+        //% blockId="YFAIM_SOUND" block="SOUND"
+        SOUND = 0x1,
+        //% blockId="YFAIM_TEMPERATURE" block="TEMPERATURE"
+        TEMPERATURE = 0x2,
+        //% blockId="YFAIM_POTENTIOMETER" block="POTENTIOMETER"
+        POTENTIOMETER = 0x3,
+        //% blockId="YFAIM_SOIL_HUMIDITY" block="SOIL_HUMIDITY"
+        SOIL_HUMIDITY = 0x4,
+    }
+
     export enum SwitchState {
         //% blockId="YF_ON" block="ON"
         ON = 0x0,
@@ -187,47 +200,36 @@ namespace YFSENSORS {
 
     ///////////////////// Output Sensors ///////////////////////
     /**
-     * Light the LED
-     * @param ledPin led pin. eg: DigitalPin.P2
-     * @param sws switch state. eg: SwitchState.OFF
-     */
-    //% group="Output"
-    //% blockId=YFSENSORS_ledModule weight=100 blockGap=30
-    //% block="led module at pin %ledPin %sws"
-    //% ledPin.fieldEditor="gridpicker" ledPin.fieldOptions.columns=4
-    //% sws.fieldEditor="gridpicker" sws.fieldOptions.columns=2
-    export function ledModule(ledPin: DigitalPin, sws: SwitchState): void {
-        pins.digitalWritePin(ledPin, sws);
-    }
-
-    /**
-     * Turn the Buzzer ON or OFF.
-     * @param buzzerPin pin. eg: DigitalPin.P2
-     * @param sws switch state. eg: SwitchState.OFF
-     */
-    //% group="Output"
-    //% blockId=YFSENSORS_buzzerModule weight=99 blockGap=30
-    //% block="buzzer module at pin %buzzerPin %sws"
-    //% buzzerPin.fieldEditor="gridpicker" buzzerPin.fieldOptions.columns=4
-    //% sws.fieldEditor="gridpicker" sws.fieldOptions.columns=2
-    export function buzzerModule(buzzerPin: DigitalPin, sws: SwitchState): void {
-        pins.digitalWritePin(buzzerPin, sws);
-    }
-
-    /**
      * Turn the Digital Output Module ON or OFF.
      * @param domPin pin. eg: DigitalPin.P2
      * @param dom pin. eg: DigitalOutputModule.LED
      * @param sws switch state. eg: SwitchState.OFF
      */
     //% group="Output"
-    //% blockId=YFSENSORS_fanModule weight=99 blockGap=30
+    //% blockId=YFSENSORS_digitalOutputModule weight=100 blockGap=30
     //% block="at pin %domPin| %dom| module %sws"
     //% domPin.fieldEditor="gridpicker" domPin.fieldOptions.columns=4
+    //% dom.fieldEditor="gridpicker" dom.fieldOptions.columns=2
     //% sws.fieldEditor="gridpicker" sws.fieldOptions.columns=2
     export function digitalOutputModule(domPin: DigitalPin, dom: DigitalOutputModule, sws: SwitchState): void {
-        let domM = dom;
+        let domM = dom;  // no work
         pins.digitalWritePin(domPin, sws);
+    }
+
+    ///////////////////// Input Analog Sensors ///////////////////////
+    /**
+     * Read the Analog Input Module.
+     * @param aimPin pin. eg: AnalogPin.P1
+     * @param aim pin. eg: AnalogInputModule.LED
+     */
+    //% group="Input"
+    //% blockId=YFSENSORS_analogInputModule weight=100 blockGap=30
+    //% block="at pin %aimPin| %aim| module"
+    //% aimPin.fieldEditor="gridpicker" aimPin.fieldOptions.columns=4
+    //% aim.fieldEditor="gridpicker" aim.fieldOptions.columns=2
+    export function analogInputModule(aimPin: AnalogPin, aim: DigitalOutputModule): number {
+        let aimM = aim;  // no work
+        return pins.analogReadPin(aimPin)
     }
 
     /**

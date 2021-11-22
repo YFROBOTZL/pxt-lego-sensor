@@ -36,7 +36,5 @@
   "YFSENSORS.ping|param|maxCmDistance": "最大距離單位cm(默認500)",
   "YFSENSORS.ping|param|trig": "trigger引腳",
   "YFSENSORS.ping|param|unit": "轉換單位",
-  "YFSENSORS.ledModule": "點亮或熄滅LED模塊",
-  "YFSENSORS.buzzerModule": "打開或關閉蜂鳴器模塊",
   "YFSENSORS.digitalOutputModule": "打開或關閉數字輸出型模塊"
 }
