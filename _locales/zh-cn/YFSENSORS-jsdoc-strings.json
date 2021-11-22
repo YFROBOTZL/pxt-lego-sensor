@@ -37,5 +37,6 @@
   "YFSENSORS.ping|param|trig": "trigger引脚",
   "YFSENSORS.ping|param|unit": "转换单位",
   "YFSENSORS.ledModule": "点亮或熄灭LED模块",
-  "YFSENSORS.buzzerModule": "打开或关闭蜂鸣器模块"
+  "YFSENSORS.buzzerModule": "打开或关闭蜂鸣器模块",
+  "YFSENSORS.digitalOutputModule": "打开或关闭数字输出型模块"
 }

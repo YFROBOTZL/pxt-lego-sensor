@@ -40,6 +40,7 @@
   "YFSENSORS.Motors.MAll|block": "全部",
   "YFSENSORS.SwitchState.ON|block":"打開",
   "YFSENSORS.SwitchState.OFF|block":"關閉",
+  "YFSENSORS.digitalOutputModule|block":"連接%domPin|%dom|模塊%sws",
   "YFSENSORS.ledModule|block":"連接%ledPin|led模塊%sws",
   "YFSENSORS.buzzerModule|block":"連接%buzzerPin|蜂鳴器模塊%sws",
   "YFSENSORS.connectIrReceiver|block": "連接紅外接收到 %pin| 編碼格式：%protocol",
