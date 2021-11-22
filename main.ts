@@ -176,16 +176,30 @@ namespace YFSENSORS {
     ///////////////////// Output Sensors ///////////////////////
     /**
      * Light the LED
-     * @param p pin. eg: DigitalPin.P2
+     * @param ledPin led pin. eg: DigitalPin.P2
      * @param sws switch state. eg: SwitchState.OFF
      */
     //% group="Output"
-    //% blockId=YFSENSORS_ledModule weight=80 blockGap=30
+    //% blockId=YFSENSORS_ledModule weight=100 blockGap=30
     //% block="led module at pin %ledPin %sws"
-    //% ledPin.fieldEditor="gridpicker" ledPin.fieldOptions.columns=2
+    //% ledPin.fieldEditor="gridpicker" ledPin.fieldOptions.columns=4
     //% sws.fieldEditor="gridpicker" sws.fieldOptions.columns=2
     export function ledModule(ledPin: DigitalPin, sws: SwitchState): void {
         pins.digitalWritePin(ledPin, sws);
+    }
+
+    /**
+     * Buzzer 
+     * @param buzzerPin pin. eg: DigitalPin.P2
+     * @param sws switch state. eg: SwitchState.OFF
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_buzzerModule weight=99 blockGap=30
+    //% block="buzzer module at pin %buzzerPin %sws"
+    //% buzzerPin.fieldEditor="gridpicker" buzzerPin.fieldOptions.columns=4
+    //% sws.fieldEditor="gridpicker" sws.fieldOptions.columns=2
+    export function buzzerModule(buzzerPin: DigitalPin, sws: SwitchState): void {
+        pins.digitalWritePin(buzzerPin, sws);
     }
 
     /**

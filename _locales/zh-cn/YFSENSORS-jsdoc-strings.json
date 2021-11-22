@@ -35,5 +35,7 @@
   "YFSENSORS.ping|param|echo": "echo引脚",
   "YFSENSORS.ping|param|maxCmDistance": "最大距离单位cm(默认500)",
   "YFSENSORS.ping|param|trig": "trigger引脚",
-  "YFSENSORS.ping|param|unit": "转换单位"
+  "YFSENSORS.ping|param|unit": "转换单位",
+  "YFSENSORS.ledModule": "点亮或熄灭LED模块",
+  "YFSENSORS.buzzerModule": "打开或关闭蜂鸣器模块"
 }
