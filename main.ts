@@ -266,7 +266,7 @@ namespace YFSENSORS {
     //% group="Input"
     //% blockId=YFSENSORS_crash weight=70 blockGap=30
     //% block="crash sensor pressed"
-    export function crashSensor(): boolean {
+    export function crashSensor(crashSensorPin: DigitalPin): boolean {
         let a: number = pins.digitalReadPin(crashSensorPin);
         if (a == 0) {
             return true;
