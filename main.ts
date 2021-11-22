@@ -122,10 +122,14 @@ namespace YFSENSORS {
     export enum DigitalOutputModule {
         //% blockId="YFDOM_LED" block="LED"
         LED = 0x0,
-        //% blockId="YFDOM_BUZ" block="BUZ"
+        //% blockId="YFDOM_BUZZER" block="BUZZER"
         BUZZER = 0x1,
         //% blockId="YFDOM_FAN" block="FAN"
         FAN = 0x2,
+        //% blockId="YFDOM_RELAY" block="RELAY"
+        RELAY = 0x3,
+        //% blockId="YFDOM_VIBRATION_MOTOR" block="VIBRATION_MOTOR"
+        VIBRATION_MOTOR = 0x4,
     }
 
     export enum SwitchState {
@@ -212,16 +216,16 @@ namespace YFSENSORS {
 
     /**
      * Turn the Digital Output Module ON or OFF.
-     * @param dom pin. eg: DigitalOutputModule.LED
      * @param domPin pin. eg: DigitalPin.P2
+     * @param dom pin. eg: DigitalOutputModule.LED
      * @param sws switch state. eg: SwitchState.OFF
      */
     //% group="Output"
     //% blockId=YFSENSORS_fanModule weight=99 blockGap=30
-    //% block="%dom module at pin %domPin %sws"
+    //% block="at pin %domPin| %dom| module %sws"
     //% domPin.fieldEditor="gridpicker" domPin.fieldOptions.columns=4
     //% sws.fieldEditor="gridpicker" sws.fieldOptions.columns=2
-    export function digitalOutputModule(dom: DigitalOutputModule, domPin: DigitalPin, sws: SwitchState): void {
+    export function digitalOutputModule(domPin: DigitalPin, dom: DigitalOutputModule, sws: SwitchState): void {
         let domM = dom;
         pins.digitalWritePin(domPin, sws);
     }
