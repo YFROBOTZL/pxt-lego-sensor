@@ -216,22 +216,6 @@ namespace YFSENSORS {
         pins.digitalWritePin(domPin, sws);
     }
 
-    ///////////////////// Input Analog Sensors ///////////////////////
-    /**
-     * Read the Analog Input Module.
-     * @param aimPin pin. eg: AnalogPin.P1
-     * @param aim pin. eg: AnalogInputModule.LED
-     */
-    //% group="Input"
-    //% blockId=YFSENSORS_analogInputModule weight=100 blockGap=30
-    //% block="at pin %aimPin| %aim| module"
-    //% aimPin.fieldEditor="gridpicker" aimPin.fieldOptions.columns=4
-    //% aim.fieldEditor="gridpicker" aim.fieldOptions.columns=2
-    export function analogInputModule(aimPin: AnalogPin, aim: DigitalOutputModule): number {
-        let aimM = aim;  // no work
-        return pins.analogReadPin(aimPin)
-    }
-
     /**
      * Set the direction and speed of YFSENSORS motor.
      * @param index motor m1/m2/all. eg: YFSENSORS.Motors.MAll
@@ -275,12 +259,30 @@ namespace YFSENSORS {
         motorRun(motor, 0, 0);
     }
 
+    
 
-    ///////////////////// Input Sensors ///////////////////////
+    ///////////////////// Input Analog Sensors ///////////////////////
+    /**
+     * Read the Analog Input Module.
+     * @param aimPin pin. eg: AnalogPin.P1
+     * @param aim pin. eg: AnalogInputModule.LED
+     */
+    //% group="Input Analog"
+    //% blockId=YFSENSORS_analogInputModule weight=100 blockGap=30
+    //% block="at pin %aimPin| %aim| module"
+    //% aimPin.fieldEditor="gridpicker" aimPin.fieldOptions.columns=4
+    //% aim.fieldEditor="gridpicker" aim.fieldOptions.columns=2
+    export function analogInputModule(aimPin: AnalogPin, aim: DigitalOutputModule): number {
+        let aimM = aim;  // no work
+        return pins.analogReadPin(aimPin)
+    }
+
+
+    ///////////////////// Input Digital Sensors ///////////////////////
     /**
      * Checks whether the button is is currently pressed.
      */
-    //% group="Input"
+    //% group="Input Digital"
     //% blockId=YFSENSORS_btn weight=80 blockGap=30
     //% block="button at pin %p pressed"
     //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4 
@@ -297,7 +299,7 @@ namespace YFSENSORS {
      * @returns the Collision Switch Value.
      */
     //% weight=60
-    //% group="Input"
+    //% group="Input Digital"
     //% blockId=YFSENSORS_readCollisionSwitch
     //% block="Read Collision Switch on %pincs"
     //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4 
@@ -308,7 +310,7 @@ namespace YFSENSORS {
     /**
      * Checks whether the crash sensor is currently pressed.
      */
-    //% group="Input"
+    //% group="Input Digital"
     //% blockId=YFSENSORS_crash weight=70 blockGap=30
     //% block="crash sensor pressed"
     export function crashSensor(crashSensorPin: DigitalPin): boolean {
@@ -321,7 +323,7 @@ namespace YFSENSORS {
     /**
      * Checks whether the motion sensor is currently detecting any motion.
      */
-    //% group="Input"
+    //% group="Input Digital"
     //% blockId=YFSENSORS_pir weight=80 blockGap=30
     //% block="motion detector at pin %p | detects motion"
     export function PIRSensor(p: DigitalPin): boolean {
@@ -337,7 +339,7 @@ namespace YFSENSORS {
      * @returns the Potentiometer Value.
      */
     //% weight=53
-    //% group="Input"
+    //% group="Input Analog"
     //% blockId=YFSENSORS_readPotentiometer
     //% block="Read Potentiometer on %pinpt"
     //% piny.fieldEditor="gridpicker" piny.fieldOptions.columns=4 
@@ -351,7 +353,7 @@ namespace YFSENSORS {
      * @returns the Infrared Sensor Value.
      */
     //% weight=60
-    //% group="Input"
+    //% group="Input Analog"
     //% blockId=YFSENSORS_readInfraredSensor
     //% block="Read Infrared Sensor on %pinir"
     //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4 
@@ -359,6 +361,7 @@ namespace YFSENSORS {
         return pins.digitalReadPin(pinir)
     }
 
+    ///////////////////// Sonar Sensors ///////////////////////
     /**
      * Send a ping and get the echo time (in microseconds) as a result
      * @param trig trigger pin. eg: DigitalPin.P2
