@@ -181,10 +181,11 @@ namespace YFSENSORS {
      */
     //% group="Output"
     //% blockId=YFSENSORS_ledModule weight=80 blockGap=30
-    //% block="led module at pin %p %sws"
-    //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=2
-    export function ledModule(p: DigitalPin, sws: SwitchState): void {
-        pins.digitalWritePin(p, sws);
+    //% block="led module at pin %ledPin %sws"
+    //% ledPin.fieldEditor="gridpicker" ledPin.fieldOptions.columns=2
+    //% sws.fieldEditor="gridpicker" sws.fieldOptions.columns=2
+    export function ledModule(ledPin: DigitalPin, sws: SwitchState): void {
+        pins.digitalWritePin(ledPin, sws);
     }
 
     /**
