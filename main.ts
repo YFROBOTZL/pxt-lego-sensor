@@ -152,20 +152,20 @@ namespace YFSENSORS {
     export enum DigitalInputModule {
         //% blockId="YFDIM_BUTTON" block="BUTTON"
         BUTTON = 0x0,
-        //% blockId="YFDIM_TOUCH_SENSOR" block="TOUCH_SENSOR"
-        TOUCH_SENSOR = 0x1,
-        //% blockId="YFDIM_MAGNETIC_SENSOR" block="MAGNETIC_SENSOR"
-        MAGNETIC_SENSOR = 0x2,
-        //% blockId="YFDIM_VIBRATION_SENSOR" block="VIBRATION_SENSOR"
-        VIBRATION_SENSOR  = 0x3,
-        //% blockId="YFDIM_INFRARED_PROXIMITY_SENSOR" block="INFRARED_PROXIMITY_SENSOR"
-        INFRARED_PROXIMITY_SENSOR = 0x4,
-        //% blockId="YFDIM_TILT_SENSOR" block="TILT_SENSOR"
-        TILT_SENSOR = 0x5,
-        //% blockId="YFDIM_PYROELECTRIC_SENSOR" block="PYROELECTRIC_SENSOR"
-        PYROELECTRIC_SENSOR = 0x6,
         //% blockId="YFDIM_COLLISION_SWITCH" block="COLLISION_SWITCH"
-        COLLISION_SWITCH = 0x6,
+        COLLISION_SWITCH = 0x1,
+        //% blockId="YFDIM_TOUCH_SENSOR" block="TOUCH_SENSOR"
+        TOUCH_SENSOR = 0x2,
+        //% blockId="YFDIM_MAGNETIC_SENSOR" block="MAGNETIC_SENSOR"
+        MAGNETIC_SENSOR = 0x3,
+        //% blockId="YFDIM_VIBRATION_SENSOR" block="VIBRATION_SENSOR"
+        VIBRATION_SENSOR  = 0x4,
+        //% blockId="YFDIM_INFRARED_PROXIMITY_SENSOR" block="INFRARED_PROXIMITY_SENSOR"
+        INFRARED_PROXIMITY_SENSOR = 0x5,
+        //% blockId="YFDIM_TILT_SENSOR" block="TILT_SENSOR"
+        TILT_SENSOR = 0x6,
+        //% blockId="YFDIM_PYROELECTRIC_SENSOR" block="PYROELECTRIC_SENSOR"
+        PYROELECTRIC_SENSOR = 0x7,
     }
 
     /**
@@ -400,34 +400,7 @@ namespace YFSENSORS {
             return true;
         } else return false;
     }
-    
-    /**
-     * Read Potentiometer.
-     * @param pinpt the Potentiometer pin. eg: AnalogPin.P2
-     * @returns the Potentiometer Value.
-     */
-    //% weight=53
-    //% group="Input Analog"
-    //% blockId=YFSENSORS_readPotentiometer
-    //% block="Read Potentiometer on %pinpt"
-    //% piny.fieldEditor="gridpicker" piny.fieldOptions.columns=4 
-    export function readPotentiometer(pinpt: AnalogPin): number {
-        return pins.analogReadPin(pinpt)
-    }
 
-    /**
-     * Read the Infrared Sensor.
-     * @param pinir Infrared Sensor pin. eg: DigitalPin.P8
-     * @returns the Infrared Sensor Value.
-     */
-    //% weight=60
-    //% group="Input Digital"
-    //% blockId=YFSENSORS_readInfraredSensor
-    //% block="Read Infrared Sensor on %pinir"
-    //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4 
-    export function readInfraredSensor(pinir: DigitalPin): number {
-        return pins.digitalReadPin(pinir)
-    }
 
     ///////////////////// Sonar Sensors ///////////////////////
     /**

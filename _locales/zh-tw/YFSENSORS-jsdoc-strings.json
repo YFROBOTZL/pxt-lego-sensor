@@ -37,5 +37,6 @@
   "YFSENSORS.ping|param|trig": "trigger引腳",
   "YFSENSORS.ping|param|unit": "轉換單位",
   "YFSENSORS.digitalOutputModule": "打開或關閉數字輸出型模塊",
-  "YFSENSORS.analogInputModule": "讀取模擬輸入型傳感器模塊"
+  "YFSENSORS.analogInputModule": "讀取模擬輸入型傳感器模塊",
+  "YFSENSORS.digitalInputModule": "讀取數字輸入型傳感器模塊"
 }

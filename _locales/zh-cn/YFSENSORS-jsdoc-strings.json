@@ -37,5 +37,6 @@
   "YFSENSORS.ping|param|trig": "trigger引脚",
   "YFSENSORS.ping|param|unit": "转换单位",
   "YFSENSORS.digitalOutputModule": "打开或关闭数字输出型模块",
-  "YFSENSORS.analogInputModule": "读取模拟输入型传感器模块"
+  "YFSENSORS.analogInputModule": "读取模拟输入型传感器模块",
+  "YFSENSORS.digitalInputModule": "读取数字输入型传感器模块"
 }
