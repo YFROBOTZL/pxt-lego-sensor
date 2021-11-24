@@ -51,6 +51,8 @@
   "YFSENSORS.AnalogInputModule.TEMPERATURE|block":"溫度傳感器",
   "YFSENSORS.AnalogInputModule.POTENTIOMETER|block":"電位器",
   "YFSENSORS.AnalogInputModule.SOIL_HUMIDITY|block":"土壤濕度傳感器",
+  "YFSENSORS.AnalogInputModule.ROCKER_X|block":"X軸-搖桿",
+  "YFSENSORS.AnalogInputModule.ROCKER_Y|block":"Y軸-搖桿",
   "YFSENSORS.analogInputModule|block":"連接%aimPin|%aim|模塊",
   "YFSENSORS.connectIrReceiver|block": "連接紅外接收到 %pin| 編碼格式：%protocol",
   "YFSENSORS.irButtonCode|block": "紅外按鍵%button|值",

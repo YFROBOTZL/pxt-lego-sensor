@@ -143,6 +143,11 @@ namespace YFSENSORS {
         POTENTIOMETER = 0x3,
         //% blockId="YFAIM_SOIL_HUMIDITY" block="SOIL_HUMIDITY"
         SOIL_HUMIDITY = 0x4,
+        //% blockId="YFAIM_ROCKER_X" block="ROCKER_X"
+        ROCKER_X = 0x5,
+        //% blockId="YFAIM_ROCKER_Y" block="ROCKER_Y"
+        ROCKER_Y = 0x6,
+
     }
 
     export enum SwitchState {
