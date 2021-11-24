@@ -118,18 +118,21 @@ namespace YFSENSORS {
         Number_9 = 0x52,
     }
     /////////////////////// IR ///////////////////////
-
-    export enum DigitalOutputModule {
+    
+    export enum ADOutputModule {
         //% blockId="YFDOM_LED" block="LED"
         LED = 0x0,
-        //% blockId="YFDOM_BUZZER" block="BUZZER"
-        BUZZER = 0x1,
         //% blockId="YFDOM_FAN" block="FAN"
         FAN = 0x2,
-        //% blockId="YFDOM_RELAY" block="RELAY"
-        RELAY = 0x3,
         //% blockId="YFDOM_VIBRATION_MOTOR" block="VIBRATION_MOTOR"
         VIBRATION_MOTOR = 0x4,
+    }
+
+    export enum DigitalOutputModule {
+        //% blockId="YFDOM_BUZZER" block="BUZZER"
+        BUZZER = 0x1,
+        //% blockId="YFDOM_RELAY" block="RELAY"
+        RELAY = 0x3,
     }
 
     export enum AnalogInputModule {
@@ -227,13 +230,35 @@ namespace YFSENSORS {
     let _intensity = 8
     let dbuf = [0, 0, 0, 0]
     /////////////////////// DigitalTubes ///////////////////////
+
+
     
-    function clamp(value: number, min: number, max: number): number {
-        return Math.max(Math.min(max, value), min);
+    ///////////////////// Output Sensors ///////////////////////
+    /**
+    * toggle 
+    * Turn the Digital Output Module ON or OFF.
+    * @param adomPin pin. eg: AnalogPin.P2
+    * @param adom pin. eg: DigitalOutputModule.LED
+    * @param sws switch state. eg: SwitchState.OFF
+    * @param brightness brightness of LED.
+    */
+    //% group="Output"
+    //% blockId=YFSENSORS_readInfraredSensor
+    //% block="%adom |%pin toggle to %ledstate || brightness %brightness \\%"
+    //% brightness.min=0 brightness.max=100
+    //% ledstate.shadow="toggleOnOff"
+    //% expandableArgumentMode="toggle"
+    export function aDOutputModule(adom: ADOutputModule, adomPin: AnalogPin, ledstate: boolean, brightness: number = 100): void {
+        let adomM = adom;  // no work
+        if (ledstate) {
+            pins.analogSetPeriod(adomPin, 100)
+            pins.analogWritePin(adomPin, Math.map(brightness, 0, 100, 0, 1023))
+        } else {
+            pins.analogWritePin(adomPin, 0)
+            brightness = 0
+        }
     }
 
-
-    ///////////////////// Output Sensors ///////////////////////
     /**
      * Turn the Digital Output Module ON or OFF.
      * @param domPin pin. eg: DigitalPin.P2
@@ -251,6 +276,10 @@ namespace YFSENSORS {
         pins.digitalWritePin(domPin, sws);
     }
 
+    ///////////////////// Motor ///////////////////////
+    function clamp(value: number, min: number, max: number): number {
+        return Math.max(Math.min(max, value), min);
+    }
     /**
      * Set the direction and speed of YFSENSORS motor.
      * @param index motor m1/m2/all. eg: YFSENSORS.Motors.MAll
@@ -451,25 +480,6 @@ namespace YFSENSORS {
             case PingUnit.Centimeters: return Math.idiv(d, 58);
             case PingUnit.Inches: return Math.idiv(d, 148);
             default: return d ;
-        }
-    }
-
-    ///////////////////// Output Sensors ///////////////////////
-    /**
-    * toggle led
-    */
-    //% blockId=YFSENSORS_readInfraredSensor
-    //% block="LED %pin toggle to %ledstate || brightness %brightness \\%"
-    //% brightness.min=0 brightness.max=100
-    //% ledstate.shadow="toggleOnOff"
-    //% expandableArgumentMode="toggle"
-    export function ledBrightness(pin: AnalogPin, ledstate: boolean, brightness: number = 100): void {
-        if (ledstate) {
-            pins.analogSetPeriod(pin, 100)
-            pins.analogWritePin(pin, Math.map(brightness, 0, 100, 0, 1023))
-        } else {
-            pins.analogWritePin(pin, 0)
-            brightness = 0
         }
     }
 
