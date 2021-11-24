@@ -173,13 +173,11 @@ namespace YFSENSORS {
      */
     export enum DigitalInputEvent {
         //% block=pressed
-        Pressed = 3,  // MICROBIT_BUTTON_EVT_CLICK
-        //% block=touched
-        Touched = 1,  // MICROBIT_BUTTON_EVT_DOWN
+        Pressed = DAL.MICROBIT_BUTTON_EVT_DOWN,  // MICROBIT_BUTTON_EVT_DOWN
         //% block=released
-        Released = 2,  // MICROBIT_BUTTON_EVT_UP
-        //% block="long pressed"
-        LongPressed = 4,  // MICROBIT_BUTTON_EVT_LONG_CLICK
+        Released = DAL.MICROBIT_BUTTON_EVT_UP,  // MICROBIT_BUTTON_EVT_UP
+        //% block=touched
+        Clicked = DAL.MICROBIT_BUTTON_EVT_CLICK,  // MICROBIT_BUTTON_EVT_CLICK
     };
 
     export enum SwitchState {
@@ -329,6 +327,12 @@ namespace YFSENSORS {
         return pins.digitalReadPin(dimPin);
     }
 
+    export function isPressed(button: GamerBitPin): boolean {
+        const pin = <DigitalPin><number>button;
+        pins.setPull(pin, PinPullMode.PullUp);
+        return pins.digitalReadPin(<DigitalPin><number>button) == 0;
+    }
+
     /**
      * Checks whether the button is is currently pressed.
      */
@@ -345,6 +349,18 @@ namespace YFSENSORS {
         // control.onEvent(EventBusSource.MICROBIT_ID_IO_P1, EventBusValue.MICROBIT_PIN_EVT_RISE, function () {
 
         // })
+    }
+
+    	/**
+	 * Registers code to run when a gamer:bit event is detected.
+	 */
+    //% weight=90
+    //% blockId=gamerbit_onevent block="gamer:bit on %button|%event"
+    //% button.fieldEditor="gridpicker" button.fieldOptions.columns=3
+    //% event.fieldEditor="gridpicker" event.fieldOptions.columns=3
+    export function onEvent(dPin: DigitalPin, event: GamerBitEvent, handler: Action) {
+        pins.setEvents(dPin, PinEventType.Edge);
+        control.onEvent(<number>button, <number>event, handler); // register handler
     }
 
     /**
