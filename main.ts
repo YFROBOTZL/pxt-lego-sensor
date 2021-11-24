@@ -324,7 +324,7 @@ namespace YFSENSORS {
     //% block="at pin %dimPin| %dim| module"
     //% dimPin.fieldEditor="gridpicker" dimPin.fieldOptions.columns=4
     //% dim.fieldEditor="gridpicker" dim.fieldOptions.columns=2
-    export function digitalInputModule(dimPin: DigitalPin, dim: DigitalInputModule): number {
+    export function digitalInputModule(dimPin: DigitalPin, dim: DigitalInputModule): boolean {
         let dimM = dim;  // no work
         return pins.digitalReadPin(dimPin);
     }
