@@ -168,6 +168,20 @@ namespace YFSENSORS {
         COLLISION_SWITCH = 0x6,
     }
 
+    /**
+     * An action on a touch button
+     */
+    export enum DigitalInputEvent {
+        //% block=pressed
+        Pressed = 3,  // MICROBIT_BUTTON_EVT_CLICK
+        //% block=touched
+        Touched = 1,  // MICROBIT_BUTTON_EVT_DOWN
+        //% block=released
+        Released = 2,  // MICROBIT_BUTTON_EVT_UP
+        //% block="long pressed"
+        LongPressed = 4,  // MICROBIT_BUTTON_EVT_LONG_CLICK
+    };
+
     export enum SwitchState {
         //% blockId="YF_ON" block="ON"
         ON = 0x0,
@@ -322,22 +336,28 @@ namespace YFSENSORS {
     //% blockId=YFSENSORS_btn weight=80 blockGap=30
     //% block="button at pin %p pressed"
     //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4 
-    export function buttonSensor(p: DigitalPin): boolean {
-        let a: number = pins.digitalReadPin(p);
-        if (a == 1) {
-            return true;
-        } else return false;
+    export function buttonSensor(p: DigitalPin, action: DigitalInputEvent, body: () => void): void {
+        pins.setEvents(p, PinEventType.Edge)
+        control.onEvent(
+            action === DigitalInputEvent.Pressed,
+            p === DigitalPin, () => {
+
+
+        });
+        // control.onEvent(EventBusSource.MICROBIT_ID_IO_P1, EventBusValue.MICROBIT_PIN_EVT_RISE, function () {
+
+        // })
     }
 
     /**
      * Do something when a pin is touched and released again (while also touching the GND pin).
-     * @param name the pin that needs to be pressed, eg: TouchPin.P0
+     * @param name the pin that needs to be pressed, eg: DitialPin.P2
      * @param body the code to run when the pin is pressed
      */
     //% group="Input Digital"
     //% help=input/on-pin-pressed weight=83 blockGap=32
     //% blockId=device_pin_event block="on pin %name|pressed"
-    export function onPinPressed(name: TouchPin, body: () => void): void{
+    export function onPinPressed(name: DitialPin, body: () => void): void{
 
     }
 
