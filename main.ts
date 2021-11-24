@@ -154,18 +154,18 @@ namespace YFSENSORS {
         BUTTON = 0x0,
         //% blockId="YFDIM_COLLISION_SWITCH" block="COLLISION_SWITCH"
         COLLISION_SWITCH = 0x1,
-        //% blockId="YFDIM_TOUCH_SENSOR" block="TOUCH_SENSOR"
-        TOUCH_SENSOR = 0x2,
         //% blockId="YFDIM_MAGNETIC_SENSOR" block="MAGNETIC_SENSOR"
-        MAGNETIC_SENSOR = 0x3,
-        //% blockId="YFDIM_VIBRATION_SENSOR" block="VIBRATION_SENSOR"
-        VIBRATION_SENSOR  = 0x4,
-        //% blockId="YFDIM_INFRARED_PROXIMITY_SENSOR" block="INFRARED_PROXIMITY_SENSOR"
-        INFRARED_PROXIMITY_SENSOR = 0x5,
+        MAGNETIC_SENSOR = 0x2,
         //% blockId="YFDIM_TILT_SENSOR" block="TILT_SENSOR"
-        TILT_SENSOR = 0x6,
+        TILT_SENSOR = 0x3,
+        //% blockId="YFDIM_INFRARED_PROXIMITY_SENSOR" block="INFRARED_PROXIMITY_SENSOR"
+        INFRARED_PROXIMITY_SENSOR = 0x4,
+        //% blockId="YFDIM_VIBRATION_SENSOR" block="VIBRATION_SENSOR"
+        VIBRATION_SENSOR  = 0x5,
         //% blockId="YFDIM_PYROELECTRIC_SENSOR" block="PYROELECTRIC_SENSOR"
-        PYROELECTRIC_SENSOR = 0x7,
+        PYROELECTRIC_SENSOR = 0x6,
+        //% blockId="YFDIM_TOUCH_SENSOR" block="TOUCH_SENSOR"
+        TOUCH_SENSOR = 0x7,
     }
 
     /**
