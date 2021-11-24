@@ -355,8 +355,9 @@ namespace YFSENSORS {
      * @param body the code to run when the pin is pressed
      */
     //% group="Input Digital"
-    //% help=input/on-pin-pressed weight=83 blockGap=32
-    //% blockId=device_pin_event block="on pin %name|pressed"
+    //% blockId=YFSENSORS_onPinPressed weight=80 blockGap=30
+    //% block="on pin %name|pressed"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function onPinPressed(name: TouchPin, body: () => void): void{
 
     }
