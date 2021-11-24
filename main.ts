@@ -336,15 +336,12 @@ namespace YFSENSORS {
     //% blockId=YFSENSORS_btn weight=80 blockGap=30
     //% block="button at pin %p pressed"
     //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4 
-    export function buttonSensor(p: DigitalPin, action: DigitalInputEvent, body: () => void): void {
+    export function buttonSensor(p: DigitalPin, body: () => void): void {
         pins.setEvents(p, PinEventType.Edge)
-        control.onEvent(
-            action === DigitalInputEvent.Pressed
-            ? MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID
-            : MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID, () => {
+        // control.onEvent(() => {
 
 
-        });
+        // });
         // control.onEvent(EventBusSource.MICROBIT_ID_IO_P1, EventBusValue.MICROBIT_PIN_EVT_RISE, function () {
 
         // })
