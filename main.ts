@@ -330,6 +330,18 @@ namespace YFSENSORS {
     }
 
     /**
+     * Do something when a pin is touched and released again (while also touching the GND pin).
+     * @param name the pin that needs to be pressed, eg: TouchPin.P0
+     * @param body the code to run when the pin is pressed
+     */
+    //% group="Input Digital"
+    //% help=input/on-pin-pressed weight=83 blockGap=32
+    //% blockId=device_pin_event block="on pin %name|pressed"
+    export function onPinPressed(name: TouchPin, body: () => void): void{
+
+    }
+
+    /**
      * Read the Collision Switch.
      * @param pincs collision Switch pin. eg: DigitalPin.P8
      * @returns the Collision Switch Value.
