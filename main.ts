@@ -339,8 +339,9 @@ namespace YFSENSORS {
     export function buttonSensor(p: DigitalPin, action: DigitalInputEvent, body: () => void): void {
         pins.setEvents(p, PinEventType.Edge)
         control.onEvent(
-            action === DigitalInputEvent.Pressed,
-            p === DigitalPin, () => {
+            action === DigitalInputEvent.Pressed
+            ? MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID
+            : MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID, () => {
 
 
         });
