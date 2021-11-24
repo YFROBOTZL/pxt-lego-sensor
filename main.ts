@@ -324,10 +324,14 @@ namespace YFSENSORS {
     //% dim.fieldEditor="gridpicker" dim.fieldOptions.columns=2
     export function digitalInputModule(dimPin: DigitalPin, dim: DigitalInputModule): boolean {
         let dimM = dim;  // no work
-        return pins.digitalReadPin(dimPin);
+        // return pins.digitalReadPin(dimPin);
+        let a: number = pins.digitalReadPin(dimPin);
+        if (a == 1) {
+            return true;
+        } else return false;
     }
 
-    export function isPressed(button: GamerBitPin): boolean {
+    export function isPressed(button: DigitalPin): boolean {
         const pin = <DigitalPin><number>button;
         pins.setPull(pin, PinPullMode.PullUp);
         return pins.digitalReadPin(<DigitalPin><number>button) == 0;
@@ -351,16 +355,16 @@ namespace YFSENSORS {
         // })
     }
 
-    	/**
+    /**
 	 * Registers code to run when a gamer:bit event is detected.
 	 */
     //% weight=90
     //% blockId=gamerbit_onevent block="gamer:bit on %button|%event"
     //% button.fieldEditor="gridpicker" button.fieldOptions.columns=3
     //% event.fieldEditor="gridpicker" event.fieldOptions.columns=3
-    export function onEvent(dPin: DigitalPin, event: GamerBitEvent, handler: Action) {
+    export function onEvent(dPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
         pins.setEvents(dPin, PinEventType.Edge);
-        control.onEvent(<number>button, <number>event, handler); // register handler
+        control.onEvent(<number>dPin, <number>event, handler); // register handler
     }
 
     /**
