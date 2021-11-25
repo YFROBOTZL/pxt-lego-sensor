@@ -403,15 +403,33 @@ namespace YFSENSORS {
 
     /**
      * Do something when a pin is touched and released again (while also touching the GND pin).
-     * @param name the pin that needs to be pressed, eg: TouchPin.P2
-     * @param body the code to run when the pin is pressed
+     * @param pinId the pin that needs to be pressed, eg: DigitalPin.P1
      */
     //% group="Input Digital"
     //% blockId=YFSENSORS_onPinPressed weight=80 blockGap=30
-    //% block="on pin %name|pressed"
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function onPinPressed(name: TouchPin, body: () => void): void{
+    //% block="on pin %pinId|pressed"
+    //% pinId.fieldEditor="gridpicker" pinId.fieldOptions.columns=4
+    export function onPinPressed(dimE: DigitalInputModuleE, pinId: number, handler: RefAction) {
+        let dimME = dimE;  // no work
+        let pin = getPin(pinId);
+        if (!pin) return;
+        pin.isTouched();
+        runtime.queueDisplayUpdate();
+        pxtcore.registerWithDal(pin.id, DAL.MICROBIT_BUTTON_EVT_CLICK, handler);
+    }
 
+    export function onPinReleased(pinId: number, handler: RefAction) {
+        let pin = getPin(pinId);
+        if (!pin) return;
+        pin.isTouched();
+        runtime.queueDisplayUpdate();
+        pxtcore.registerWithDal(pin.id, DAL.MICROBIT_BUTTON_EVT_UP, handler);
+    }
+
+    export function pinIsPressed(pinId: number): boolean {
+        let pin = getPin(pinId);
+        if (!pin) return false;
+        return pin.isTouched();
     }
 
     
