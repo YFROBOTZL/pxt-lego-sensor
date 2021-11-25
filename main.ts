@@ -171,7 +171,7 @@ namespace YFSENSORS {
         COLLISION_SWITCH = 0x7,
     }
 
-    export enum DigitalInputModuleWE {
+    export enum DigitalInputModuleE {
         //% blockId="YFDIM_BUTTON" block="BUTTON"
         BUTTON = 0x0,
         //% blockId="YFDIM_COLLISION_SWITCH" block="COLLISION_SWITCH"
@@ -393,7 +393,7 @@ namespace YFSENSORS {
 
         // })
     }
-    
+
     /**
 	 * Registers code to run when a Button/Collision event is detected.
 	 */
@@ -402,7 +402,7 @@ namespace YFSENSORS {
     //% block="%dimE on %dPin|%event"
     //% dPin.fieldEditor="gridpicker" dPin.fieldOptions.columns=4
     //% event.fieldEditor="gridpicker" event.fieldOptions.columns=3
-    export function onEvent(dimE: DigitalInputModuleWE, dPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
+    export function onEvent(dimE: DigitalInputModuleE, dPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
         let dimME = dimE;  // no work
         pins.setEvents(dPin, PinEventType.Edge);
         control.onEvent(<number>dPin, <number>event, handler); // register handler
@@ -419,20 +419,6 @@ namespace YFSENSORS {
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function onPinPressed(name: TouchPin, body: () => void): void{
 
-    }
-
-    /**
-     * Read the Collision Switch.
-     * @param pincs collision Switch pin. eg: DigitalPin.P8
-     * @returns the Collision Switch Value.
-     */
-    //% weight=60
-    //% group="Input Digital"
-    //% blockId=YFSENSORS_readCollisionSwitch
-    //% block="Read Collision Switch on %pincs"
-    //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4 
-    export function readCollisionSwitch(pincs: DigitalPin): number {
-        return pins.digitalReadPin(pincs)
     }
 
     /**
