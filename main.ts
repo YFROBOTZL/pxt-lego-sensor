@@ -396,7 +396,7 @@ namespace YFSENSORS {
     //% event.fieldEditor="gridpicker" event.fieldOptions.columns=3
     export function onEvent(dimE: DigitalInputModuleE, dPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
         let dimME = dimE;  // no work
-        pins.setEvents(dPin, PinEventType.Edge);
+        // pins.setEvents(dPin, PinEventType.Edge);
         control.onEvent(<number>dPin, <number>event, handler); // register handler
     }
 
