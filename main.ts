@@ -245,6 +245,8 @@ namespace YFSENSORS {
     //% group="Output"
     //% blockId=YFSENSORS_readInfraredSensor
     //% block="%adom |%adomPin toggle to %state || brightness %brightness \\%"
+    //% adom.fieldEditor="gridpicker" adom.fieldOptions.columns=2
+    //% domPin.fieldEditor="gridpicker" domPin.fieldOptions.columns=4
     //% brightness.min=0 brightness.max=100
     //% state.shadow="toggleOnOff"
     //% expandableArgumentMode="toggle"
