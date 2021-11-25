@@ -393,9 +393,9 @@ namespace YFSENSORS {
 
         // })
     }
-
+    
     /**
-	 * Registers code to run when a gamer:bit event is detected.
+	 * Registers code to run when a Button/Collision event is detected.
 	 */
     //% group="Input Digital"
     //% blockId=YFSENSORS_onevent weight=90 blockGap=30
