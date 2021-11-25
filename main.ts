@@ -7,7 +7,7 @@
  * @copyright    MIT Lesser General Public License
  * 
  * @author [email](yfrobot@qq.com)
- * @date  2021-07-04
+ * @date  2021-11-23
 */
 
 // motor pin 
@@ -50,7 +50,7 @@ namespace YFSENSORS {
         Released = 1,
     }
 
-    export enum IrButton {
+    export enum IrButton_Handle {
         // any button
         //% block="Any"
         Any = -1,
@@ -71,7 +71,18 @@ namespace YFSENSORS {
         //% block="A"
         A = 0x21,
         //% block="B"
-        B = 0x01,
+        B = 0x01
+    }
+
+    export enum IrButton {
+        // any button
+        //% block="Any"
+        Any = -1,
+
+        //% block=" "
+        Null_01 = -1,
+        //% block=" "
+        Null_02 = -1,
 
         // MINI IR 
         //% block="A"
@@ -244,9 +255,7 @@ namespace YFSENSORS {
     let dbuf = [0, 0, 0, 0]
     /////////////////////// DigitalTubes ///////////////////////
 
-
-    
-    ///////////////////// Output Sensors ///////////////////////
+    ///////////////////// Output ///////////////////////
     /**
     * toggle 
     * Turn the Digital Output Module ON or OFF.
@@ -256,7 +265,7 @@ namespace YFSENSORS {
     * @param percentage brightness of LED, Motor vibration strength, fan rotation speed.
     */
     //% group="Output"
-    //% blockId=YFSENSORS_readInfraredSensor
+    //% blockId=YFSENSORS_readInfraredSensor weight=100 blockGap=30
     //% block="%adom| %adomPin toggle to %state || percentage %percentage \\%"
     //% adom.fieldEditor="gridpicker" adom.fieldOptions.columns=2
     //% adomPin.fieldEditor="gridpicker" adomPin.fieldOptions.columns=4
@@ -282,7 +291,7 @@ namespace YFSENSORS {
      * @param sws switch state. eg: SwitchState.OFF
      */
     //% group="Output"
-    //% blockId=YFSENSORS_digitalOutputModule weight=100 blockGap=30
+    //% blockId=YFSENSORS_digitalOutputModule weight=99 blockGap=30
     //% block="at pin %domPin| %dom| module %sws"
     //% domPin.fieldEditor="gridpicker" domPin.fieldOptions.columns=4
     //% dom.fieldEditor="gridpicker" dom.fieldOptions.columns=2
@@ -292,7 +301,7 @@ namespace YFSENSORS {
         pins.digitalWritePin(domPin, sws);
     }
 
-    ///////////////////// Motor ///////////////////////
+    ///////////////////// Output - Motor ///////////////////////
     function clamp(value: number, min: number, max: number): number {
         return Math.max(Math.min(max, value), min);
     }
@@ -302,8 +311,9 @@ namespace YFSENSORS {
      * @param direction direction to turn. eg: YFSENSORS.Dir.CW
      * @param speed speed of motors (0 to 255). eg: 120
      */
-    //% weight=90
-    //% blockId=YFSENSORS_MotorRun block="motor|%index|move|%direction|at speed|%speed"
+    //% group="Output"
+    //% blockId=YFSENSORS_MotorRun weight=11 blockGap=30
+    //% block="motor|%index|move|%direction|at speed|%speed"
     //% speed.min=0 speed.max=255
     //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
     //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
@@ -332,8 +342,9 @@ namespace YFSENSORS {
      * Stop the YFSENSORS motor.
      * @param motor motor m1/m2/all. eg: YFSENSORS.Motors.MAll
      */
-    //% weight=89
-    //% blockId=YFSENSORS_motorStop block="motor |%motor stop"
+    //% group="Output"
+    //% blockId=YFSENSORS_motorStop weight=10 blockGap=30
+    //% block="motor |%motor stop"
     //% motor.fieldEditor="gridpicker" motor.fieldOptions.columns=2 
     export function motorStop(motor: Motors): void {
         motorRun(motor, 0, 0);
@@ -355,7 +366,6 @@ namespace YFSENSORS {
         return pins.analogReadPin(aimPin);
     }
 
-
     ///////////////////// Input Digital Sensors ///////////////////////
     /**
      * Read the Digital Input Sensor Module.
@@ -376,30 +386,6 @@ namespace YFSENSORS {
         } else return false;
     }
 
-    export function isPressed(button: DigitalPin): boolean {
-        const pin = <DigitalPin><number>button;
-        pins.setPull(pin, PinPullMode.PullUp);
-        return pins.digitalReadPin(<DigitalPin><number>button) == 0;
-    }
-
-    /**
-     * Checks whether the button is is currently pressed.
-     */
-    //% group="Input Digital"
-    //% blockId=YFSENSORS_btn weight=80 blockGap=30
-    //% block="button at pin %p pressed"
-    //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4 
-    export function buttonSensor(p: DigitalPin, body: () => void): void {
-        pins.setEvents(p, PinEventType.Edge)
-        // control.onEvent(() => {
-
-
-        // });
-        // control.onEvent(EventBusSource.MICROBIT_ID_IO_P1, EventBusValue.MICROBIT_PIN_EVT_RISE, function () {
-
-        // })
-    }
-
     /**
 	 * Registers code to run when a Button/Collision event is detected.
 	 */
@@ -414,6 +400,7 @@ namespace YFSENSORS {
         control.onEvent(<number>dPin, <number>event, handler); // register handler
     }
 
+
     /**
      * Do something when a pin is touched and released again (while also touching the GND pin).
      * @param name the pin that needs to be pressed, eg: TouchPin.P2
@@ -427,34 +414,21 @@ namespace YFSENSORS {
 
     }
 
+    
+    export function isPressed(button: DigitalPin): boolean {
+        const pin = <DigitalPin><number>button;
+        pins.setPull(pin, PinPullMode.PullUp);
+        return pins.digitalReadPin(<DigitalPin><number>button) == 0;
+    }
+
     /**
      * Checks whether the crash sensor is currently pressed.
      */
-    //% group="Input Digital"
-    //% blockId=YFSENSORS_crash weight=70 blockGap=30
-    //% block="crash sensor pressed"
-    export function crashSensor(crashSensorPin: DigitalPin): boolean {
-        let a: number = pins.digitalReadPin(crashSensorPin);
-        if (a == 0) {
-            return true;
-        } else return false;
-    }
-
     /**
      * Checks whether the motion sensor is currently detecting any motion.
      */
-    //% group="Input Digital"
-    //% blockId=YFSENSORS_pir weight=80 blockGap=30
-    //% block="motion detector at pin %p | detects motion"
-    export function PIRSensor(p: DigitalPin): boolean {
-        let a: number = pins.digitalReadPin(p);
-        if (a == 1) {
-            return true;
-        } else return false;
-    }
-
-
-    ///////////////////// Sonar Sensors ///////////////////////
+    
+    ///////////////////// Input Sonar Sensors ///////////////////////
     /**
      * Send a ping and get the echo time (in microseconds) as a result
      * @param trig trigger pin. eg: DigitalPin.P2
@@ -462,8 +436,8 @@ namespace YFSENSORS {
      * @param unit desired conversion unit. eg: PingUnit.Centimeters
      * @param maxCmDistance maximum distance in centimeters (default is 450)
      */
-    //% weight=50
-    //% blockId=YFSENSORS_sonar_ping block="ping trig |%trig echo |%echo unit |%unit"
+    //% blockId=YFSENSORS_sonar_ping weight=79 blockGap=30
+    //% block="ping trig |%trig echo |%echo unit |%unit"
     //% trig.fieldEditor="gridpicker" trig.fieldOptions.columns=4 
     //% echo.fieldEditor="gridpicker" echo.fieldOptions.columns=4 
     //% unit.fieldEditor="gridpicker" unit.fieldOptions.columns=3 
@@ -487,6 +461,7 @@ namespace YFSENSORS {
         }
     }
 
+
     ///////////////////// DigitalTubes ///////////////////////
     /**
      * Connects to the digital tube module at the specified pin.
@@ -494,8 +469,7 @@ namespace YFSENSORS {
      * @param pin_c CLK pin. eg: DigitalPin.P2
      */
     //% subcategory="DigitalTube"
-    //% weight=59
-    //% blockId="YFSENSORS_4digitaltubes_pins"
+    //% blockId="YFSENSORS_4digitaltubes_pins" weight=100 blockGap=8
     //% block="connect 4 digital tubes at DIO %pin_d and CLK %pin_c"
     //% pin_c.fieldEditor="gridpicker" pin_c.fieldOptions.columns=4 pin_c.fieldOptions.tooltips="false"
     //% pin_d.fieldEditor="gridpicker" pin_d.fieldOptions.columns=4 pin_d.fieldOptions.tooltips="false"
@@ -600,8 +574,8 @@ namespace YFSENSORS {
      * turn on display
      */
     //% subcategory="DigitalTube"
-    //% blockId="YFSENSORS_TM650_ON" block="turn on display"
-    //% weight=15 blockGap=8
+    //% blockId="YFSENSORS_TM650_ON" weight=15 blockGap=8
+    //% block="turn on display"
     export function on() {
         cmd(_intensity * 16 + 1)
     }
@@ -610,8 +584,8 @@ namespace YFSENSORS {
      * turn off display
      */
     //% subcategory="DigitalTube"
-    //% blockId="YFSENSORS_TM650_OFF" block="turn off display"
-    //% weight=10 blockGap=8
+    //% blockId="YFSENSORS_TM650_OFF" weight=10 blockGap=8
+    //% block="turn off display"
     export function off() {
         _intensity = 0
         cmd(0)
@@ -621,8 +595,8 @@ namespace YFSENSORS {
      * clear display content
      */
     //% subcategory="DigitalTube"
-    //% blockId="YFSENSORS_TM650_CLEAR" block="clear display"
-    //% weight=5 blockGap=8
+    //% blockId="YFSENSORS_TM650_CLEAR" weight=5 blockGap=8
+    //% block="clear display"
     export function clear() {
         dat(0, 0)
         dat(1, 0)
@@ -637,8 +611,8 @@ namespace YFSENSORS {
      * @param bit is position, eg: 0
      */
     //% subcategory="DigitalTube"
-    //% blockId="YFSENSORS_TM650_DIGIT" block="show digit %num|at %bit"
-    //% weight=40 blockGap=8
+    //% blockId="YFSENSORS_TM650_DIGIT" weight=40 blockGap=8
+    //% block="show digit %num|at %bit"
     //% num.max=15 num.min=0
     //% bit.max=3 bit.min=0
     export function digit(num: number, bit: number) {
@@ -651,8 +625,8 @@ namespace YFSENSORS {
      * @param num is number will be shown, eg: 100
      */
     //% subcategory="DigitalTube"
-    //% blockId="YFSENSORS_TM650_SHOW_NUMBER" block="show number %num"
-    //% weight=45 blockGap=8
+    //% blockId="YFSENSORS_TM650_SHOW_NUMBER" weight=45 blockGap=8
+    //% block="show number %num"
     export function showNumber(num: number) {
         if (num < 0) {
             dat(0, 0x40) // '-'
@@ -670,8 +644,8 @@ namespace YFSENSORS {
      * @param num is number will be shown, eg: 123
      */
     //% subcategory="DigitalTube"
-    //% blockId="YFSENSORS_TM650_SHOW_HEX_NUMBER" block="show hex number %num"
-    //% weight=43 blockGap=8
+    //% blockId="YFSENSORS_TM650_SHOW_HEX_NUMBER" weight=43 blockGap=8
+    //% block="show hex number %num"
     export function showHex(num: number) {
         if (num < 0) {
             dat(0, 0x40) // '-'
@@ -690,8 +664,8 @@ namespace YFSENSORS {
      * @param show is true/false, eg: true
      */
     //% subcategory="DigitalTube"
-    //% blockId="YFSENSORS_TM650_SHOW_DP" block="at %bit|show dot point %show"
-    //% weight=38 blockGap=8
+    //% blockId="YFSENSORS_TM650_SHOW_DP" weight=38 blockGap=8
+    //% block="at %bit|show dot point %show"
     //% bit.max=3 bit.min=0
     export function showDpAt(bit: number, show: boolean) {
         if (show) dat(bit, dbuf[bit % 4] | 0x80)
@@ -703,8 +677,8 @@ namespace YFSENSORS {
      * @param dat is intensity of the display, eg: 3
      */
     //% subcategory="DigitalTube"
-    //% blockId="YFSENSORS_TM650_INTENSITY" block="set intensity %dat"
-    //% weight=35 blockGap=8
+    //% blockId="YFSENSORS_TM650_INTENSITY" weight=35 blockGap=8
+    //% block="set intensity %dat"
     //% dat.max=7 dat.min=0
     export function setIntensity(dat: number) {
         if ((dat < 0) || (dat > 8))
@@ -795,12 +769,12 @@ namespace YFSENSORS {
      * @param protocol IR protocol. eg: YFSENSORS.IrProtocol.NEC
      */
     //% subcategory="IR_Receiver"
-    //% blockId="YFSENSORS_infrared_connect_receiver"
+    //% blockId="YFSENSORS_infrared_connect_receiver" weight=15 blockGap=30
     //% block="connect IR receiver at pin %pin and decode %protocol"
     //% pin.fieldEditor="gridpicker"
     //% pin.fieldOptions.columns=4
     //% pin.fieldOptions.tooltips="false"
-    //% weight=15
+    //%
     export function connectIrReceiver(pin: DigitalPin, protocol: IrProtocol): void {
         if (irState) {
             return;
@@ -877,12 +851,11 @@ namespace YFSENSORS {
      * @param handler body code to run when event is raised
      */
     //% subcategory="IR_Receiver"
-    //% blockId=YFSENSORS_infrared_on_ir_button
+    //% blockId=YFSENSORS_infrared_on_ir_button weight=13 blockGap=30
     //% block="on IR button | %button | %action"
     //% button.fieldEditor="gridpicker"
     //% button.fieldOptions.columns=3
     //% button.fieldOptions.tooltips="false"
-    //% weight=13
     export function onIrButton(button: IrButton, action: IrButtonAction, handler: () => void) {
         control.onEvent(
             action === IrButtonAction.Pressed
@@ -900,9 +873,8 @@ namespace YFSENSORS {
      * Returns the code of the IR button that was pressed last. Returns -1 (IrButton.Any) if no button has been pressed yet.
      */
     //% subcategory="IR_Receiver"
-    //% blockId=YFSENSORS_infrared_ir_button_pressed
+    //% blockId=YFSENSORS_infrared_ir_button_pressed weight=10 blockGap=30
     //% block="IR button"
-    //% weight=10
     export function irButton(): number {
         if (!irState) {
             return IrButton.Any;
@@ -914,9 +886,8 @@ namespace YFSENSORS {
      * Returns true if any button was pressed since the last call of this function. False otherwise.
      */
     //% subcategory="IR_Receiver"
-    //% blockId=YFSENSORS_infrared_was_any_button_pressed
+    //% blockId=YFSENSORS_infrared_was_any_button_pressed weight=7 blockGap=30
     //% block="any IR button was pressed"
-    //% weight=7
     export function wasAnyIrButtonPressed(): boolean {
         if (!irState) {
             return false;
@@ -934,13 +905,49 @@ namespace YFSENSORS {
      * @param button the button
      */
     //% subcategory="IR_Receiver"
-    //% blockId=YFSENSORS_infrared_button_code
+    //% blockId=YFSENSORS_infrared_button_code weight=5 blockGap=30
     //% button.fieldEditor="gridpicker"
     //% button.fieldOptions.columns=3
     //% button.fieldOptions.tooltips="false"
     //% block="IR button code %button"
-    //% weight=5
     export function irButtonCode(button: IrButton): number {
+        return button as number;
+    }
+
+    /**
+     * Do something when a specific button is pressed or released on the remote control.
+     * @param button the button to be checked
+     * @param action the trigger action
+     * @param handler body code to run when event is raised
+     */
+    //% subcategory="IR_Receiver"
+    //% group="Handle-type_IR_Control"
+    //% blockId=YFSENSORS_infrared_on_ir_button_handle weight=30 blockGap=30
+    //% block="on IR button | %button | %action"
+    //% button.fieldEditor="gridpicker" button.fieldOptions.columns=3
+    //% button.fieldOptions.tooltips="false"
+    export function onIrButton_Handle(button: IrButton_Handle, action: IrButtonAction, handler: () => void) {
+        control.onEvent(
+            action === IrButtonAction.Pressed ? MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID : MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID,
+            button === IrButton_Handle.Any ? EventBusValue.MICROBIT_EVT_ANY : button,
+            () => {
+                irState.command = control.eventValue();
+                handler();
+            }
+        );
+    }
+
+    /**
+     * Returns the command code of a specific Handle Type IR button.
+     * @param button the button
+     */
+    //% subcategory="IR_Receiver"
+    //% group="Handle-type_IR_Control"
+    //% blockId=YFSENSORS_infrared_button_code_handle weight=2 blockGap=30
+    //% block="Handle Type IR button code %button"
+    //% button.fieldEditor="gridpicker" button.fieldOptions.columns=3
+    //% button.fieldOptions.tooltips="false"
+    export function irButtonCode_Handle(button: IrButton_Handle): number {
         return button as number;
     }
     /////////////////////// IR ///////////////////////
