@@ -129,10 +129,16 @@ namespace YFSENSORS {
     }
 
     export enum DigitalOutputModule {
+        //% blockId="YFDOM_LED" block="LED"
+        LED = 0x0,
         //% blockId="YFDOM_BUZZER" block="BUZZER"
         BUZZER = 0x1,
+        //% blockId="YFDOM_FAN" block="FAN"
+        FAN = 0x2,
         //% blockId="YFDOM_RELAY" block="RELAY"
         RELAY = 0x3,
+        //% blockId="YFDOM_VIBRATION_MOTOR" block="VIBRATION_MOTOR"
+        VIBRATION_MOTOR = 0x4,
     }
 
     export enum AnalogInputModule {
