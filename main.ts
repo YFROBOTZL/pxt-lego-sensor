@@ -247,25 +247,25 @@ namespace YFSENSORS {
     * @param adom module. eg: ADOutputModule.LED
     * @param adomPin pin. eg: AnalogPin.P1
     * @param state switch state. eg: SwitchState.OFF
-    * @param brightness brightness of LED.
+    * @param percentage brightness of LED, Motor vibration strength, fan rotation speed.
     */
     //% group="Output"
     //% blockId=YFSENSORS_readInfraredSensor
-    //% block="%adom |%adomPin toggle to %state || brightness %brightness \\%"
+    //% block="%adom| %adomPin toggle to %state || percentage %percentage \\%"
     //% adom.fieldEditor="gridpicker" adom.fieldOptions.columns=2
-    //% domPin.fieldEditor="gridpicker" domPin.fieldOptions.columns=4
-    //% brightness.min=0 brightness.max=100
+    //% adomPin.fieldEditor="gridpicker" adomPin.fieldOptions.columns=4
+    //% percentage.min=0 percentage.max=100
     //% state.shadow="toggleOnOff"
     //% expandableArgumentMode="toggle"
     //% inlineInputMode=inline
-    export function aDOutputModule(adom: ADOutputModule, adomPin: AnalogPin, state: boolean, brightness: number = 100): void {
+    export function aDOutputModule(adom: ADOutputModule, adomPin: AnalogPin, state: boolean, percentage: number = 100): void {
         let adomM = adom;  // no work
         if (state) {
             pins.analogSetPeriod(adomPin, 100)
-            pins.analogWritePin(adomPin, Math.map(brightness, 0, 100, 0, 1023))
+            pins.analogWritePin(adomPin, Math.map(percentage, 0, 100, 0, 1023))
         } else {
             pins.analogWritePin(adomPin, 0)
-            brightness = 0
+            percentage = 0
         }
     }
 
