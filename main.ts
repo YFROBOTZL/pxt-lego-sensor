@@ -399,45 +399,47 @@ namespace YFSENSORS {
         // pins.setEvents(dPin, PinEventType.Edge);
         control.onEvent(<number>dPin, <number>event, handler); // register handler
     }
-
-
+    
     /**
      * Do something when a pin is touched and released again (while also touching the GND pin).
-     * @param pinId the pin that needs to be pressed, eg: DigitalPin.P1
+     * @param name the pin that needs to be pressed, eg: TouchPin.P1
+     * @param body the code to run when the pin is pressed
      */
     //% group="Input Digital"
     //% blockId=YFSENSORS_onPinPressed weight=80 blockGap=30
-    //% block="on pin %pinId|pressed"
-    //% pinId.fieldEditor="gridpicker" pinId.fieldOptions.columns=4
-    export function onPinPressed(dimE: DigitalInputModuleE, pinId: number, handler: RefAction) {
-        let dimME = dimE;  // no work
-        let pin = getPin(pinId);
-        if (!pin) return;
-        pin.isTouched();
-        runtime.queueDisplayUpdate();
-        pxtcore.registerWithDal(pin.id, DAL.MICROBIT_BUTTON_EVT_CLICK, handler);
-    }
+    //% block="%dimE| on pin %name|pressed" shim=input::onPinPressed
+    //% help=input/on-pin-pressed
+    export function onPinPressed(dimE: DigitalInputModuleE, name: TouchPin, body: () => void): void;
 
-    export function onPinReleased(pinId: number, handler: RefAction) {
-        let pin = getPin(pinId);
-        if (!pin) return;
-        pin.isTouched();
-        runtime.queueDisplayUpdate();
-        pxtcore.registerWithDal(pin.id, DAL.MICROBIT_BUTTON_EVT_UP, handler);
-    }
+    // export function onPinPressed(dimE: DigitalInputModuleE, pinId: DigitalPin, handler: RefAction) {
+    //     let dimME = dimE;  // no work
+    //     // let pin = getPin(pinId);
+    //     // if (!pin) return;
+    //     pinId.isTouched();
+    //     runtime.queueDisplayUpdate();
+    //     pxtcore.registerWithDal(pinId.id, DAL.MICROBIT_BUTTON_EVT_CLICK, handler);
+    // }
 
-    export function pinIsPressed(pinId: number): boolean {
-        let pin = getPin(pinId);
-        if (!pin) return false;
-        return pin.isTouched();
-    }
+    // export function onPinReleased(pinId: number, handler: RefAction) {
+    //     let pin = getPin(pinId);
+    //     if (!pin) return;
+    //     pin.isTouched();
+    //     runtime.queueDisplayUpdate();
+    //     pxtcore.registerWithDal(pin.id, DAL.MICROBIT_BUTTON_EVT_UP, handler);
+    // }
+
+    // export function pinIsPressed(pinId: number): boolean {
+    //     let pin = getPin(pinId);
+    //     if (!pin) return false;
+    //     return pin.isTouched();
+    // }
 
     
-    export function isPressed(button: DigitalPin): boolean {
-        const pin = <DigitalPin><number>button;
-        pins.setPull(pin, PinPullMode.PullUp);
-        return pins.digitalReadPin(<DigitalPin><number>button) == 0;
-    }
+    // export function isPressed(button: DigitalPin): boolean {
+    //     const pin = <DigitalPin><number>button;
+    //     pins.setPull(pin, PinPullMode.PullUp);
+    //     return pins.digitalReadPin(<DigitalPin><number>button) == 0;
+    // }
 
     /**
      * Checks whether the crash sensor is currently pressed.
