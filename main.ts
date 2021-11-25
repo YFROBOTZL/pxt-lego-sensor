@@ -153,22 +153,29 @@ namespace YFSENSORS {
     }
 
     export enum DigitalInputModule {
+        //% blockId="YFDIM_MAGNETIC_SENSOR" block="MAGNETIC_SENSOR"
+        MAGNETIC_SENSOR = 0x0,
+        //% blockId="YFDIM_TILT_SENSOR" block="TILT_SENSOR"
+        TILT_SENSOR = 0x1,
+        //% blockId="YFDIM_INFRARED_PROXIMITY_SENSOR" block="INFRARED_PROXIMITY_SENSOR"
+        INFRARED_PROXIMITY_SENSOR = 0x2,
+        //% blockId="YFDIM_VIBRATION_SENSOR" block="VIBRATION_SENSOR"
+        VIBRATION_SENSOR  = 0x3,
+        //% blockId="YFDIM_PYROELECTRIC_SENSOR" block="PYROELECTRIC_SENSOR"
+        PYROELECTRIC_SENSOR = 0x4,
+        //% blockId="YFDIM_TOUCH_SENSOR" block="TOUCH_SENSOR"
+        TOUCH_SENSOR = 0x5,
+        //% blockId="YFDIM_BUTTON" block="BUTTON"
+        BUTTON = 0x6,
+        //% blockId="YFDIM_COLLISION_SWITCH" block="COLLISION_SWITCH"
+        COLLISION_SWITCH = 0x7,
+    }
+
+    export enum DigitalInputModuleWE {
         //% blockId="YFDIM_BUTTON" block="BUTTON"
         BUTTON = 0x0,
         //% blockId="YFDIM_COLLISION_SWITCH" block="COLLISION_SWITCH"
         COLLISION_SWITCH = 0x1,
-        //% blockId="YFDIM_MAGNETIC_SENSOR" block="MAGNETIC_SENSOR"
-        MAGNETIC_SENSOR = 0x2,
-        //% blockId="YFDIM_TILT_SENSOR" block="TILT_SENSOR"
-        TILT_SENSOR = 0x3,
-        //% blockId="YFDIM_INFRARED_PROXIMITY_SENSOR" block="INFRARED_PROXIMITY_SENSOR"
-        INFRARED_PROXIMITY_SENSOR = 0x4,
-        //% blockId="YFDIM_VIBRATION_SENSOR" block="VIBRATION_SENSOR"
-        VIBRATION_SENSOR  = 0x5,
-        //% blockId="YFDIM_PYROELECTRIC_SENSOR" block="PYROELECTRIC_SENSOR"
-        PYROELECTRIC_SENSOR = 0x6,
-        //% blockId="YFDIM_TOUCH_SENSOR" block="TOUCH_SENSOR"
-        TOUCH_SENSOR = 0x7,
     }
 
     /**
@@ -390,11 +397,13 @@ namespace YFSENSORS {
     /**
 	 * Registers code to run when a gamer:bit event is detected.
 	 */
-    //% weight=90
-    //% blockId=gamerbit_onevent block="gamer:bit on %button|%event"
-    //% button.fieldEditor="gridpicker" button.fieldOptions.columns=3
+    //% group="Input Digital"
+    //% blockId=YFSENSORS_onevent weight=90 blockGap=30
+    //% block="%dimE on %dPin|%event"
+    //% dPin.fieldEditor="gridpicker" dPin.fieldOptions.columns=4
     //% event.fieldEditor="gridpicker" event.fieldOptions.columns=3
-    export function onEvent(dPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
+    export function onEvent(dimE: DigitalInputModuleWE, dPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
+        let dimME = dimE;  // no work
         pins.setEvents(dPin, PinEventType.Edge);
         control.onEvent(<number>dPin, <number>event, handler); // register handler
     }
