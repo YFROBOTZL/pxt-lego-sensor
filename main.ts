@@ -237,20 +237,21 @@ namespace YFSENSORS {
     /**
     * toggle 
     * Turn the Digital Output Module ON or OFF.
-    * @param adomPin pin. eg: AnalogPin.P2
-    * @param adom pin. eg: DigitalOutputModule.LED
-    * @param sws switch state. eg: SwitchState.OFF
+    * @param adom module. eg: ADOutputModule.LED
+    * @param adomPin pin. eg: AnalogPin.P1
+    * @param state switch state. eg: SwitchState.OFF
     * @param brightness brightness of LED.
     */
     //% group="Output"
     //% blockId=YFSENSORS_readInfraredSensor
-    //% block="%adom |%pin toggle to %ledstate || brightness %brightness \\%"
+    //% block="%adom |%adomPin toggle to %state || brightness %brightness \\%"
     //% brightness.min=0 brightness.max=100
-    //% ledstate.shadow="toggleOnOff"
+    //% state.shadow="toggleOnOff"
     //% expandableArgumentMode="toggle"
-    export function aDOutputModule(adom: ADOutputModule, adomPin: AnalogPin, ledstate: boolean, brightness: number = 100): void {
+    //% inlineInputMode=inline
+    export function aDOutputModule(adom: ADOutputModule, adomPin: AnalogPin, state: boolean, brightness: number = 100): void {
         let adomM = adom;  // no work
-        if (ledstate) {
+        if (state) {
             pins.analogSetPeriod(adomPin, 100)
             pins.analogWritePin(adomPin, Math.map(brightness, 0, 100, 0, 1023))
         } else {
