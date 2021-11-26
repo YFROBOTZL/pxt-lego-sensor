@@ -376,18 +376,20 @@ namespace YFSENSORS {
 
     /**
 	 * Registers code to run when a Button/Collision event is detected.
+     * @param dimE pin. eg: DigitalInputModuleE.BUTTON
+     * @param dimEPin pin. eg: DigitalPin.P2
 	 */
     //% group="Input Digital"
     //% blockId=YFSENSORS_onevent weight=90 blockGap=30
-    //% block="%dimE on %dPin| Clicked"
-    //% dPin.fieldEditor="gridpicker" dPin.fieldOptions.columns=4
+    //% block="%dimE on %dimEPin| Clicked"
+    //% dimEPin.fieldEditor="gridpicker" dimEPin.fieldOptions.columns=4
     // event.fieldEditor="gridpicker" event.fieldOptions.columns=3
-    // export function onEvent(dimE: DigitalInputModuleE, dPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
-    export function onEvent(dimE: DigitalInputModuleE, dPin: DigitalPin, handler: Action) {
+    // export function onEvent(dimE: DigitalInputModuleE, dimEPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
+    export function onEvent(dimE: DigitalInputModuleE, dimEPin: DigitalPin, handler: Action) {
         let dimME = dimE;  // no work
-        pins.setEvents(dPin, PinEventType.Edge);
-        // control.onEvent(<number>dPin, <number>event, handler); // register handler
-        control.onEvent(<number>dPin, DAL.MICROBIT_BUTTON_EVT_CLICK, handler); // register handler
+        pins.setEvents(dimEPin, PinEventType.Edge);
+        // control.onEvent(<number>dimEPin, <number>event, handler); // register handler
+        control.onEvent(<number>dimEPin, DAL.MICROBIT_BUTTON_EVT_CLICK, handler); // register handler
     }
 
     /**

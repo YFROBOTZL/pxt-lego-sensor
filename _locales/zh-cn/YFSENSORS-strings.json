@@ -78,7 +78,7 @@
   "YFSENSORS.digitalInputModule|block":"连接%dimPin|%dim|模块",
   "YFSENSORS.DigitalInputModuleE.BUTTON|block":"按键",
   "YFSENSORS.DigitalInputModuleE.COLLISION_SWITCH|block":"碰撞开关",
-  "YFSENSORS.onEvent|block":"%dimE| 连接 %dPin|%event",
+  "YFSENSORS.onEvent|block":"%dimE| 连接 %dPin| 被点击",
   "YFSENSORS.ping|block": "超声波trig|%trig|echo|%echo|单位|%unit",
   "YFSENSORS.PingUnit.Centimeters|block": "cm",
   "YFSENSORS.PingUnit.Inches|block": "inches",
