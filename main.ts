@@ -389,7 +389,7 @@ namespace YFSENSORS {
         let dimME = dimE;  // no work
         pins.setEvents(dimEPin, PinEventType.Edge);
         // control.onEvent(<number>dimEPin, <number>event, handler); // register handler
-        control.onEvent(<number>dimEPin, DAL.MICROBIT_BUTTON_EVT_CLICK, handler); // register handler
+        control.onEvent(<number>dimEPin, <number>DAL.MICROBIT_BUTTON_EVT_CLICK, handler); // register handler
     }
 
     /**
