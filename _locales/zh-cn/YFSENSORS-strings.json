@@ -78,7 +78,7 @@
   "YFSENSORS.digitalInputModule|block":"连接%dimPin|%dim|模块",
   "YFSENSORS.DigitalInputModuleE.BUTTON|block":"按键",
   "YFSENSORS.DigitalInputModuleE.COLLISION_SWITCH|block":"碰撞开关",
-  "YFSENSORS.onEvent|block":"%dimE| 连接 %dPin| 被点击",
+  "YFSENSORS.onEvent|block":"%dimE| 连接 %dPin| %event",
   "YFSENSORS.DHT11_state.DHT11_humidity|block": "湿度(0~100%)",
   "YFSENSORS.DHT11_state.DHT11_temperature_C|block": "温度(℃)",
   "YFSENSORS.dht11Sensor|block": "DHT11温湿度传感器 %pin %dht11state 值",
