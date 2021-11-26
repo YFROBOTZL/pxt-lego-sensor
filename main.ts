@@ -387,7 +387,7 @@ namespace YFSENSORS {
     // export function onEvent(dimE: DigitalInputModuleE, dimEPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
     export function onEvent(dimE: DigitalInputModuleE, dimEPin: TouchPin, handler: Action) {
         let dimME = dimE;  // no work
-        pins.setEvents(dimEPin, PinEventType.Edge);
+        // pins.setEvents(dimEPin, PinEventType.Edge);
         // control.onEvent(<number>dimEPin, <number>event, handler); // register handler
         control.onEvent(<number>dimEPin, <number>DAL.MICROBIT_BUTTON_EVT_CLICK, handler); // register handler
     }
