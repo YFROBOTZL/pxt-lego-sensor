@@ -396,7 +396,7 @@ namespace YFSENSORS {
     //% block="temperature sensor %tempPin| temperature value"
     //% tempPin.fieldEditor="gridpicker" tempPin.fieldOptions.columns=4
     export function readTemperatureSensor(tempPin: AnalogPin): number {
-        let val = pins.analogReadPin(aimPin); 
+        let val = pins.analogReadPin(tempPin); 
         let tvalue = (val * 3.3 * 100) / 1024;
         return tvalue;
     }
