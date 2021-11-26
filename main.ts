@@ -157,16 +157,14 @@ namespace YFSENSORS {
         LIGHT = 0x0,
         //% blockId="YFAIM_SOUND" block="SOUND"
         SOUND = 0x1,
-        //% blockId="YFAIM_TEMPERATURE" block="TEMPERATURE"
-        TEMPERATURE = 0x2,
         //% blockId="YFAIM_POTENTIOMETER" block="POTENTIOMETER"
-        POTENTIOMETER = 0x3,
+        POTENTIOMETER = 0x2,
         //% blockId="YFAIM_SOIL_HUMIDITY" block="SOIL_HUMIDITY"
-        SOIL_HUMIDITY = 0x4,
+        SOIL_HUMIDITY = 0x3,
         //% blockId="YFAIM_ROCKER_X" block="ROCKER_X"
-        ROCKER_X = 0x5,
+        ROCKER_X = 0x4,
         //% blockId="YFAIM_ROCKER_Y" block="ROCKER_Y"
-        ROCKER_Y = 0x6,
+        ROCKER_Y = 0x5,
     }
 
     export enum DigitalInputModule {
@@ -379,7 +377,7 @@ namespace YFSENSORS {
      * @param aimPin pin. eg: AnalogPin.P1
      * @param aim pin. eg: AnalogInputModule.LIGHT
      */
-    //% group="Input Analog"
+    //% group="Input"
     //% blockId=YFSENSORS_analogInputModule weight=100 blockGap=30
     //% block="at pin %aimPin| %aim| module"
     //% aimPin.fieldEditor="gridpicker" aimPin.fieldOptions.columns=4
@@ -389,14 +387,28 @@ namespace YFSENSORS {
         return pins.analogReadPin(aimPin);
     }
 
+    /**
+     * Read the Temperature Sensor Module.
+     * @param tempPin pin. eg: AnalogPin.P1
+     */
+    //% group="Input"
+    //% blockId=YFSENSORS_readTemperatureSensor weight=95 blockGap=30
+    //% block="temperature sensor %tempPin| temperature value"
+    //% tempPin.fieldEditor="gridpicker" tempPin.fieldOptions.columns=4
+    export function readTemperatureSensor(tempPin: AnalogPin): number {
+        let val = pins.analogReadPin(aimPin); 
+        let tvalue = (val * 3.3 * 100) / 1024;
+        return tvalue;
+    }
+
     ///////////////////// Input Digital Sensors ///////////////////////
     /**
      * Read the Digital Input Sensor Module.
      * @param dimPin pin. eg: DigitalPin.P8
      * @param dim pin. eg: DigitalInputModule.BUTTON
      */
-    //% group="Input Digital"
-    //% blockId=YFSENSORS_digitalInputModule weight=100 blockGap=30
+    //% group="Input"
+    //% blockId=YFSENSORS_digitalInputModule weight=90 blockGap=30
     //% block="at pin %dimPin| %dim| module"
     //% dimPin.fieldEditor="gridpicker" dimPin.fieldOptions.columns=4
     //% dim.fieldEditor="gridpicker" dim.fieldOptions.columns=2
@@ -414,8 +426,8 @@ namespace YFSENSORS {
      * @param dimE pin. eg: DigitalInputModuleE.BUTTON
      * @param dimEPin pin. eg: DigitalPin.P2
 	 */
-    //% group="Input Digital"
-    //% blockId=YFSENSORS_onevent weight=90 blockGap=30
+    //% group="Input"
+    //% blockId=YFSENSORS_onevent weight=89 blockGap=30
     //% block="%dimE on %dimEPin| Clicked"
     //% dimEPin.fieldEditor="gridpicker" dimEPin.fieldOptions.columns=4
     //% event.fieldEditor="gridpicker" event.fieldOptions.columns=3
