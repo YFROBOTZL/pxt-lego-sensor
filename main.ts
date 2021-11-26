@@ -394,23 +394,12 @@ namespace YFSENSORS {
     //% block="%dimE on %dPin|%event"
     //% dPin.fieldEditor="gridpicker" dPin.fieldOptions.columns=4
     //% event.fieldEditor="gridpicker" event.fieldOptions.columns=3
-    export function onEvent(dimE: DigitalInputModuleE, dPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
+    // export function onEvent(dimE: DigitalInputModuleE, dPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
+    export function onEvent(dimE: DigitalInputModuleE, dPin: DigitalPin, handler: Action) {
         let dimME = dimE;  // no work
         pins.setEvents(dPin, PinEventType.Edge);
-        control.onEvent(<number>dPin, <number>event, handler); // register handler
-    }
-    
-    /**
-     * Do something when a pin is touched and released again (while also touching the GND pin).
-     * @param name the pin that needs to be pressed, eg: TouchPin.P1
-     * @param body the code to run when the pin is pressed
-     */
-    //% group="Input Digital"
-    //% blockId=YFSENSORS_onPinPressed weight=80 blockGap=30
-    //% block="%dimE| on pin %name|pressed" shim=input::onPinPressed
-    //% help=input/on-pin-pressed
-    export function onPinPressed(dimE: DigitalInputModuleE, name: TouchPin, body: () => void): void{
-
+        // control.onEvent(<number>dPin, <number>event, handler); // register handler
+        control.onEvent(<number>dPin, DAL.MICROBIT_BUTTON_EVT_CLICK, handler); // register handler
     }
 
     // export function onPinPressed(dimE: DigitalInputModuleE, pinId: DigitalPin, handler: RefAction) {
