@@ -391,9 +391,9 @@ namespace YFSENSORS {
 	 */
     //% group="Input Digital"
     //% blockId=YFSENSORS_onevent weight=90 blockGap=30
-    //% block="%dimE on %dPin|%event"
+    //% block="%dimE on %dPin| Clicked"
     //% dPin.fieldEditor="gridpicker" dPin.fieldOptions.columns=4
-    //% event.fieldEditor="gridpicker" event.fieldOptions.columns=3
+    // event.fieldEditor="gridpicker" event.fieldOptions.columns=3
     // export function onEvent(dimE: DigitalInputModuleE, dPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
     export function onEvent(dimE: DigitalInputModuleE, dPin: DigitalPin, handler: Action) {
         let dimME = dimE;  // no work
