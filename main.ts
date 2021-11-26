@@ -195,6 +195,15 @@ namespace YFSENSORS {
         COLLISION_SWITCH = 0x1,
     }
 
+    /**
+     * An action on a touch button
+     */
+    export enum DigitalInputEvent {
+        //% block=touched
+        Clicked = DAL.MICROBIT_BUTTON_EVT_CLICK,  // MICROBIT_BUTTON_EVT_CLICK
+    };
+
+
     export enum SwitchState {
         //% blockId="YF_ON" block="ON"
         ON = 0x0,
@@ -377,19 +386,19 @@ namespace YFSENSORS {
     /**
 	 * Registers code to run when a Button/Collision event is detected.
      * @param dimE pin. eg: DigitalInputModuleE.BUTTON
-     * @param dimEPin pin. eg: TouchPin.P2
+     * @param dimEPin pin. eg: DigitalPin.P2
 	 */
     //% group="Input Digital"
     //% blockId=YFSENSORS_onevent weight=90 blockGap=30
     //% block="%dimE on %dimEPin| Clicked"
     //% dimEPin.fieldEditor="gridpicker" dimEPin.fieldOptions.columns=4
-    // event.fieldEditor="gridpicker" event.fieldOptions.columns=3
-    // export function onEvent(dimE: DigitalInputModuleE, dimEPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
-    export function onEvent(dimE: DigitalInputModuleE, dimEPin: TouchPin, handler: Action) {
+    //% event.fieldEditor="gridpicker" event.fieldOptions.columns=3
+    export function onEvent(dimE: DigitalInputModuleE, dimEPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
+    // export function onEvent(dimE: DigitalInputModuleE, dimEPin: TouchPin, handler: Action) {
         let dimME = dimE;  // no work
         // pins.setEvents(dimEPin, PinEventType.Edge);
-        // control.onEvent(<number>dimEPin, <number>event, handler); // register handler
-        control.onEvent(<number>dimEPin, <number>DAL.MICROBIT_BUTTON_EVT_CLICK, handler); // register handler
+        control.onEvent(<number>dimEPin, <number>event, handler); // register handler
+        // control.onEvent(<number>dimEPin, <number>DAL.MICROBIT_BUTTON_EVT_CLICK, handler); // register handler
     }
 
     /**
