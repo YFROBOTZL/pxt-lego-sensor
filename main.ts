@@ -195,18 +195,6 @@ namespace YFSENSORS {
         COLLISION_SWITCH = 0x1,
     }
 
-    /**
-     * An action on a touch button
-     */
-    export enum DigitalInputEvent {
-        //% block=pressed
-        Pressed = DAL.MICROBIT_BUTTON_EVT_DOWN,  // MICROBIT_BUTTON_EVT_DOWN
-        //% block=released
-        Released = DAL.MICROBIT_BUTTON_EVT_UP,  // MICROBIT_BUTTON_EVT_UP
-        //% block=touched
-        Clicked = DAL.MICROBIT_BUTTON_EVT_CLICK,  // MICROBIT_BUTTON_EVT_CLICK
-    };
-
     export enum SwitchState {
         //% blockId="YF_ON" block="ON"
         ON = 0x0,
@@ -401,36 +389,6 @@ namespace YFSENSORS {
         // control.onEvent(<number>dPin, <number>event, handler); // register handler
         control.onEvent(<number>dPin, DAL.MICROBIT_BUTTON_EVT_CLICK, handler); // register handler
     }
-
-    // export function onPinPressed(dimE: DigitalInputModuleE, pinId: DigitalPin, handler: RefAction) {
-    //     let dimME = dimE;  // no work
-    //     // let pin = getPin(pinId);
-    //     // if (!pin) return;
-    //     pinId.isTouched();
-    //     runtime.queueDisplayUpdate();
-    //     pxtcore.registerWithDal(pinId.id, DAL.MICROBIT_BUTTON_EVT_CLICK, handler);
-    // }
-
-    // export function onPinReleased(pinId: number, handler: RefAction) {
-    //     let pin = getPin(pinId);
-    //     if (!pin) return;
-    //     pin.isTouched();
-    //     runtime.queueDisplayUpdate();
-    //     pxtcore.registerWithDal(pin.id, DAL.MICROBIT_BUTTON_EVT_UP, handler);
-    // }
-
-    // export function pinIsPressed(pinId: number): boolean {
-    //     let pin = getPin(pinId);
-    //     if (!pin) return false;
-    //     return pin.isTouched();
-    // }
-
-    
-    // export function isPressed(button: DigitalPin): boolean {
-    //     const pin = <DigitalPin><number>button;
-    //     pins.setPull(pin, PinPullMode.PullUp);
-    //     return pins.digitalReadPin(<DigitalPin><number>button) == 0;
-    // }
 
     /**
      * Checks whether the crash sensor is currently pressed.
