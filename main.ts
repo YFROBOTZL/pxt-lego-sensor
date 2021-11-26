@@ -409,7 +409,9 @@ namespace YFSENSORS {
     //% blockId=YFSENSORS_onPinPressed weight=80 blockGap=30
     //% block="%dimE| on pin %name|pressed" shim=input::onPinPressed
     //% help=input/on-pin-pressed
-    export function onPinPressed(dimE: DigitalInputModuleE, name: TouchPin, body: () => void): void;
+    export function onPinPressed(dimE: DigitalInputModuleE, name: TouchPin, body: () => void): void{
+
+    }
 
     // export function onPinPressed(dimE: DigitalInputModuleE, pinId: DigitalPin, handler: RefAction) {
     //     let dimME = dimE;  // no work
