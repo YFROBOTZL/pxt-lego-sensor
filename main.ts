@@ -423,8 +423,9 @@ namespace YFSENSORS {
 
     /**
 	 * Registers code to run when a Button/Collision event is detected.
-     * @param dimE pin. eg: DigitalInputModuleE.BUTTON
+     * @param dimE module. eg: DigitalInputModuleE.BUTTON
      * @param dimEPin pin. eg: DigitalPin.P2
+     * @param event event. eg: DigitalInputEvent.Clicked
 	 */
     //% group="Input"
     //% blockId=YFSENSORS_onevent weight=89 blockGap=30
