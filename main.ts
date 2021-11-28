@@ -151,7 +151,20 @@ namespace YFSENSORS {
         //% blockId="YFDOM_VIBRATION_MOTOR" block="VIBRATION_MOTOR"
         VIBRATION_MOTOR = 0x4,
     }
-
+    
+    /*************************  Output - OTP Fixed voice list  *************************/
+    export enum OTPFixedVoiceList {
+        //% blockId="YFDOM_OTPFVL_00" block="老师"
+        OTPFVL_00 = 0x0,
+        //% blockId="YFDOM_OTPFVL_01" block="爸爸"
+        OTPFVL_01 = 0x1,
+        //% blockId="YFDOM_OTPFVL_02" block="妈妈"
+        OTPFVL_02 = 0x2,
+        //% blockId="YFDOM_OTPFVL_03" block="爷爷"
+        OTPFVL_03 = 0x3,
+        //% blockId="YFDOM_OTPFVL_04" block="奶奶"
+        OTPFVL_04 = 0x4,
+    }
     export enum AnalogInputModule {
         //% blockId="YFAIM_LIGHT" block="LIGHT"
         LIGHT = 0x0,
@@ -257,7 +270,8 @@ namespace YFSENSORS {
         //% block=Clockwise
         Clockwise = 7
     }
-    /************************* IR *************************/
+
+    /*************************  *************************/
 
 
 
@@ -321,6 +335,41 @@ namespace YFSENSORS {
         let domM = dom;  // no work
         pins.digitalWritePin(domPin, sws);
     }
+
+    ///////////////////// Output - OTP Fixed voice broadcast module ///////////////////////
+    /**
+     * Fixed voice broadcast module play.
+     * @param vbmPin pin. eg: DigitalPin.P2
+     * @param serial_number voice serial number. eg: OTPFixedVoiceList.OTPFVL_00
+     * @param delayt delay time. eg: 1000
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_voiceBroadcastModule weight=95 blockGap=15
+    //% block="at pin %vbmPin| %dom| module %sws"
+    //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
+    //% serial_number.fieldEditor="gridpicker" serial_number.fieldOptions.columns=10
+    // serial_number.min=0 serial_number.max=126
+    export function voiceBroadcastModule(vbmPin: DigitalPin, serial_number: OTPFixedVoiceList, delayt: number): void {
+        pins.digitalWritePin(vbmPin, 0); 
+        basic.pause(3);
+        for (let index = 0; index < 8; index++) {
+            pins.digitalWritePin(vbmPin, 1); 
+            if(serial_number & 1){
+                control.waitMicros(2400);
+                pins.digitalWritePin(vbmPin, 0);
+                control.waitMicros(800);
+            } else {
+                control.waitMicros(800);
+                pins.digitalWritePin(vbmPin, 0);
+                control.waitMicros(2400);
+            } 
+            serial_number >>= 1;
+        }
+        pins.digitalWritePin(vbmPin, 1); 
+
+        basic.pause(delayt);
+    }
+
 
     ///////////////////// Output - Motor ///////////////////////
     function clamp(value: number, min: number, max: number): number {
