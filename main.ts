@@ -186,102 +186,110 @@ namespace YFSENSORS {
         OTPFVL_0E = 0x0E,
         //% blockId="YFDOM_OTPFVL_0F" block="厘米"
         OTPFVL_0F = 0x0F,
-        //% blockId="YFDOM_OTPFVL_10" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_10" block="新年快乐"
         OTPFVL_10 = 0x10,
-        //% blockId="YFDOM_OTPFVL_11" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_11" block="身体健康"
         OTPFVL_11 = 0x11,
-        //% blockId="YFDOM_OTPFVL_12" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_12" block="工作顺利"
         OTPFVL_12 = 0x12,
-        //% blockId="YFDOM_OTPFVL_13" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_13" block="学习进步"
         OTPFVL_13 = 0x13,
-        //% blockId="YFDOM_OTPFVL_14" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_14" block="您好"
         OTPFVL_14 = 0x14,
-        //% blockId="YFDOM_OTPFVL_15" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_15" block="谢谢"
         OTPFVL_15 = 0x15,
-        //% blockId="YFDOM_OTPFVL_16" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_16" block="的"
         OTPFVL_16 = 0x16,
-        //% blockId="YFDOM_OTPFVL_17" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_17" block="祝"
         OTPFVL_17 = 0x17,
-        //% blockId="YFDOM_OTPFVL_18" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_18" block="慢走"
         OTPFVL_18 = 0x18,
-        //% blockId="YFDOM_OTPFVL_19" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_19" block="欢迎光临"
         OTPFVL_19 = 0x19,
-        //% blockId="YFDOM_OTPFVL_1A" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_1A" block="亲爱的""
         OTPFVL_1A = 0x1A,
-        //% blockId="YFDOM_OTPFVL_1B" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_1B" block="同学们"
         OTPFVL_1B = 0x1B,
-        //% blockId="YFDOM_OTPFVL_1C" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_1C" block="工作辛苦了"
         OTPFVL_1C = 0x1C,
-        //% blockId="YFDOM_OTPFVL_1D" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_1D" block="点"
         OTPFVL_1D = 0x1D,
-        //% blockId="YFDOM_OTPFVL_1E" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_1E" block="打开"
         OTPFVL_1E = 0x1E,
-        //% blockId="YFDOM_OTPFVL_1F" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_1F" block="关闭"
         OTPFVL_1F = 0x1F,
-        //% blockId="YFDOM_OTPFVL_20" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_20" block="千"
         OTPFVL_20 = 0x20,
-        //% blockId="YFDOM_OTPFVL_21" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_21" block="百"
         OTPFVL_21 = 0x21,
-        //% blockId="YFDOM_OTPFVL_22" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_22" block="十/时"
         OTPFVL_22 = 0x22,
-        //% blockId="YFDOM_OTPFVL_23" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_23" block="1"
         OTPFVL_23 = 0x23,
-        //% blockId="YFDOM_OTPFVL_24" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_24" block="2"
         OTPFVL_24 = 0x24,
-        //% blockId="YFDOM_OTPFVL_25" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_25" block="3"
         OTPFVL_25 = 0x25,
-        //% blockId="YFDOM_OTPFVL_26" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_26" block="4"
         OTPFVL_26 = 0x26,
-        //% blockId="YFDOM_OTPFVL_27" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_27" block="5"
         OTPFVL_27 = 0x27,
-        //% blockId="YFDOM_OTPFVL_28" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_28" block="6"
         OTPFVL_28 = 0x28,
-        //% blockId="YFDOM_OTPFVL_29" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_29" block="7"
         OTPFVL_29 = 0x29,
-        //% blockId="YFDOM_OTPFVL_2A" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_2A" block="8"
         OTPFVL_2A = 0x2A,
-        //% blockId="YFDOM_OTPFVL_2B" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_2B" block="9"
         OTPFVL_2B = 0x2B,
-        //% blockId="YFDOM_OTPFVL_2C" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_2C" block="0"
         OTPFVL_2C = 0x2C,
-        //% blockId="YFDOM_OTPFVL_2D" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_2D" block="当前"
         OTPFVL_2D = 0x2D,
-        //% blockId="YFDOM_OTPFVL_2E" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_2E" block="转"
         OTPFVL_2E = 0x2E,
-        //% blockId="YFDOM_OTPFVL_02F" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_2F" block="左"
         OTPFVL_2F = 0x2F,
-        //% blockId="YFDOM_OTPFVL_30" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_30" block="右"
         OTPFVL_30 = 0x30,
-        //% blockId="YFDOM_OTPFVL_31" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_31" block="请"
         OTPFVL_31 = 0x31,
-        //% blockId="YFDOM_OTPFVL_32" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_32" block="已"
         OTPFVL_32 = 0x32,
-        //% blockId="YFDOM_OTPFVL_33" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_33" block="现在"
         OTPFVL_33 = 0x33,
-        //% blockId="YFDOM_OTPFVL_34" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_34" block="是"
         OTPFVL_34 = 0x34,
-        //% blockId="YFDOM_OTPFVL_35" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_35" block="红灯"
         OTPFVL_35 = 0x35,
-        //% blockId="YFDOM_OTPFVL_36" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_36" block="绿灯"
         OTPFVL_36 = 0x36,
-        //% blockId="YFDOM_OTPFVL_37" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_37" block="黄灯"
         OTPFVL_37 = 0x37,
-        //% blockId="YFDOM_OTPFVL_38" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_38" block="温度"
         OTPFVL_38 = 0x38,
-        //% blockId="YFDOM_OTPFVL_39" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_39" block="湿度"
         OTPFVL_39 = 0x39,
-        //% blockId="YFDOM_OTPFVL_3A" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_3A" block="欢迎常来"
         OTPFVL_3A = 0x3A,
-        //% blockId="YFDOM_OTPFVL_3B" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_3B" block="还有"
         OTPFVL_3B = 0x3B,
-        //% blockId="YFDOM_OTPFVL_3C" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_3C" block="秒"
         OTPFVL_3C = 0x3C,
-        //% blockId="YFDOM_OTPFVL_3D" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_3D" block="分"
         OTPFVL_3D = 0x3D,
-        //% blockId="YFDOM_OTPFVL_3E" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_3E" block="变"
         OTPFVL_3E = 0x3E,
-        //% blockId="YFDOM_OTPFVL_3F" block="奶奶"
+        //% blockId="YFDOM_OTPFVL_3F" block="等"
         OTPFVL_3F = 0x3F,
+        //% blockId="YFDOM_OTPFVL_40" block="下一次"
+        OTPFVL_40 = 0x40,
+        //% blockId="YFDOM_OTPFVL_41" block="功能"
+        OTPFVL_41 = 0x41,
+        //% blockId="YFDOM_OTPFVL_42" block="障碍物"
+        OTPFVL_42 = 0x42,
+        //% blockId="YFDOM_OTPFVL_43" block="世界那么大，我想去看看"
+        OTPFVL_43 = 0x43,
     }
     export enum AnalogInputModule {
         //% blockId="YFAIM_LIGHT" block="LIGHT"
