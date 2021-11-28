@@ -59,6 +59,7 @@
   "YFSENSORS.DigitalOutputModule.BUZZER|block":"蜂鳴器",
   "YFSENSORS.DigitalOutputModule.RELAY|block":"繼電器",
   "YFSENSORS.digitalOutputModule|block":"連接%domPin|%dom|模塊%sws",
+  "YFSENSORS.voiceBroadcastModule|block":"語音播報 %vbmPin| 播放第 %serial_number|段並延時 %delayt| ms",
   "YFSENSORS.AnalogInputModule.LIGHT|block":"光線傳感器",
   "YFSENSORS.AnalogInputModule.SOUND|block":"聲音傳感器",
   "YFSENSORS.AnalogInputModule.POTENTIOMETER|block":"電位器",
