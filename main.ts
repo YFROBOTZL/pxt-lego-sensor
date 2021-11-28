@@ -345,7 +345,7 @@ namespace YFSENSORS {
      */
     //% group="Output"
     //% blockId=YFSENSORS_voiceBroadcastModule weight=95 blockGap=15
-    //% block="at pin %vbmPin| %dom| module %sws"
+    //% block="voice broadcast %vbmPin| play %serial_number| delay %delayt"
     //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
     //% serial_number.fieldEditor="gridpicker" serial_number.fieldOptions.columns=10
     // serial_number.min=0 serial_number.max=126
