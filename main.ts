@@ -291,6 +291,7 @@ namespace YFSENSORS {
         //% blockId="YFDOM_OTPFVL_43" block="世界那么大，我想去看看"
         OTPFVL_43 = 0x43,
     }
+
     export enum AnalogInputModule {
         //% blockId="YFAIM_LIGHT" block="LIGHT"
         LIGHT = 0x0,
@@ -463,6 +464,32 @@ namespace YFSENSORS {
     }
 
     ///////////////////// Output - OTP Fixed voice broadcast module ///////////////////////
+    /**
+     * Returns the serial number of OTP fixed voice list.
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_OTPFixedVoiceListNum weight=94 blockGap=15
+    //% blockId=device_beat block="%fraction"
+    //% fraction.fieldEditor="gridpicker" fraction.fieldOptions.columns=10
+    export function OTPFixedVoiceListNum(fraction?: OTPFixedVoiceList): number {
+        if (fraction == null) fraction = OTPFixedVoiceList.OTPFVL_00;
+        switch (fraction) {
+            case OTPFixedVoiceList.OTPFVL_00: return 0x00;
+            case OTPFixedVoiceList.OTPFVL_01: return 0x01;
+            case OTPFixedVoiceList.OTPFVL_02: return 0x02;
+            case OTPFixedVoiceList.OTPFVL_03: return 0x03;
+            case OTPFixedVoiceList.OTPFVL_04: return 0x04;
+            case OTPFixedVoiceList.OTPFVL_05: return 0x05;
+            case OTPFixedVoiceList.OTPFVL_06: return 0x06;
+            case OTPFixedVoiceList.OTPFVL_07: return 0x07;
+            case OTPFixedVoiceList.OTPFVL_08: return 0x08;
+            case OTPFixedVoiceList.OTPFVL_09: return 0x09;
+            case OTPFixedVoiceList.OTPFVL_10: return 0x10;
+            case OTPFixedVoiceList.OTPFVL_11: return 0x11;
+            default: return OTPFixedVoiceList.OTPFVL_00;
+        }
+    }
+
     /**
      * Fixed voice broadcast module play.
      * @param vbmPin pin. eg: DigitalPin.P2
