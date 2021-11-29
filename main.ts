@@ -520,7 +520,7 @@ namespace YFSENSORS {
       * @param color Standard RGB Led Colours eg: #ff0000
       */
     //% group="Output"
-    //% blockId="YFSENSORS_bb_colours" weight=70 blockGap=15
+    //% blockId="YFSENSORS_bb_colours" weight=93 blockGap=15
     //% block=%color
     //% shim=TD_ID colorSecondary="#e7660b"
     //% color.fieldEditor="colornumber"
@@ -542,10 +542,44 @@ namespace YFSENSORS {
      */
     //% group="Output"
     //% blockId=YFSENSORS_voiceBroadcastModule weight=95 blockGap=15
-    //% block="voice broadcast %vbmPin| play %serial_number=YFSENSORS_bb_colours| delay %delayt| ms"
+    //% block="voice broadcast %vbmPin| play %serial_number| delay %delayt| ms"
     //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
     //% serial_number.fieldEditor="gridpicker" serial_number.fieldOptions.columns=10
     export function voiceBroadcastModule(vbmPin: DigitalPin, serial_number: number, delayt: number): void {
+        pins.digitalWritePin(vbmPin, 0); 
+        basic.pause(3);
+        for (let index = 0; index < 8; index++) {
+            pins.digitalWritePin(vbmPin, 1); 
+            if(serial_number & 1){
+                control.waitMicros(2400);
+                pins.digitalWritePin(vbmPin, 0);
+                control.waitMicros(800);
+            } else {
+                control.waitMicros(800);
+                pins.digitalWritePin(vbmPin, 0);
+                control.waitMicros(2400);
+            } 
+            serial_number >>= 1;
+        }
+        pins.digitalWritePin(vbmPin, 1); 
+
+        basic.pause(delayt);
+    }
+
+    
+    ///////////////////// Output - MP3 audio playback module ///////////////////////
+    /**
+     * MP3 audio playback module play specified track.
+     * @param apmPin pin. eg: DigitalPin.P2
+     * @param specified_track mp3 specified track. eg: 0
+     * @param delayt delay time. eg: 1000
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_audioPlaybackModule weight=92 blockGap=15
+    //% block="audio playback %apmPin| play %specified_track| delay %delayt| ms"
+    //% apmPin.fieldEditor="gridpicker" apmPin.fieldOptions.columns=4
+    //% specified_track.fieldEditor="gridpicker" specified_track.fieldOptions.columns=10
+    export function audioPlaybackModule(apmPin: DigitalPin, specified_track: number, delayt: number): void {
         pins.digitalWritePin(vbmPin, 0); 
         basic.pause(3);
         for (let index = 0; index < 8; index++) {
@@ -574,7 +608,7 @@ namespace YFSENSORS {
      * @param wColor which color led. eg: TrafficLightLED.AllTurnOFF
      */
     //% group="Output"
-    //% blockId=YFSENSORS_trafficLightModule weight=92 blockGap=15
+    //% blockId=YFSENSORS_trafficLightModule weight=90 blockGap=15
     //% block="traffic light %tlm1Pin| %tlm2Pin| %wColor"
     //% tlm1Pin.fieldEditor="gridpicker" tlm1Pin.fieldOptions.columns=4
     //% tlm2Pin.fieldEditor="gridpicker" tlm2Pin.fieldOptions.columns=4
