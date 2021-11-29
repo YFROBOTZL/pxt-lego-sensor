@@ -433,26 +433,6 @@ namespace YFSENSORS {
         DHT11_humidity,
     }
 
-    /************************* Gestures *************************/
-    export enum GroveGesture {
-        //% block=None
-        None = 0,
-        //% block=Right
-        Right = 1,
-        //% block=Left
-        Left = 2,
-        //% block=Up
-        Up = 3,
-        //% block=Down
-        Down = 4,
-        //% block=Forward
-        Forward = 5,
-        //% block=Backward
-        Backward = 6,
-        //% block=Clockwise
-        Clockwise = 7
-    }
-
     /*************************  *************************/
 
 
@@ -571,7 +551,7 @@ namespace YFSENSORS {
      */
     //% group="Output"
     //% blockId=YFSENSORS_voiceBroadcastModule weight=95 blockGap=15
-    //% block="voice broadcast %vbmPin| play %serial_number=YFSENSORS_OTPFixedVoiceListNum| delay %delayt| ms"
+    //% block="voice broadcast %vbmPin| play %serial_number| delay %delayt| ms"
     //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
     //% serial_number.fieldEditor="gridpicker" serial_number.fieldOptions.columns=10
     // serial_number.min=0 serial_number.max=126
