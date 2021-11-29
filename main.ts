@@ -534,19 +534,6 @@ namespace YFSENSORS {
         return color;
     }
 
-    // /**
-    //  * Gets the melody array of a built-in melody.
-    //  * @param num the note name, eg: Note.C
-    //  */
-    // //% group="Output"
-    // //% blockId=YFSENSORS_getNumOfFixedVoiceList weight=93 blockGap=15
-    // //% block="%num"
-    // //% blockHidden=true
-    // export function getNumOfFixedVoiceList(num: number): number {
-    //     return OTPFixedVoiceListNum(num);
-    // }
-
-
     /**
      * Fixed voice broadcast module play.
      * @param vbmPin pin. eg: DigitalPin.P2
@@ -558,7 +545,6 @@ namespace YFSENSORS {
     //% block="voice broadcast %vbmPin| play %serial_number| delay %delayt| ms"
     //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
     //% serial_number.fieldEditor="gridpicker" serial_number.fieldOptions.columns=10
-    // serial_number.min=0 serial_number.max=126
     export function voiceBroadcastModule(vbmPin: DigitalPin, serial_number: number, delayt: number): void {
         pins.digitalWritePin(vbmPin, 0); 
         basic.pause(3);
