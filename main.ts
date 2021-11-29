@@ -580,22 +580,22 @@ namespace YFSENSORS {
     //% apmPin.fieldEditor="gridpicker" apmPin.fieldOptions.columns=4
     //% specified_track.fieldEditor="gridpicker" specified_track.fieldOptions.columns=10
     export function audioPlaybackModule(apmPin: DigitalPin, specified_track: number, delayt: number): void {
-        pins.digitalWritePin(vbmPin, 0); 
+        pins.digitalWritePin(apmPin, 0); 
         basic.pause(3);
         for (let index = 0; index < 8; index++) {
-            pins.digitalWritePin(vbmPin, 1); 
-            if(serial_number & 1){
+            pins.digitalWritePin(apmPin, 1); 
+            if(specified_track & 1){
                 control.waitMicros(2400);
-                pins.digitalWritePin(vbmPin, 0);
+                pins.digitalWritePin(apmPin, 0);
                 control.waitMicros(800);
             } else {
                 control.waitMicros(800);
-                pins.digitalWritePin(vbmPin, 0);
+                pins.digitalWritePin(apmPin, 0);
                 control.waitMicros(2400);
             } 
-            serial_number >>= 1;
+            specified_track >>= 1;
         }
-        pins.digitalWritePin(vbmPin, 1); 
+        pins.digitalWritePin(apmPin, 1); 
 
         basic.pause(delayt);
     }
