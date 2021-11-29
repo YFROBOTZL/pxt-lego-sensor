@@ -292,6 +292,49 @@ namespace YFSENSORS {
         OTPFVL_43 = 0x43,
     }
 
+    enum Melodies {
+        //% block="dadadum" blockIdentity=music.builtInMelody
+        Dadadadum = 0,
+        //% block="entertainer" blockIdentity=music.builtInMelody
+        Entertainer,
+        //% block="prelude" blockIdentity=music.builtInMelody
+        Prelude,
+        //% block="ode" blockIdentity=music.builtInMelody
+        Ode,
+        //% block="nyan" blockIdentity=music.builtInMelody
+        Nyan,
+        //% block="ringtone" blockIdentity=music.builtInMelody
+        Ringtone,
+        //% block="funk" blockIdentity=music.builtInMelody
+        Funk,
+        //% block="blues" blockIdentity=music.builtInMelody
+        Blues,
+        //% block="birthday" blockIdentity=music.builtInMelody
+        Birthday,
+        //% block="wedding" blockIdentity=music.builtInMelody
+        Wedding,
+        //% block="funeral" blockIdentity=music.builtInMelody
+        Funeral,
+        //% block="punchline" blockIdentity=music.builtInMelody
+        Punchline,
+        //% block="baddy" blockIdentity=music.builtInMelody
+        Baddy,
+        //% block="chase" blockIdentity=music.builtInMelody
+        Chase,
+        //% block="ba ding" blockIdentity=music.builtInMelody
+        BaDing,
+        //% block="wawawawaa" blockIdentity=music.builtInMelody
+        Wawawawaa,
+        //% block="jump up" blockIdentity=music.builtInMelody
+        JumpUp,
+        //% block="jump down" blockIdentity=music.builtInMelody
+        JumpDown,
+        //% block="power up" blockIdentity=music.builtInMelody
+        PowerUp,
+        //% block="power down" blockIdentity=music.builtInMelody
+        PowerDown,
+    }
+
     export enum AnalogInputModule {
         //% blockId="YFAIM_LIGHT" block="LIGHT"
         LIGHT = 0x0,
@@ -486,7 +529,7 @@ namespace YFSENSORS {
             case OTPFixedVoiceList.OTPFVL_09: return 0x09;
             case OTPFixedVoiceList.OTPFVL_10: return 0x10;
             case OTPFixedVoiceList.OTPFVL_11: return 0x11;
-            default: return OTPFixedVoiceList.OTPFVL_00;
+            default: return num;
         }
     }
 
@@ -498,11 +541,11 @@ namespace YFSENSORS {
      */
     //% group="Output"
     //% blockId=YFSENSORS_voiceBroadcastModule weight=95 blockGap=15
-    //% block="voice broadcast %vbmPin| play %serial_number| delay %delayt| ms"
+    //% block="voice broadcast %vbmPin| play %serial_number=YFSENSORS_OTPFixedVoiceListNum| delay %delayt| ms"
     //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
     //% serial_number.fieldEditor="gridpicker" serial_number.fieldOptions.columns=10
     // serial_number.min=0 serial_number.max=126
-    export function voiceBroadcastModule(vbmPin: DigitalPin, serial_number: OTPFixedVoiceList, delayt: number): void {
+    export function voiceBroadcastModule(vbmPin: DigitalPin, serial_number: number, delayt: number): void {
         pins.digitalWritePin(vbmPin, 0); 
         basic.pause(3);
         for (let index = 0; index < 8; index++) {
@@ -521,6 +564,36 @@ namespace YFSENSORS {
         pins.digitalWritePin(vbmPin, 1); 
 
         basic.pause(delayt);
+    }
+
+    ///////////////////// Output - Traffic Light module ///////////////////////
+    /**
+     * Traffic Light module light up red, green or yellow led.
+     * @param tlm1Pin pin 1. eg: DigitalPin.P1
+     * @param tlm2Pin pin 2. eg: DigitalPin.P2
+     * @param wColor which color led. eg: OTPFixedVoiceList.OTPFVL_00
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_trafficLightModule weight=92 blockGap=15
+    //% block="traffic light %tlm1Pin| %tlm2Pin| %wColor"
+    //% tlm1Pin.fieldEditor="gridpicker" tlm1Pin.fieldOptions.columns=4
+    //% tlm2Pin.fieldEditor="gridpicker" tlm2Pin.fieldOptions.columns=4
+    //% wColor.fieldEditor="gridpicker" wColor.fieldOptions.columns=2
+    export function trafficLightModule(tlm1Pin: DigitalPin, tlm2Pin: DigitalPin, wColor: OTPFixedVoiceList): void {
+        switch (wColor) {
+            case OTPFixedVoiceList.OTPFVL_00:        // all lights turn off
+                pins.digitalWritePin(tlm1Pin, 0);
+                pins.digitalWritePin(tlm2Pin, 0);
+            case OTPFixedVoiceList.OTPFVL_01:        // Red LED
+                pins.digitalWritePin(tlm1Pin, 0);
+                pins.digitalWritePin(tlm2Pin, 1);
+            case OTPFixedVoiceList.OTPFVL_02:        // Yellow LED
+                pins.digitalWritePin(tlm1Pin, 1);
+                pins.digitalWritePin(tlm2Pin, 0);
+            case OTPFixedVoiceList.OTPFVL_02:        // Green LED
+                pins.digitalWritePin(tlm1Pin, 1);
+                pins.digitalWritePin(tlm2Pin, 2);
+        }
     }
 
 
