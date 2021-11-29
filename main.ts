@@ -598,15 +598,19 @@ namespace YFSENSORS {
             case TrafficLightLED.RedLED:            // Red LED
                 pins.digitalWritePin(tlm1Pin, 0);
                 pins.digitalWritePin(tlm2Pin, 1);
+                break;
             case TrafficLightLED.YellowLED:         // Yellow LED
                 pins.digitalWritePin(tlm1Pin, 1);
                 pins.digitalWritePin(tlm2Pin, 0);
+                break;
             case TrafficLightLED.GreenLED:          // Green LED
                 pins.digitalWritePin(tlm1Pin, 1);
                 pins.digitalWritePin(tlm2Pin, 2);
+                break;
             default: // TrafficLightLED.AllTurnOFF: // all lights turn off
                 pins.digitalWritePin(tlm1Pin, 0);
                 pins.digitalWritePin(tlm2Pin, 0);
+                break;
         }
     }
 
