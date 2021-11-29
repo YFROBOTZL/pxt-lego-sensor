@@ -519,17 +519,36 @@ namespace YFSENSORS {
     }
 
     ///////////////////// Output - OTP Fixed voice broadcast module ///////////////////////
-    // /**
-    //  * Returns the serial number of OTP fixed voice list.
-    //  */
-    // //% group="Output"
-    // //% blockId=YFSENSORS_OTPFixedVoiceListNum weight=94 blockGap=15
-    // //% block="%num"
-    // //% num.fieldEditor="gridpicker" num.fieldOptions.columns=10
-    // export function OTPFixedVoiceListNum(num?: OTPFixedVoiceList): number {
-    //     if (num == null) num = OTPFixedVoiceList.OTPFVL_00;
-    //     return num;
-    // }
+    /**
+     * Returns the serial number of OTP fixed voice list.
+     * @param num Standard RGB Led Colours eg: #ff0000
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_OTPFixedVoiceListNum weight=94 blockGap=15
+    //% block="%num"
+    //% num.fieldEditor="gridpicker" num.fieldOptions.columns=10
+    export function OTPFixedVoiceListNum(num: OTPFixedVoiceList): number {
+        return num;
+    }
+
+    /**
+      * Get numeric value of colour
+      * @param color Standard RGB Led Colours eg: #ff0000
+      */
+    //% group="Output"
+    //% blockId="YFSENSORS_bb_colours" weight=70 blockGap=15
+    //% block=%color
+    //% shim=TD_ID colorSecondary="#e7660b"
+    //% color.fieldEditor="colornumber"
+    //% color.fieldOptions.decompileLiterals=true
+    //% color.defl='#ff0000'
+    //% color.fieldOptions.colours='["#FF0000","#659900","#18E600","#80FF00","#00FF00","#FF8000","#D82600","#B24C00","#00FFC0","#00FF80","#FFC000","#FF0080","#FF00FF","#B09EFF","#00FFFF","#FFFF00","#8000FF","#0080FF","#0000FF","#FFFFFF","#FF8080","#80FF80","#40C0FF","#999999","#000000"]'
+    //% color.fieldOptions.columns=5
+    //% color.fieldOptions.className='rgbColorPicker'
+    export function BBColours(color: number): number
+    {
+        return color;
+    }
 
     // /**
     //  * Gets the melody array of a built-in melody.
@@ -543,6 +562,7 @@ namespace YFSENSORS {
     //     return OTPFixedVoiceListNum(num);
     // }
 
+
     /**
      * Fixed voice broadcast module play.
      * @param vbmPin pin. eg: DigitalPin.P2
@@ -551,7 +571,7 @@ namespace YFSENSORS {
      */
     //% group="Output"
     //% blockId=YFSENSORS_voiceBroadcastModule weight=95 blockGap=15
-    //% block="voice broadcast %vbmPin| play %serial_number| delay %delayt| ms"
+    //% block="voice broadcast %vbmPin| play %serial_number=YFSENSORS_OTPFixedVoiceListNum| delay %delayt| ms"
     //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
     //% serial_number.fieldEditor="gridpicker" serial_number.fieldOptions.columns=10
     // serial_number.min=0 serial_number.max=126
