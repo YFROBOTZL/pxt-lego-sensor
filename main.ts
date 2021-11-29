@@ -335,6 +335,18 @@ namespace YFSENSORS {
         PowerDown,
     }
     
+    /*************************  Output - MP3 audio playback module  *************************/
+    export enum AudioPlaybackFun {
+        //% blockId="YFAPF_AllTurnOFF" block="ALL turn off"
+        AllTurnOFF = 0x00,
+        //% blockId="YFAPF_RedLED" block="Light red led"
+        RedLED = 0x01,
+        //% blockId="YFAPF_YellowLED" block="Light yellow led"
+        YellowLED = 0x02,
+        //% blockId="YFAPF_GreenLED" block="Light green led"
+        GreenLED = 0x03,
+    }
+    
     /*************************  Output - Traffic Light LED Mode *************************/
     export enum TrafficLightLED {
         //% blockId="YFTLL_AllTurnOFF" block="ALL turn off"
@@ -568,36 +580,79 @@ namespace YFSENSORS {
 
     
     ///////////////////// Output - MP3 audio playback module ///////////////////////
+
+    let AudioPlaybackPin_data = DigitalPin.P2;
+    let AudioPlaybackPin_busy = DigitalPin.P1;
+
     /**
-     * MP3 audio playback module play specified track.
-     * @param apmPin pin. eg: DigitalPin.P2
-     * @param specified_track mp3 specified track. eg: 0
-     * @param delayt delay time. eg: 1000
+     * Connects to the MP3 audio playback module at the specified pin.
+     * @param pin_data data pin. eg: DigitalPin.P2
+     * @param pin_busy busy pin. eg: DigitalPin.P1
      */
     //% group="Output"
-    //% blockId=YFSENSORS_audioPlaybackModule weight=92 blockGap=15
-    //% block="audio playback %apmPin| play %specified_track| delay %delayt| ms"
-    //% apmPin.fieldEditor="gridpicker" apmPin.fieldOptions.columns=4
-    //% specified_track.fieldEditor="gridpicker" specified_track.fieldOptions.columns=10
-    export function audioPlaybackModule(apmPin: DigitalPin, specified_track: number, delayt: number): void {
-        pins.digitalWritePin(apmPin, 0); 
+    //% blockId="YFSENSORS_audioPlaybackModule_connectPin" weight=90 blockGap=15
+    //% block="connect MP3 audio playback module at %pin_data and %pin_busy"
+    //% pin_data.fieldEditor="gridpicker" pin_data.fieldOptions.columns=4 pin_data.fieldOptions.tooltips="false"
+    //% pin_busy.fieldEditor="gridpicker" pin_busy.fieldOptions.columns=4 pin_busy.fieldOptions.tooltips="false"
+    export function audioPlaybackModule_connectPin(pin_data: DigitalPin, pin_busy: DigitalPin): void {
+        AudioPlaybackPin_data = pin_data;
+        AudioPlaybackPin_busy = pin_busy;
+    }
+
+    /**
+     * MP3 audio playback module play specified track.
+     * @param num number. eg: 0
+     */
+    function audioPlaybackModule_sendData(specified_track: number): void {
+        pins.digitalWritePin(AudioPlaybackPin_data, 1); 
+        basic.pause(1);
+        pins.digitalWritePin(AudioPlaybackPin_data, 0); 
         basic.pause(3);
         for (let index = 0; index < 8; index++) {
-            pins.digitalWritePin(apmPin, 1); 
+            pins.digitalWritePin(AudioPlaybackPin_data, 1); 
             if(specified_track & 1){
-                control.waitMicros(2400);
-                pins.digitalWritePin(apmPin, 0);
-                control.waitMicros(800);
+                control.waitMicros(1200);
+                pins.digitalWritePin(AudioPlaybackPin_data, 0);
+                control.waitMicros(400);
             } else {
-                control.waitMicros(800);
-                pins.digitalWritePin(apmPin, 0);
-                control.waitMicros(2400);
+                control.waitMicros(400);
+                pins.digitalWritePin(AudioPlaybackPin_data, 0);
+                control.waitMicros(1200);
             } 
             specified_track >>= 1;
         }
-        pins.digitalWritePin(apmPin, 1); 
+        pins.digitalWritePin(AudioPlaybackPin_data, 1); 
+    }
 
-        basic.pause(delayt);
+    /**
+     * MP3 audio playback module play specified track.
+     * @param specified_fun mp3 module specified function. eg: 0
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_audioPlaybackModule weight=86 blockGap=15
+    //% block="audio playback play %specified_fun| delay %delayt| ms"
+    //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=10
+    export function audioPlaybackModule(specified_fun: number): void {
+        let s_fun = specified_fun;
+        YFSENSORS.audioPlaybackModule_sendData(specified_fun);
+        pins.digitalWritePin(AudioPlaybackPin_data, 1); 
+        basic.pause(1);
+        pins.digitalWritePin(AudioPlaybackPin_data, 0); 
+        basic.pause(3);
+        for (let index = 0; index < 8; index++) {
+            pins.digitalWritePin(AudioPlaybackPin_data, 1); 
+            if(specified_track & 1){
+                control.waitMicros(1200);
+                pins.digitalWritePin(AudioPlaybackPin_data, 0);
+                control.waitMicros(400);
+            } else {
+                control.waitMicros(400);
+                pins.digitalWritePin(AudioPlaybackPin_data, 0);
+                control.waitMicros(1200);
+            } 
+            specified_track >>= 1;
+        }
+        pins.digitalWritePin(AudioPlaybackPin_data, 1); 
     }
 
     ///////////////////// Output - Traffic Light module ///////////////////////
@@ -608,7 +663,7 @@ namespace YFSENSORS {
      * @param wColor which color led. eg: TrafficLightLED.AllTurnOFF
      */
     //% group="Output"
-    //% blockId=YFSENSORS_trafficLightModule weight=90 blockGap=15
+    //% blockId=YFSENSORS_trafficLightModule weight=80 blockGap=15
     //% block="traffic light %tlm1Pin| %tlm2Pin| %wColor"
     //% tlm1Pin.fieldEditor="gridpicker" tlm1Pin.fieldOptions.columns=4
     //% tlm2Pin.fieldEditor="gridpicker" tlm2Pin.fieldOptions.columns=4
