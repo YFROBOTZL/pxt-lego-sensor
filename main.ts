@@ -334,7 +334,18 @@ namespace YFSENSORS {
         //% block="power down" blockIdentity=music.builtInMelody
         PowerDown,
     }
-
+    
+    /*************************  Output - Traffic Light LED Mode *************************/
+    export enum TrafficLightLED {
+        //% blockId="YFTLL_AllTurnOFF" block="ALL turn off"
+        AllTurnOFF = 0x00,
+        //% blockId="YFTLL_RedLED" block="Light red led"
+        RedLED = 0x01,
+        //% blockId="YFTLL_YellowLED" block="Light yellow led"
+        YellowLED = 0x02,
+        //% blockId="YFTLL_GreenLED" block="Light green led"
+        GreenLED = 0x03,
+    }
     export enum AnalogInputModule {
         //% blockId="YFAIM_LIGHT" block="LIGHT"
         LIGHT = 0x0,
@@ -571,7 +582,7 @@ namespace YFSENSORS {
      * Traffic Light module light up red, green or yellow led.
      * @param tlm1Pin pin 1. eg: DigitalPin.P1
      * @param tlm2Pin pin 2. eg: DigitalPin.P2
-     * @param wColor which color led. eg: OTPFixedVoiceList.OTPFVL_00
+     * @param wColor which color led. eg: TrafficLightLED.OTPFVL_00
      */
     //% group="Output"
     //% blockId=YFSENSORS_trafficLightModule weight=92 blockGap=15
@@ -579,20 +590,20 @@ namespace YFSENSORS {
     //% tlm1Pin.fieldEditor="gridpicker" tlm1Pin.fieldOptions.columns=4
     //% tlm2Pin.fieldEditor="gridpicker" tlm2Pin.fieldOptions.columns=4
     //% wColor.fieldEditor="gridpicker" wColor.fieldOptions.columns=2
-    export function trafficLightModule(tlm1Pin: DigitalPin, tlm2Pin: DigitalPin, wColor: OTPFixedVoiceList): void {
+    export function trafficLightModule(tlm1Pin: DigitalPin, tlm2Pin: DigitalPin, wColor: TrafficLightLED): void {
         switch (wColor) {
-            case OTPFixedVoiceList.OTPFVL_00:        // all lights turn off
-                pins.digitalWritePin(tlm1Pin, 0);
-                pins.digitalWritePin(tlm2Pin, 0);
-            case OTPFixedVoiceList.OTPFVL_01:        // Red LED
+            case TrafficLightLED.RedLED:            // Red LED
                 pins.digitalWritePin(tlm1Pin, 0);
                 pins.digitalWritePin(tlm2Pin, 1);
-            case OTPFixedVoiceList.OTPFVL_02:        // Yellow LED
+            case TrafficLightLED.YellowLED:         // Yellow LED
                 pins.digitalWritePin(tlm1Pin, 1);
                 pins.digitalWritePin(tlm2Pin, 0);
-            case OTPFixedVoiceList.OTPFVL_02:        // Green LED
+            case TrafficLightLED.GreenLED:          // Green LED
                 pins.digitalWritePin(tlm1Pin, 1);
                 pins.digitalWritePin(tlm2Pin, 2);
+            default: // TrafficLightLED.AllTurnOFF: // all lights turn off
+                pins.digitalWritePin(tlm1Pin, 0);
+                pins.digitalWritePin(tlm2Pin, 0);
         }
     }
 
