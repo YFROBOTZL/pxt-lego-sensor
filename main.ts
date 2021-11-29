@@ -542,7 +542,7 @@ namespace YFSENSORS {
      */
     //% group="Output"
     //% blockId=YFSENSORS_voiceBroadcastModule weight=95 blockGap=15
-    //% block="voice broadcast %vbmPin| play %serial_number| delay %delayt| ms"
+    //% block="voice broadcast %vbmPin| play %serial_number=YFSENSORS_bb_colours| delay %delayt| ms"
     //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
     //% serial_number.fieldEditor="gridpicker" serial_number.fieldOptions.columns=10
     export function voiceBroadcastModule(vbmPin: DigitalPin, serial_number: number, delayt: number): void {
