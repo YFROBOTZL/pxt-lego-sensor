@@ -469,11 +469,11 @@ namespace YFSENSORS {
      */
     //% group="Output"
     //% blockId=YFSENSORS_OTPFixedVoiceListNum weight=94 blockGap=15
-    //% blockId=device_beat block="%fraction"
-    //% fraction.fieldEditor="gridpicker" fraction.fieldOptions.columns=10
-    export function OTPFixedVoiceListNum(fraction?: OTPFixedVoiceList): number {
-        if (fraction == null) fraction = OTPFixedVoiceList.OTPFVL_00;
-        switch (fraction) {
+    //% block="%num"
+    //% num.fieldEditor="gridpicker" num.fieldOptions.columns=10
+    export function OTPFixedVoiceListNum(num?: OTPFixedVoiceList): number {
+        if (num == null) num = OTPFixedVoiceList.OTPFVL_00;
+        switch (num) {
             case OTPFixedVoiceList.OTPFVL_00: return 0x00;
             case OTPFixedVoiceList.OTPFVL_01: return 0x01;
             case OTPFixedVoiceList.OTPFVL_02: return 0x02;
