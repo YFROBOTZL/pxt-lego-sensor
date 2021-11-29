@@ -38,6 +38,8 @@
   "YFSENSORS.ping|param|unit": "转换单位",
   "YFSENSORS.aDOutputModule":"打开或关闭数字输出型模块并控制比例",
   "YFSENSORS.digitalOutputModule": "打开或关闭数字输出型模块",
+  "YFSENSORS.voiceBroadcastModule": "语音播报模块播放指定段语音",
+  "YFSENSORS.trafficLightModule": "交通灯模块点亮红、绿、黄灯",
   "YFSENSORS.analogInputModule": "读取模拟输入型传感器模块",
   "YFSENSORS.digitalInputModule": "读取数字输入型传感器模块",
   "YFSENSORS.onEvent": "数字输入型事件"
