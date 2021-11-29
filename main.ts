@@ -582,7 +582,7 @@ namespace YFSENSORS {
      * Traffic Light module light up red, green or yellow led.
      * @param tlm1Pin pin 1. eg: DigitalPin.P1
      * @param tlm2Pin pin 2. eg: DigitalPin.P2
-     * @param wColor which color led. eg: TrafficLightLED.OTPFVL_00
+     * @param wColor which color led. eg: TrafficLightLED.AllTurnOFF
      */
     //% group="Output"
     //% blockId=YFSENSORS_trafficLightModule weight=92 blockGap=15
