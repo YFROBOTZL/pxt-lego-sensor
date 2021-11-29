@@ -603,6 +603,9 @@ namespace YFSENSORS {
      * MP3 audio playback module play specified track.
      * @param num number. eg: 0
      */
+    //% group="Output"
+    //% blockId=YFSENSORS_audioPlaybackModule_sendData weight=88 blockGap=15
+    //% block="audio playback play %specified_track| delay %delayt| ms"
     function audioPlaybackModule_sendData(specified_track: number): void {
         pins.digitalWritePin(AudioPlaybackPin_data, 1); 
         basic.pause(1);
