@@ -76,6 +76,8 @@
   "YFSENSORS.DigitalInputModule.TOUCH_SENSOR|block":"触摸传感器",
   "YFSENSORS.DigitalInputModule.BUTTON|block":"按键",
   "YFSENSORS.DigitalInputModule.COLLISION_SWITCH|block":"碰撞开关",
+  "YFSENSORS.DigitalInputModule.PATROL_LEFT|block":"巡线-左",
+  "YFSENSORS.DigitalInputModule.PATROL_RIGHT|block":"巡线-右",
   "YFSENSORS.digitalInputModule|block":"连接%dimPin|%dim|模块",
   "YFSENSORS.DigitalInputModuleE.BUTTON|block":"按键",
   "YFSENSORS.DigitalInputModuleE.COLLISION_SWITCH|block":"碰撞开关",

@@ -379,6 +379,10 @@ namespace YFSENSORS {
         BUTTON = 0x6,
         //% blockId="YFDIM_COLLISION_SWITCH" block="COLLISION_SWITCH"
         COLLISION_SWITCH = 0x7,
+        //% blockId="YFDIM_PATROL_LEFT" block="PATROL_LEFT"
+        PATROL_LEFT = 0x08,
+        //% blockId="YFDIM_PATROL_RIGHT" block="PATROL_RIGHT"
+        PATROL_RIGHT = 0x09,
     }
 
     export enum DigitalInputModuleE {
