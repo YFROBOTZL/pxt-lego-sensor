@@ -548,7 +548,7 @@ namespace YFSENSORS {
     /**
      * Fixed voice broadcast module play.
      * @param vbmPin pin. eg: DigitalPin.P2
-     * @param serial_number voice serial number. eg: OTPFixedVoiceList.OTPFVL_00
+     * @param serial_number voice serial number. eg: 0
      * @param delayt delay time. eg: 1000
      */
     //% group="Output"
