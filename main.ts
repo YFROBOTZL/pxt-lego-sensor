@@ -655,10 +655,10 @@ namespace YFSENSORS {
         let num = []
         while (n > 0) {
           num.push(n % 10)
-          n = n / 10
+          n = Math.floor(n / 10)
         }
         let num2 = num.reverse()
-        return num2
+        return num.reverse()
     }
 
     /**
