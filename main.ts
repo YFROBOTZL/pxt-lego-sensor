@@ -663,7 +663,7 @@ namespace YFSENSORS {
     //% group="Output"
     //% blockId=YFSENSORS_audioPlaybackModuleFunWithNum weight=88 blockGap=15
     //% block="audio playback %specified_fun| %specified_track"
-    //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=4
+    //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=2
     export function audioPlaybackModuleFunWithNum(specified_fun: AudioPlaybackFunWithNum, specified_track: number): void {
         let s_track = specified_track;
         let s_track_num = splitToDigit(s_track);
@@ -680,7 +680,7 @@ namespace YFSENSORS {
     //% group="Output"
     //% blockId=YFSENSORS_audioPlaybackModuleFun weight=86 blockGap=15
     //% block="audio playback %specified_fun"
-    //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=4
+    //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=3
     export function audioPlaybackModuleFun(specified_fun: AudioPlaybackFun): void {
         audioPlaybackModule_sendData(specified_fun);
     }
