@@ -572,38 +572,6 @@ namespace YFSENSORS {
         return color;
     }
 
-    /**
-     * Fixed voice broadcast module play.
-     * @param vbmPin pin. eg: DigitalPin.P2
-     * @param serial_number voice serial number. eg: 0
-     * @param delayt delay time. eg: 1000
-     */
-    //% group="Output"
-    //% blockId=YFSENSORS_voiceBroadcastModule weight=95 blockGap=15
-    //% block="voice broadcast %vbmPin| play %serial_number| delay %delayt| ms"
-    //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
-    //% serial_number.fieldEditor="gridpicker" serial_number.fieldOptions.columns=10
-    export function voiceBroadcastModule(vbmPin: DigitalPin, serial_number: number, delayt: number): void {
-        pins.digitalWritePin(vbmPin, 0); 
-        basic.pause(3);
-        for (let index = 0; index < 8; index++) {
-            pins.digitalWritePin(vbmPin, 1); 
-            if(serial_number & 1){
-                control.waitMicros(2400);
-                pins.digitalWritePin(vbmPin, 0);
-                control.waitMicros(800);
-            } else {
-                control.waitMicros(800);
-                pins.digitalWritePin(vbmPin, 0);
-                control.waitMicros(2400);
-            } 
-            serial_number >>= 1;
-        }
-        pins.digitalWritePin(vbmPin, 1); 
-
-        basic.pause(delayt);
-    }
-
 
     ///////////////////// Output - Traffic Light module ///////////////////////
     /**
