@@ -628,16 +628,28 @@ namespace YFSENSORS {
 
     /**
      * MP3 audio playback module play specified track.
+     * @param specified_track mp3 module specified track. eg: 0
      * @param specified_fun mp3 module specified function. eg: 0
      */
     //% group="Output"
     //% blockId=YFSENSORS_audioPlaybackModule weight=86 blockGap=15
     //% block="audio playback play %specified_fun| delay %delayt| ms"
     //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=10
-    export function audioPlaybackModule(specified_fun: number): void {
-        let s_fun = specified_fun;
-        audioPlaybackModule_sendData(specified_fun);
+    export function audioPlaybackModule(specified_track: number, specified_fun: number): void {
+        let s_track = 0;
+        if (specified_track < 10) {
+            s_track = specified_track;
+        } else if (specified_track >= 10 && specified_track < 100) {
 
+        } else if (specified_track >= 100 && specified_track < 1000) {
+
+        } else if (specified_track >= 1000 && specified_track < 10000) {
+
+        } else if (specified_track >= 10000 && specified_track < 100000) {
+
+        }
+        audioPlaybackModule_sendData(s_track); // Select the music
+        audioPlaybackModule_sendData(specified_fun);
     }
 
     ///////////////////// Output - Traffic Light module ///////////////////////
