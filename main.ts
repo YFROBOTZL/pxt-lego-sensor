@@ -662,14 +662,14 @@ namespace YFSENSORS {
 
     /**
      * MP3 audio playback module play specified track.
+     * @param specified_fun mp3 module specified function code. eg: AudioPlaybackFunWithNum.SelectPlay
      * @param specified_track mp3 module specified track number. eg: 0
-     * @param specified_fun mp3 module specified function code. eg: 0
      */
     //% group="Output"
     //% blockId=YFSENSORS_audioPlaybackModule weight=86 blockGap=15
-    //% block="audio playback play %specified_track| %specified_fun"
+    //% block="audio playback %specified_fun| %specified_track"
     //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=4
-    export function audioPlaybackModuleFunWithNum(specified_track: number, specified_fun: AudioPlaybackFunWithNum): void {
+    export function audioPlaybackModuleFunWithNum(specified_fun: AudioPlaybackFunWithNum, specified_track: number): void {
         let s_track = specified_track;
         let s_track_num = [];
         while (s_track > 0) {
@@ -684,7 +684,7 @@ namespace YFSENSORS {
 
     /**
      * MP3 audio playback module Playback settings.
-     * @param specified_fun mp3 module specified function code. eg: 0
+     * @param specified_fun mp3 module specified function code. eg: AudioPlaybackFun.Play
      */
     //% group="Output"
     //% blockId=YFSENSORS_audioPlaybackModule weight=86 blockGap=15
