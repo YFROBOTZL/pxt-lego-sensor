@@ -335,16 +335,39 @@ namespace YFSENSORS {
         PowerDown,
     }
     
-    /*************************  Output - MP3 audio playback module  *************************/
+    /*************************  Output - MP3 audio playback module function  *************************/
+    export enum AudioPlaybackFunWithNum {
+        //% blockId="YFAPF_SelectPlay" block="Select Play"
+        SelectPlay = 0x0B,
+        //% blockId="YFAPF_SetVolume" block="Set Volume"
+        SetVolume = 0x0C,
+        //% blockId="YFAPF_SetEQ" block="Set EQ Mode"
+        SetEQ = 0x0D,
+        //% blockId="YFAPF_SetPlayMode" block="Set Play Mode"
+        SetPlayMode = 0x0E,
+        //% blockId="YFAPF_SetInsertTrack" block="Set the insert track"
+        SetInsertTrack = 0x10,
+    }
+
     export enum AudioPlaybackFun {
-        //% blockId="YFAPF_AllTurnOFF" block="ALL turn off"
-        AllTurnOFF = 0x00,
-        //% blockId="YFAPF_RedLED" block="Light red led"
-        RedLED = 0x01,
-        //% blockId="YFAPF_YellowLED" block="Light yellow led"
-        YellowLED = 0x02,
-        //% blockId="YFAPF_GreenLED" block="Light green led"
-        GreenLED = 0x03,
+        //% blockId="YFAPF_Play" block="Play"
+        Play = 0x11,
+        //% blockId="YFAPF_Pause" block="Pause"
+        Pause = 0x12,
+        //% blockId="YFAPF_Stop" block="Stop"
+        Stop = 0x13,
+        //% blockId="YFAPF_PreviousTrack" block="Previous track"
+        PreviousTrack = 0x14,
+        //% blockId="YFAPF_NextTrack" block="Next track"
+        NextTrack = 0x15,
+        //% blockId="YFAPF_PreviousContents" block="Previous contents"
+        PreviousContents = 0x16,
+        //% blockId="YFAPF_NextContents" block="Next contents"
+        NextContents = 0x17,
+        //% blockId="YFAPF_RemoveNumber" block="Remove Number"
+        RemoveNumber = 0x0A,
+        //% blockId="YFAPF_StopInsertTrack" block="Stop Insert Track"
+        StopInsertTrack = 0x1C,
     }
     
     /*************************  Output - Traffic Light LED Mode *************************/
@@ -640,20 +663,32 @@ namespace YFSENSORS {
 
     /**
      * MP3 audio playback module play specified track.
-     * @param specified_track mp3 module specified track. eg: 0
-     * @param specified_fun mp3 module specified function. eg: 0
+     * @param specified_track mp3 module specified track number. eg: 0
+     * @param specified_fun mp3 module specified function code. eg: 0
      */
     //% group="Output"
     //% blockId=YFSENSORS_audioPlaybackModule weight=86 blockGap=15
-    //% block="audio playback play %specified_fun| delay %delayt| ms"
-    //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=10
-    export function audioPlaybackModule(specified_track: number, specified_fun: number): void {
+    //% block="audio playback play %specified_track| %specified_fun"
+    //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=4
+    export function audioPlaybackModuleFunWithNum(specified_track: number, specified_fun: AudioPlaybackFunWithNum): void {
         let s_track = specified_track;
         let s_track_num = [];
         s_track_num = splitToDigit(s_track);  // arrays
         for (let index = 0; index < s_track_num.length; index++) {
             audioPlaybackModule_sendData(s_track_num[index]); // Select the music
         }
+        audioPlaybackModule_sendData(specified_fun);
+    }
+
+    /**
+     * MP3 audio playback module Playback settings.
+     * @param specified_fun mp3 module specified function code. eg: 0
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_audioPlaybackModule weight=86 blockGap=15
+    //% block="audio playback %specified_fun"
+    //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=4
+    export function audioPlaybackModuleFun(specified_fun: AudioPlaybackFun): void {
         audioPlaybackModule_sendData(specified_fun);
     }
 
