@@ -657,8 +657,8 @@ namespace YFSENSORS {
           num.push(n % 10)
           n = Math.floor(n / 10)
         }
-        let num2 = num.reverse()
-        return num.reverse()
+        // let num2 = num.reverse()
+        return num.reverse();
     }
 
     /**
