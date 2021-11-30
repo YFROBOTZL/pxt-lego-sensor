@@ -672,7 +672,12 @@ namespace YFSENSORS {
     export function audioPlaybackModuleFunWithNum(specified_track: number, specified_fun: AudioPlaybackFunWithNum): void {
         let s_track = specified_track;
         let s_track_num = [];
-        s_track_num = splitToDigit(s_track);  // arrays
+        // s_track_num = splitToDigit(s_track);  // arrays
+        while (s_track > 0) {
+            s_track_num.push(s_track % 10)
+            s_track = Math.floor(s_track / 10)
+        }
+        s_track_num  = s_track_num.reverse();
         for (let index = 0; index < s_track_num.length; index++) {
             audioPlaybackModule_sendData(s_track_num[index]); // Select the music
         }
