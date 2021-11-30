@@ -474,7 +474,10 @@ namespace YFSENSORS {
 
     /*************************  *************************/
 
-
+    
+    ///////////////////// Output - MP3 audio playback module ///////////////////////
+    let AudioPlaybackPin_data = DigitalPin.P2;
+    let AudioPlaybackPin_busy = DigitalPin.P1;
 
     /////////////////////// DigitalTubes ///////////////////////
     let PINDIO = DigitalPin.P1;
@@ -603,10 +606,6 @@ namespace YFSENSORS {
 
     
     ///////////////////// Output - MP3 audio playback module ///////////////////////
-
-    let AudioPlaybackPin_data = DigitalPin.P2;
-    let AudioPlaybackPin_busy = DigitalPin.P1;
-
     /**
      * Connects to the MP3 audio playback module at the specified pin.
      * @param pin_data data pin. eg: DigitalPin.P2
@@ -624,7 +623,6 @@ namespace YFSENSORS {
 
     /**
      * MP3 audio playback module send data.
-     * @param num number. eg: 0
      */
     function audioPlaybackModule_sendData(num: number): void {
         pins.digitalWritePin(AudioPlaybackPin_data, 1); 
@@ -649,7 +647,6 @@ namespace YFSENSORS {
 
     /**
      * Digital demolition
-     * @param n number. eg: 100
      */
     function splitToDigit (n: number): Array<number> {
         let num = []
@@ -672,10 +669,6 @@ namespace YFSENSORS {
     export function audioPlaybackModuleFunWithNum(specified_fun: AudioPlaybackFunWithNum, specified_track: number): void {
         let s_track = specified_track;
         let s_track_num = splitToDigit(s_track);
-        // while (s_track > 0) {
-        //     s_track_num.push(s_track % 10)
-        //     s_track = Math.floor(s_track / 10)
-        // }
         for (let index = s_track_num.length; index > 0; index--) {
             audioPlaybackModule_sendData(s_track_num[index]); // Select the music
         }
