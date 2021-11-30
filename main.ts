@@ -603,8 +603,6 @@ namespace YFSENSORS {
      * MP3 audio playback module send data.
      * @param num number. eg: 0
      */
-    //% group="Output"
-    //% blockId=YFSENSORS_audioPlaybackModule_sendData weight=88 blockGap=15
     function audioPlaybackModule_sendData(num: number): void {
         pins.digitalWritePin(AudioPlaybackPin_data, 1); 
         basic.pause(1);
@@ -627,6 +625,19 @@ namespace YFSENSORS {
     }
 
     /**
+     * Digital demolition
+     * @param n number. eg: 100
+     */
+    function splitToDigit (n: number): Array<number> {
+        let num = []
+        while (n > 0) {
+          num.push(n % 10)
+          n = n / 10
+        }
+        return num.reverse()
+    }
+
+    /**
      * MP3 audio playback module play specified track.
      * @param specified_track mp3 module specified track. eg: 0
      * @param specified_fun mp3 module specified function. eg: 0
@@ -636,19 +647,12 @@ namespace YFSENSORS {
     //% block="audio playback play %specified_fun| delay %delayt| ms"
     //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=10
     export function audioPlaybackModule(specified_track: number, specified_fun: number): void {
-        let s_track = 0;
-        if (specified_track < 10) {
-            s_track = specified_track;
-        } else if (specified_track >= 10 && specified_track < 100) {
-
-        } else if (specified_track >= 100 && specified_track < 1000) {
-
-        } else if (specified_track >= 1000 && specified_track < 10000) {
-
-        } else if (specified_track >= 10000 && specified_track < 100000) {
-
+        let s_track = specified_track;
+        let s_track_num = [];
+        s_track_num = splitToDigit(s_track);  // arrays
+        for (let index = 0; index < s_track_num.length; index++) {
+            audioPlaybackModule_sendData(s_track_num[index]); // Select the music
         }
-        audioPlaybackModule_sendData(s_track); // Select the music
         audioPlaybackModule_sendData(specified_fun);
     }
 
