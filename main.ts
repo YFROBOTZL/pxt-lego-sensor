@@ -651,7 +651,7 @@ namespace YFSENSORS {
      * Digital demolition
      * @param n number. eg: 100
      */
-    function splitToDigit (n: number): Array<number> {
+    function splitToDigit (n: number) {
         let num = []
         while (n > 0) {
           num.push(n % 10)
