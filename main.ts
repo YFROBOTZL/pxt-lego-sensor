@@ -571,7 +571,119 @@ namespace YFSENSORS {
     {
         return color;
     }
+    
+    /**
+     * Fixed voice broadcast module play.
+     * @param vbmPin pin. eg: DigitalPin.P2
+     * @param serial_number voice serial number. eg: 0
+     * @param delayt delay time. eg: 1000
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_voiceBroadcastModule weight=95 blockGap=15
+    //% block="voice broadcast %vbmPin| play %serial_number| delay %delayt| ms"
+    //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
+    export function voiceBroadcastModule(vbmPin: DigitalPin, serial_number: number, delayt: number): void {
+        pins.digitalWritePin(vbmPin, 0); 
+        basic.pause(3);
+        for (let index = 0; index < 8; index++) {
+            pins.digitalWritePin(vbmPin, 1); 
+            if(serial_number & 1){
+                control.waitMicros(2400);
+                pins.digitalWritePin(vbmPin, 0);
+                control.waitMicros(800);
+            } else {
+                control.waitMicros(800);
+                pins.digitalWritePin(vbmPin, 0);
+                control.waitMicros(2400);
+            } 
+            serial_number >>= 1;
+        }
+        pins.digitalWritePin(vbmPin, 1); 
 
+        basic.pause(delayt);
+    }
+
+    ///////////////////// Output - MP3 audio playback module ///////////////////////
+    /**
+     * Connects to the MP3 audio playback module at the specified pin.
+     * @param pin_data data pin. eg: DigitalPin.P2
+     * @param pin_busy busy pin. eg: DigitalPin.P1
+     */
+    //% group="Output"
+    //% blockId="YFSENSORS_audioPlaybackModule_connectPin" weight=90 blockGap=15
+    //% block="connect MP3 audio playback module at %pin_data and %pin_busy"
+    //% pin_data.fieldEditor="gridpicker" pin_data.fieldOptions.columns=4 pin_data.fieldOptions.tooltips="false"
+    //% pin_busy.fieldEditor="gridpicker" pin_busy.fieldOptions.columns=4 pin_busy.fieldOptions.tooltips="false"
+    export function audioPlaybackModule_connectPin(pin_data: DigitalPin, pin_busy: DigitalPin): void {
+        AudioPlaybackPin_data = pin_data;
+        AudioPlaybackPin_busy = pin_busy;
+    }
+
+    /**
+     * MP3 audio playback module send data.
+     */
+    function audioPlaybackModule_sendData(num: number): void {
+        pins.digitalWritePin(AudioPlaybackPin_data, 1); 
+        basic.pause(1);
+        pins.digitalWritePin(AudioPlaybackPin_data, 0); 
+        basic.pause(3);
+        for (let index = 0; index < 8; index++) {
+            pins.digitalWritePin(AudioPlaybackPin_data, 1); 
+            if(num & 1){
+                control.waitMicros(1200);
+                pins.digitalWritePin(AudioPlaybackPin_data, 0);
+                control.waitMicros(400);
+            } else {
+                control.waitMicros(400);
+                pins.digitalWritePin(AudioPlaybackPin_data, 0);
+                control.waitMicros(1200);
+            } 
+            num >>= 1;
+        }
+        pins.digitalWritePin(AudioPlaybackPin_data, 1); 
+    }
+
+    /**
+     * Digital demolition
+     */
+    function splitToDigit (n: number): Array<number> {
+        let num = []
+        while (n > 0) {
+          num.push(n % 10)
+          n = Math.floor(n / 10)
+        }
+        return num;
+    }
+
+    /**
+     * MP3 audio playback module play specified track.
+     * @param specified_fun mp3 module specified function code. eg: AudioPlaybackFunWithNum.SelectPlay
+     * @param specified_track mp3 module specified track number. eg: 0
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_audioPlaybackModuleFunWithNum weight=88 blockGap=15
+    //% block="audio playback %specified_fun| %specified_track"
+    //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=4
+    export function audioPlaybackModuleFunWithNum(specified_fun: AudioPlaybackFunWithNum, specified_track: number): void {
+        let s_track = specified_track;
+        let s_track_num = splitToDigit(s_track);
+        for (let index = s_track_num.length; index > 0; index--) {
+            audioPlaybackModule_sendData(s_track_num[index]); // Select the music
+        }
+        audioPlaybackModule_sendData(specified_fun);
+    }
+
+    /**
+     * MP3 audio playback module Playback settings.
+     * @param specified_fun mp3 module specified function code. eg: AudioPlaybackFun.Play
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_audioPlaybackModuleFun weight=86 blockGap=15
+    //% block="audio playback %specified_fun"
+    //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=4
+    export function audioPlaybackModuleFun(specified_fun: AudioPlaybackFun): void {
+        audioPlaybackModule_sendData(specified_fun);
+    }
 
     ///////////////////// Output - Traffic Light module ///////////////////////
     /**
