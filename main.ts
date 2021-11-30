@@ -651,13 +651,13 @@ namespace YFSENSORS {
      * Digital demolition
      * @param n number. eg: 100
      */
-    function splitToDigit (n: number) {
+    function splitToDigit (n: number): Array<number> {
         let num = []
         while (n > 0) {
           num.push(n % 10)
           n = Math.floor(n / 10)
         }
-        return num.reverse();
+        return num;
     }
 
     /**
@@ -671,11 +671,11 @@ namespace YFSENSORS {
     //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=4
     export function audioPlaybackModuleFunWithNum(specified_fun: AudioPlaybackFunWithNum, specified_track: number): void {
         let s_track = specified_track;
-        let s_track_num = [];
-        while (s_track > 0) {
-            s_track_num.push(s_track % 10)
-            s_track = Math.floor(s_track / 10)
-        }
+        let s_track_num = splitToDigit(s_track);
+        // while (s_track > 0) {
+        //     s_track_num.push(s_track % 10)
+        //     s_track = Math.floor(s_track / 10)
+        // }
         for (let index = s_track_num.length; index > 0; index--) {
             audioPlaybackModule_sendData(s_track_num[index]); // Select the music
         }
