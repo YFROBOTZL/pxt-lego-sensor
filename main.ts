@@ -600,20 +600,19 @@ namespace YFSENSORS {
     }
 
     /**
-     * MP3 audio playback module play specified track.
+     * MP3 audio playback module send data.
      * @param num number. eg: 0
      */
     //% group="Output"
     //% blockId=YFSENSORS_audioPlaybackModule_sendData weight=88 blockGap=15
-    //% block="audio playback play %specified_track| delay %delayt| ms"
-    function audioPlaybackModule_sendData(specified_track: number): void {
+    function audioPlaybackModule_sendData(num: number): void {
         pins.digitalWritePin(AudioPlaybackPin_data, 1); 
         basic.pause(1);
         pins.digitalWritePin(AudioPlaybackPin_data, 0); 
         basic.pause(3);
         for (let index = 0; index < 8; index++) {
             pins.digitalWritePin(AudioPlaybackPin_data, 1); 
-            if(specified_track & 1){
+            if(num & 1){
                 control.waitMicros(1200);
                 pins.digitalWritePin(AudioPlaybackPin_data, 0);
                 control.waitMicros(400);
@@ -622,7 +621,7 @@ namespace YFSENSORS {
                 pins.digitalWritePin(AudioPlaybackPin_data, 0);
                 control.waitMicros(1200);
             } 
-            specified_track >>= 1;
+            num >>= 1;
         }
         pins.digitalWritePin(AudioPlaybackPin_data, 1); 
     }
@@ -637,25 +636,8 @@ namespace YFSENSORS {
     //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=10
     export function audioPlaybackModule(specified_fun: number): void {
         let s_fun = specified_fun;
-        YFSENSORS.audioPlaybackModule_sendData(specified_fun);
-        pins.digitalWritePin(AudioPlaybackPin_data, 1); 
-        basic.pause(1);
-        pins.digitalWritePin(AudioPlaybackPin_data, 0); 
-        basic.pause(3);
-        for (let index = 0; index < 8; index++) {
-            pins.digitalWritePin(AudioPlaybackPin_data, 1); 
-            if(specified_track & 1){
-                control.waitMicros(1200);
-                pins.digitalWritePin(AudioPlaybackPin_data, 0);
-                control.waitMicros(400);
-            } else {
-                control.waitMicros(400);
-                pins.digitalWritePin(AudioPlaybackPin_data, 0);
-                control.waitMicros(1200);
-            } 
-            specified_track >>= 1;
-        }
-        pins.digitalWritePin(AudioPlaybackPin_data, 1); 
+        audioPlaybackModule_sendData(specified_fun);
+
     }
 
     ///////////////////// Output - Traffic Light module ///////////////////////
