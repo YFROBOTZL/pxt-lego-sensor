@@ -811,7 +811,7 @@ namespace YFSENSORS {
         let s_track = specified_track;
         let s_track_num = splitToDigit(s_track);
         control.waitMicros(10);
-        for (let index = s_track_num.length; index > 0; index--) {
+        for (let index = s_track_num.length-1; index >= 0; index--) {
             audioPlaybackModule_sendData(s_track_num[index]); // Select the music
             serial.writeLine("" + s_track_num[index]);
         }
@@ -843,7 +843,7 @@ namespace YFSENSORS {
         let s_track_num = splitToDigit(s_track);
         control.waitMicros(10);
         serial.writeLine("len: " + s_track_num.length);
-        for (let index = s_track_num.length; index > 0; index--) {
+        for (let index = s_track_num.length-1; index >= 0; index--) {
             audioPlaybackModule_sendData(s_track_num[index]); // Select the music
             serial.writeLine("x--" + s_track_num[index]);
         }
