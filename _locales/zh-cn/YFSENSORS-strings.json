@@ -61,6 +61,7 @@
   "YFSENSORS.digitalOutputModule|block":"连接%domPin|%dom|模块%sws",
   "YFSENSORS.voiceBroadcastModule|block":"语音播报 %vbmPin| 播放第 %serial_number|段并延时 %delayt| ms",
   "YFSENSORS.audioPlaybackModule_connectPin|block":"连接MP3音频播放模块到 %pin_data 和 %pin_busy",
+  "YFSENSORS.audioPlaybackModuleSelectTrackNum|block":"音频播放模块选择曲目：%specified_track",
   "YFSENSORS.AudioPlaybackFunWithNum.SelectPlay|block":"选曲播放",
   "YFSENSORS.AudioPlaybackFunWithNum.SetVolume|block":"设置音量",
   "YFSENSORS.AudioPlaybackFunWithNum.SetEQ|block":"设置EQ模式",

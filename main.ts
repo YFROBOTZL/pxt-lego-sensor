@@ -182,7 +182,7 @@ namespace YFSENSORS {
         OTPFVL_0C = 0x0C,
         //% blockId="YFDOM_OTPFVL_0D" block="晚上"
         OTPFVL_0D = 0x0D,
-        //% blockId="YFDOM_OTPFVL_0E" block="前方""
+        //% blockId="YFDOM_OTPFVL_0E" block="前方"
         OTPFVL_0E = 0x0E,
         //% blockId="YFDOM_OTPFVL_0F" block="厘米"
         OTPFVL_0F = 0x0F,
@@ -290,6 +290,127 @@ namespace YFSENSORS {
         OTPFVL_42 = 0x42,
         //% blockId="YFDOM_OTPFVL_43" block="世界那么大，我想去看看"
         OTPFVL_43 = 0x43,
+    }
+
+    export enum OTPFixedVoiceList2 {
+        //% blockId="YFDOM_OTPFVL_44" block="今天"
+        OTPFVL_44 = 0x44,
+        //% blockId="YFDOM_OTPFVL_45" block="年"
+        OTPFVL_45 = 0x45,
+        //% blockId="YFDOM_OTPFVL_46" block="月"
+        OTPFVL_46 = 0x46,
+        //% blockId="YFDOM_OTPFVL_47" block="日"
+        OTPFVL_47 = 0x47,
+        //% blockId="YFDOM_OTPFVL_48" block="星期"
+        OTPFVL_48 = 0x48,
+        //% blockId="YFDOM_OTPFVL_49" block="农历"
+        OTPFVL_49 = 0x49,
+        //% blockId="YFDOM_OTPFVL_4A" block="现在时刻"
+        OTPFVL_4A = 0x4A,
+        //% blockId="YFDOM_OTPFVL_4B" block="北京时间"
+        OTPFVL_4B = 0x4B,
+        //% blockId="YFDOM_OTPFVL_4C" block="整"
+        OTPFVL_4C = 0x4C,
+        //% blockId="YFDOM_OTPFVL_4D" block="度"
+        OTPFVL_4D = 0x4D,
+        //% blockId="YFDOM_OTPFVL_4E" block="百分之"
+        OTPFVL_4E = 0x4E,
+        //% blockId="YFDOM_OTPFVL_4F" block="距离"
+        OTPFVL_4F = 0x4F,
+        //% blockId="YFDOM_OTPFVL_50" block="厘米"
+        OTPFVL_50 = 0x50,
+        //% blockId="YFDOM_OTPFVL_51" block="明天"
+        OTPFVL_51 = 0x51,
+        //% blockId="YFDOM_OTPFVL_52" block="天气"
+        OTPFVL_52 = 0x52,
+        //% blockId="YFDOM_OTPFVL_53" block="白天"
+        OTPFVL_53 = 0x53,
+        //% blockId="YFDOM_OTPFVL_54" block="夜间"
+        OTPFVL_54 = 0x54,
+        //% blockId="YFDOM_OTPFVL_55" block="晴"
+        OTPFVL_55 = 0x55,
+        //% blockId="YFDOM_OTPFVL_56" block="多云"
+        OTPFVL_56 = 0x56,
+        //% blockId="YFDOM_OTPFVL_57" block="阴"
+        OTPFVL_57 = 0x57,
+        //% blockId="YFDOM_OTPFVL_58" block="雨"
+        OTPFVL_58 = 0x58,
+        //% blockId="YFDOM_OTPFVL_59" block="雷阵"
+        OTPFVL_59 = 0x59,
+        //% blockId="YFDOM_OTPFVL_5A" block="小"
+        OTPFVL_5A = 0x5A,
+        //% blockId="YFDOM_OTPFVL_5B" block="中"
+        OTPFVL_5B = 0x5B,
+        //% blockId="YFDOM_OTPFVL_5C" block="大"
+        OTPFVL_5C = 0x5C,
+        //% blockId="YFDOM_OTPFVL_5D" block="夹"
+        OTPFVL_5D = 0x5D,
+        //% blockId="YFDOM_OTPFVL_5E" block="雪""
+        OTPFVL_5E = 0x5E,
+        //% blockId="YFDOM_OTPFVL_5F" block="雾"
+        OTPFVL_5F = 0x5F,
+        //% blockId="YFDOM_OTPFVL_60" block="霾"
+        OTPFVL_60 = 0x60,
+        //% blockId="YFDOM_OTPFVL_61" block="风"
+        OTPFVL_61 = 0x61,
+        //% blockId="YFDOM_OTPFVL_62" block="东"
+        OTPFVL_62 = 0x62,
+        //% blockId="YFDOM_OTPFVL_63" block="南"
+        OTPFVL_63 = 0x63,
+        //% blockId="YFDOM_OTPFVL_64" block="西"
+        OTPFVL_64 = 0x64,
+        //% blockId="YFDOM_OTPFVL_65" block="北"
+        OTPFVL_65 = 0x65,
+        //% blockId="YFDOM_OTPFVL_66" block="到"
+        OTPFVL_66 = 0x66,
+        //% blockId="YFDOM_OTPFVL_67" block="级"
+        OTPFVL_67 = 0x67,
+        //% blockId="YFDOM_OTPFVL_68" block="偏"
+        OTPFVL_68 = 0x68,
+        //% blockId="YFDOM_OTPFVL_69" block="方向"
+        OTPFVL_69 = 0x69,
+        //% blockId="YFDOM_OTPFVL_6A" block="空气质量"
+        OTPFVL_6A = 0x6A,
+        //% blockId="YFDOM_OTPFVL_6B" block="优"
+        OTPFVL_6B = 0x6B,
+        //% blockId="YFDOM_OTPFVL_6C" block="良"
+        OTPFVL_6C = 0x6C,
+        //% blockId="YFDOM_OTPFVL_6D" block="轻度污染"
+        OTPFVL_6D = 0x6D,
+        //% blockId="YFDOM_OTPFVL_6E" block="中度污染"
+        OTPFVL_6E = 0x6E,
+        //% blockId="YFDOM_OTPFVL_6F" block="重度污染"
+        OTPFVL_6F = 0x6F,
+        //% blockId="YFDOM_OTPFVL_70" block="上"
+        OTPFVL_70 = 0x70,
+        //% blockId="YFDOM_OTPFVL_71" block="下"
+        OTPFVL_71 = 0x71,
+        //% blockId="YFDOM_OTPFVL_72" block="接近"
+        OTPFVL_72 = 0x72,
+        //% blockId="YFDOM_OTPFVL_73" block="远离"
+        OTPFVL_73 = 0x73,
+        //% blockId="YFDOM_OTPFVL_74" block="灯"
+        OTPFVL_74 = 0x74,
+        //% blockId="YFDOM_OTPFVL_75" block="风扇"
+        OTPFVL_75 = 0x75,
+        //% blockId="YFDOM_OTPFVL_76" block="红色"
+        OTPFVL_76 = 0x76,
+        //% blockId="YFDOM_OTPFVL_77" block="绿色"
+        OTPFVL_77 = 0x77,
+        //% blockId="YFDOM_OTPFVL_78" block="蓝色"
+        OTPFVL_78 = 0x78,
+        //% blockId="YFDOM_OTPFVL_79" block="黄色"
+        OTPFVL_79 = 0x79,
+        //% blockId="YFDOM_OTPFVL_7A" block="白色"
+        OTPFVL_7A = 0x7A,
+        //% blockId="YFDOM_OTPFVL_7B" block="叮音效"
+        OTPFVL_7B = 0x7B,
+        //% blockId="YFDOM_OTPFVL_7C" block="滴滴滴"
+        OTPFVL_7C = 0x7C,
+        //% blockId="YFDOM_OTPFVL_7D" block="叮叮音效"
+        OTPFVL_7D = 0x7D,
+        //% blockId="YFDOM_OTPFVL_7E" block="叮叮音效"
+        OTPFVL_7E = 0x7E
     }
 
     enum Melodies {
@@ -547,9 +668,21 @@ namespace YFSENSORS {
      */
     //% group="Output"
     //% blockId=YFSENSORS_OTPFixedVoiceListNum weight=94 blockGap=15
+    //% block="%num| "
+    //% num.fieldEditor="gridpicker" num.fieldOptions.columns=7
+    export function OTPFixedVoiceListNum(num: OTPFixedVoiceList): number {
+        return num;
+    }
+
+    /**
+     * Returns the serial number of OTP fixed voice list.
+     * @param num Standard RGB Led Colours eg: #ff0000
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_OTPFixedVoiceListNum2 weight=93 blockGap=15
     //% block="%num"
     //% num.fieldEditor="gridpicker" num.fieldOptions.columns=10
-    export function OTPFixedVoiceListNum(num: OTPFixedVoiceList): number {
+    export function OTPFixedVoiceListNum2(num: OTPFixedVoiceList2): number {
         return num;
     }
 
@@ -558,7 +691,7 @@ namespace YFSENSORS {
       * @param color Standard RGB Led Colours eg: #ff0000
       */
     //% group="Output"
-    //% blockId="YFSENSORS_bb_colours" weight=93 blockGap=15
+    //% blockId="YFSENSORS_bb_colours" weight=92 blockGap=15
     //% block=%color
     //% shim=TD_ID colorSecondary="#e7660b"
     //% color.fieldEditor="colornumber"
@@ -657,6 +790,22 @@ namespace YFSENSORS {
     }
 
     /**
+     * MP3 audio playback module select specified track(0-255) with no play.
+     * @param specified_track mp3 module specified track number. eg: 0
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_audioPlaybackModuleSelectTrackNum weight=87 blockGap=15
+    //% block="audio playback select specified track %specified_track| no play"
+    //% specified_track.min=0 specified_track.max=255
+    export function audioPlaybackModuleSelectTrackNum(specified_track: number): void {
+        let s_track = specified_track;
+        let s_track_num = splitToDigit(s_track);
+        for (let index = s_track_num.length; index > 0; index--) {
+            audioPlaybackModule_sendData(s_track_num[index]); // Select the music
+        }
+    }
+
+    /**
      * MP3 audio playback module play specified track.
      * @param specified_fun mp3 module specified function code. eg: AudioPlaybackFunWithNum.SelectPlay
      * @param specified_track mp3 module specified track number. eg: 0
@@ -665,10 +814,20 @@ namespace YFSENSORS {
     //% blockId=YFSENSORS_audioPlaybackModuleFunWithNum weight=88 blockGap=15
     //% block="audio playback %specified_fun| %specified_track"
     //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=2
+    //% specified_track.min=0
     export function audioPlaybackModuleFunWithNum(specified_fun: AudioPlaybackFunWithNum, specified_track: number): void {
+        if (specified_fun == AudioPlaybackFunWithNum.SelectPlay || specified_fun == AudioPlaybackFunWithNum.SetInsertTrack) {
+            specified_track = Math.min(specified_track, 255);
+        } else if (specified_fun == AudioPlaybackFunWithNum.SetVolume) {
+            specified_track = Math.min(specified_track, 30);
+        } else if (specified_fun == AudioPlaybackFunWithNum.SetEQ) {
+            specified_track = Math.min(specified_track, 4);
+        } else if (specified_fun == AudioPlaybackFunWithNum.SetPlayMode) {
+            specified_track = Math.min(specified_track, 7);
+        }
+
         let s_track = specified_track;
         let s_track_num = splitToDigit(s_track);
-
         serial.writeLine("" + s_track_num.length);
         for (let index = s_track_num.length; index > 0; index--) {
             audioPlaybackModule_sendData(s_track_num[index]); // Select the music
