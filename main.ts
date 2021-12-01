@@ -649,9 +649,9 @@ namespace YFSENSORS {
     function splitToDigit (n: number): Array<number> {
         let num = []
         while (n > 0) {
+            serial.writeLine("" + n);
             num.push(n % 10)
             n = Math.floor(n / 10)
-            serial.writeLine("" + s_track_num);
         }
         return num;
     }
