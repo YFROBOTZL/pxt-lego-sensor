@@ -771,7 +771,7 @@ namespace YFSENSORS {
         basic.pause(3);
         for (let index = 0; index < 8; index++) {
             pins.digitalWritePin(AudioPlaybackPin_data, 1); 
-            if(num & 1){
+            if (num & 1) {
                 control.waitMicros(1200);
                 pins.digitalWritePin(AudioPlaybackPin_data, 0);
                 control.waitMicros(400);
@@ -791,7 +791,7 @@ namespace YFSENSORS {
     function splitToDigit (n: number): Array<number> {
         let num = []
         while (n > 0) {
-            serial.writeLine("" + n);
+            serial.writeLine("n--" + n);
             num.push(n % 10)
             n = Math.floor(n / 10)
         }
@@ -842,10 +842,10 @@ namespace YFSENSORS {
         let s_track = specified_track;
         let s_track_num = splitToDigit(s_track);
         control.waitMicros(10);
-        // serial.writeLine("" + s_track_num.length);
+        serial.writeLine("len: " + s_track_num.length);
         for (let index = s_track_num.length; index > 0; index--) {
             audioPlaybackModule_sendData(s_track_num[index]); // Select the music
-            serial.writeLine("" + s_track_num[index]);
+            serial.writeLine("x--" + s_track_num[index]);
         }
         audioPlaybackModule_sendData(specified_fun);
     }
