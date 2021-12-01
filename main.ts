@@ -690,6 +690,7 @@ namespace YFSENSORS {
       * Get numeric value of colour
       * @param color Standard RGB Led Colours eg: #ff0000
       */
+    //% advanced=true
     //% group="Output"
     //% blockId="YFSENSORS_bb_colours" weight=92 blockGap=15
     //% block=%color
