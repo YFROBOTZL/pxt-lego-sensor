@@ -668,6 +668,8 @@ namespace YFSENSORS {
         let s_track = specified_track;
         let s_track_num = splitToDigit(s_track);
         serial.writeLine("" + s_track_num);
+
+        serial.writeLine("" + s_track_num.length);
         for (let index = s_track_num.length; index > 0; index--) {
             audioPlaybackModule_sendData(s_track_num[index]); // Select the music
         }
