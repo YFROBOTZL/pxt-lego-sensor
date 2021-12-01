@@ -484,6 +484,13 @@ namespace YFSENSORS {
         //% blockId="YFAPF_StopInsertTrack" block="Stop Insert Track"
         StopInsertTrack = 0x1C,
     }
+
+    export enum MVModule {
+        //% blockId="YFMVM_MP3_AUDIO" block="MP3 Audio"
+        MP3_AUDIO,
+        //% blockId="YFMVM_VOICE_BROADCAST" block="Voice Broadcast"
+        VOICE_BROADCAST
+    }
     
     /*************************  Output - Traffic Light LED Mode *************************/
     export enum TrafficLightLED {
@@ -546,7 +553,7 @@ namespace YFSENSORS {
     export enum DigitalInputEvent {
         //% block=touched
         Clicked = DAL.MICROBIT_BUTTON_EVT_CLICK,  // MICROBIT_BUTTON_EVT_CLICK
-    };
+    }
 
     export enum SwitchState {
         //% blockId="YF_ON" block="ON"
