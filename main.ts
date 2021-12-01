@@ -599,7 +599,6 @@ namespace YFSENSORS {
     
     ///////////////////// Output - MP3 audio playback module ///////////////////////
     let AudioPlaybackPin_data = DigitalPin.P2;
-    let AudioPlaybackPin_busy = DigitalPin.P1;
 
     
     ///////////////////// Output - MOTOR DRIVE PIN ///////////////////////
@@ -752,16 +751,13 @@ namespace YFSENSORS {
     /**
      * Connects the MP3 audio playback module to the specified pin.
      * @param pin_data data pin. eg: DigitalPin.P2
-     * @param pin_busy busy pin. eg: DigitalPin.P1
      */
     //% group="Output"
     //% blockId="YFSENSORS_audioPlaybackModule_connectPin" weight=90 blockGap=15
-    //% block="connect MP3 audio playback module at %pin_data and %pin_busy"
+    //% block="connect MP3 audio playback module at %pin_data"
     //% pin_data.fieldEditor="gridpicker" pin_data.fieldOptions.columns=4 pin_data.fieldOptions.tooltips="false"
-    //% pin_busy.fieldEditor="gridpicker" pin_busy.fieldOptions.columns=4 pin_busy.fieldOptions.tooltips="false"
-    export function audioPlaybackModule_connectPin(pin_data: DigitalPin, pin_busy: DigitalPin): void {
+    export function audioPlaybackModule_connectPin(pin_data: DigitalPin): void {
         AudioPlaybackPin_data = pin_data;
-        AudioPlaybackPin_busy = pin_busy;
     }
 
     /**
@@ -812,11 +808,14 @@ namespace YFSENSORS {
     //% specified_track.min=0 specified_track.max=255
     export function audioPlaybackModuleSelectTrackNum(specified_track: number): void {
         let s_track = specified_track;
-        let s_track_num = splitToDigit(s_track);
-        control.waitMicros(10);
-        for (let index = s_track_num.length-1; index >= 0; index--) {
-            audioPlaybackModule_sendData(s_track_num[index]); // Select the music
-            serial.writeLine("" + s_track_num[index]);
+        if(s_track < 10){
+            let s_track_num = splitToDigit(s_track);
+            control.waitMicros(10);
+            for (let index = s_track_num.length-1; index >= 0; index--) {
+                audioPlaybackModule_sendData(s_track_num[index]); // Select the music
+            }
+        } else {
+            audioPlaybackModule_sendData(s_track); // Select the music
         }
     }
 
@@ -837,18 +836,19 @@ namespace YFSENSORS {
             if (specified_track>= 30) specified_track = 30;
         } else if (specified_fun == AudioPlaybackFunWithNum.SetEQ) {
             if (specified_track>= 4) specified_track = 4;
-            // specified_track = Math.min(specified_track, 4);
         } else if (specified_fun == AudioPlaybackFunWithNum.SetPlayMode) {
             if (specified_track>= 7) specified_track = 7;
-            // specified_track = Math.min(specified_track, 7);
         }
+        
         let s_track = specified_track;
-        let s_track_num = splitToDigit(s_track);
-        control.waitMicros(10);
-        serial.writeLine("len: " + s_track_num.length);
-        for (let index = s_track_num.length-1; index >= 0; index--) {
-            audioPlaybackModule_sendData(s_track_num[index]); // Select the music
-            serial.writeLine("x--" + s_track_num[index]);
+        if(s_track < 10){
+            let s_track_num = splitToDigit(s_track);
+            control.waitMicros(10);
+            for (let index = s_track_num.length-1; index >= 0; index--) {
+                audioPlaybackModule_sendData(s_track_num[index]); // Select the music
+            }
+        } else {
+            audioPlaybackModule_sendData(s_track); // Select the music
         }
         audioPlaybackModule_sendData(specified_fun);
     }
@@ -863,6 +863,25 @@ namespace YFSENSORS {
     //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=3
     export function audioPlaybackModuleFun(specified_fun: AudioPlaybackFun): void {
         audioPlaybackModule_sendData(specified_fun);
+    }
+
+    
+    /**
+     * Read the Busy Pin of the MP3 audio playback module or the Fixed voice broadcast.
+     * @param pin_busy busy pin. eg: DigitalPin.P1
+     * @param m_busy mp3 module or voice broadcast. eg: MVModule.MP3_AUDIO
+     */
+    //% advanced=true
+    //% blockId=YFSENSORS_readBusyPin weight=87 blockGap=15
+    //% block="%m_busy read busy pin %pin_busy"
+    //% pin_busy.fieldEditor="gridpicker" pin_busy.fieldOptions.columns=4
+    //% m_busy.fieldEditor="gridpicker" m_busy.fieldOptions.columns=2
+    export function readBusyPin(m_busy: MVModule, pin_busy: DigitalPin): boolean {
+        let m_busyM = m_busy;  // no work
+        let a: number = pins.digitalReadPin(pin_busy);
+        if (a == 1) {
+            return true;
+        } else return false;
     }
 
     ///////////////////// Output - Traffic Light module ///////////////////////
