@@ -802,6 +802,7 @@ namespace YFSENSORS {
      * MP3 audio playback module select specified track(0-255) with no play.
      * @param specified_track mp3 module specified track number. eg: 0
      */
+    //% advanced=true
     //% group="Output"
     //% blockId=YFSENSORS_audioPlaybackModuleSelectTrackNum weight=87 blockGap=15
     //% block="audio playback select specified track %specified_track| no play"
@@ -809,6 +810,7 @@ namespace YFSENSORS {
     export function audioPlaybackModuleSelectTrackNum(specified_track: number): void {
         let s_track = specified_track;
         let s_track_num = splitToDigit(s_track);
+        control.waitMicros(10);
         for (let index = s_track_num.length; index > 0; index--) {
             audioPlaybackModule_sendData(s_track_num[index]); // Select the music
         }
@@ -834,10 +836,10 @@ namespace YFSENSORS {
         } else if (specified_fun == AudioPlaybackFunWithNum.SetPlayMode) {
             specified_track = Math.min(specified_track, 7);
         }
-
         let s_track = specified_track;
         let s_track_num = splitToDigit(s_track);
-        serial.writeLine("" + s_track_num.length);
+        control.waitMicros(10);
+        // serial.writeLine("" + s_track_num.length);
         for (let index = s_track_num.length; index > 0; index--) {
             audioPlaybackModule_sendData(s_track_num[index]); // Select the music
         }
