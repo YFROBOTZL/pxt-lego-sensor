@@ -10,12 +10,6 @@
  * @date  2021-11-23
 */
 
-// motor pin 
-let YFSENSORSMotor1D = DigitalPin.P13
-let YFSENSORSMotor1A = AnalogPin.P14
-let YFSENSORSMotor2D = DigitalPin.P15
-let YFSENSORSMotor2A = AnalogPin.P16
-
 //% color="#45b787" weight=10 icon="\uf12e"
 namespace YFSENSORS {
 
@@ -561,6 +555,13 @@ namespace YFSENSORS {
         OFF = 0x1
     }
 
+    export enum MotorsPin {
+        //% blockId="M1Motor" block="M1"
+        M1 = 0,
+        //% blockId="M2Motor" block="M2"
+        M2 = 1
+    }
+
     export enum Motors {
         //% blockId="M1Motor" block="M1"
         M1 = 0,
@@ -599,6 +600,13 @@ namespace YFSENSORS {
     ///////////////////// Output - MP3 audio playback module ///////////////////////
     let AudioPlaybackPin_data = DigitalPin.P2;
     let AudioPlaybackPin_busy = DigitalPin.P1;
+
+    
+    ///////////////////// Output - MOTOR DRIVE PIN ///////////////////////
+    let YFSENSORSMotor1D = DigitalPin.P13
+    let YFSENSORSMotor1A = AnalogPin.P14
+    let YFSENSORSMotor2D = DigitalPin.P15
+    let YFSENSORSMotor2A = AnalogPin.P16
 
     /////////////////////// DigitalTubes ///////////////////////
     let PINDIO = DigitalPin.P1;
@@ -739,7 +747,7 @@ namespace YFSENSORS {
 
     ///////////////////// Output - MP3 audio playback module ///////////////////////
     /**
-     * Connects to the MP3 audio playback module at the specified pin.
+     * Connects the MP3 audio playback module to the specified pin.
      * @param pin_data data pin. eg: DigitalPin.P2
      * @param pin_busy busy pin. eg: DigitalPin.P1
      */
@@ -883,6 +891,26 @@ namespace YFSENSORS {
     }
 
     ///////////////////// Output - Motor ///////////////////////
+    /**
+     * Connects the Motor drive module to the specified pin.
+     * @param pin_dir dir pin. eg: DigitalPin.P15
+     * @param pin_pwm pwm pin. eg: DigitalPin.P16
+     */
+    //% group="Output"
+    //% blockId="YFSENSORS_motorConnectPin" weight=11 blockGap=15
+    //% block="connect Motor drive DIR %pin_dir| PWM %pin_pwm"
+    //% pin_dir.fieldEditor="gridpicker" pin_dir.fieldOptions.columns=4 pin_dir.fieldOptions.tooltips="false"
+    //% pin_pwm.fieldEditor="gridpicker" pin_pwm.fieldOptions.columns=4 pin_pwm.fieldOptions.tooltips="false"
+    export function motorConnectPin(w_M: MotorsPin, pin_dir: DigitalPin, pin_pwm: AnalogPin): void {
+        if (w_M == MotorsPin.M1) {
+            YFSENSORSMotor1D = pin_dir
+            YFSENSORSMotor1A = pin_pwm
+        } else if (w_M == MotorsPin.M2) {
+            YFSENSORSMotor2D = pin_dir
+            YFSENSORSMotor2A = pin_pwm
+        }
+    }
+
     function clamp(value: number, min: number, max: number): number {
         return Math.max(Math.min(max, value), min);
     }
@@ -1103,7 +1131,7 @@ namespace YFSENSORS {
 
     ///////////////////// DigitalTubes ///////////////////////
     /**
-     * Connects to the digital tube module at the specified pin.
+     * Connects the digital tube module to the specified pin.
      * @param pin_d DIO pin. eg: DigitalPin.P1
      * @param pin_c CLK pin. eg: DigitalPin.P2
      */
