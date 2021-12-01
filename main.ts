@@ -667,6 +667,7 @@ namespace YFSENSORS {
     export function audioPlaybackModuleFunWithNum(specified_fun: AudioPlaybackFunWithNum, specified_track: number): void {
         let s_track = specified_track;
         let s_track_num = splitToDigit(s_track);
+        serial.writeLine("" + s_track_num);
         for (let index = s_track_num.length; index > 0; index--) {
             audioPlaybackModule_sendData(s_track_num[index]); // Select the music
         }
