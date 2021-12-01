@@ -9,6 +9,7 @@
   "YFSENSORS.irButton": "返回上次按下的IR按钮的代码。如果尚未按下任何按钮，则返回-1（IrButton.Any）。",
   "YFSENSORS.irButtonCode": "返回特定IR按钮的命令代码。",
   "YFSENSORS.irButtonCode|param|button": "按钮。",
+  "YFSENSORS.motorConnectPin": "将电机驱动模块连接到指定的引脚。",
   "YFSENSORS.motorRun": "设置YFSENSORS电机的方向和速度。",
   "YFSENSORS.motorRun|param|direction": "方向；例如：正转",
   "YFSENSORS.motorRun|param|index": "电机 m1/m2/all；例如：MAll",
@@ -44,8 +45,11 @@
   "YFSENSORS.audioPlaybackModule_connectPin": "音频播放模块引脚设置",
   "YFSENSORS.audioPlaybackModuleFunWithNum": "音频播放模块搭配数字的功能",
   "YFSENSORS.audioPlaybackModuleFun": "音频播放模块直接设置的功能",
+  "YFSENSORS.voiceRecorderModule": "录放模块播放录像机一次或循环，启用或禁用扬声器。",
   "YFSENSORS.trafficLightModule": "交通灯模块点亮红、绿、黄灯",
   "YFSENSORS.analogInputModule": "读取模拟输入型传感器模块",
   "YFSENSORS.digitalInputModule": "读取数字输入型传感器模块",
-  "YFSENSORS.onEvent": "数字输入型事件"
+  "YFSENSORS.onEvent": "数字输入型事件",
+  "YFSENSORS.dht11Sensor": "获得DHT11传感器的温度或湿度。"
+
 }

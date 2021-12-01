@@ -1104,21 +1104,17 @@ namespace YFSENSORS {
         // control.onEvent(<number>dimEPin, <number>DAL.MICROBIT_BUTTON_EVT_CLICK, handler); // register handler
     }
 
-    /**
-     * Checks whether the crash sensor is currently pressed.
-     */
-    /**
-     * Checks whether the motion sensor is currently detecting any motion.
-     */
+    // Checks whether the crash sensor is currently pressed.
+    // Checks whether the motion sensor is currently detecting any motion.
     
     ///////////////////// Input DHT11 Sensors ///////////////////////
     /**
-     * Send a ping and get the echo time (in microseconds) as a result
+     * Get the temperature or humidity of the dht11 sensor.
      * @param pin pin. eg: DigitalPin.P2
      * @param dht11state echo pin. eg: DHT11_state.DHT11_temperature_C
      */
-    //% blockId=YFSENSORS_read_dht11
-    //% block="DHT11 sensor %pin %dht11state value" weight=82 blockGap=15
+    //% blockId=YFSENSORS_read_dht11 weight=82 blockGap=15
+    //% block="DHT11 sensor %pin %dht11state value"
     //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4
     //% dht11state.fieldEditor="gridpicker" dht11state.fieldOptions.columns=1
     //% inlineInputMode=inline
