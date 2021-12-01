@@ -677,7 +677,7 @@ namespace YFSENSORS {
     //% group="Output"
     //% blockId=YFSENSORS_OTPFixedVoiceListNum weight=94 blockGap=15
     //% block="%num| "
-    //% num.fieldEditor="gridpicker" num.fieldOptions.columns=7
+    //% num.fieldEditor="gridpicker" num.fieldOptions.columns=10
     export function OTPFixedVoiceListNum(num: OTPFixedVoiceList): number {
         return num;
     }
@@ -722,7 +722,7 @@ namespace YFSENSORS {
      */
     //% group="Output"
     //% blockId=YFSENSORS_voiceBroadcastModule weight=95 blockGap=15
-    //% block="voice broadcast %vbmPin| play %serial_number| delay %delayt| ms"
+    //% block="voice broadcast %vbmPin| play %serial_number=YFSENSORS_OTPFixedVoiceListNum| delay %delayt| ms"
     //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
     export function voiceBroadcastModule(vbmPin: DigitalPin, serial_number: number, delayt: number): void {
         pins.digitalWritePin(vbmPin, 0); 
@@ -898,7 +898,7 @@ namespace YFSENSORS {
      */
     //% group="Output"
     //% blockId="YFSENSORS_motorConnectPin" weight=11 blockGap=15
-    //% block="connect Motor drive DIR %pin_dir| PWM %pin_pwm"
+    //% block="connect Motor drive %w_M| DIR %pin_dir| PWM %pin_pwm"
     //% pin_dir.fieldEditor="gridpicker" pin_dir.fieldOptions.columns=4 pin_dir.fieldOptions.tooltips="false"
     //% pin_pwm.fieldEditor="gridpicker" pin_pwm.fieldOptions.columns=4 pin_pwm.fieldOptions.tooltips="false"
     export function motorConnectPin(w_M: MotorsPin, pin_dir: DigitalPin, pin_pwm: AnalogPin): void {
