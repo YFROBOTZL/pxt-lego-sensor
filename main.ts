@@ -828,13 +828,15 @@ namespace YFSENSORS {
     //% specified_track.min=0
     export function audioPlaybackModuleFunWithNum(specified_fun: AudioPlaybackFunWithNum, specified_track: number): void {
         if (specified_fun == AudioPlaybackFunWithNum.SelectPlay || specified_fun == AudioPlaybackFunWithNum.SetInsertTrack) {
-            specified_track = Math.min(specified_track, 255);
+            if (specified_track>= 255) specified_track = 255;
         } else if (specified_fun == AudioPlaybackFunWithNum.SetVolume) {
-            specified_track = Math.min(specified_track, 30);
+            if (specified_track>= 30) specified_track = 30;
         } else if (specified_fun == AudioPlaybackFunWithNum.SetEQ) {
-            specified_track = Math.min(specified_track, 4);
+            if (specified_track>= 4) specified_track = 4;
+            // specified_track = Math.min(specified_track, 4);
         } else if (specified_fun == AudioPlaybackFunWithNum.SetPlayMode) {
-            specified_track = Math.min(specified_track, 7);
+            if (specified_track>= 7) specified_track = 7;
+            // specified_track = Math.min(specified_track, 7);
         }
         let s_track = specified_track;
         let s_track_num = splitToDigit(s_track);
