@@ -813,6 +813,7 @@ namespace YFSENSORS {
         control.waitMicros(10);
         for (let index = s_track_num.length; index > 0; index--) {
             audioPlaybackModule_sendData(s_track_num[index]); // Select the music
+            serial.writeLine("" + s_track_num[index]);
         }
     }
 
@@ -844,7 +845,6 @@ namespace YFSENSORS {
         // serial.writeLine("" + s_track_num.length);
         for (let index = s_track_num.length; index > 0; index--) {
             audioPlaybackModule_sendData(s_track_num[index]); // Select the music
-            
             serial.writeLine("" + s_track_num[index]);
         }
         audioPlaybackModule_sendData(specified_fun);
