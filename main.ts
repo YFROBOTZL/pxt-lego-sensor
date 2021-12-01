@@ -718,13 +718,14 @@ namespace YFSENSORS {
      * Fixed voice broadcast module play.
      * @param vbmPin pin. eg: DigitalPin.P2
      * @param serial_number voice serial number. eg: 0
-     * @param delayt delay time. eg: 1000
+     * @param delayt delay time. eg: 50
      */
     //% group="Output"
     //% blockId=YFSENSORS_voiceBroadcastModule weight=95 blockGap=15
-    //% block="voice broadcast %vbmPin| play %serial_number=YFSENSORS_OTPFixedVoiceListNum| delay %delayt| ms"
+    //% block="voice broadcast %vbmPin| play %serial_number=YFSENSORS_OTPFixedVoiceListNum || delay %delayt| ms \\%"
     //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
-    export function voiceBroadcastModule(vbmPin: DigitalPin, serial_number: number, delayt: number): void {
+    //% inlineInputMode=inline
+    export function voiceBroadcastModule(vbmPin: DigitalPin, serial_number: number, delayt: number = 50): void {
         pins.digitalWritePin(vbmPin, 0); 
         basic.pause(3);
         for (let index = 0; index < 8; index++) {
@@ -741,8 +742,10 @@ namespace YFSENSORS {
             serial_number >>= 1;
         }
         pins.digitalWritePin(vbmPin, 1); 
-
-        basic.pause(delayt);
+        
+        if (delayt >= 50 ) {
+            basic.pause(delayt);
+        }
     }
 
     ///////////////////// Output - MP3 audio playback module ///////////////////////

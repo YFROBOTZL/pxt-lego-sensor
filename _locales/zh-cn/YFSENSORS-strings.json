@@ -54,7 +54,7 @@
   "YFSENSORS.DigitalOutputModule.BUZZER|block":"蜂鸣器",
   "YFSENSORS.DigitalOutputModule.RELAY|block":"继电器",
   "YFSENSORS.digitalOutputModule|block":"连接%domPin|%dom|模块%sws",
-  "YFSENSORS.voiceBroadcastModule|block":"语音播报 %vbmPin| 播放 %serial_number=YFSENSORS_OTPFixedVoiceListNum| 并延时 %delayt| ms",
+  "YFSENSORS.voiceBroadcastModule|block":"语音播报 %vbmPin| 播放 %serial_number=YFSENSORS_OTPFixedVoiceListNum || 并延时 %delayt| ms \\%",
   "YFSENSORS.audioPlaybackModule_connectPin|block":"连接MP3音频播放模块到 %pin_data 和 %pin_busy",
   "YFSENSORS.audioPlaybackModuleSelectTrackNum|block":"音频播放模块选择曲目：%specified_track",
   "YFSENSORS.AudioPlaybackFunWithNum.SelectPlay|block":"选曲播放",
