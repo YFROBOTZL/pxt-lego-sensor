@@ -491,6 +491,18 @@ namespace YFSENSORS {
         //% blockId="YFMVM_VOICE_BROADCAST" block="Voice Broadcast"
         VOICE_BROADCAST
     }
+
+    /*************************  Output - Voice Recorder Module *************************/
+    export enum VRMFunction {
+        //% blockId="YFVRM_PLAY_ONCE" block="Play Once"
+        PLAY_ONCE,
+        //% blockId="YFVRM_PLAY_LOOP" block="Play loop(Stop with power off)"
+        PLAY_LOOP,
+        //% blockId="YFVRM_SPEAKER_ENABLE" block="Speaker Enable"
+        SPEAKER_ENABLE,
+        //% blockId="YFVRM_SPEAKER_DISABLE" block="Speaker Disable"
+        SPEAKER_DISABLE
+    }
     
     /*************************  Output - Traffic Light LED Mode *************************/
     export enum TrafficLightLED {
@@ -872,7 +884,6 @@ namespace YFSENSORS {
         audioPlaybackModule_sendData(specified_fun);
     }
 
-    
     /**
      * Read the Busy Pin of the MP3 audio playback module or the Fixed voice broadcast.
      * @param pin_busy busy pin. eg: DigitalPin.P1
@@ -889,6 +900,36 @@ namespace YFSENSORS {
         if (a == 1) {
             return true;
         } else return false;
+    }
+    
+    ///////////////////// Output - Voice Recorder Module ///////////////////////
+    /**
+     * voice recorder module play recorder once or loop, enable or disable speaker.
+     * @param pin_vrm busy pin. eg: DigitalPin.P1
+     * @param vrmfun voice recorder module function. eg: VRMFunction.PLAY_ONCE
+     */
+    //% blockId=YFSENSORS_voiceRecorderModule weight=84 blockGap=15
+    //% block="voice recorder module %pin_vrm| %vrmfun"
+    //% pin_vrm.fieldEditor="gridpicker" pin_vrm.fieldOptions.columns=4
+    //% vrmfun.fieldEditor="gridpicker" vrmfun.fieldOptions.columns=2
+    export function voiceRecorderModule(pin_vrm: DigitalPin, vrmfun: VRMFunction): void {
+        if (vrmfun == VRMFunction.PLAY_ONCE) {
+            pins.digitalWritePin(pin_vrm, 0)
+            control.waitMicros(2); // 2us
+            pins.digitalWritePin(pin_vrm, 1)
+            basic.pause(30); // 30ms
+            pins.digitalWritePin(pin_vrm, 0)
+        } else if (vrmfun == VRMFunction.PLAY_LOOP) {
+            pins.digitalWritePin(pin_vrm, 0)
+            control.waitMicros(2); // 2us
+            pins.digitalWritePin(pin_vrm, 1)
+            basic.pause(2000); // 2s
+            pins.digitalWritePin(pin_vrm, 0)
+        } else if (vrmfun == VRMFunction.SPEAKER_ENABLE) {
+            pins.digitalWritePin(pin_vrm, 0)
+        } else if (vrmfun == VRMFunction.SPEAKER_DISABLE) {
+            pins.digitalWritePin(pin_vrm, 1)
+        }
     }
 
     ///////////////////// Output - Traffic Light module ///////////////////////

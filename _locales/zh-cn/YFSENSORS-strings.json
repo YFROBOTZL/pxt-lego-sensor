@@ -74,7 +74,7 @@
   "YFSENSORS.AudioPlaybackFun.StopInsertTrack|block":"停止插播",
   "YFSENSORS.audioPlaybackModuleFun.StopInsertTrack|block":"停止播放插播曲目",
   "YFSENSORS.audioPlaybackModuleFun|block":"音频播放模块 %specified_fun",
-  "YFSENSORS.MVModule.MP3_AUDIO|block":"MP3音频模块",
+  "YFSENSORS.MVModule.MP3_AUDIO|block":"MP3音频",
   "YFSENSORS.MVModule.VOICE_BROADCAST|block":"语音播报",
   "YFSENSORS.readBusyPin|block":"%m_busy 读取忙信号引脚 %pin_busy",
   "YFSENSORS.TrafficLightLED.AllTurnOFF|block":"全灭",
