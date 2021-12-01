@@ -649,8 +649,9 @@ namespace YFSENSORS {
     function splitToDigit (n: number): Array<number> {
         let num = []
         while (n > 0) {
-          num.push(n % 10)
-          n = Math.floor(n / 10)
+            num.push(n % 10)
+            n = Math.floor(n / 10)
+            serial.writeLine("" + s_track_num);
         }
         return num;
     }
@@ -667,7 +668,6 @@ namespace YFSENSORS {
     export function audioPlaybackModuleFunWithNum(specified_fun: AudioPlaybackFunWithNum, specified_track: number): void {
         let s_track = specified_track;
         let s_track_num = splitToDigit(s_track);
-        serial.writeLine("" + s_track_num);
 
         serial.writeLine("" + s_track_num.length);
         for (let index = s_track_num.length; index > 0; index--) {
