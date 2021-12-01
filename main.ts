@@ -929,10 +929,10 @@ namespace YFSENSORS {
     /**
      * Connects the Motor drive module to the specified pin.
      * @param pin_dir dir pin. eg: DigitalPin.P15
-     * @param pin_pwm pwm pin. eg: DigitalPin.P16
+     * @param pin_pwm pwm pin. eg: AnalogPin.P16
      */
     //% group="Output"
-    //% blockId="YFSENSORS_motorConnectPin" weight=11 blockGap=15
+    //% blockId="YFSENSORS_motorConnectPin" weight=12 blockGap=15
     //% block="connect Motor drive %w_M| DIR %pin_dir| PWM %pin_pwm"
     //% pin_dir.fieldEditor="gridpicker" pin_dir.fieldOptions.columns=4 pin_dir.fieldOptions.tooltips="false"
     //% pin_pwm.fieldEditor="gridpicker" pin_pwm.fieldOptions.columns=4 pin_pwm.fieldOptions.tooltips="false"
