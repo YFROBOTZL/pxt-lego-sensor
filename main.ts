@@ -678,11 +678,11 @@ namespace YFSENSORS {
      */
     //% group="Output"
     //% blockId=YFSENSORS_digitalOutputModule weight=99 blockGap=15
-    //% block="at pin %domPin| %dom| module %sws"
+    //% block="%dom| at %domPin| %sws"
     //% domPin.fieldEditor="gridpicker" domPin.fieldOptions.columns=4
     //% dom.fieldEditor="gridpicker" dom.fieldOptions.columns=2
     //% sws.fieldEditor="gridpicker" sws.fieldOptions.columns=2
-    export function digitalOutputModule(domPin: DigitalPin, dom: DigitalOutputModule, sws: SwitchState): void {
+    export function digitalOutputModule(dom: DigitalOutputModule, domPin: DigitalPin, sws: SwitchState): void {
         let domM = dom;  // no work
         pins.digitalWritePin(domPin, sws);
     }
