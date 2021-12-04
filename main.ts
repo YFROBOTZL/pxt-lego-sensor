@@ -1079,6 +1079,7 @@ namespace YFSENSORS {
     export function digitalInputModule(dimPin: DigitalPin, dim: DigitalInputModule): boolean {
         let dimM = dim;  // no work
         // return pins.digitalReadPin(dimPin);
+        pins.setPull(dimPin, PinPullMode.PullNone);
         let a: number = pins.digitalReadPin(dimPin);
         if (a == 1) {
             return true;
