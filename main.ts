@@ -569,9 +569,9 @@ namespace YFSENSORS {
 
     export enum SwitchState {
         //% blockId="YF_ON" block="ON"
-        ON = 0x0,
+        ON = 0x1,
         //% blockId="YF_OFF" block="OFF"
-        OFF = 0x1
+        OFF = 0x0
     }
 
     export enum MotorsPin {
