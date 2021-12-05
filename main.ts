@@ -678,7 +678,7 @@ namespace YFSENSORS {
      */
     //% group="Output"
     //% blockId=YFSENSORS_digitalOutputModule weight=99 blockGap=15
-    //% block="%dom| at %domPin| %sws=SwitchState.ON"
+    //% block="%dom| at %domPin| %sws=SwitchState"
     //% domPin.fieldEditor="gridpicker" domPin.fieldOptions.columns=4
     //% dom.fieldEditor="gridpicker" dom.fieldOptions.columns=2
     //% sws.fieldEditor="gridpicker" sws.fieldOptions.columns=2
