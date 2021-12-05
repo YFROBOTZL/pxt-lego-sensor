@@ -687,7 +687,7 @@ namespace YFSENSORS {
      */
     //% group="Output"
     //% blockId=YFSENSORS_digitalOutputModule weight=99 blockGap=15
-    //% block="%dom| at %domPin| %sws"
+    //% block="%dom| at %domPin| %sws=YFSENSORS_domOnOff"
     //% domPin.fieldEditor="gridpicker" domPin.fieldOptions.columns=4
     //% dom.fieldEditor="gridpicker" dom.fieldOptions.columns=2
     // sws.fieldEditor="gridpicker" sws.fieldOptions.columns=2
@@ -750,7 +750,7 @@ namespace YFSENSORS {
      */
     //% group="Output"
     //% blockId=YFSENSORS_digitalOutputModule2 weight=99 blockGap=15
-    //% block="%dom| at %domPin| %sws=YFSENSORS_OTPFixedVoiceListNum"
+    //% block="%dom| at %domPin| %sws=YFSENSORS_domOnOff"
     //% domPin.fieldEditor="gridpicker" domPin.fieldOptions.columns=4
     //% dom.fieldEditor="gridpicker" dom.fieldOptions.columns=2
     export function digitalOutputModule2(dom: DigitalOutputModule, domPin: DigitalPin, sws: number): void {
