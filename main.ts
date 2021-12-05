@@ -675,7 +675,7 @@ namespace YFSENSORS {
      * @param num on or off eg: SwitchState.ON
      */
     //% blockId=YFSENSORS_domOnOff
-    function domOnOff(num: SwitchState): number {
+    export function domOnOff(num: SwitchState): number {
         return num;
     }
 
@@ -692,6 +692,23 @@ namespace YFSENSORS {
     //% dom.fieldEditor="gridpicker" dom.fieldOptions.columns=2
     //% sws.fieldEditor="gridpicker" sws.fieldOptions.columns=2
     export function digitalOutputModule(dom: DigitalOutputModule, domPin: DigitalPin, sws: number): void {
+        let domM = dom;  // no work
+        pins.digitalWritePin(domPin, sws);
+    }
+
+    /**
+     * Turn the Digital Output Module ON or OFF.
+     * @param domPin pin. eg: DigitalPin.P2
+     * @param dom pin. eg: DigitalOutputModule.LED
+     * @param sws switch state.
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_digitalOutputModule2 weight=99 blockGap=15
+    //% block="%dom| at %domPin| %sws=YFSENSORS_OTPFixedVoiceListNum"
+    //% domPin.fieldEditor="gridpicker" domPin.fieldOptions.columns=4
+    //% dom.fieldEditor="gridpicker" dom.fieldOptions.columns=2
+    //% sws.fieldEditor="gridpicker" sws.fieldOptions.columns=2
+    export function digitalOutputModule2(dom: DigitalOutputModule, domPin: DigitalPin, sws: number): void {
         let domM = dom;  // no work
         pins.digitalWritePin(domPin, sws);
     }
