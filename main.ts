@@ -743,22 +743,6 @@ namespace YFSENSORS {
     {
         return color;
     }
-    
-    /**
-     * Turn the Digital Output Module ON or OFF.
-     * @param domPin pin. eg: DigitalPin.P2
-     * @param dom pin. eg: DigitalOutputModule.LED
-     * @param sws switch state.
-     */
-    //% group="Output"
-    //% blockId=YFSENSORS_digitalOutputModule2 weight=99 blockGap=15
-    //% block="%dom| at %domPin| %sws=YFSENSORS_domOnOff"
-    //% domPin.fieldEditor="gridpicker" domPin.fieldOptions.columns=4
-    //% dom.fieldEditor="gridpicker" dom.fieldOptions.columns=2
-    export function digitalOutputModule2(dom: DigitalOutputModule, domPin: DigitalPin, sws: number): void {
-        let domM = dom;  // no work
-        pins.digitalWritePin(domPin, sws);
-    }
 
     /**
      * Fixed voice broadcast module play.
