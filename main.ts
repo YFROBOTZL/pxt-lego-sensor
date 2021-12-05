@@ -675,6 +675,8 @@ namespace YFSENSORS {
      * @param num on or off eg: SwitchState.ON
      */
     //% blockId=YFSENSORS_domOnOff
+    //% block="%num"
+    //% num.fieldEditor="gridpicker" num.fieldOptions.columns=2
     export function domOnOff(num: SwitchState): number {
         return num;
     }
