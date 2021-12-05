@@ -53,7 +53,7 @@
   "YFSENSORS.DigitalOutputModule.VIBRATION_MOTOR|block":"振动电机",
   "YFSENSORS.DigitalOutputModule.BUZZER|block":"蜂鸣器",
   "YFSENSORS.DigitalOutputModule.RELAY|block":"继电器",
-  "YFSENSORS.digitalOutputModule|block":"%dom| 连接 %domPin| %sws=domOnOff",
+  "YFSENSORS.digitalOutputModule|block":"%dom| 连接 %domPin| %sws=YFSENSORS_domOnOff",
   "YFSENSORS.voiceBroadcastModule|block":"语音播报 %vbmPin| 播放 %serial_number=YFSENSORS_OTPFixedVoiceListNum || 并延时 %delayt| ms",
   "YFSENSORS.audioPlaybackModule_connectPin|block":"连接MP3音频播放模块到 %pin_data",
   "YFSENSORS.audioPlaybackModuleSelectTrackNum|block":"音频播放模块选择曲目：%specified_track",

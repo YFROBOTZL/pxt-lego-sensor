@@ -647,7 +647,7 @@ namespace YFSENSORS {
     * toggle  Turn the Digital Output Module ON or OFF.
     * @param adom module. eg: ADOutputModule.LED
     * @param adomPin pin. eg: AnalogPin.P1
-    * @param state switch state. eg: SwitchState.OFF
+    * @param state switch state.
     * @param percentage brightness of LED, Motor vibration strength, fan rotation speed.
     */
     //% group="Output"
@@ -672,11 +672,10 @@ namespace YFSENSORS {
 
     /**
      * ON or OFF.
-     * @param num Standard RGB Led Colours eg: SwitchState.ON
+     * @param num on or off eg: SwitchState.ON
      */
-    //% group="Output"
-    //% num.fieldEditor="gridpicker" num.fieldOptions.columns=10
-    export function domOnOff(num: SwitchState): number {
+    //% blockId=YFSENSORS_domOnOff
+    function domOnOff(num: SwitchState): number {
         return num;
     }
 
@@ -688,7 +687,7 @@ namespace YFSENSORS {
      */
     //% group="Output"
     //% blockId=YFSENSORS_digitalOutputModule weight=99 blockGap=15
-    //% block="%dom| at %domPin| %sws=domOnOff"
+    //% block="%dom| at %domPin| %sws=YFSENSORS_domOnOff"
     //% domPin.fieldEditor="gridpicker" domPin.fieldOptions.columns=4
     //% dom.fieldEditor="gridpicker" dom.fieldOptions.columns=2
     //% sws.fieldEditor="gridpicker" sws.fieldOptions.columns=2
