@@ -690,28 +690,12 @@ namespace YFSENSORS {
     //% block="%dom| at %domPin| %sws"
     //% domPin.fieldEditor="gridpicker" domPin.fieldOptions.columns=4
     //% dom.fieldEditor="gridpicker" dom.fieldOptions.columns=2
-    //% sws.fieldEditor="gridpicker" sws.fieldOptions.columns=2
+    // sws.fieldEditor="gridpicker" sws.fieldOptions.columns=2
     export function digitalOutputModule(dom: DigitalOutputModule, domPin: DigitalPin, sws: number): void {
         let domM = dom;  // no work
         pins.digitalWritePin(domPin, sws);
     }
 
-    /**
-     * Turn the Digital Output Module ON or OFF.
-     * @param domPin pin. eg: DigitalPin.P2
-     * @param dom pin. eg: DigitalOutputModule.LED
-     * @param sws switch state.
-     */
-    //% group="Output"
-    //% blockId=YFSENSORS_digitalOutputModule2 weight=99 blockGap=15
-    //% block="%dom| at %domPin| %sws=YFSENSORS_OTPFixedVoiceListNum"
-    //% domPin.fieldEditor="gridpicker" domPin.fieldOptions.columns=4
-    //% dom.fieldEditor="gridpicker" dom.fieldOptions.columns=2
-    //% sws.fieldEditor="gridpicker" sws.fieldOptions.columns=2
-    export function digitalOutputModule2(dom: DigitalOutputModule, domPin: DigitalPin, sws: number): void {
-        let domM = dom;  // no work
-        pins.digitalWritePin(domPin, sws);
-    }
 
     ///////////////////// Output - OTP Fixed voice broadcast module ///////////////////////
     /**
@@ -758,6 +742,22 @@ namespace YFSENSORS {
         return color;
     }
     
+    /**
+     * Turn the Digital Output Module ON or OFF.
+     * @param domPin pin. eg: DigitalPin.P2
+     * @param dom pin. eg: DigitalOutputModule.LED
+     * @param sws switch state.
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_digitalOutputModule2 weight=99 blockGap=15
+    //% block="%dom| at %domPin| %sws=YFSENSORS_OTPFixedVoiceListNum"
+    //% domPin.fieldEditor="gridpicker" domPin.fieldOptions.columns=4
+    //% dom.fieldEditor="gridpicker" dom.fieldOptions.columns=2
+    export function digitalOutputModule2(dom: DigitalOutputModule, domPin: DigitalPin, sws: number): void {
+        let domM = dom;  // no work
+        pins.digitalWritePin(domPin, sws);
+    }
+
     /**
      * Fixed voice broadcast module play.
      * @param vbmPin pin. eg: DigitalPin.P2
