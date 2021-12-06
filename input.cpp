@@ -6,15 +6,15 @@ enum class TouchPin {
     P2 = MICROBIT_ID_IO_P2,
 };
 
-//% color=#D400D4 weight=111 icon="\uf192"
-namespace input {
+//% color="#45b787" weight=10 icon="\uf12e"
+namespace YFSENSORS {
 
      /**
      * Do something when a pin is touched and released again (while also touching the GND pin).
      * @param name the pin that needs to be pressed, eg: TouchPin.P0
      * @param body the code to run when the pin is pressed
      */
-    //% help=input/on-pin-pressed weight=83 blockGap=32
+    //% weight=83 blockGap=32
     //% blockId=YFSENSORS_device_pin_event block="on pin %name|pressed"
     void yf_onPinPressed(number x, TouchPin name, Action body) {
         auto pin = getPin((int)name);
@@ -30,7 +30,7 @@ namespace input {
      * @param name the pin that needs to be released, eg: TouchPin.P0
      * @param body the code to run when the pin is released
      */
-    //% help=input/on-pin-released weight=6 blockGap=16
+    //% weight=6 blockGap=16
     //% blockId=YFSENSORS_device_pin_released block="on pin %NAME|released"
     //% advanced=true
     void yf_onPinReleased(number x, TouchPin name, Action body) {
