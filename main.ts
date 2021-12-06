@@ -1100,23 +1100,23 @@ namespace YFSENSORS {
 
     /** not work 
 	 * Registers code to run when a Button/Collision event is detected.
-     * @param dimE module. eg: DigitalInputModuleE.BUTTON
-     * @param dimEPin pin. eg: DigitalPin.P2
-     * @param event event. eg: DigitalInputEvent.Clicked
+     * param dimE module. eg: DigitalInputModuleE.BUTTON
+     * param dimEPin pin. eg: DigitalPin.P2
+     * event event. eg: DigitalInputEvent.Clicked
 	 */
-    //% group="Input"
-    //% blockId=YFSENSORS_onevent weight=89 blockGap=15
-    //% block="%dimE on %dimEPin| %event"
-    //% block="%dimE on %dimEPin| pressed"
-    //% dimEPin.fieldEditor="gridpicker" dimEPin.fieldOptions.columns=4
+    // group="Input"
+    // blockId=YFSENSORS_onevent weight=89 blockGap=15
+    // block="%dimE on %dimEPin| %event"
+    // block="%dimE on %dimEPin| pressed"
+    // dimEPin.fieldEditor="gridpicker" dimEPin.fieldOptions.columns=4
     // event.fieldEditor="gridpicker" event.fieldOptions.columns=3
     // export function onEvent(dimE: DigitalInputModuleE, dimEPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
-    export function onEvent(dimE: DigitalInputModuleE, dimEPin: DigitalPin, handler: Action) {
-        let dimME = dimE;  // no work
-        pins.setEvents(dimEPin, PinEventType.Edge);
-        // control.onEvent(<number>dimEPin, <number>event, handler); // register handler
-        control.onEvent(<number>dimEPin, <number>DAL.MICROBIT_BUTTON_EVT_CLICK, handler); // register handler
-    }
+    // export function onEvent(dimE: DigitalInputModuleE, dimEPin: DigitalPin, handler: Action) {
+    //     let dimME = dimE;  // no work
+    //     // pins.setEvents(dimEPin, PinEventType.Edge);
+    //     // control.onEvent(<number>dimEPin, <number>event, handler); // register handler
+    //     control.onEvent(<number>dimEPin, <number>DAL.MICROBIT_BUTTON_EVT_CLICK, handler); // register handler
+    // }
 
     // Checks whether the crash sensor is currently pressed.
     // Checks whether the motion sensor is currently detecting any motion.
