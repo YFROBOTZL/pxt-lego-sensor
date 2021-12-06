@@ -10,7 +10,6 @@
     "files": [
         "main.ts",
         "README.md",
-        "input.cpp",
         "_locales/zh-cn/YFSENSORS-strings.json",
         "_locales/zh-cn/YFSENSORS-jsdoc-strings.json",
         "_locales/zh-tw/YFSENSORS-strings.json",
