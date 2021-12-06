@@ -1111,8 +1111,8 @@ namespace YFSENSORS {
     {
         let dimME = dimE;  // no work
         // Forces the PIN to switch to makey-makey style detection.
-        dimEPin.isTouched();
-        pxtcore.registerWithDal(<number>dimEPin, <number>DAL.MICROBIT_BUTTON_EVT_CLICK, body);
+        // dimEPin.isTouched();
+        control.registerWithDal(<number>dimEPin, <number>DAL.MICROBIT_BUTTON_EVT_CLICK, body);
         // pins.setEvents(dimEPin, PinEventType.Edge);
         // control.onEvent(<number>dimEPin, <number>event, handler); // register handler
         // control.onEvent(<number>dimEPin, <number>DAL.MICROBIT_BUTTON_EVT_CLICK, handler); // register handler
