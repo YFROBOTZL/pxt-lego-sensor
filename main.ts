@@ -1106,7 +1106,8 @@ namespace YFSENSORS {
 	 */
     //% group="Input"
     //% blockId=YFSENSORS_onevent weight=89 blockGap=15
-    //% block="%dimE on %dimEPin| %event"
+    // block="%dimE on %dimEPin| %event"
+    //% block="%dimE on %dimEPin| pressed"
     //% dimEPin.fieldEditor="gridpicker" dimEPin.fieldOptions.columns=4
     // event.fieldEditor="gridpicker" event.fieldOptions.columns=3
     // export function onEvent(dimE: DigitalInputModuleE, dimEPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
