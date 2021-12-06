@@ -1102,38 +1102,18 @@ namespace YFSENSORS {
 	 * Registers code to run when a Button/Collision event is detected.
      * @param dimE module. eg: DigitalInputModuleE.BUTTON
      * @param dimEPin pin. eg: DigitalPin.P2
-	 */
-    //% group="Input"
-    //% blockId=YFSENSORS_yf_onPinPressed weight=89 blockGap=15
-    //% block="%dimE on %dimEPin| pressed"
-    // dimEPin.fieldEditor="gridpicker" dimEPin.fieldOptions.columns=3
-    export function yf_onPinPressed(dimE: DigitalInputModuleE, dimEPin: TouchPin, body: () => void)
-    {
-        let dimME = dimE;  // no work
-        // Forces the PIN to switch to makey-makey style detection.
-        // dimEPin.isTouched();
-        control.onEvent(<number>dimEPin, <number>DAL.MICROBIT_BUTTON_EVT_CLICK, body);
-        // pins.setEvents(dimEPin, PinEventType.Edge);
-        // control.onEvent(<number>dimEPin, <number>event, handler); // register handler
-        // control.onEvent(<number>dimEPin, <number>DAL.MICROBIT_BUTTON_EVT_CLICK, handler); // register handler
-    }
-
-    /**
-	 * Registers code to run when a Button/Collision event is detected.
-     * @param dimE module. eg: DigitalInputModuleE.BUTTON
-     * @param dimEPin pin. eg: DigitalPin.P2
      * @param event event. eg: DigitalInputEvent.Clicked
 	 */
-    // group="Input"
-    // blockId=YFSENSORS_onevent weight=89 blockGap=15
-    // block="%dimE on %dimEPin| %event"
-    // block="%dimE on %dimEPin| pressed"
-    // dimEPin.fieldEditor="gridpicker" dimEPin.fieldOptions.columns=4
+    //% group="Input"
+    //% blockId=YFSENSORS_onevent weight=89 blockGap=15
+    //% block="%dimE on %dimEPin| %event"
+    //% block="%dimE on %dimEPin| pressed"
+    //% dimEPin.fieldEditor="gridpicker" dimEPin.fieldOptions.columns=4
     // event.fieldEditor="gridpicker" event.fieldOptions.columns=3
     // export function onEvent(dimE: DigitalInputModuleE, dimEPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
     export function onEvent(dimE: DigitalInputModuleE, dimEPin: TouchPin, handler: Action) {
         let dimME = dimE;  // no work
-        // pins.setEvents(dimEPin, PinEventType.Edge);
+        pins.setEvents(dimEPin, PinEventType.Edge);
         // control.onEvent(<number>dimEPin, <number>event, handler); // register handler
         control.onEvent(<number>dimEPin, <number>DAL.MICROBIT_BUTTON_EVT_CLICK, handler); // register handler
     }
