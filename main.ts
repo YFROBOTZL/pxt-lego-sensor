@@ -1112,24 +1112,9 @@ namespace YFSENSORS {
     // export function onEvent(dimE: DigitalInputModuleE, dimEPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
     export function onEvent(dimE: DigitalInputModuleE, dimEPin: TouchPin, handler: Action) {
         let dimME = dimE;  // no work
-        pins.setEvents(dimEPin, PinEventType.Edge);
+        // pins.setEvents(dimEPin, PinEventType.Edge);
         // control.onEvent(<number>dimEPin, <number>event, handler); // register handler
         control.onEvent(<number>dimEPin, <number>DAL.MICROBIT_BUTTON_EVT_CLICK, handler); // register handler
-    }
-    
-    /**
-     * On Joystick button
-    */
-    //% blockId=on_btn_pressed weight=89 blockGap=15
-    //% block="on Button |%button pressed"
-    export function on_btn_pressed(dimE: DigitalInputModuleE, dimEPin: DigitalPin, handler: () => void): void {
-        let dimME = dimE;  // no work
-        let nowS, nowP;
-        nowS = pins.digitalReadPin(dimEPin);
-
-        control.onEvent(nowS, 0, nowP, 1, handler); // register handler
-
-        nowP = nowS;
     }
 
     // Checks whether the crash sensor is currently pressed.
