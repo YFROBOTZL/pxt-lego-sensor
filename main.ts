@@ -905,6 +905,7 @@ namespace YFSENSORS {
      * @param m_busy mp3 module or voice broadcast. eg: MVModule.MP3_AUDIO
      */
     //% advanced=true
+    //% group="Output"
     //% blockId=YFSENSORS_readBusyPin weight=80 blockGap=15
     //% block="%m_busy read busy pin %pin_busy"
     //% pin_busy.fieldEditor="gridpicker" pin_busy.fieldOptions.columns=4
