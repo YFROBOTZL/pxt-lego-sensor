@@ -133,6 +133,7 @@
   "YFSENSORS.clear|block": "清除顯示",
   "YFSENSORS|block": "YFSENSORS",
   "{id:category}YFSENSORS": "YFSENSORS",
+  "{id:subcategory}MotorDrive": "電機驅動",
   "{id:subcategory}DigitalTube": "數碼管顯示",
   "{id:subcategory}IR_Receiver": "紅外遙控"
 }

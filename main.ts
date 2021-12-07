@@ -924,6 +924,7 @@ namespace YFSENSORS {
      * @param pin_vrm busy pin. eg: DigitalPin.P1
      * @param vrmfun voice recorder module function. eg: VRMFunction.PLAY_ONCE
      */
+    //% group="Output"
     //% blockId=YFSENSORS_voiceRecorderModule weight=84 blockGap=15
     //% block="voice recorder module %pin_vrm| %vrmfun"
     //% pin_vrm.fieldEditor="gridpicker" pin_vrm.fieldOptions.columns=4
@@ -980,75 +981,6 @@ namespace YFSENSORS {
                 pins.digitalWritePin(tlm2Pin, 0);
                 break;
         }
-    }
-
-    ///////////////////// Output - Motor ///////////////////////
-    /**
-     * Connects the Motor drive module to the specified pin.
-     * @param pin_dir dir pin. eg: DigitalPin.P15
-     * @param pin_pwm pwm pin. eg: AnalogPin.P16
-     */
-    //% group="Output"
-    //% blockId="YFSENSORS_motorConnectPin" weight=12 blockGap=15
-    //% block="connect Motor drive %w_M| DIR %pin_dir| PWM %pin_pwm"
-    //% pin_dir.fieldEditor="gridpicker" pin_dir.fieldOptions.columns=4 pin_dir.fieldOptions.tooltips="false"
-    //% pin_pwm.fieldEditor="gridpicker" pin_pwm.fieldOptions.columns=4 pin_pwm.fieldOptions.tooltips="false"
-    export function motorConnectPin(w_M: MotorsPin, pin_dir: DigitalPin, pin_pwm: AnalogPin): void {
-        if (w_M == MotorsPin.M1) {
-            YFSENSORSMotor1D = pin_dir
-            YFSENSORSMotor1A = pin_pwm
-        } else if (w_M == MotorsPin.M2) {
-            YFSENSORSMotor2D = pin_dir
-            YFSENSORSMotor2A = pin_pwm
-        }
-    }
-
-    function clamp(value: number, min: number, max: number): number {
-        return Math.max(Math.min(max, value), min);
-    }
-    /**
-     * Set the direction and speed of YFSENSORS motor.
-     * @param index motor m1/m2/all. eg: YFSENSORS.Motors.MAll
-     * @param direction direction to turn. eg: YFSENSORS.Dir.CW
-     * @param speed speed of motors (0 to 255). eg: 120
-     */
-    //% group="Output"
-    //% blockId=YFSENSORS_MotorRun weight=11 blockGap=15
-    //% block="motor|%index|move|%direction|at speed|%speed"
-    //% speed.min=0 speed.max=255
-    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
-    //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
-    export function motorRun(index: Motors, direction: Dir, speed: number): void {
-        if (index > 2 || index < 0)
-            return
-        
-        let dir_m2 = direction == Dir.CW ? Dir.CCW : Dir.CW;
-        speed = clamp(speed, 0, 255) * 4.01;  // 0~255 > 0~1023
-
-        if (index == Motors.M1) {
-            pins.digitalWritePin(YFSENSORSMotor1D, direction);
-            pins.analogWritePin(YFSENSORSMotor1A, speed);
-        } else if (index == Motors.M2) {
-            pins.digitalWritePin(YFSENSORSMotor2D, dir_m2);
-            pins.analogWritePin(YFSENSORSMotor2A, speed);
-        } else if (index == Motors.MAll) {
-            pins.digitalWritePin(YFSENSORSMotor1D, direction);
-            pins.analogWritePin(YFSENSORSMotor1A, speed);
-            pins.digitalWritePin(YFSENSORSMotor2D, dir_m2);
-            pins.analogWritePin(YFSENSORSMotor2A, speed);
-        }
-    }
-
-    /**
-     * Stop the YFSENSORS motor.
-     * @param motor motor m1/m2/all. eg: YFSENSORS.Motors.MAll
-     */
-    //% group="Output"
-    //% blockId=YFSENSORS_motorStop weight=10 blockGap=15
-    //% block="motor |%motor stop"
-    //% motor.fieldEditor="gridpicker" motor.fieldOptions.columns=2 
-    export function motorStop(motor: Motors): void {
-        motorRun(motor, 0, 0);
     }
 
     ///////////////////// Input Analog Sensors ///////////////////////
@@ -1131,6 +1063,7 @@ namespace YFSENSORS {
      * @param pin pin. eg: DigitalPin.P2
      * @param dht11state echo pin. eg: DHT11_state.DHT11_temperature_C
      */
+    //% group="Input"
     //% blockId=YFSENSORS_read_dht11 weight=82 blockGap=15
     //% block="DHT11 sensor %pin %dht11state value"
     //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4
@@ -1194,6 +1127,7 @@ namespace YFSENSORS {
      * @param unit desired conversion unit. eg: PingUnit.Centimeters
      * @param maxCmDistance maximum distance in centimeters (default is 450)
      */
+    //% group="Input"
     //% blockId=YFSENSORS_sonar_ping weight=79 blockGap=15
     //% block="ping trig |%trig echo |%echo unit |%unit"
     //% trig.fieldEditor="gridpicker" trig.fieldOptions.columns=4 
@@ -1217,6 +1151,76 @@ namespace YFSENSORS {
             case PingUnit.Inches: return Math.idiv(d, 148);
             default: return d ;
         }
+    }
+
+    
+    ///////////////////// Output - Motor Drive ///////////////////////
+    /**
+     * Connects the Motor drive module to the specified pin.
+     * @param pin_dir dir pin. eg: DigitalPin.P15
+     * @param pin_pwm pwm pin. eg: AnalogPin.P16
+     */
+    //% subcategory="MotorDrive"
+    //% blockId="YFSENSORS_motorConnectPin" weight=12 blockGap=15
+    //% block="connect Motor drive %w_M| DIR %pin_dir| PWM %pin_pwm"
+    //% pin_dir.fieldEditor="gridpicker" pin_dir.fieldOptions.columns=4 pin_dir.fieldOptions.tooltips="false"
+    //% pin_pwm.fieldEditor="gridpicker" pin_pwm.fieldOptions.columns=4 pin_pwm.fieldOptions.tooltips="false"
+    export function motorConnectPin(w_M: MotorsPin, pin_dir: DigitalPin, pin_pwm: AnalogPin): void {
+        if (w_M == MotorsPin.M1) {
+            YFSENSORSMotor1D = pin_dir
+            YFSENSORSMotor1A = pin_pwm
+        } else if (w_M == MotorsPin.M2) {
+            YFSENSORSMotor2D = pin_dir
+            YFSENSORSMotor2A = pin_pwm
+        }
+    }
+
+    function clamp(value: number, min: number, max: number): number {
+        return Math.max(Math.min(max, value), min);
+    }
+    /**
+     * Set the direction and speed of YFSENSORS motor.
+     * @param index motor m1/m2/all. eg: YFSENSORS.Motors.MAll
+     * @param direction direction to turn. eg: YFSENSORS.Dir.CW
+     * @param speed speed of motors (0 to 255). eg: 120
+     */
+    //% subcategory="MotorDrive"
+    //% blockId=YFSENSORS_MotorRun weight=11 blockGap=15
+    //% block="motor|%index|move|%direction|at speed|%speed"
+    //% speed.min=0 speed.max=255
+    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
+    //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
+    export function motorRun(index: Motors, direction: Dir, speed: number): void {
+        if (index > 2 || index < 0)
+            return
+        
+        let dir_m2 = direction == Dir.CW ? Dir.CCW : Dir.CW;
+        speed = clamp(speed, 0, 255) * 4.01;  // 0~255 > 0~1023
+
+        if (index == Motors.M1) {
+            pins.digitalWritePin(YFSENSORSMotor1D, direction);
+            pins.analogWritePin(YFSENSORSMotor1A, speed);
+        } else if (index == Motors.M2) {
+            pins.digitalWritePin(YFSENSORSMotor2D, dir_m2);
+            pins.analogWritePin(YFSENSORSMotor2A, speed);
+        } else if (index == Motors.MAll) {
+            pins.digitalWritePin(YFSENSORSMotor1D, direction);
+            pins.analogWritePin(YFSENSORSMotor1A, speed);
+            pins.digitalWritePin(YFSENSORSMotor2D, dir_m2);
+            pins.analogWritePin(YFSENSORSMotor2A, speed);
+        }
+    }
+
+    /**
+     * Stop the YFSENSORS motor.
+     * @param motor motor m1/m2/all. eg: YFSENSORS.Motors.MAll
+     */
+    //% subcategory="MotorDrive"
+    //% blockId=YFSENSORS_motorStop weight=10 blockGap=15
+    //% block="motor |%motor stop"
+    //% motor.fieldEditor="gridpicker" motor.fieldOptions.columns=2 
+    export function motorStop(motor: Motors): void {
+        motorRun(motor, 0, 0);
     }
 
     ///////////////////// DigitalTubes ///////////////////////
