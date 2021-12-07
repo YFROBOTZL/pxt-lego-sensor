@@ -1010,8 +1010,7 @@ namespace YFSENSORS {
     export function readTemperatureSensor(tempPin: AnalogPin): number {
         let val = pins.analogReadPin(tempPin); 
         let tvalue = (val * 3.3 * 100) / 1024;
-        let tr:string = tvalue.toFixed(1); // 保留1位小数，四舍五入
-        return parseFloat(tr);
+        return Math.floor(tvalue * 10) / 10;// 保留1位小数
     }
 
     ///////////////////// Input Digital Sensors ///////////////////////
