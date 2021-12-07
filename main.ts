@@ -674,9 +674,11 @@ namespace YFSENSORS {
      * ON or OFF.
      * @param num on or off eg: SwitchState.ON
      */
-    //% blockId=YFSENSORS_domOnOff weight=99 blockGap=15
-    // block="%num"
-    // num.fieldEditor="gridpicker" num.fieldOptions.columns=2
+    //% advanced=true
+    //% group="Output"
+    //% blockId=YFSENSORS_domOnOff weight=11 blockGap=15
+    //% block="%num"
+    //% num.fieldEditor="gridpicker" num.fieldOptions.columns=2
     export function domOnOff(num: SwitchState): number {
         return num;
     }
@@ -704,8 +706,9 @@ namespace YFSENSORS {
      * Returns the serial number of OTP fixed voice list.
      * @param num Standard RGB Led Colours eg: #ff0000
      */
+    //% advanced=true
     //% group="Output"
-    //% blockId=YFSENSORS_OTPFixedVoiceListNum weight=94 blockGap=15
+    //% blockId=YFSENSORS_OTPFixedVoiceListNum weight=10 blockGap=15
     //% block="%num| "
     //% num.fieldEditor="gridpicker" num.fieldOptions.columns=10
     export function OTPFixedVoiceListNum(num: OTPFixedVoiceList): number {
@@ -730,7 +733,7 @@ namespace YFSENSORS {
       */
     //% advanced=true
     //% group="Output"
-    //% blockId="YFSENSORS_bb_colours" weight=92 blockGap=15
+    //% blockId="YFSENSORS_bb_colours" weight=0 blockGap=15
     //% block=%color
     //% shim=TD_ID colorSecondary="#e7660b"
     //% color.fieldEditor="colornumber"
@@ -834,7 +837,7 @@ namespace YFSENSORS {
      */
     //% advanced=true
     //% group="Output"
-    //% blockId=YFSENSORS_audioPlaybackModuleSelectTrackNum weight=87 blockGap=15
+    //% blockId=YFSENSORS_audioPlaybackModuleSelectTrackNum weight=90 blockGap=15
     //% block="audio playback select specified track %specified_track| no play"
     //% specified_track.min=0 specified_track.max=255
     export function audioPlaybackModuleSelectTrackNum(specified_track: number): void {
@@ -902,7 +905,7 @@ namespace YFSENSORS {
      * @param m_busy mp3 module or voice broadcast. eg: MVModule.MP3_AUDIO
      */
     //% advanced=true
-    //% blockId=YFSENSORS_readBusyPin weight=87 blockGap=15
+    //% blockId=YFSENSORS_readBusyPin weight=80 blockGap=15
     //% block="%m_busy read busy pin %pin_busy"
     //% pin_busy.fieldEditor="gridpicker" pin_busy.fieldOptions.columns=4
     //% m_busy.fieldEditor="gridpicker" m_busy.fieldOptions.columns=2
