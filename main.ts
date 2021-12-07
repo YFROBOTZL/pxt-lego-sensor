@@ -674,9 +674,9 @@ namespace YFSENSORS {
      * ON or OFF.
      * @param num on or off eg: SwitchState.ON
      */
-    //% blockId=YFSENSORS_domOnOff
-    //% block="%num"
-    //% num.fieldEditor="gridpicker" num.fieldOptions.columns=2
+    //% blockId=YFSENSORS_domOnOff weight=99 blockGap=15
+    // block="%num"
+    // num.fieldEditor="gridpicker" num.fieldOptions.columns=2
     export function domOnOff(num: SwitchState): number {
         return num;
     }
@@ -688,7 +688,7 @@ namespace YFSENSORS {
      * @param sws switch state.
      */
     //% group="Output"
-    //% blockId=YFSENSORS_digitalOutputModule weight=99 blockGap=15
+    //% blockId=YFSENSORS_digitalOutputModule weight=98 blockGap=15
     //% block="%dom| at %domPin| %sws=YFSENSORS_domOnOff"
     //% domPin.fieldEditor="gridpicker" domPin.fieldOptions.columns=4
     //% dom.fieldEditor="gridpicker" dom.fieldOptions.columns=2
