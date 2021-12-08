@@ -805,13 +805,13 @@ namespace YFSENSORS {
         for (let index = 0; index < 8; index++) {
             pins.digitalWritePin(AudioPlaybackPin_data, 1); 
             if (num & 1) {
-                control.waitMicros(1200);
+                control.waitMicros(2400);
                 pins.digitalWritePin(AudioPlaybackPin_data, 0);
-                control.waitMicros(400);
+                control.waitMicros(800);
             } else {
-                control.waitMicros(400);
+                control.waitMicros(800);
                 pins.digitalWritePin(AudioPlaybackPin_data, 0);
-                control.waitMicros(1200);
+                control.waitMicros(2400);
             } 
             num >>= 1;
         }
@@ -824,7 +824,7 @@ namespace YFSENSORS {
     function splitToDigit (n: number): Array<number> {
         let num = []
         while (n > 0) {
-            serial.writeLine("n--" + n);
+            // serial.writeLine("n--" + n);
             num.push(n % 10)
             n = Math.floor(n / 10)
         }
