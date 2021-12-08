@@ -48,7 +48,7 @@
   "YFSENSORS.voiceRecorderModule": "录放模块播放录像机一次或循环，启用或禁用扬声器。",
   "YFSENSORS.trafficLightModule": "交通灯模块点亮红、绿、黄灯",
   "YFSENSORS.analogInputModule": "读取模拟输入型传感器模块",
-  "YFSENSORS.digitalInputModule": "读取数字输入型传感器模块",
+  "YFSENSORS.digitalInputModule": "读取数字输入型传感器模块(默认所有模块触发返回真)",
   "YFSENSORS.onEvent": "数字输入型事件",
   "YFSENSORS.dht11Sensor": "获得DHT11传感器的温度或湿度。"
 

@@ -1028,7 +1028,7 @@ namespace YFSENSORS {
 
     ///////////////////// Input Digital Sensors ///////////////////////
     /**
-     * Read the Digital Input Sensor Module.
+     * Read the Digital Input Sensor Module (Default all modules trigger back true).
      * @param dimPin pin. eg: DigitalPin.P8
      * @param dim pin. eg: DigitalInputModule.BUTTON
      */
@@ -1036,15 +1036,26 @@ namespace YFSENSORS {
     //% blockId=YFSENSORS_digitalInputModule weight=90 blockGap=15
     //% block="at pin %dimPin| %dim| module"
     //% dimPin.fieldEditor="gridpicker" dimPin.fieldOptions.columns=4
-    //% dim.fieldEditor="gridpicker" dim.fieldOptions.columns=2
+    //% dim.fieldEditor="gridpicker" dim.fieldOptions.columns=2 dim.defl = DigitalInputModule.BUTTON
     export function digitalInputModule(dimPin: DigitalPin, dim: DigitalInputModule): boolean {
-        let dimM = dim;  // no work
-        // return pins.digitalReadPin(dimPin);
+        
         pins.setPull(dimPin, PinPullMode.PullNone);
-        let a: number = pins.digitalReadPin(dimPin);
-        if (a == 1) {
-            return true;
-        } else return false;
+        let a: number = 0;
+        if(dim == DigitalInputModule.BUTTON 
+        || dim == DigitalInputModule.MAGNETIC_SENSOR 
+        || dim == DigitalInputModule.TILT_SENSOR 
+        || dim == DigitalInputModule.INFRARED_PROXIMITY_SENSOR 
+        || dim == DigitalInputModule.COLLISION_SWITCH
+        || dim == DigitalInputModule.PATROL_LEFT 
+        || dim == DigitalInputModule.PATROL_RIGHT ){
+            a = pins.digitalReadPin(dimPin);
+            if (a == 1) return false;
+            else    return true;
+        } else {
+            a = pins.digitalReadPin(dimPin);
+            if (a == 1) return true;
+            else    return false;
+        }
     }
 
     /** not work 
