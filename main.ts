@@ -832,14 +832,14 @@ namespace YFSENSORS {
     }
 
     /**
-     * MP3 audio playback module select specified track(0-255) with no play.
-     * @param specified_track mp3 module specified track number. eg: 0
+     * MP3 audio playback module select specified track(1-255) with no play.
+     * @param specified_track mp3 module specified track number. eg: 1
      */
     //% advanced=true
     //% group="Output"
     //% blockId=YFSENSORS_audioPlaybackModuleSelectTrackNum weight=90 blockGap=15
     //% block="audio playback select specified track %specified_track| no play"
-    //% specified_track.min=0 specified_track.max=255
+    //% specified_track.min=1 specified_track.max=255
     export function audioPlaybackModuleSelectTrackNum(specified_track: number): void {
         let s_track = specified_track;
         if(s_track < 10){
@@ -854,15 +854,27 @@ namespace YFSENSORS {
     }
 
     /**
+     * MP3 audio playback module Playback settings.
+     * @param specified_fun mp3 module specified track number. eg: AudioPlaybackFunWithNum.SelectPlay
+     */
+    //% advanced=true
+    //% group="Output"
+    //% blockId=YFSENSORS_audioPlaybackModuleFunSelect weight=89 blockGap=15
+    //% block="audio playback %specified_fun"
+    export function audioPlaybackModuleFunSelect(specified_fun: AudioPlaybackFunWithNum): void {
+        audioPlaybackModule_sendData(specified_fun);
+    }
+
+    /**
      * MP3 audio playback module play specified track.
      * @param specified_fun mp3 module specified function code. eg: AudioPlaybackFunWithNum.SelectPlay
-     * @param specified_track mp3 module specified track number. eg: 0
+     * @param specified_track mp3 module specified track number. eg: 1
      */
     //% group="Output"
     //% blockId=YFSENSORS_audioPlaybackModuleFunWithNum weight=88 blockGap=15
     //% block="audio playback %specified_fun| %specified_track"
     //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=2
-    //% specified_track.min=0
+    //% specified_track.min=1
     export function audioPlaybackModuleFunWithNum(specified_fun: AudioPlaybackFunWithNum, specified_track: number): void {
         if (specified_fun == AudioPlaybackFunWithNum.SelectPlay || specified_fun == AudioPlaybackFunWithNum.SetInsertTrack) {
             if (specified_track>= 255) specified_track = 255;
@@ -886,6 +898,7 @@ namespace YFSENSORS {
         }
         audioPlaybackModule_sendData(specified_fun);
     }
+
 
     /**
      * MP3 audio playback module Playback settings.
