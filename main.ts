@@ -1156,7 +1156,7 @@ namespace YFSENSORS {
     //% block="ping trig |%trig echo |%echo unit |%unit"
     //% trig.fieldEditor="gridpicker" trig.fieldOptions.columns=4 
     //% echo.fieldEditor="gridpicker" echo.fieldOptions.columns=4 
-    //% unit.fieldEditor="gridpicker" unit.fieldOptions.columns=3 
+    //% unit.fieldEditor="gridpicker" unit.fieldOptions.columns=3 unit.defl=PingUnit.Centimeters
     //% inlineInputMode=inline
     export function ping(trig: DigitalPin, echo: DigitalPin, unit: PingUnit, maxCmDistance = 450): number {
         // send pulse
