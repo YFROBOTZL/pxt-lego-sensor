@@ -843,7 +843,7 @@ namespace YFSENSORS {
     //% block="voice broadcast %vbmPin| continuous play %serial_number"
     //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
     //% inlineInputMode=inline
-    export function voiceBroadcastModuleFunContPlay(vbmPin: DigitalPin, serial_number: Array<number>): void {
+    export function voiceBroadcastModuleFunContPlay(vbmPin: DigitalPin, serial_number: number[]): void {
         let checksum = 0;
         voiceBroadcastModuleSendDataWithS(vbmPin, OTPFixedVoiceFun2.HeadCode); // 头码
         checksum += OTPFixedVoiceFun2.HeadCode;
