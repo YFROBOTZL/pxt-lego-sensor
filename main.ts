@@ -1036,7 +1036,8 @@ namespace YFSENSORS {
     //% blockId=YFSENSORS_digitalInputModule weight=90 blockGap=15
     //% block="at pin %dimPin| %dim| module"
     //% dimPin.fieldEditor="gridpicker" dimPin.fieldOptions.columns=4
-    //% dim.fieldEditor="gridpicker" dim.fieldOptions.columns=2 dim.defl = DigitalInputModule.BUTTON
+    //% dim.fieldEditor="gridpicker" dim.fieldOptions.columns=2
+    //% dim.defl = DigitalInputModule.BUTTON
     export function digitalInputModule(dimPin: DigitalPin, dim: DigitalInputModule): boolean {
         
         pins.setPull(dimPin, PinPullMode.PullNone);
@@ -1156,7 +1157,8 @@ namespace YFSENSORS {
     //% block="ping trig |%trig echo |%echo unit |%unit"
     //% trig.fieldEditor="gridpicker" trig.fieldOptions.columns=4 
     //% echo.fieldEditor="gridpicker" echo.fieldOptions.columns=4 
-    //% unit.fieldEditor="gridpicker" unit.fieldOptions.columns=3 unit.defl=PingUnit.Centimeters
+    //% unit.fieldEditor="gridpicker" unit.fieldOptions.columns=3
+    //% unit.defl=PingUnit.Centimeters
     //% inlineInputMode=inline
     export function ping(trig: DigitalPin, echo: DigitalPin, unit: PingUnit, maxCmDistance = 450): number {
         // send pulse
