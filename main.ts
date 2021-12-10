@@ -739,7 +739,7 @@ namespace YFSENSORS {
     ///////////////////// Output - OTP Fixed voice broadcast module ///////////////////////
     /**
      * Returns the serial number of OTP fixed voice list.
-     * @param num Standard RGB Led Colours eg: #ff0000
+     * @param num serial number. eg: OTPFixedVoiceList.OTPFVL_00
      */
     //% advanced=true
     //% group="Output"
@@ -752,7 +752,7 @@ namespace YFSENSORS {
 
     /**
      * Returns the serial number of OTP fixed voice list.
-     * @param num Standard RGB Led Colours eg: #ff0000
+     * @param num serial number. eg: OTPFixedVoiceList2.OTPFVL_44
      */
     //% group="Output"
     //% blockId=YFSENSORS_OTPFixedVoiceListNum2 weight=94 blockGap=15
