@@ -833,17 +833,17 @@ namespace YFSENSORS {
         }
     }
 
-    /**
-     * Fixed voice broadcast module function : Continuous Play.
-     * @param vbmfPin pin. eg: DigitalPin.P2
-     * @param serial_number_f voice serial number array.
-     */
+    // /**
+    //  * Fixed voice broadcast module function : Continuous Play.
+    //  * @param vbmfPin pin. eg: DigitalPin.P2
+    //  * @param serial_number_f voice serial number array.
+    //  */
     //% group="Output"
-    //% blockId=YFSENSORS_voiceBroadcastModuleFunContPlay weight=92 blockGap=15
-    //% block="voice broadcast %vbmfPin| continuous play %serial_number"
-    //% vbmfPin.fieldEditor="gridpicker" vbmfPin.fieldOptions.columns=4
-    //% inlineInputMode=inline
-    export function voiceBroadcastModuleFunContPlay(vbmfPin: DigitalPin, serial_number_f: number): void {
+    // blockId=YFSENSORS_voiceBroadcastModuleFunContPlay weight=92 blockGap=15
+    // block="voice broadcast %vbmfPin| continuous play %serial_number"
+    // vbmfPin.fieldEditor="gridpicker" vbmfPin.fieldOptions.columns=4
+    // inlineInputMode=inline
+    // export function voiceBroadcastModuleFunContPlay(vbmfPin: DigitalPin, serial_number_f: number): void {
         // let checksum = 0;
         // voiceBroadcastModuleSendDataWithS(vbmPin, OTPFixedVoiceFun2.HeadCode); // 头码
         // checksum += OTPFixedVoiceFun2.HeadCode;
@@ -854,7 +854,7 @@ namespace YFSENSORS {
         // voiceBroadcastModuleSendData(vbmPin, OTPFixedVoiceFun2.TailCode); // 尾码
         // checksum += OTPFixedVoiceFun2.TailCode;
         // voiceBroadcastModuleSendData(vbmPin, (checksum && 0xFF)); // 校验和
-    }
+    // }
 
 
     ///////////////////// Output - MP3 audio playback module ///////////////////////
