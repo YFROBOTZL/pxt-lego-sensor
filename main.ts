@@ -866,17 +866,21 @@ namespace YFSENSORS {
      * @param mute_time Mute time, unit 10ms. eg: 1
      */
     //% group="Output"
-    //% blockId=YFSENSORS_voiceBroadcastModuleFun2 weight=92 blockGap=15
-    //% block="voice broadcast %vbmPin| %serial_number || 延时 %percentage \\%""
+    //% blockId=YFSENSORS_voiceBroadcastModuleFunContPlay weight=92 blockGap=15
+    //% block="voice broadcast %vbmPin| 连续播放 %serial_number"
     //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
     //% inlineInputMode=inline
-    export function voiceBroadcastModuleFun2(vbmPin: DigitalPin, serial_number: OTPFixedVoiceFun2, mute_time: number): void {
-        if(serial_number == OTPFixedVoiceFun2.HeadCode){
-            voiceBroadcastModuleSendDataWithS(vbmPin, serial_number);
-        } else {
-            voiceBroadcastModuleSendData(vbmPin, serial_number);
+    export function voiceBroadcastModuleFunContPlay(vbmPin: DigitalPin, serial_number: Array<number>): void {
+        let checksum = 0;
+        voiceBroadcastModuleSendDataWithS(vbmPin, OTPFixedVoiceFun2.HeadCode); // 头码
+        checksum += OTPFixedVoiceFun2.HeadCode;
+        for (let index = 0; index < serial_number.length; index++) {
+            voiceBroadcastModuleSendData(vbmPin, serial_number[index]); // 语音列表码
+            checksum += serial_number[index];
         }
-        // voiceBroadcastModuleSendData(vbmPin, mute_time);
+        voiceBroadcastModuleSendData(vbmPin, OTPFixedVoiceFun2.TailCode); // 尾码
+        checksum += OTPFixedVoiceFun2.TailCode;
+        voiceBroadcastModuleSendData(vbmPin, (checksum && 0xFF)); // 校验和
     }
 
     ///////////////////// Output - MP3 audio playback module ///////////////////////
