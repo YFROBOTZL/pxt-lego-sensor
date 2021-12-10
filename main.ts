@@ -838,7 +838,7 @@ namespace YFSENSORS {
     //  * @param vbmfPin pin. eg: DigitalPin.P2
     //  * @param serial_number_f voice serial number array.
     //  */
-    //% group="Output"
+    // group="Output"
     // blockId=YFSENSORS_voiceBroadcastModuleFunContPlay weight=92 blockGap=15
     // block="voice broadcast %vbmfPin| continuous play %serial_number"
     // vbmfPin.fieldEditor="gridpicker" vbmfPin.fieldOptions.columns=4
