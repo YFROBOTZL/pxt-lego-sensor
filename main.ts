@@ -784,8 +784,8 @@ namespace YFSENSORS {
 
     /**
      * Fixed voice broadcast module send data with no start bit.
-     * @param vbmPin pin.
-     * @param serial_number voice serial number.
+     * param vbmPin pin.
+     * param serial_number voice serial number.
      */
      function voiceBroadcastModuleSendData(vbmPin: DigitalPin, serial_number: number): void {
         for (let index = 0; index < 8; index++) {
@@ -806,8 +806,8 @@ namespace YFSENSORS {
 
     /**
      * Fixed voice broadcast module send data with start bit.
-     * @param vbmPin pin.
-     * @param serial_number voice serial number.
+     * param vbmPin pin.
+     * param serial_number voice serial number.
      */
     function voiceBroadcastModuleSendDataWithS(vbmPin: DigitalPin, serial_number: number): void {
         pins.digitalWritePin(vbmPin, 0); 
