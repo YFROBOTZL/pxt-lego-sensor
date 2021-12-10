@@ -833,58 +833,7 @@ namespace YFSENSORS {
         }
     }
 
-    /**
-     * Fixed voice broadcast module function : set volume level(0~7) / Stop play / loop play.
-     * @param vbmPin pin. eg: DigitalPin.P2
-     * @param serial_number voice serial number of function. eg: OTPFixedVoiceFun.Stop
-     */
-    //% group="Output"
-    //% blockId=YFSENSORS_voiceBroadcastModuleFun weight=93 blockGap=15
-    //% block="voice broadcast %vbmPin| %serial_number"
-    //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
-    //% serial_number.fieldEditor="gridpicker" serial_number.fieldOptions.columns=4
-    //% inlineInputMode=inline
-    export function voiceBroadcastModuleFun(vbmPin: DigitalPin, serial_number: OTPFixedVoiceFun): void {
-        voiceBroadcastModuleSendDataWithS(vbmPin, serial_number);
-    }
 
-    /**
-     * Fixed voice broadcast module select voice list number.
-     * @param vbmPin pin. eg: DigitalPin.P2
-     * @param serial_number voice serial number. eg: 0
-     */
-    //% group="Output"
-    //% blockId=YFSENSORS_voiceBroadcastModuleSelectListNumber weight=91 blockGap=15
-    //% block="voice broadcast %vbmPin| play %serial_number"
-    //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
-    //% inlineInputMode=inline
-    export function voiceBroadcastModuleSelectListNumber(vbmPin: DigitalPin, serial_number: number): void {
-        voiceBroadcastModuleSendData(vbmPin, serial_number);
-    }
-
-    /**
-     * Fixed voice broadcast module function : Continuous Play.
-     * @param vbmPin pin. eg: DigitalPin.P2
-     * @param serial_number voice serial number of function. eg: OTPFixedVoiceFun2.HeadCode
-     * @param mute_time Mute time, unit 10ms. eg: 1
-     */
-    //% group="Output"
-    //% blockId=YFSENSORS_voiceBroadcastModuleFunContPlay weight=92 blockGap=15
-    //% block="voice broadcast %vbmPin| 连续播放 %serial_number"
-    //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
-    //% inlineInputMode=inline
-    export function voiceBroadcastModuleFunContPlay(vbmPin: DigitalPin, serial_number: Array<number>): void {
-        let checksum = 0;
-        voiceBroadcastModuleSendDataWithS(vbmPin, OTPFixedVoiceFun2.HeadCode); // 头码
-        checksum += OTPFixedVoiceFun2.HeadCode;
-        for (let index = 0; index < serial_number.length; index++) {
-            voiceBroadcastModuleSendData(vbmPin, serial_number[index]); // 语音列表码
-            checksum += serial_number[index];
-        }
-        voiceBroadcastModuleSendData(vbmPin, OTPFixedVoiceFun2.TailCode); // 尾码
-        checksum += OTPFixedVoiceFun2.TailCode;
-        voiceBroadcastModuleSendData(vbmPin, (checksum && 0xFF)); // 校验和
-    }
 
     ///////////////////// Output - MP3 audio playback module ///////////////////////
     /**
