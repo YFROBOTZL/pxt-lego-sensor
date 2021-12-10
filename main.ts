@@ -836,7 +836,7 @@ namespace YFSENSORS {
     /**
      * Fixed voice broadcast module function : Continuous Play.
      * @param vbmPin pin. eg: DigitalPin.P2
-     * @param serial_number voice serial number of function. eg: OTPFixedVoiceFun2.HeadCode
+     * @param serial_number voice serial number array.
      */
     //% group="Output"
     //% blockId=YFSENSORS_voiceBroadcastModuleFunContPlay weight=92 blockGap=15
