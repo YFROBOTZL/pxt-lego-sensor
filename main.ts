@@ -836,14 +836,14 @@ namespace YFSENSORS {
     /**
      * Fixed voice broadcast module function : Continuous Play.
      * @param vbmPin pin. eg: DigitalPin.P2
-     * @param serial_number voice serial number array. eg. [0, 1]
+     * @param serial_number voice serial number array.
      */
     //% group="Output"
     //% blockId=YFSENSORS_voiceBroadcastModuleFunContPlay weight=92 blockGap=15
     //% block="voice broadcast %vbmPin| continuous play %serial_number"
     //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
     //% inlineInputMode=inline
-    export function voiceBroadcastModuleFunContPlay(vbmPin: DigitalPin, serial_number: number[]): void {
+    export function voiceBroadcastModuleFunContPlay(vbmPin: DigitalPin, serial_number: number): void {
         // let checksum = 0;
         // voiceBroadcastModuleSendDataWithS(vbmPin, OTPFixedVoiceFun2.HeadCode); // 头码
         // checksum += OTPFixedVoiceFun2.HeadCode;
