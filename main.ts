@@ -781,8 +781,8 @@ namespace YFSENSORS {
 
     /**
      * Fixed voice broadcast module send data with no start bit.
-     * @param vbmPin pin. eg: DigitalPin.P2
-     * @param serial_number voice serial number. eg: 0
+     * @param vbmPin pin.
+     * @param serial_number voice serial number.
      */
      function voiceBroadcastModuleSendData(vbmPin: DigitalPin, serial_number: number): void {
         for (let index = 0; index < 8; index++) {
@@ -803,8 +803,8 @@ namespace YFSENSORS {
 
     /**
      * Fixed voice broadcast module send data with start bit.
-     * @param vbmPin pin. eg: DigitalPin.P2
-     * @param serial_number voice serial number. eg: 0
+     * @param vbmPin pin.
+     * @param serial_number voice serial number.
      */
     function voiceBroadcastModuleSendDataWithS(vbmPin: DigitalPin, serial_number: number): void {
         pins.digitalWritePin(vbmPin, 0); 
@@ -815,7 +815,7 @@ namespace YFSENSORS {
     /**
      * Fixed voice broadcast module play.
      * @param vbmPin pin. eg: DigitalPin.P2
-     * @param serial_number voice serial number. eg: 0
+     * @param serial_number voice serial number.
      * @param delayt delay time. eg: 50
      */
     //% group="Output"
@@ -877,21 +877,6 @@ namespace YFSENSORS {
             voiceBroadcastModuleSendData(vbmPin, serial_number);
         }
         // voiceBroadcastModuleSendData(vbmPin, mute_time);
-    }
-
-    /**
-     * Fixed voice broadcast module set volume level(0~7).
-     * @param vbmPin pin. eg: DigitalPin.P2
-     * @param serial_number voice serial number. eg: 0
-     */
-    //% group="Output"
-    //% blockId=YFSENSORS_voiceBroadcastModuleSetVolume weight=94 blockGap=15
-    //% block="voice broadcast %vbmPin| set volume level %serial_number"
-    //% serial_number.min=0 serial_number.max=7
-    //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
-    //% inlineInputMode=inline
-    export function voiceBroadcastModuleSetPlayLoop(vbmPin: DigitalPin, serial_number: number): void {
-        voiceBroadcastModuleSendData(vbmPin, serial_number);
     }
 
     ///////////////////// Output - MP3 audio playback module ///////////////////////
