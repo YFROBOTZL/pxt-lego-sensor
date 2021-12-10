@@ -755,7 +755,7 @@ namespace YFSENSORS {
      * @param num Standard RGB Led Colours eg: #ff0000
      */
     //% group="Output"
-    //% blockId=YFSENSORS_OTPFixedVoiceListNum2 weight=93 blockGap=15
+    //% blockId=YFSENSORS_OTPFixedVoiceListNum2 weight=94 blockGap=15
     //% block="%num"
     //% num.fieldEditor="gridpicker" num.fieldOptions.columns=10
     export function OTPFixedVoiceListNum2(num: OTPFixedVoiceList2): number {
@@ -834,19 +834,27 @@ namespace YFSENSORS {
     }
 
     /**
-     * Fixed voice broadcast module function : set volume level(0~7) / Stop play / loop play.
+     * Fixed voice broadcast module function : Continuous Play.
      * @param vbmPin pin. eg: DigitalPin.P2
-     * @param serial_number voice serial number of function. eg: OTPFixedVoiceFun.Stop
+     * @param serial_number voice serial number of function. eg: OTPFixedVoiceFun2.HeadCode
+     * @param mute_time Mute time, unit 10ms. eg: 1
      */
     //% group="Output"
-    //% blockId=YFSENSORS_voiceBroadcastModuleFun weight=93 blockGap=15
-    //% block="voice broadcast %vbmPin| %serial_number"
+    //% blockId=YFSENSORS_voiceBroadcastModuleFunContPlay weight=92 blockGap=15
+    //% block="voice broadcast %vbmPin| continuous play %serial_number"
     //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
-    //% serial_number.fieldEditor="gridpicker" serial_number.fieldOptions.columns=4
     //% inlineInputMode=inline
-    export function voiceBroadcastModuleFun(vbmPin: DigitalPin, serial_number: OTPFixedVoiceFun): void {
-        let snumber = serial_number;
-        voiceBroadcastModuleSendDataWithS(vbmPin, snumber);
+    export function voiceBroadcastModuleFunContPlay(vbmPin: DigitalPin, serial_number: Array<number>): void {
+        let checksum = 0;
+        voiceBroadcastModuleSendDataWithS(vbmPin, OTPFixedVoiceFun2.HeadCode); // 头码
+        checksum += OTPFixedVoiceFun2.HeadCode;
+        for (let index = 0; index < serial_number.length; index++) {
+            voiceBroadcastModuleSendData(vbmPin, serial_number[index]); // 语音列表码
+            checksum += serial_number[index];
+        }
+        voiceBroadcastModuleSendData(vbmPin, OTPFixedVoiceFun2.TailCode); // 尾码
+        checksum += OTPFixedVoiceFun2.TailCode;
+        voiceBroadcastModuleSendData(vbmPin, (checksum && 0xFF)); // 校验和
     }
 
 
