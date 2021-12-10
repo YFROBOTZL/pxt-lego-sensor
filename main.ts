@@ -434,8 +434,11 @@ namespace YFSENSORS {
         //% blockId="YFDOM_OTPFVF_HEADCODE" block="发送连码头码"
         HeadCode = 0xF1,
         //% blockId="YFDOM_OTPFVF_TAILCODE" block="发送连码尾码"
-        TailCode = 0xF3,
-        //% blockId="YFDOM_OTPFVF_MUTECODE" block="发送静音码"
+        TailCode = 0xF3
+    }
+
+    export enum OTPFixedVoiceFunMute {
+        //% blockId="YFDOM_OTPFVF_MUTECODE" block="静音"
         MuteCode = 0xF4
     }
 
@@ -831,20 +834,6 @@ namespace YFSENSORS {
     }
 
     /**
-     * Fixed voice broadcast module select voice list number.
-     * @param vbmPin pin. eg: DigitalPin.P2
-     * @param serial_number voice serial number. eg: 0
-     */
-    //% group="Output"
-    //% blockId=YFSENSORS_voiceBroadcastModuleSelectListNumber weight=94 blockGap=15
-    //% block="voice broadcast %vbmPin| play %serial_number"
-    //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
-    //% inlineInputMode=inline
-    export function voiceBroadcastModuleSelectListNumber(vbmPin: DigitalPin, serial_number: number): void {
-        voiceBroadcastModuleSendData(vbmPin, serial_number);
-    }
-
-    /**
      * Fixed voice broadcast module function : set volume level(0~7) / Stop play / loop play.
      * @param vbmPin pin. eg: DigitalPin.P2
      * @param serial_number voice serial number of function. eg: OTPFixedVoiceFun.Stop
@@ -857,6 +846,20 @@ namespace YFSENSORS {
     //% inlineInputMode=inline
     export function voiceBroadcastModuleFun(vbmPin: DigitalPin, serial_number: OTPFixedVoiceFun): void {
         voiceBroadcastModuleSendDataWithS(vbmPin, serial_number);
+    }
+
+    /**
+     * Fixed voice broadcast module select voice list number.
+     * @param vbmPin pin. eg: DigitalPin.P2
+     * @param serial_number voice serial number. eg: 0
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_voiceBroadcastModuleSelectListNumber weight=94 blockGap=15
+    //% block="voice broadcast %vbmPin| play %serial_number"
+    //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
+    //% inlineInputMode=inline
+    export function voiceBroadcastModuleSelectListNumber(vbmPin: DigitalPin, serial_number: number): void {
+        voiceBroadcastModuleSendData(vbmPin, serial_number);
     }
 
     /**
