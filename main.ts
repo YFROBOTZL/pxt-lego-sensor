@@ -861,6 +861,7 @@ namespace YFSENSORS {
     //% group="Output"
     //% blockId=YFSENSORS_audioPlaybackModuleFunSelect weight=89 blockGap=15
     //% block="audio playback %specified_fun"
+    //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=2
     export function audioPlaybackModuleFunSelect(specified_fun: AudioPlaybackFunWithNum): void {
         audioPlaybackModule_sendData(specified_fun);
     }
