@@ -407,6 +407,38 @@ namespace YFSENSORS {
         OTPFVL_7E = 0x7E
     }
 
+    export enum OTPFixedVoiceFun {
+        //% blockId="YFDOM_OTPFVF_VolumeLevel0" block="设置音量0"
+        VolumeLevel0 = 0xE0,
+        //% blockId="YFDOM_OTPFVF_VolumeLevel1" block="设置音量1"
+        VolumeLevel1 = 0xE1,
+        //% blockId="YFDOM_OTPFVF_VolumeLevel2" block="设置音量2"
+        VolumeLevel2 = 0xE2,
+        //% blockId="YFDOM_OTPFVF_VolumeLevel3" block="设置音量3"
+        VolumeLevel3 = 0xE3,
+        //% blockId="YFDOM_OTPFVF_VolumeLevel4" block="设置音量4"
+        VolumeLevel4 = 0xE4,
+        //% blockId="YFDOM_OTPFVF_VolumeLevel5" block="设置音量5"
+        VolumeLevel5 = 0xE5,
+        //% blockId="YFDOM_OTPFVF_VolumeLevel6" block="设置音量6"
+        VolumeLevel6 = 0xE6,
+        //% blockId="YFDOM_OTPFVF_VolumeLevel7" block="设置音量7"
+        VolumeLevel7 = 0xE7,
+        //% blockId="YFDOM_OTPFVF_LOOP" block="循环播放"
+        Loop = 0xF2,
+        //% blockId="YFDOM_OTPFVF_STOP" block="停止播放"
+        Stop = 0xFE
+    }
+    
+    export enum OTPFixedVoiceFun2 {
+        //% blockId="YFDOM_OTPFVF_HEADCODE" block="发送连码头码"
+        HeadCode = 0xF1,
+        //% blockId="YFDOM_OTPFVF_TAILCODE" block="发送连码尾码"
+        TailCode = 0xF3,
+        //% blockId="YFDOM_OTPFVF_MUTECODE" block="发送静音码"
+        MuteCode = 0xF4
+    }
+
     enum Melodies {
         //% block="dadadum" blockIdentity=music.builtInMelody
         Dadadadum = 0,
@@ -748,19 +780,11 @@ namespace YFSENSORS {
     }
 
     /**
-     * Fixed voice broadcast module play.
+     * Fixed voice broadcast module send data with no start bit.
      * @param vbmPin pin. eg: DigitalPin.P2
      * @param serial_number voice serial number. eg: 0
-     * @param delayt delay time. eg: 50
      */
-    //% group="Output"
-    //% blockId=YFSENSORS_voiceBroadcastModule weight=95 blockGap=15
-    //% block="voice broadcast %vbmPin| play %serial_number=YFSENSORS_OTPFixedVoiceListNum || delay %delayt| ms"
-    //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
-    //% inlineInputMode=inline
-    export function voiceBroadcastModule(vbmPin: DigitalPin, serial_number: number, delayt: number = 50): void {
-        pins.digitalWritePin(vbmPin, 0); 
-        basic.pause(3);
+     function voiceBroadcastModuleSendData(vbmPin: DigitalPin, serial_number: number): void {
         for (let index = 0; index < 8; index++) {
             pins.digitalWritePin(vbmPin, 1); 
             if(serial_number & 1){
@@ -775,10 +799,99 @@ namespace YFSENSORS {
             serial_number >>= 1;
         }
         pins.digitalWritePin(vbmPin, 1); 
+    }
 
+    /**
+     * Fixed voice broadcast module send data with start bit.
+     * @param vbmPin pin. eg: DigitalPin.P2
+     * @param serial_number voice serial number. eg: 0
+     */
+    function voiceBroadcastModuleSendDataWithS(vbmPin: DigitalPin, serial_number: number): void {
+        pins.digitalWritePin(vbmPin, 0); 
+        basic.pause(3);
+        voiceBroadcastModuleSendData(vbmPin, serial_number);
+    }
+
+    /**
+     * Fixed voice broadcast module play.
+     * @param vbmPin pin. eg: DigitalPin.P2
+     * @param serial_number voice serial number. eg: 0
+     * @param delayt delay time. eg: 50
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_voiceBroadcastModule weight=95 blockGap=15
+    //% block="voice broadcast %vbmPin| play %serial_number=YFSENSORS_OTPFixedVoiceListNum || delay %delayt| ms"
+    //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
+    //% inlineInputMode=inline
+    export function voiceBroadcastModule(vbmPin: DigitalPin, serial_number: number, delayt: number = 50): void {
+        voiceBroadcastModuleSendDataWithS(vbmPin, serial_number);
         if (delayt >= 50 ) {
             basic.pause(delayt);
         }
+    }
+
+    /**
+     * Fixed voice broadcast module select voice list number.
+     * @param vbmPin pin. eg: DigitalPin.P2
+     * @param serial_number voice serial number. eg: 0
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_voiceBroadcastModuleSelectListNumber weight=94 blockGap=15
+    //% block="voice broadcast %vbmPin| play %serial_number"
+    //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
+    //% inlineInputMode=inline
+    export function voiceBroadcastModuleSelectListNumber(vbmPin: DigitalPin, serial_number: number): void {
+        voiceBroadcastModuleSendData(vbmPin, serial_number);
+    }
+
+    /**
+     * Fixed voice broadcast module function : set volume level(0~7) / Stop play / loop play.
+     * @param vbmPin pin. eg: DigitalPin.P2
+     * @param serial_number voice serial number of function. eg: OTPFixedVoiceFun.Stop
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_voiceBroadcastModuleFun weight=93 blockGap=15
+    //% block="voice broadcast %vbmPin| %serial_number"
+    //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
+    //% serial_number.fieldEditor="gridpicker" serial_number.fieldOptions.columns=4
+    //% inlineInputMode=inline
+    export function voiceBroadcastModuleFun(vbmPin: DigitalPin, serial_number: OTPFixedVoiceFun): void {
+        voiceBroadcastModuleSendDataWithS(vbmPin, serial_number);
+    }
+
+    /**
+     * Fixed voice broadcast module function : Continuous Play.
+     * @param vbmPin pin. eg: DigitalPin.P2
+     * @param serial_number voice serial number of function. eg: OTPFixedVoiceFun2.HeadCode
+     * @param mute_time Mute time, unit 10ms. eg: 1
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_voiceBroadcastModuleFun2 weight=92 blockGap=15
+    //% block="voice broadcast %vbmPin| %serial_number || 延时 %percentage \\%""
+    //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
+    //% inlineInputMode=inline
+    export function voiceBroadcastModuleFun2(vbmPin: DigitalPin, serial_number: OTPFixedVoiceFun2, mute_time: number): void {
+        if(serial_number == OTPFixedVoiceFun2.HeadCode){
+            voiceBroadcastModuleSendDataWithS(vbmPin, serial_number);
+        } else {
+            voiceBroadcastModuleSendData(vbmPin, serial_number);
+        }
+        // voiceBroadcastModuleSendData(vbmPin, mute_time);
+    }
+
+    /**
+     * Fixed voice broadcast module set volume level(0~7).
+     * @param vbmPin pin. eg: DigitalPin.P2
+     * @param serial_number voice serial number. eg: 0
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_voiceBroadcastModuleSetVolume weight=94 blockGap=15
+    //% block="voice broadcast %vbmPin| set volume level %serial_number"
+    //% serial_number.min=0 serial_number.max=7
+    //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
+    //% inlineInputMode=inline
+    export function voiceBroadcastModuleSetPlayLoop(vbmPin: DigitalPin, serial_number: number): void {
+        voiceBroadcastModuleSendData(vbmPin, serial_number);
     }
 
     ///////////////////// Output - MP3 audio playback module ///////////////////////
