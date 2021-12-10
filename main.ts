@@ -844,16 +844,16 @@ namespace YFSENSORS {
     //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
     //% inlineInputMode=inline
     export function voiceBroadcastModuleFunContPlay(vbmPin: DigitalPin, serial_number: number[]): void {
-        let checksum = 0;
-        voiceBroadcastModuleSendDataWithS(vbmPin, OTPFixedVoiceFun2.HeadCode); // 头码
-        checksum += OTPFixedVoiceFun2.HeadCode;
-        for (let index = 0; index < serial_number.length; index++) {
-            voiceBroadcastModuleSendData(vbmPin, serial_number[index]); // 语音列表码
-            checksum += serial_number[index];
-        }
-        voiceBroadcastModuleSendData(vbmPin, OTPFixedVoiceFun2.TailCode); // 尾码
-        checksum += OTPFixedVoiceFun2.TailCode;
-        voiceBroadcastModuleSendData(vbmPin, (checksum && 0xFF)); // 校验和
+        // let checksum = 0;
+        // voiceBroadcastModuleSendDataWithS(vbmPin, OTPFixedVoiceFun2.HeadCode); // 头码
+        // checksum += OTPFixedVoiceFun2.HeadCode;
+        // for (let index = 0; index < serial_number.length; index++) {
+        //     voiceBroadcastModuleSendData(vbmPin, serial_number[index]); // 语音列表码
+        //     checksum += serial_number[index];
+        // }
+        // voiceBroadcastModuleSendData(vbmPin, OTPFixedVoiceFun2.TailCode); // 尾码
+        // checksum += OTPFixedVoiceFun2.TailCode;
+        // voiceBroadcastModuleSendData(vbmPin, (checksum && 0xFF)); // 校验和
     }
 
 
