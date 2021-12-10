@@ -840,8 +840,8 @@ namespace YFSENSORS {
      */
     //% group="Output"
     //% blockId=YFSENSORS_voiceBroadcastModuleFunContPlay weight=92 blockGap=15
-    //% block="voice broadcast %vbmPin| continuous play %serial_number"
-    //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
+    //% block="voice broadcast %vbmfPin| continuous play %serial_number"
+    //% vbmfPin.fieldEditor="gridpicker" vbmfPin.fieldOptions.columns=4
     //% inlineInputMode=inline
     export function voiceBroadcastModuleFunContPlay(vbmfPin: DigitalPin, serial_number_f: number): void {
         // let checksum = 0;
