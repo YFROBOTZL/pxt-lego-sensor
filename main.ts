@@ -947,13 +947,13 @@ namespace YFSENSORS {
             pins.digitalWritePin(pin_vrm, 0)
             control.waitMicros(2); // 2us
             pins.digitalWritePin(pin_vrm, 1)
-            basic.pause(30); // 30ms
+            basic.pause(50); // 30ms
             pins.digitalWritePin(pin_vrm, 0)
         } else if (vrmfun == VRMFunction.PLAY_LOOP) {
             pins.digitalWritePin(pin_vrm, 0)
             control.waitMicros(2); // 2us
             pins.digitalWritePin(pin_vrm, 1)
-            basic.pause(2000); // 2s
+            basic.pause(2050); // 2s
             pins.digitalWritePin(pin_vrm, 0)
         } else if (vrmfun == VRMFunction.SPEAKER_ENABLE) {
             pins.digitalWritePin(pin_vrm, 0)
