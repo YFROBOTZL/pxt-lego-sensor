@@ -854,7 +854,7 @@ namespace YFSENSORS {
      * @param serial_number voice serial number. eg: 0
      */
     //% group="Output"
-    //% blockId=YFSENSORS_voiceBroadcastModuleSelectListNumber weight=94 blockGap=15
+    //% blockId=YFSENSORS_voiceBroadcastModuleSelectListNumber weight=91 blockGap=15
     //% block="voice broadcast %vbmPin| play %serial_number"
     //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
     //% inlineInputMode=inline
