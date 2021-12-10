@@ -598,10 +598,10 @@ namespace YFSENSORS {
     }
 
     export enum PingUnit {
-        //% block="μs"
-        MicroSeconds,
         //% block="cm"
         Centimeters,
+        //% block="μs"
+        MicroSeconds,
         //% block="inches"
         Inches
     }
