@@ -55,6 +55,7 @@
   "YFSENSORS.DigitalOutputModule.RELAY|block":"繼電器",
   "YFSENSORS.digitalOutputModule|block":"%dom| 連接 %domPin| %sws=YFSENSORS_domOnOff",
   "YFSENSORS.voiceBroadcastModule|block":"語音播報 %vbmPin| 播放 %serial_number=YFSENSORS_OTPFixedVoiceListNum || 並延時 %delayt| ms",
+  "YFSENSORS.voiceBroadcastModuleFun|block": "語音播報 %vbmPin| %serial_number",
   "YFSENSORS.audioPlaybackModule_connectPin|block":"連接MP3音頻播放模塊到 %pin_data",
   "YFSENSORS.audioPlaybackModuleSelectTrackNum|block":"音頻播放模塊選擇曲目：%specified_track",
   "YFSENSORS.audioPlaybackModuleFunSelect|block":"音頻播放模塊 %specified_fun",

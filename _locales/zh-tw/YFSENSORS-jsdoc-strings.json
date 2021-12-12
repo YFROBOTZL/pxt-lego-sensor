@@ -42,6 +42,7 @@
   "YFSENSORS.OTPFixedVoiceListNum": "返回OTP固定語音列表的序列號",
   "YFSENSORS.OTPFixedVoiceListNum2": "返回OTP固定語音列表的序列號",
   "YFSENSORS.voiceBroadcastModule": "語音播報模塊播放指定段語音",
+  "YFSENSORS.voiceBroadcastModuleFun": "語音播報模塊功能：設置音量級別（0〜7）/停止播放/循環播放。",
   "YFSENSORS.audioPlaybackModule_connectPin": "音頻播放模塊引腳設置",
   "YFSENSORS.audioPlaybackModuleFunWithNum": "音頻播放模塊搭配數字的功能",
   "YFSENSORS.audioPlaybackModuleFun": "音頻播放模塊直接設置的功能",
