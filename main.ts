@@ -832,6 +832,22 @@ namespace YFSENSORS {
             basic.pause(delayt);
         }
     }
+    
+    /**
+     * Fixed voice broadcast module function : set volume level(0~7) / Stop play / loop play.
+     * @param vbmPin pin. eg: DigitalPin.P2
+     * @param serial_number voice serial number of function. eg: OTPFixedVoiceFun.Stop
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_voiceBroadcastModuleFun weight=93 blockGap=15
+    //% block="voice broadcast %vbmPin| %serial_number"
+    //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
+    //% serial_number.fieldEditor="gridpicker" serial_number.fieldOptions.columns=4
+    //% inlineInputMode=inline
+    export function voiceBroadcastModuleFun(vbmPin: DigitalPin, serial_number: OTPFixedVoiceFun): void {
+        let snumber = serial_number;
+        voiceBroadcastModuleSendDataWithS(vbmPin, snumber);
+    }
 
     ///////////////////// Output - MP3 audio playback module ///////////////////////
     /**
