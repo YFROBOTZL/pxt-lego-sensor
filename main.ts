@@ -664,14 +664,14 @@ namespace YFSENSORS {
 
     /**
      * ON or OFF.
-     * @param num on or off eg: SwitchState.ON
+     * @param num on or off eg: YFSENSORS.SwitchState.ON
      */
     //% advanced=true
     //% group="Output"
     //% blockId=YFSENSORS_domOnOff weight=11 blockGap=15
     //% block="%num"
     //% num.fieldEditor="gridpicker" num.fieldOptions.columns=2
-    export function domOnOff(num: SwitchState): number {
+    export function domOnOff(num: YFSENSORS.SwitchState): number {
         return num;
     }
 
@@ -880,20 +880,20 @@ namespace YFSENSORS {
 
     /**
      * MP3 audio playback module Playback settings.
-     * @param specified_fun mp3 module specified track number. eg: AudioPlaybackFunWithNum.SelectPlay
+     * @param specified_fun mp3 module specified track number. eg: YFSENSORS.AudioPlaybackFunWithNum.SelectPlay
      */
     //% advanced=true
     //% group="Output"
     //% blockId=YFSENSORS_audioPlaybackModuleFunSelect weight=89 blockGap=15
     //% block="audio playback %specified_fun"
     //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=2
-    export function audioPlaybackModuleFunSelect(specified_fun: AudioPlaybackFunWithNum): void {
+    export function audioPlaybackModuleFunSelect(specified_fun: YFSENSORS.AudioPlaybackFunWithNum): void {
         audioPlaybackModule_sendData(specified_fun);
     }
 
     /**
      * MP3 audio playback module play specified track.
-     * @param specified_fun mp3 module specified function code. eg: AudioPlaybackFunWithNum.SelectPlay
+     * @param specified_fun mp3 module specified function code. eg: YFSENSORS.AudioPlaybackFunWithNum.SelectPlay
      * @param specified_track mp3 module specified track number. eg: 1
      */
     //% group="Output"
@@ -901,14 +901,14 @@ namespace YFSENSORS {
     //% block="audio playback %specified_fun| %specified_track"
     //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=2
     //% specified_track.min=1
-    export function audioPlaybackModuleFunWithNum(specified_fun: AudioPlaybackFunWithNum, specified_track: number): void {
-        if (specified_fun == AudioPlaybackFunWithNum.SelectPlay || specified_fun == AudioPlaybackFunWithNum.SetInsertTrack) {
+    export function audioPlaybackModuleFunWithNum(specified_fun: YFSENSORS.AudioPlaybackFunWithNum, specified_track: number): void {
+        if (specified_fun == YFSENSORS.AudioPlaybackFunWithNum.SelectPlay || specified_fun == YFSENSORS.AudioPlaybackFunWithNum.SetInsertTrack) {
             if (specified_track>= 255) specified_track = 255;
-        } else if (specified_fun == AudioPlaybackFunWithNum.SetVolume) {
+        } else if (specified_fun == YFSENSORS.AudioPlaybackFunWithNum.SetVolume) {
             if (specified_track>= 30) specified_track = 30;
-        } else if (specified_fun == AudioPlaybackFunWithNum.SetEQ) {
+        } else if (specified_fun == YFSENSORS.AudioPlaybackFunWithNum.SetEQ) {
             if (specified_track>= 4) specified_track = 4;
-        } else if (specified_fun == AudioPlaybackFunWithNum.SetPlayMode) {
+        } else if (specified_fun == YFSENSORS.AudioPlaybackFunWithNum.SetPlayMode) {
             if (specified_track>= 7) specified_track = 7;
         }
         
@@ -928,20 +928,20 @@ namespace YFSENSORS {
 
     /**
      * MP3 audio playback module Playback settings.
-     * @param specified_fun mp3 module specified function code. eg: AudioPlaybackFun.Play
+     * @param specified_fun mp3 module specified function code. eg: YFSENSORS.AudioPlaybackFun.Play
      */
     //% group="Output"
     //% blockId=YFSENSORS_audioPlaybackModuleFun weight=86 blockGap=15
     //% block="audio playback %specified_fun"
     //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=3
-    export function audioPlaybackModuleFun(specified_fun: AudioPlaybackFun): void {
+    export function audioPlaybackModuleFun(specified_fun: YFSENSORS.AudioPlaybackFun): void {
         audioPlaybackModule_sendData(specified_fun);
     }
 
     /**
      * Read the Busy Pin of the MP3 audio playback module or the Fixed voice broadcast.
      * @param pin_busy busy pin. eg: DigitalPin.P1
-     * @param m_busy mp3 module or voice broadcast. eg: MVModule.MP3_AUDIO
+     * @param m_busy mp3 module or voice broadcast. eg: YFSENSORS.MVModule.MP3_AUDIO
      */
     //% advanced=true
     //% group="Output"
@@ -949,7 +949,7 @@ namespace YFSENSORS {
     //% block="%m_busy read busy pin %pin_busy"
     //% pin_busy.fieldEditor="gridpicker" pin_busy.fieldOptions.columns=4
     //% m_busy.fieldEditor="gridpicker" m_busy.fieldOptions.columns=2
-    export function readBusyPin(m_busy: MVModule, pin_busy: DigitalPin): boolean {
+    export function readBusyPin(m_busy: YFSENSORS.MVModule, pin_busy: DigitalPin): boolean {
         let m_busyM = m_busy;  // no work
         let a: number = pins.digitalReadPin(pin_busy);
         if (a == 1) {
@@ -961,29 +961,29 @@ namespace YFSENSORS {
     /**
      * voice recorder module play recorder once or loop, enable or disable speaker.
      * @param pin_vrm busy pin. eg: DigitalPin.P1
-     * @param vrmfun voice recorder module function. eg: VRMFunction.PLAY_ONCE
+     * @param vrmfun voice recorder module function. eg: YFSENSORS.VRMFunction.PLAY_ONCE
      */
     //% group="Output"
     //% blockId=YFSENSORS_voiceRecorderModule weight=84 blockGap=15
     //% block="voice recorder module %pin_vrm| %vrmfun"
     //% pin_vrm.fieldEditor="gridpicker" pin_vrm.fieldOptions.columns=4
     //% vrmfun.fieldEditor="gridpicker" vrmfun.fieldOptions.columns=2
-    export function voiceRecorderModule(pin_vrm: DigitalPin, vrmfun: VRMFunction): void {
-        if (vrmfun == VRMFunction.PLAY_ONCE) {
+    export function voiceRecorderModule(pin_vrm: DigitalPin, vrmfun: YFSENSORS.VRMFunction): void {
+        if (vrmfun == YFSENSORS.VRMFunction.PLAY_ONCE) {
             pins.digitalWritePin(pin_vrm, 0)
             control.waitMicros(2); // 2us
             pins.digitalWritePin(pin_vrm, 1)
             basic.pause(50); // 30ms
             pins.digitalWritePin(pin_vrm, 0)
-        } else if (vrmfun == VRMFunction.PLAY_LOOP) {
+        } else if (vrmfun == YFSENSORS.VRMFunction.PLAY_LOOP) {
             pins.digitalWritePin(pin_vrm, 0)
             control.waitMicros(2); // 2us
             pins.digitalWritePin(pin_vrm, 1)
             basic.pause(2050); // 2s
             pins.digitalWritePin(pin_vrm, 0)
-        } else if (vrmfun == VRMFunction.SPEAKER_ENABLE) {
+        } else if (vrmfun == YFSENSORS.VRMFunction.SPEAKER_ENABLE) {
             pins.digitalWritePin(pin_vrm, 0)
-        } else if (vrmfun == VRMFunction.SPEAKER_DISABLE) {
+        } else if (vrmfun == YFSENSORS.VRMFunction.SPEAKER_DISABLE) {
             pins.digitalWritePin(pin_vrm, 1)
         }
     }
@@ -993,7 +993,7 @@ namespace YFSENSORS {
      * Traffic Light module light up red, green or yellow led.
      * @param tlm1Pin pin 1. eg: DigitalPin.P1
      * @param tlm2Pin pin 2. eg: DigitalPin.P2
-     * @param wColor which color led. eg: TrafficLightLED.AllTurnOFF
+     * @param wColor which color led. eg: YFSENSORS.TrafficLightLED.AllTurnOFF
      */
     //% group="Output"
     //% blockId=YFSENSORS_trafficLightModule weight=80 blockGap=15
@@ -1001,21 +1001,21 @@ namespace YFSENSORS {
     //% tlm1Pin.fieldEditor="gridpicker" tlm1Pin.fieldOptions.columns=4
     //% tlm2Pin.fieldEditor="gridpicker" tlm2Pin.fieldOptions.columns=4
     //% wColor.fieldEditor="gridpicker" wColor.fieldOptions.columns=2
-    export function trafficLightModule(tlm1Pin: DigitalPin, tlm2Pin: DigitalPin, wColor: TrafficLightLED): void {
+    export function trafficLightModule(tlm1Pin: DigitalPin, tlm2Pin: DigitalPin, wColor: YFSENSORS.TrafficLightLED): void {
         switch (wColor) {
-            case TrafficLightLED.RedLED:            // Red LED
+            case YFSENSORS.TrafficLightLED.RedLED:            // Red LED
                 pins.digitalWritePin(tlm1Pin, 0);
                 pins.digitalWritePin(tlm2Pin, 1);
                 break;
-            case TrafficLightLED.YellowLED:         // Yellow LED
+            case YFSENSORS.TrafficLightLED.YellowLED:         // Yellow LED
                 pins.digitalWritePin(tlm1Pin, 1);
                 pins.digitalWritePin(tlm2Pin, 0);
                 break;
-            case TrafficLightLED.GreenLED:          // Green LED
+            case YFSENSORS.TrafficLightLED.GreenLED:          // Green LED
                 pins.digitalWritePin(tlm1Pin, 1);
                 pins.digitalWritePin(tlm2Pin, 2);
                 break;
-            default: // TrafficLightLED.AllTurnOFF: // all lights turn off
+            default: // YFSENSORS.TrafficLightLED.AllTurnOFF: // all lights turn off
                 pins.digitalWritePin(tlm1Pin, 0);
                 pins.digitalWritePin(tlm2Pin, 0);
                 break;
@@ -1026,14 +1026,14 @@ namespace YFSENSORS {
     /**
      * Read the Analog Input Sensor Module.
      * @param aimPin pin. eg: AnalogPin.P1
-     * @param aim pin. eg: AnalogInputModule.LIGHT
+     * @param aim pin. eg: YFSENSORS.AnalogInputModule.LIGHT
      */
     //% group="Input"
     //% blockId=YFSENSORS_analogInputModule weight=100 blockGap=15
     //% block="at pin %aimPin| %aim| module"
     //% aimPin.fieldEditor="gridpicker" aimPin.fieldOptions.columns=4
     //% aim.fieldEditor="gridpicker" aim.fieldOptions.columns=2
-    export function analogInputModule(aimPin: AnalogPin, aim: AnalogInputModule): number {
+    export function analogInputModule(aimPin: AnalogPin, aim: YFSENSORS.AnalogInputModule): number {
         let aimM = aim;  // no work
         return pins.analogReadPin(aimPin);
     }
@@ -1056,25 +1056,24 @@ namespace YFSENSORS {
     /**
      * Read the Digital Input Sensor Module (Default all modules trigger back true).
      * @param dimPin pin. eg: DigitalPin.P8
-     * @param dim pin. eg: DigitalInputModule.BUTTON
+     * @param dim pin. eg: YFSENSORS.DigitalInputModule.BUTTON
      */
     //% group="Input"
     //% blockId=YFSENSORS_digitalInputModule weight=90 blockGap=15
     //% block="at pin %dimPin| %dim| module"
     //% dimPin.fieldEditor="gridpicker" dimPin.fieldOptions.columns=4
     //% dim.fieldEditor="gridpicker" dim.fieldOptions.columns=2
-    //% dim.defl = DigitalInputModule.BUTTON
-    export function digitalInputModule(dimPin: DigitalPin, dim: DigitalInputModule): boolean {
+    export function digitalInputModule(dimPin: DigitalPin, dim: YFSENSORS.DigitalInputModule): boolean {
         
         pins.setPull(dimPin, PinPullMode.PullNone);
         let a: number = 0;
-        if(dim == DigitalInputModule.BUTTON 
-        || dim == DigitalInputModule.MAGNETIC_SENSOR 
-        || dim == DigitalInputModule.TILT_SENSOR 
-        || dim == DigitalInputModule.INFRARED_PROXIMITY_SENSOR 
-        || dim == DigitalInputModule.COLLISION_SWITCH
-        || dim == DigitalInputModule.PATROL_LEFT 
-        || dim == DigitalInputModule.PATROL_RIGHT ){
+        if(dim == YFSENSORS.DigitalInputModule.BUTTON 
+        || dim == YFSENSORS.DigitalInputModule.MAGNETIC_SENSOR 
+        || dim == YFSENSORS.DigitalInputModule.TILT_SENSOR 
+        || dim == YFSENSORS.DigitalInputModule.INFRARED_PROXIMITY_SENSOR 
+        || dim == YFSENSORS.DigitalInputModule.COLLISION_SWITCH
+        || dim == YFSENSORS.DigitalInputModule.PATROL_LEFT 
+        || dim == YFSENSORS.DigitalInputModule.PATROL_RIGHT ){
             a = pins.digitalReadPin(dimPin);
             if (a == 1) return false;
             else    return true;
@@ -1087,7 +1086,7 @@ namespace YFSENSORS {
 
     /** not work 
 	 * Registers code to run when a Button/Collision event is detected.
-     * param dimE module. eg: DigitalInputModuleE.BUTTON
+     * param dimE module. eg: YFSENSORS.DigitalInputModuleE.BUTTON
      * param dimEPin pin. eg: DigitalPin.P2
      * event event. eg: DigitalInputEvent.Clicked
 	 */
@@ -1097,8 +1096,8 @@ namespace YFSENSORS {
     // block="%dimE on %dimEPin| pressed"
     // dimEPin.fieldEditor="gridpicker" dimEPin.fieldOptions.columns=4
     // event.fieldEditor="gridpicker" event.fieldOptions.columns=3
-    // export function onEvent(dimE: DigitalInputModuleE, dimEPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
-    // export function onEvent(dimE: DigitalInputModuleE, dimEPin: DigitalPin, handler: Action) {
+    // export function onEvent(dimE: YFSENSORS.DigitalInputModuleE, dimEPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
+    // export function onEvent(dimE: YFSENSORS.DigitalInputModuleE, dimEPin: DigitalPin, handler: Action) {
     //     let dimME = dimE;  // no work
     //     // pins.setEvents(dimEPin, PinEventType.Edge);
     //     // control.onEvent(<number>dimEPin, <number>event, handler); // register handler
@@ -1175,7 +1174,7 @@ namespace YFSENSORS {
      * Send a ping and get the echo time (in microseconds) as a result
      * @param trig trigger pin. eg: DigitalPin.P2
      * @param echo echo pin. eg: DigitalPin.P8
-     * @param unit desired conversion unit. eg: PingUnit.Centimeters
+     * @param unit desired conversion unit. eg: YFSENSORS.PingUnit.Centimeters
      * @param maxCmDistance maximum distance in centimeters (default is 450)
      */
     //% group="Input"
@@ -1184,9 +1183,8 @@ namespace YFSENSORS {
     //% trig.fieldEditor="gridpicker" trig.fieldOptions.columns=4 
     //% echo.fieldEditor="gridpicker" echo.fieldOptions.columns=4 
     //% unit.fieldEditor="gridpicker" unit.fieldOptions.columns=3
-    //% unit.defl=PingUnit.Centimeters
     //% inlineInputMode=inline
-    export function ping(trig: DigitalPin, echo: DigitalPin, unit: PingUnit, maxCmDistance = 450): number {
+    export function ping(trig: DigitalPin, echo: DigitalPin, unit: YFSENSORS.PingUnit, maxCmDistance = 450): number {
         // send pulse
         pins.setPull(trig, PinPullMode.PullNone);
         pins.digitalWritePin(trig, 0);
@@ -1199,8 +1197,8 @@ namespace YFSENSORS {
         const d = pins.pulseIn(echo, PulseValue.High, maxCmDistance * 58);
 
         switch (unit) {
-            case PingUnit.Centimeters: return Math.idiv(d, 58);
-            case PingUnit.Inches: return Math.idiv(d, 148);
+            case YFSENSORS.PingUnit.Centimeters: return Math.idiv(d, 58);
+            case YFSENSORS.PingUnit.Inches: return Math.idiv(d, 148);
             default: return d ;
         }
     }
@@ -1217,11 +1215,11 @@ namespace YFSENSORS {
     //% block="connect Motor drive %w_M| DIR %pin_dir| PWM %pin_pwm"
     //% pin_dir.fieldEditor="gridpicker" pin_dir.fieldOptions.columns=4 pin_dir.fieldOptions.tooltips="false"
     //% pin_pwm.fieldEditor="gridpicker" pin_pwm.fieldOptions.columns=4 pin_pwm.fieldOptions.tooltips="false"
-    export function motorConnectPin(w_M: MotorsPin, pin_dir: DigitalPin, pin_pwm: AnalogPin): void {
-        if (w_M == MotorsPin.M1) {
+    export function motorConnectPin(w_M: YFSENSORS.MotorsPin, pin_dir: DigitalPin, pin_pwm: AnalogPin): void {
+        if (w_M == YFSENSORS.MotorsPin.M1) {
             YFSENSORSMotor1D = pin_dir
             YFSENSORSMotor1A = pin_pwm
-        } else if (w_M == MotorsPin.M2) {
+        } else if (w_M == YFSENSORS.MotorsPin.M2) {
             YFSENSORSMotor2D = pin_dir
             YFSENSORSMotor2A = pin_pwm
         }
@@ -1242,20 +1240,20 @@ namespace YFSENSORS {
     //% speed.min=0 speed.max=255
     //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
     //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
-    export function motorRun(index: Motors, direction: Dir, speed: number): void {
+    export function motorRun(index: YFSENSORS.Motors, direction: YFSENSORS.Dir, speed: number): void {
         if (index > 2 || index < 0)
             return
         
-        let dir_m2 = direction == Dir.CW ? Dir.CCW : Dir.CW;
+        let dir_m2 = direction == YFSENSORS.Dir.CW ? YFSENSORS.Dir.CCW : YFSENSORS.Dir.CW;
         speed = clamp(speed, 0, 255) * 4.01;  // 0~255 > 0~1023
 
-        if (index == Motors.M1) {
+        if (index == YFSENSORS.Motors.M1) {
             pins.digitalWritePin(YFSENSORSMotor1D, direction);
             pins.analogWritePin(YFSENSORSMotor1A, speed);
-        } else if (index == Motors.M2) {
+        } else if (index == YFSENSORS.Motors.M2) {
             pins.digitalWritePin(YFSENSORSMotor2D, dir_m2);
             pins.analogWritePin(YFSENSORSMotor2A, speed);
-        } else if (index == Motors.MAll) {
+        } else if (index == YFSENSORS.Motors.MAll) {
             pins.digitalWritePin(YFSENSORSMotor1D, direction);
             pins.analogWritePin(YFSENSORSMotor1A, speed);
             pins.digitalWritePin(YFSENSORSMotor2D, dir_m2);
@@ -1271,7 +1269,7 @@ namespace YFSENSORS {
     //% blockId=YFSENSORS_motorStop weight=10 blockGap=15
     //% block="motor |%motor stop"
     //% motor.fieldEditor="gridpicker" motor.fieldOptions.columns=2 
-    export function motorStop(motor: Motors): void {
+    export function motorStop(motor: YFSENSORS.Motors): void {
         motorRun(motor, 0, 0);
     }
 
