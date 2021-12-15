@@ -148,341 +148,298 @@ namespace YFSENSORS {
     
     /*************************  Output - OTP Fixed voice list  *************************/
     export enum OTPFixedVoiceList {
-        //% blockId="YFDOM_OTPFVL_00" block="老师"
+        //% blockId="YFOTPFVL_00" block="老师"
         OTPFVL_00 = 0x00,
-        //% blockId="YFDOM_OTPFVL_01" block="爸爸"
+        //% blockId="YFOTPFVL_01" block="爸爸"
         OTPFVL_01 = 0x01,
-        //% blockId="YFDOM_OTPFVL_02" block="妈妈"
+        //% blockId="YFOTPFVL_02" block="妈妈"
         OTPFVL_02 = 0x02,
-        //% blockId="YFDOM_OTPFVL_03" block="爷爷"
+        //% blockId="YFOTPFVL_03" block="爷爷"
         OTPFVL_03 = 0x03,
-        //% blockId="YFDOM_OTPFVL_04" block="奶奶"
+        //% blockId="YFOTPFVL_04" block="奶奶"
         OTPFVL_04 = 0x04,
-        //% blockId="YFDOM_OTPFVL_05" block="姥姥"
+        //% blockId="YFOTPFVL_05" block="姥姥"
         OTPFVL_05 = 0x05,
-        //% blockId="YFDOM_OTPFVL_06" block="姥爷"
+        //% blockId="YFOTPFVL_06" block="姥爷"
         OTPFVL_06 = 0x06,
-        //% blockId="YFDOM_OTPFVL_07" block="哥哥"
+        //% blockId="YFOTPFVL_07" block="哥哥"
         OTPFVL_07 = 0x07,
-        //% blockId="YFDOM_OTPFVL_08" block="姐姐"
+        //% blockId="YFOTPFVL_08" block="姐姐"
         OTPFVL_08 = 0x08,
-        //% blockId="YFDOM_OTPFVL_09" block="叔叔"
+        //% blockId="YFOTPFVL_09" block="叔叔"
         OTPFVL_09 = 0x09,
-        //% blockId="YFDOM_OTPFVL_0A" block="阿姨"
+        //% blockId="YFOTPFVL_0A" block="阿姨"
         OTPFVL_0A = 0x0A,
-        //% blockId="YFDOM_OTPFVL_0B" block="上午"
+        //% blockId="YFOTPFVL_0B" block="上午"
         OTPFVL_0B = 0x0B,
-        //% blockId="YFDOM_OTPFVL_0C" block="下午"
+        //% blockId="YFOTPFVL_0C" block="下午"
         OTPFVL_0C = 0x0C,
-        //% blockId="YFDOM_OTPFVL_0D" block="晚上"
+        //% blockId="YFOTPFVL_0D" block="晚上"
         OTPFVL_0D = 0x0D,
-        //% blockId="YFDOM_OTPFVL_0E" block="前方"
+        //% blockId="YFOTPFVL_0E" block="前方"
         OTPFVL_0E = 0x0E,
-        //% blockId="YFDOM_OTPFVL_0F" block="厘米"
+        //% blockId="YFOTPFVL_0F" block="厘米"
         OTPFVL_0F = 0x0F,
-        //% blockId="YFDOM_OTPFVL_10" block="新年快乐"
+        //% blockId="YFOTPFVL_10" block="新年快乐"
         OTPFVL_10 = 0x10,
-        //% blockId="YFDOM_OTPFVL_11" block="身体健康"
+        //% blockId="YFOTPFVL_11" block="身体健康"
         OTPFVL_11 = 0x11,
-        //% blockId="YFDOM_OTPFVL_12" block="工作顺利"
+        //% blockId="YFOTPFVL_12" block="工作顺利"
         OTPFVL_12 = 0x12,
-        //% blockId="YFDOM_OTPFVL_13" block="学习进步"
+        //% blockId="YFOTPFVL_13" block="学习进步"
         OTPFVL_13 = 0x13,
-        //% blockId="YFDOM_OTPFVL_14" block="您好"
+        //% blockId="YFOTPFVL_14" block="您好"
         OTPFVL_14 = 0x14,
-        //% blockId="YFDOM_OTPFVL_15" block="谢谢"
+        //% blockId="YFOTPFVL_15" block="谢谢"
         OTPFVL_15 = 0x15,
-        //% blockId="YFDOM_OTPFVL_16" block="的"
+        //% blockId="YFOTPFVL_16" block="的"
         OTPFVL_16 = 0x16,
-        //% blockId="YFDOM_OTPFVL_17" block="祝"
+        //% blockId="YFOTPFVL_17" block="祝"
         OTPFVL_17 = 0x17,
-        //% blockId="YFDOM_OTPFVL_18" block="慢走"
+        //% blockId="YFOTPFVL_18" block="慢走"
         OTPFVL_18 = 0x18,
-        //% blockId="YFDOM_OTPFVL_19" block="欢迎光临"
+        //% blockId="YFOTPFVL_19" block="欢迎光临"
         OTPFVL_19 = 0x19,
-        //% blockId="YFDOM_OTPFVL_1A" block="亲爱的""
+        //% blockId="YFOTPFVL_1A" block="亲爱的""
         OTPFVL_1A = 0x1A,
-        //% blockId="YFDOM_OTPFVL_1B" block="同学们"
+        //% blockId="YFOTPFVL_1B" block="同学们"
         OTPFVL_1B = 0x1B,
-        //% blockId="YFDOM_OTPFVL_1C" block="工作辛苦了"
+        //% blockId="YFOTPFVL_1C" block="工作辛苦了"
         OTPFVL_1C = 0x1C,
-        //% blockId="YFDOM_OTPFVL_1D" block="点"
+        //% blockId="YFOTPFVL_1D" block="点"
         OTPFVL_1D = 0x1D,
-        //% blockId="YFDOM_OTPFVL_1E" block="打开"
+        //% blockId="YFOTPFVL_1E" block="打开"
         OTPFVL_1E = 0x1E,
-        //% blockId="YFDOM_OTPFVL_1F" block="关闭"
+        //% blockId="YFOTPFVL_1F" block="关闭"
         OTPFVL_1F = 0x1F,
-        //% blockId="YFDOM_OTPFVL_20" block="千"
+        //% blockId="YFOTPFVL_20" block="千"
         OTPFVL_20 = 0x20,
-        //% blockId="YFDOM_OTPFVL_21" block="百"
+        //% blockId="YFOTPFVL_21" block="百"
         OTPFVL_21 = 0x21,
-        //% blockId="YFDOM_OTPFVL_22" block="十/时"
+        //% blockId="YFOTPFVL_22" block="十/时"
         OTPFVL_22 = 0x22,
-        //% blockId="YFDOM_OTPFVL_23" block="1"
+        //% blockId="YFOTPFVL_23" block="1"
         OTPFVL_23 = 0x23,
-        //% blockId="YFDOM_OTPFVL_24" block="2"
+        //% blockId="YFOTPFVL_24" block="2"
         OTPFVL_24 = 0x24,
-        //% blockId="YFDOM_OTPFVL_25" block="3"
+        //% blockId="YFOTPFVL_25" block="3"
         OTPFVL_25 = 0x25,
-        //% blockId="YFDOM_OTPFVL_26" block="4"
+        //% blockId="YFOTPFVL_26" block="4"
         OTPFVL_26 = 0x26,
-        //% blockId="YFDOM_OTPFVL_27" block="5"
+        //% blockId="YFOTPFVL_27" block="5"
         OTPFVL_27 = 0x27,
-        //% blockId="YFDOM_OTPFVL_28" block="6"
+        //% blockId="YFOTPFVL_28" block="6"
         OTPFVL_28 = 0x28,
-        //% blockId="YFDOM_OTPFVL_29" block="7"
+        //% blockId="YFOTPFVL_29" block="7"
         OTPFVL_29 = 0x29,
-        //% blockId="YFDOM_OTPFVL_2A" block="8"
+        //% blockId="YFOTPFVL_2A" block="8"
         OTPFVL_2A = 0x2A,
-        //% blockId="YFDOM_OTPFVL_2B" block="9"
+        //% blockId="YFOTPFVL_2B" block="9"
         OTPFVL_2B = 0x2B,
-        //% blockId="YFDOM_OTPFVL_2C" block="0"
+        //% blockId="YFOTPFVL_2C" block="0"
         OTPFVL_2C = 0x2C,
-        //% blockId="YFDOM_OTPFVL_2D" block="当前"
+        //% blockId="YFOTPFVL_2D" block="当前"
         OTPFVL_2D = 0x2D,
-        //% blockId="YFDOM_OTPFVL_2E" block="转"
+        //% blockId="YFOTPFVL_2E" block="转"
         OTPFVL_2E = 0x2E,
-        //% blockId="YFDOM_OTPFVL_2F" block="左"
+        //% blockId="YFOTPFVL_2F" block="左"
         OTPFVL_2F = 0x2F,
-        //% blockId="YFDOM_OTPFVL_30" block="右"
+        //% blockId="YFOTPFVL_30" block="右"
         OTPFVL_30 = 0x30,
-        //% blockId="YFDOM_OTPFVL_31" block="请"
+        //% blockId="YFOTPFVL_31" block="请"
         OTPFVL_31 = 0x31,
-        //% blockId="YFDOM_OTPFVL_32" block="已"
+        //% blockId="YFOTPFVL_32" block="已"
         OTPFVL_32 = 0x32,
-        //% blockId="YFDOM_OTPFVL_33" block="现在"
+        //% blockId="YFOTPFVL_33" block="现在"
         OTPFVL_33 = 0x33,
-        //% blockId="YFDOM_OTPFVL_34" block="是"
+        //% blockId="YFOTPFVL_34" block="是"
         OTPFVL_34 = 0x34,
-        //% blockId="YFDOM_OTPFVL_35" block="红灯"
+        //% blockId="YFOTPFVL_35" block="红灯"
         OTPFVL_35 = 0x35,
-        //% blockId="YFDOM_OTPFVL_36" block="绿灯"
+        //% blockId="YFOTPFVL_36" block="绿灯"
         OTPFVL_36 = 0x36,
-        //% blockId="YFDOM_OTPFVL_37" block="黄灯"
+        //% blockId="YFOTPFVL_37" block="黄灯"
         OTPFVL_37 = 0x37,
-        //% blockId="YFDOM_OTPFVL_38" block="温度"
+        //% blockId="YFOTPFVL_38" block="温度"
         OTPFVL_38 = 0x38,
-        //% blockId="YFDOM_OTPFVL_39" block="湿度"
+        //% blockId="YFOTPFVL_39" block="湿度"
         OTPFVL_39 = 0x39,
-        //% blockId="YFDOM_OTPFVL_3A" block="欢迎常来"
+        //% blockId="YFOTPFVL_3A" block="欢迎常来"
         OTPFVL_3A = 0x3A,
-        //% blockId="YFDOM_OTPFVL_3B" block="还有"
+        //% blockId="YFOTPFVL_3B" block="还有"
         OTPFVL_3B = 0x3B,
-        //% blockId="YFDOM_OTPFVL_3C" block="秒"
+        //% blockId="YFOTPFVL_3C" block="秒"
         OTPFVL_3C = 0x3C,
-        //% blockId="YFDOM_OTPFVL_3D" block="分"
+        //% blockId="YFOTPFVL_3D" block="分"
         OTPFVL_3D = 0x3D,
-        //% blockId="YFDOM_OTPFVL_3E" block="变"
+        //% blockId="YFOTPFVL_3E" block="变"
         OTPFVL_3E = 0x3E,
-        //% blockId="YFDOM_OTPFVL_3F" block="等"
+        //% blockId="YFOTPFVL_3F" block="等"
         OTPFVL_3F = 0x3F,
-        //% blockId="YFDOM_OTPFVL_40" block="下一次"
+        //% blockId="YFOTPFVL_40" block="下一次"
         OTPFVL_40 = 0x40,
-        //% blockId="YFDOM_OTPFVL_41" block="功能"
+        //% blockId="YFOTPFVL_41" block="功能"
         OTPFVL_41 = 0x41,
-        //% blockId="YFDOM_OTPFVL_42" block="障碍物"
+        //% blockId="YFOTPFVL_42" block="障碍物"
         OTPFVL_42 = 0x42,
-        //% blockId="YFDOM_OTPFVL_43" block="世界那么大，我想去看看"
+        //% blockId="YFOTPFVL_43" block="世界那么大，我想去看看"
         OTPFVL_43 = 0x43,
     }
 
     export enum OTPFixedVoiceList2 {
-        //% blockId="YFDOM_OTPFVL_44" block="今天"
+        //% blockId="YFOTPFVL_44" block="今天"
         OTPFVL_44 = 0x44,
-        //% blockId="YFDOM_OTPFVL_45" block="年"
+        //% blockId="YFOTPFVL_45" block="年"
         OTPFVL_45 = 0x45,
-        //% blockId="YFDOM_OTPFVL_46" block="月"
+        //% blockId="YFOTPFVL_46" block="月"
         OTPFVL_46 = 0x46,
-        //% blockId="YFDOM_OTPFVL_47" block="日"
+        //% blockId="YFOTPFVL_47" block="日"
         OTPFVL_47 = 0x47,
-        //% blockId="YFDOM_OTPFVL_48" block="星期"
+        //% blockId="YFOTPFVL_48" block="星期"
         OTPFVL_48 = 0x48,
-        //% blockId="YFDOM_OTPFVL_49" block="农历"
+        //% blockId="YFOTPFVL_49" block="农历"
         OTPFVL_49 = 0x49,
-        //% blockId="YFDOM_OTPFVL_4A" block="现在时刻"
+        //% blockId="YFOTPFVL_4A" block="现在时刻"
         OTPFVL_4A = 0x4A,
-        //% blockId="YFDOM_OTPFVL_4B" block="北京时间"
+        //% blockId="YFOTPFVL_4B" block="北京时间"
         OTPFVL_4B = 0x4B,
-        //% blockId="YFDOM_OTPFVL_4C" block="整"
+        //% blockId="YFOTPFVL_4C" block="整"
         OTPFVL_4C = 0x4C,
-        //% blockId="YFDOM_OTPFVL_4D" block="度"
+        //% blockId="YFOTPFVL_4D" block="度"
         OTPFVL_4D = 0x4D,
-        //% blockId="YFDOM_OTPFVL_4E" block="百分之"
+        //% blockId="YFOTPFVL_4E" block="百分之"
         OTPFVL_4E = 0x4E,
-        //% blockId="YFDOM_OTPFVL_4F" block="距离"
+        //% blockId="YFOTPFVL_4F" block="距离"
         OTPFVL_4F = 0x4F,
-        //% blockId="YFDOM_OTPFVL_50" block="厘米"
+        //% blockId="YFOTPFVL_50" block="厘米"
         OTPFVL_50 = 0x50,
-        //% blockId="YFDOM_OTPFVL_51" block="明天"
+        //% blockId="YFOTPFVL_51" block="明天"
         OTPFVL_51 = 0x51,
-        //% blockId="YFDOM_OTPFVL_52" block="天气"
+        //% blockId="YFOTPFVL_52" block="天气"
         OTPFVL_52 = 0x52,
-        //% blockId="YFDOM_OTPFVL_53" block="白天"
+        //% blockId="YFOTPFVL_53" block="白天"
         OTPFVL_53 = 0x53,
-        //% blockId="YFDOM_OTPFVL_54" block="夜间"
+        //% blockId="YFOTPFVL_54" block="夜间"
         OTPFVL_54 = 0x54,
-        //% blockId="YFDOM_OTPFVL_55" block="晴"
+        //% blockId="YFOTPFVL_55" block="晴"
         OTPFVL_55 = 0x55,
-        //% blockId="YFDOM_OTPFVL_56" block="多云"
+        //% blockId="YFOTPFVL_56" block="多云"
         OTPFVL_56 = 0x56,
-        //% blockId="YFDOM_OTPFVL_57" block="阴"
+        //% blockId="YFOTPFVL_57" block="阴"
         OTPFVL_57 = 0x57,
-        //% blockId="YFDOM_OTPFVL_58" block="雨"
+        //% blockId="YFOTPFVL_58" block="雨"
         OTPFVL_58 = 0x58,
-        //% blockId="YFDOM_OTPFVL_59" block="雷阵"
+        //% blockId="YFOTPFVL_59" block="雷阵"
         OTPFVL_59 = 0x59,
-        //% blockId="YFDOM_OTPFVL_5A" block="小"
+        //% blockId="YFOTPFVL_5A" block="小"
         OTPFVL_5A = 0x5A,
-        //% blockId="YFDOM_OTPFVL_5B" block="中"
+        //% blockId="YFOTPFVL_5B" block="中"
         OTPFVL_5B = 0x5B,
-        //% blockId="YFDOM_OTPFVL_5C" block="大"
+        //% blockId="YFOTPFVL_5C" block="大"
         OTPFVL_5C = 0x5C,
-        //% blockId="YFDOM_OTPFVL_5D" block="夹"
+        //% blockId="YFOTPFVL_5D" block="夹"
         OTPFVL_5D = 0x5D,
-        //% blockId="YFDOM_OTPFVL_5E" block="雪""
+        //% blockId="YFOTPFVL_5E" block="雪""
         OTPFVL_5E = 0x5E,
-        //% blockId="YFDOM_OTPFVL_5F" block="雾"
+        //% blockId="YFOTPFVL_5F" block="雾"
         OTPFVL_5F = 0x5F,
-        //% blockId="YFDOM_OTPFVL_60" block="霾"
+        //% blockId="YFOTPFVL_60" block="霾"
         OTPFVL_60 = 0x60,
-        //% blockId="YFDOM_OTPFVL_61" block="风"
+        //% blockId="YFOTPFVL_61" block="风"
         OTPFVL_61 = 0x61,
-        //% blockId="YFDOM_OTPFVL_62" block="东"
+        //% blockId="YFOTPFVL_62" block="东"
         OTPFVL_62 = 0x62,
-        //% blockId="YFDOM_OTPFVL_63" block="南"
+        //% blockId="YFOTPFVL_63" block="南"
         OTPFVL_63 = 0x63,
-        //% blockId="YFDOM_OTPFVL_64" block="西"
+        //% blockId="YFOTPFVL_64" block="西"
         OTPFVL_64 = 0x64,
-        //% blockId="YFDOM_OTPFVL_65" block="北"
+        //% blockId="YFOTPFVL_65" block="北"
         OTPFVL_65 = 0x65,
-        //% blockId="YFDOM_OTPFVL_66" block="到"
+        //% blockId="YFOTPFVL_66" block="到"
         OTPFVL_66 = 0x66,
-        //% blockId="YFDOM_OTPFVL_67" block="级"
+        //% blockId="YFOTPFVL_67" block="级"
         OTPFVL_67 = 0x67,
-        //% blockId="YFDOM_OTPFVL_68" block="偏"
+        //% blockId="YFOTPFVL_68" block="偏"
         OTPFVL_68 = 0x68,
-        //% blockId="YFDOM_OTPFVL_69" block="方向"
+        //% blockId="YFOTPFVL_69" block="方向"
         OTPFVL_69 = 0x69,
-        //% blockId="YFDOM_OTPFVL_6A" block="空气质量"
+        //% blockId="YFOTPFVL_6A" block="空气质量"
         OTPFVL_6A = 0x6A,
-        //% blockId="YFDOM_OTPFVL_6B" block="优"
+        //% blockId="YFOTPFVL_6B" block="优"
         OTPFVL_6B = 0x6B,
-        //% blockId="YFDOM_OTPFVL_6C" block="良"
+        //% blockId="YFOTPFVL_6C" block="良"
         OTPFVL_6C = 0x6C,
-        //% blockId="YFDOM_OTPFVL_6D" block="轻度污染"
+        //% blockId="YFOTPFVL_6D" block="轻度污染"
         OTPFVL_6D = 0x6D,
-        //% blockId="YFDOM_OTPFVL_6E" block="中度污染"
+        //% blockId="YFOTPFVL_6E" block="中度污染"
         OTPFVL_6E = 0x6E,
-        //% blockId="YFDOM_OTPFVL_6F" block="重度污染"
+        //% blockId="YFOTPFVL_6F" block="重度污染"
         OTPFVL_6F = 0x6F,
-        //% blockId="YFDOM_OTPFVL_70" block="上"
+        //% blockId="YFOTPFVL_70" block="上"
         OTPFVL_70 = 0x70,
-        //% blockId="YFDOM_OTPFVL_71" block="下"
+        //% blockId="YFOTPFVL_71" block="下"
         OTPFVL_71 = 0x71,
-        //% blockId="YFDOM_OTPFVL_72" block="接近"
+        //% blockId="YFOTPFVL_72" block="接近"
         OTPFVL_72 = 0x72,
-        //% blockId="YFDOM_OTPFVL_73" block="远离"
+        //% blockId="YFOTPFVL_73" block="远离"
         OTPFVL_73 = 0x73,
-        //% blockId="YFDOM_OTPFVL_74" block="灯"
+        //% blockId="YFOTPFVL_74" block="灯"
         OTPFVL_74 = 0x74,
-        //% blockId="YFDOM_OTPFVL_75" block="风扇"
+        //% blockId="YFOTPFVL_75" block="风扇"
         OTPFVL_75 = 0x75,
-        //% blockId="YFDOM_OTPFVL_76" block="红色"
+        //% blockId="YFOTPFVL_76" block="红色"
         OTPFVL_76 = 0x76,
-        //% blockId="YFDOM_OTPFVL_77" block="绿色"
+        //% blockId="YFOTPFVL_77" block="绿色"
         OTPFVL_77 = 0x77,
-        //% blockId="YFDOM_OTPFVL_78" block="蓝色"
+        //% blockId="YFOTPFVL_78" block="蓝色"
         OTPFVL_78 = 0x78,
-        //% blockId="YFDOM_OTPFVL_79" block="黄色"
+        //% blockId="YFOTPFVL_79" block="黄色"
         OTPFVL_79 = 0x79,
-        //% blockId="YFDOM_OTPFVL_7A" block="白色"
+        //% blockId="YFOTPFVL_7A" block="白色"
         OTPFVL_7A = 0x7A,
-        //% blockId="YFDOM_OTPFVL_7B" block="叮音效"
+        //% blockId="YFOTPFVL_7B" block="叮音效"
         OTPFVL_7B = 0x7B,
-        //% blockId="YFDOM_OTPFVL_7C" block="滴滴滴"
+        //% blockId="YFOTPFVL_7C" block="滴滴滴"
         OTPFVL_7C = 0x7C,
-        //% blockId="YFDOM_OTPFVL_7D" block="叮叮音效"
+        //% blockId="YFOTPFVL_7D" block="叮叮音效"
         OTPFVL_7D = 0x7D,
-        //% blockId="YFDOM_OTPFVL_7E" block="叮叮音效"
+        //% blockId="YFOTPFVL_7E" block="叮叮音效"
         OTPFVL_7E = 0x7E
     }
 
     export enum OTPFixedVoiceFun {
-        //% blockId="YFDOM_OTPFVF_VolumeLevel0" block="设置音量0"
+        //% blockId="YFOTPFVF_VolumeLevel0" block="设置音量0"
         VolumeLevel0 = 0xE0,
-        //% blockId="YFDOM_OTPFVF_VolumeLevel1" block="设置音量1"
+        //% blockId="YFOTPFVF_VolumeLevel1" block="设置音量1"
         VolumeLevel1 = 0xE1,
-        //% blockId="YFDOM_OTPFVF_VolumeLevel2" block="设置音量2"
+        //% blockId="YFOTPFVF_VolumeLevel2" block="设置音量2"
         VolumeLevel2 = 0xE2,
-        //% blockId="YFDOM_OTPFVF_VolumeLevel3" block="设置音量3"
+        //% blockId="YFOTPFVF_VolumeLevel3" block="设置音量3"
         VolumeLevel3 = 0xE3,
-        //% blockId="YFDOM_OTPFVF_VolumeLevel4" block="设置音量4"
+        //% blockId="YFOTPFVF_VolumeLevel4" block="设置音量4"
         VolumeLevel4 = 0xE4,
-        //% blockId="YFDOM_OTPFVF_VolumeLevel5" block="设置音量5"
+        //% blockId="YFOTPFVF_VolumeLevel5" block="设置音量5"
         VolumeLevel5 = 0xE5,
-        //% blockId="YFDOM_OTPFVF_VolumeLevel6" block="设置音量6"
+        //% blockId="YFOTPFVF_VolumeLevel6" block="设置音量6"
         VolumeLevel6 = 0xE6,
-        //% blockId="YFDOM_OTPFVF_VolumeLevel7" block="设置音量7"
+        //% blockId="YFOTPFVF_VolumeLevel7" block="设置音量7"
         VolumeLevel7 = 0xE7,
-        //% blockId="YFDOM_OTPFVF_LOOP" block="循环播放"
+        //% blockId="YFOTPFVF_LOOP" block="循环播放"
         Loop = 0xF2,
-        //% blockId="YFDOM_OTPFVF_STOP" block="停止播放"
+        //% blockId="YFOTPFVF_STOP" block="停止播放"
         Stop = 0xFE
     }
     
     export enum OTPFixedVoiceFun2 {
-        //% blockId="YFDOM_OTPFVF_HEADCODE" block="发送连码头码"
+        //% blockId="YFOTPFVF_HEADCODE" block="发送连码头码"
         HeadCode = 0xF1,
-        //% blockId="YFDOM_OTPFVF_TAILCODE" block="发送连码尾码"
+        //% blockId="YFOTPFVF_TAILCODE" block="发送连码尾码"
         TailCode = 0xF3
     }
 
     export enum OTPFixedVoiceFunMute {
-        //% blockId="YFDOM_OTPFVF_MUTECODE" block="静音"
+        //% blockId="YFOTPFVF_MUTECODE" block="静音"
         MuteCode = 0xF4
-    }
-
-    enum Melodies {
-        //% block="dadadum" blockIdentity=music.builtInMelody
-        Dadadadum = 0,
-        //% block="entertainer" blockIdentity=music.builtInMelody
-        Entertainer,
-        //% block="prelude" blockIdentity=music.builtInMelody
-        Prelude,
-        //% block="ode" blockIdentity=music.builtInMelody
-        Ode,
-        //% block="nyan" blockIdentity=music.builtInMelody
-        Nyan,
-        //% block="ringtone" blockIdentity=music.builtInMelody
-        Ringtone,
-        //% block="funk" blockIdentity=music.builtInMelody
-        Funk,
-        //% block="blues" blockIdentity=music.builtInMelody
-        Blues,
-        //% block="birthday" blockIdentity=music.builtInMelody
-        Birthday,
-        //% block="wedding" blockIdentity=music.builtInMelody
-        Wedding,
-        //% block="funeral" blockIdentity=music.builtInMelody
-        Funeral,
-        //% block="punchline" blockIdentity=music.builtInMelody
-        Punchline,
-        //% block="baddy" blockIdentity=music.builtInMelody
-        Baddy,
-        //% block="chase" blockIdentity=music.builtInMelody
-        Chase,
-        //% block="ba ding" blockIdentity=music.builtInMelody
-        BaDing,
-        //% block="wawawawaa" blockIdentity=music.builtInMelody
-        Wawawawaa,
-        //% block="jump up" blockIdentity=music.builtInMelody
-        JumpUp,
-        //% block="jump down" blockIdentity=music.builtInMelody
-        JumpDown,
-        //% block="power up" blockIdentity=music.builtInMelody
-        PowerUp,
-        //% block="power down" blockIdentity=music.builtInMelody
-        PowerDown,
     }
     
     /*************************  Output - MP3 audio playback module function  *************************/
@@ -836,7 +793,7 @@ namespace YFSENSORS {
     /**
      * Fixed voice broadcast module function : set volume level(0~7) / Stop play / loop play.
      * @param vbmfPin pin. eg: DigitalPin.P2
-     * @param serial_num voice serial number of function.
+     * @param serial_num voice serial number of function. eg: YFSENSORS.OTPFixedVoiceFun.Stop
      */
     //% group="Output"
     //% blockId=YFSENSORS_voiceBroadcastModuleFun weight=93 blockGap=15
