@@ -637,7 +637,7 @@ namespace YFSENSORS {
     ///////////////////// Output ///////////////////////
     /**
     * toggle  Turn the Digital Output Module ON or OFF.
-    * @param adom module. eg: ADOutputModule.LED
+    * @param adom module. eg: YFSENSORS.ADOutputModule.LED
     * @param adomPin pin. eg: AnalogPin.P1
     * @param state switch state.
     * @param percentage brightness of LED, Motor vibration strength, fan rotation speed.
@@ -651,7 +651,7 @@ namespace YFSENSORS {
     //% state.shadow="toggleOnOff"
     //% expandableArgumentMode="toggle"
     //% inlineInputMode=inline
-    export function aDOutputModule(adom: ADOutputModule, adomPin: AnalogPin, state: boolean, percentage: number = 100): void {
+    export function aDOutputModule(adom: YFSENSORS.ADOutputModule, adomPin: AnalogPin, state: boolean, percentage: number = 100): void {
         let adomM = adom;  // no work
         if (state) {
             pins.analogSetPeriod(adomPin, 100)
@@ -678,7 +678,7 @@ namespace YFSENSORS {
     /**
      * Turn the Digital Output Module ON or OFF.
      * @param domPin pin. eg: DigitalPin.P2
-     * @param dom pin. eg: DigitalOutputModule.LED
+     * @param dom pin. eg: YFSENSORS.DigitalOutputModule.LED
      * @param sws switch state.
      */
     //% group="Output"
@@ -687,7 +687,7 @@ namespace YFSENSORS {
     //% domPin.fieldEditor="gridpicker" domPin.fieldOptions.columns=4
     //% dom.fieldEditor="gridpicker" dom.fieldOptions.columns=2
     // sws.fieldEditor="gridpicker" sws.fieldOptions.columns=2
-    export function digitalOutputModule(dom: DigitalOutputModule, domPin: DigitalPin, sws: number): void {
+    export function digitalOutputModule(dom: YFSENSORS.DigitalOutputModule, domPin: DigitalPin, sws: number): void {
         let domM = dom;  // no work
         pins.digitalWritePin(domPin, sws);
     }
@@ -696,26 +696,26 @@ namespace YFSENSORS {
     ///////////////////// Output - OTP Fixed voice broadcast module ///////////////////////
     /**
      * Returns the serial number of OTP fixed voice list.
-     * @param num serial number. eg: OTPFixedVoiceList.OTPFVL_00
+     * @param num serial number. eg: YFSENSORS.OTPFixedVoiceList.OTPFVL_00
      */
     //% advanced=true
     //% group="Output"
     //% blockId=YFSENSORS_OTPFixedVoiceListNum weight=10 blockGap=15
     //% block="%num| "
     //% num.fieldEditor="gridpicker" num.fieldOptions.columns=10
-    export function OTPFixedVoiceListNum(num: OTPFixedVoiceList): number {
+    export function OTPFixedVoiceListNum(num: YFSENSORS.OTPFixedVoiceList): number {
         return num;
     }
 
     /**
      * Returns the serial number of OTP fixed voice list.
-     * @param num serial number. eg: OTPFixedVoiceList2.OTPFVL_44
+     * @param num serial number. eg: YFSENSORS.OTPFixedVoiceList2.OTPFVL_44
      */
     //% group="Output"
     //% blockId=YFSENSORS_OTPFixedVoiceListNum2 weight=94 blockGap=15
     //% block="%num"
     //% num.fieldEditor="gridpicker" num.fieldOptions.columns=10
-    export function OTPFixedVoiceListNum2(num: OTPFixedVoiceList2): number {
+    export function OTPFixedVoiceListNum2(num: YFSENSORS.OTPFixedVoiceList2): number {
         return num;
     }
 
@@ -1111,7 +1111,7 @@ namespace YFSENSORS {
     /**
      * Get the temperature or humidity of the dht11 sensor.
      * @param pin pin. eg: DigitalPin.P2
-     * @param dht11state echo pin. eg: DHT11_state.DHT11_temperature_C
+     * @param dht11state echo pin. eg: YFSENSORS.DHT11_state.DHT11_temperature_C
      */
     //% group="Input"
     //% blockId=YFSENSORS_read_dht11 weight=82 blockGap=15
@@ -1119,7 +1119,7 @@ namespace YFSENSORS {
     //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4
     //% dht11state.fieldEditor="gridpicker" dht11state.fieldOptions.columns=1
     //% inlineInputMode=inline
-    export function dht11Sensor(pin: DigitalPin, dht11state: DHT11_state): number {
+    export function dht11Sensor(pin: DigitalPin, dht11state: YFSENSORS.DHT11_state): number {
         //initialize
         basic.pause(1000)
         let _temperature: number = -999.0
@@ -1159,10 +1159,10 @@ namespace YFSENSORS {
         if (checksumTmp >= 512) checksumTmp -= 512
         if (checksumTmp >= 256) checksumTmp -= 256
         switch (dht11state) {
-            case DHT11_state.DHT11_temperature_C:
+            case YFSENSORS.DHT11_state.DHT11_temperature_C:
                 _temperature = resultArray[2] + resultArray[3] / 100
                 return _temperature
-            case DHT11_state.DHT11_humidity:
+            case YFSENSORS.DHT11_state.DHT11_humidity:
                 _humidity = resultArray[0] + resultArray[1] / 100
                 return _humidity
         }
