@@ -836,7 +836,7 @@ namespace YFSENSORS {
     /**
      * Fixed voice broadcast module function : set volume level(0~7) / Stop play / loop play.
      * @param vbmfPin pin. eg: DigitalPin.P2
-     * @param serial_num voice serial number of function. eg: OTPFixedVoiceFun.Stop
+     * @param serial_num voice serial number of function.
      */
     //% group="Output"
     //% blockId=YFSENSORS_voiceBroadcastModuleFun weight=93 blockGap=15
@@ -844,7 +844,7 @@ namespace YFSENSORS {
     //% vbmfPin.fieldEditor="gridpicker" vbmfPin.fieldOptions.columns=4
     //% serial_num.fieldEditor="gridpicker" serial_num.fieldOptions.columns=4
     //% inlineInputMode=inline
-    export function voiceBroadcastModuleFun(vbmfPin: DigitalPin, serial_num: OTPFixedVoiceFun): void {
+    export function voiceBroadcastModuleFun(vbmfPin: DigitalPin, serial_num: YFSENSORS.OTPFixedVoiceFun): void {
         let snumber = serial_num;
         voiceBroadcastModuleSendDataWithS(vbmfPin, snumber);
     }
