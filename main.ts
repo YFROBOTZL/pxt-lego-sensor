@@ -1508,7 +1508,7 @@ namespace YFSENSORS {
         irState.bitsReceived += 1;
         if (irState.bitsReceived <= 8) {
             // ignore all address bits
-            if (irState.protocol === IrProtocol.Keyestudio && bit === 1) {
+            if (irState.protocol === YFSENSORS.IrProtocol.Keyestudio && bit === 1) {
                 // recover from missing message bits at the beginning
                 // Keyestudio address is 0 and thus missing bits can be easily detected
                 // by checking for the first inverse address bit (which is a 1)
@@ -1586,7 +1586,7 @@ namespace YFSENSORS {
     //% pin.fieldOptions.columns=4
     //% pin.fieldOptions.tooltips="false"
     //%
-    export function connectIrReceiver(pin: DigitalPin, protocol: IrProtocol): void {
+    export function connectIrReceiver(pin: DigitalPin, protocol: YFSENSORS.IrProtocol): void {
         if (irState) {
             return;
         }
@@ -1595,7 +1595,7 @@ namespace YFSENSORS {
             protocol: protocol,
             bitsReceived: 0,
             commandBits: 0,
-            command: IrButton.Any,
+            command: YFSENSORS.IrButton.Any,
             hasNewCommand: false,
         };
 
@@ -1667,12 +1667,12 @@ namespace YFSENSORS {
     //% button.fieldEditor="gridpicker"
     //% button.fieldOptions.columns=3
     //% button.fieldOptions.tooltips="false"
-    export function onIrButton(button: IrButton, action: IrButtonAction, handler: () => void) {
+    export function onIrButton(button: YFSENSORS.IrButton, action: YFSENSORS.IrButtonAction, handler: () => void) {
         control.onEvent(
-            action === IrButtonAction.Pressed
+            action === YFSENSORS.IrButtonAction.Pressed
                 ? MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID
                 : MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID,
-            button === IrButton.Any ? EventBusValue.MICROBIT_EVT_ANY : button,
+            button === YFSENSORS.IrButton.Any ? EventBusValue.MICROBIT_EVT_ANY : button,
             () => {
                 irState.command = control.eventValue();
                 handler();
@@ -1688,7 +1688,7 @@ namespace YFSENSORS {
     //% block="IR button"
     export function irButton(): number {
         if (!irState) {
-            return IrButton.Any;
+            return YFSENSORS.IrButton.Any;
         }
         return irState.command;
     }
@@ -1721,7 +1721,7 @@ namespace YFSENSORS {
     //% button.fieldOptions.columns=3
     //% button.fieldOptions.tooltips="false"
     //% block="IR button code %button"
-    export function irButtonCode(button: IrButton): number {
+    export function irButtonCode(button: YFSENSORS.IrButton): number {
         return button as number;
     }
 
@@ -1737,10 +1737,10 @@ namespace YFSENSORS {
     //% block="on IR button | %button | %action"
     //% button.fieldEditor="gridpicker" button.fieldOptions.columns=3
     //% button.fieldOptions.tooltips="false"
-    export function onIrButton_Handle(button: IrButton_Handle, action: IrButtonAction, handler: () => void) {
+    export function onIrButton_Handle(button: YFSENSORS.IrButton_Handle, action: YFSENSORS.IrButtonAction, handler: () => void) {
         control.onEvent(
-            action === IrButtonAction.Pressed ? MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID : MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID,
-            button === IrButton_Handle.Any ? EventBusValue.MICROBIT_EVT_ANY : button,
+            action === YFSENSORS.IrButtonAction.Pressed ? MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID : MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID,
+            button === YFSENSORS.IrButton_Handle.Any ? EventBusValue.MICROBIT_EVT_ANY : button,
             () => {
                 irState.command = control.eventValue();
                 handler();
@@ -1758,7 +1758,7 @@ namespace YFSENSORS {
     //% block="Handle Type IR button code %button"
     //% button.fieldEditor="gridpicker" button.fieldOptions.columns=3
     //% button.fieldOptions.tooltips="false"
-    export function irButtonCode_Handle(button: IrButton_Handle): number {
+    export function irButtonCode_Handle(button: YFSENSORS.IrButton_Handle): number {
         return button as number;
     }
     /////////////////////// IR ///////////////////////
