@@ -823,7 +823,7 @@ namespace YFSENSORS {
     /**
      * Fixed voice broadcast module function : Continuous Play.
      * @param vbmPin pin. eg: DigitalPin.P2
-     * @param serial_number voice serial number of function. eg: YFSENSORS.OTPFixedVoiceFun2.HeadCode
+     * @param serial_number voice serial number of function.
      * @param mute_time Mute time, unit 10ms. eg: 1
      */
     //% group="Output"
