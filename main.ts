@@ -805,6 +805,20 @@ namespace YFSENSORS {
         let snumber = serial_num;
         voiceBroadcastModuleSendDataWithS(vbmfPin, snumber);
     }
+    
+    /**
+     * Fixed voice broadcast module select voice list number.
+     * @param vbmPin pin. eg: DigitalPin.P2
+     * @param serial_number voice serial number. eg: 0
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_voiceBroadcastModuleSelectListNumber weight=91 blockGap=15
+    //% block="voice broadcast %vbmPin| play %serial_number"
+    //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
+    //% inlineInputMode=inline
+    export function voiceBroadcastModuleSelectListNumber(vbmPin: DigitalPin, serial_number: number): void {
+        voiceBroadcastModuleSendData(vbmPin, serial_number);
+    }
 
     ///////////////////// Output - MP3 audio playback module ///////////////////////
     /**
