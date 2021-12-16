@@ -793,7 +793,7 @@ namespace YFSENSORS {
     /**
      * Fixed voice broadcast module function : set volume level(0~7) / Stop play / loop play.
      * @param vbmfPin pin. eg: DigitalPin.P2
-     * @param serial_num voice serial number of function. eg: YFSENSORS.OTPFixedVoiceFun.Stop
+     * @param serial_num voice serial number of function. eg: YFSENSORS.OTPFixedVoiceFun.VolumeLevel4
      */
     //% group="Output"
     //% blockId=YFSENSORS_voiceBroadcastModuleFun weight=93 blockGap=15
