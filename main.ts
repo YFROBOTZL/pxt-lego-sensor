@@ -780,7 +780,7 @@ namespace YFSENSORS {
      */
     //% group="Output"
     //% blockId=YFSENSORS_voiceBroadcastModule weight=95 blockGap=15
-    //% block="voice broadcast %vbmPin| play %serial_number=YFSENSORS.YFSENSORS_OTPFixedVoiceListNum || delay %delayt| ms"
+    //% block="voice broadcast %vbmPin| play %serial_number=YFSENSORS_OTPFixedVoiceListNum || delay %delayt| ms"
     //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
     //% inlineInputMode=inline
     export function voiceBroadcastModule(vbmPin: DigitalPin, serial_number: number, delayt: number = 50): void {
@@ -822,18 +822,17 @@ namespace YFSENSORS {
 
     /**
      * Fixed voice broadcast module function : Combination Voice Array.
-     * @param serial_number voice serial number list array. eg: [YFSENSORS.OTPFixedVoiceListNum2(YFSENSORS.OTPFixedVoiceList2.OTPFVL_44), YFSENSORS.OTPFixedVoiceListNum2(YFSENSORS.OTPFixedVoiceList2.OTPFVL_55),YFSENSORS.OTPFixedVoiceListNum2(YFSENSORS.OTPFixedVoiceList2.OTPFVL_6A),YFSENSORS.OTPFixedVoiceListNum2(YFSENSORS.OTPFixedVoiceList2.OTPFVL_6B)]
+     * @param serial_number voice serial number list array. 
      */
     //% group="Output"
     //% blockId=YFSENSORS_getArrayNumber weight=91 blockGap=15
     //% block="%serial_number"
     //% inlineInputMode=inline
-    export function getArrayNumber(serial_number: Array<number>): Array<number> {
+    export function getArrayNumber(serial_number: Array<number>): void {
         let sNumberArray = [];
         for (let index = 0; index < serial_number.length; index++) {
             sNumberArray[index] = serial_number[index];
         }
-        return sNumberArray;
     }
 
     /**
