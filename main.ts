@@ -832,7 +832,7 @@ namespace YFSENSORS {
         let sNumberArray = [];
         for (let index = 0; index < serial_number.length; index++) {
             sNumberArray[index] = serial_number[index];
-        }
+        } 
     }
 
     /**
