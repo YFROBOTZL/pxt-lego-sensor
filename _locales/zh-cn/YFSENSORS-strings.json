@@ -58,7 +58,7 @@
   "YFSENSORS.voiceBroadcastModuleFun|block": "语音播报 %vbmfPin| %serial_num",
   "YFSENSORS.voiceBroadcastModuleSendNumber|block": "语音播报 %vbmPin| 发送指令 %serial_number",
   "YFSENSORS.getArrayNumber|block": "%serial_number",
-  "YFSENSORS.voiceBroadcastModuleFunContPlay|block": "语音播报 %vbmPin| 连续播放 %serial_number=YFSENSORS_getArrayNumber",
+  "YFSENSORS.voiceBroadcastModuleFunContPlay|block": "语音播报 %vbmPin| 连续播放 %serial_number",
   "YFSENSORS.audioPlaybackModule_connectPin|block":"连接MP3音频播放模块到 %pin_data",
   "YFSENSORS.audioPlaybackModuleSelectTrackNum|block":"音频播放模块选择曲目：%specified_track",
   "YFSENSORS.audioPlaybackModuleFunSelect|block":"音频播放模块 %specified_fun",

@@ -843,7 +843,7 @@ namespace YFSENSORS {
      */
     //% group="Output"
     //% blockId=YFSENSORS_voiceBroadcastModuleFunContPlay weight=92 blockGap=15
-    //% block="voice broadcast %vbmPin| continuous play %serial_number=YFSENSORS_getArrayNumber"
+    //% block="voice broadcast %vbmPin| continuous play %serial_number"
     //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
     //% inlineInputMode=inline
     export function voiceBroadcastModuleFunContPlay(vbmPin: DigitalPin, serial_number: Array<number>): void {
