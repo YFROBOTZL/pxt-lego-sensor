@@ -847,15 +847,15 @@ namespace YFSENSORS {
     //% inlineInputMode=inline
     export function voiceBroadcastModuleFunContPlay(vbmPin: DigitalPin, serial_number: Array<number>): void {
         let checksum = 0;
-        voiceBroadcastModuleSendDataWithS(vbmPin, YFSENSORS.OTPFixedVoiceFun2.HeadCode); // 头码
-        checksum += YFSENSORS.OTPFixedVoiceFun2.HeadCode;
-        for (let index = 0; index < serial_number.length; index++) {
-            voiceBroadcastModuleSendData(vbmPin, serial_number[index]); // 语音列表码
-            checksum += serial_number[index];
-        }
-        voiceBroadcastModuleSendData(vbmPin, YFSENSORS.OTPFixedVoiceFun2.TailCode); // 尾码
-        checksum += YFSENSORS.OTPFixedVoiceFun2.TailCode;
-        voiceBroadcastModuleSendData(vbmPin, (checksum && 0xFF)); // 校验和
+        // voiceBroadcastModuleSendDataWithS(vbmPin, YFSENSORS.OTPFixedVoiceFun2.HeadCode); // 头码
+        // checksum += YFSENSORS.OTPFixedVoiceFun2.HeadCode;
+        // for (let index = 0; index < serial_number.length; index++) {
+        //     voiceBroadcastModuleSendData(vbmPin, serial_number[index]); // 语音列表码
+        //     checksum += serial_number[index];
+        // }
+        // voiceBroadcastModuleSendData(vbmPin, YFSENSORS.OTPFixedVoiceFun2.TailCode); // 尾码
+        // checksum += YFSENSORS.OTPFixedVoiceFun2.TailCode;
+        // voiceBroadcastModuleSendData(vbmPin, (checksum && 0xFF)); // 校验和
     }
 
     ///////////////////// Output - MP3 audio playback module ///////////////////////
