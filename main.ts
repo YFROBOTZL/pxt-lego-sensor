@@ -825,7 +825,7 @@ namespace YFSENSORS {
      * @param serial_number voice serial number list array. eg: [YFSENSORS.OTPFixedVoiceListNum2(YFSENSORS.OTPFixedVoiceList2.OTPFVL_44), YFSENSORS.OTPFixedVoiceListNum2(YFSENSORS.OTPFixedVoiceList2.OTPFVL_55),YFSENSORS.OTPFixedVoiceListNum2(YFSENSORS.OTPFixedVoiceList2.OTPFVL_6A),YFSENSORS.OTPFixedVoiceListNum2(YFSENSORS.OTPFixedVoiceList2.OTPFVL_6B)]
      */
     //% group="Output"
-    //% blockId=YFSENSORS_voiceBroadcastModuleFuntest weight=91 blockGap=15
+    //% blockId=YFSENSORS_getArrayNumber weight=91 blockGap=15
     //% block="%serial_number"
     //% inlineInputMode=inline
     export function getArrayNumber(serial_number: Array<number>): Array<number> {
