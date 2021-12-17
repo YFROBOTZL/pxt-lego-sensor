@@ -828,12 +828,12 @@ namespace YFSENSORS {
     //% blockId=YFSENSORS_voiceBroadcastModuleFuntest weight=91 blockGap=15
     //% block="%serial_number"
     //% inlineInputMode=inline
-    export function getArrayNumber( serial_number: Array<number>): Array<number> {
-        let checksum = [];
+    export function getArrayNumber(serial_number: Array<number>): Array<number> {
+        let sNumberArray = [];
         for (let index = 0; index < serial_number.length; index++) {
-            checksum[index] = serial_number[index];
+            sNumberArray[index] = serial_number[index];
         }
-        return checksum;
+        return sNumberArray;
     }
 
     /**
