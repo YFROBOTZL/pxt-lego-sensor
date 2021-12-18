@@ -829,10 +829,10 @@ namespace YFSENSORS {
     //% block="%serial_number"
     //% inlineInputMode=inline
     export function getArrayNumber(serial_number: Array<number>): void {
-        let sNumberArray = [];
-        for (let index = 0; index < serial_number.length; index++) {
-            sNumberArray[index] = serial_number[index];
-        } 
+    //     let sNumberArray = [];
+    //     for (let index = 0; index < serial_number.length; index++) {
+    //         sNumberArray[index] = serial_number[index];
+    //     } 
     }
 
     /**
