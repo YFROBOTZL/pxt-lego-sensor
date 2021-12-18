@@ -821,21 +821,6 @@ namespace YFSENSORS {
     }
 
     /**
-     * Fixed voice broadcast module function : Combination Voice Array.
-     * param serial_number voice serial number list array. 
-     */
-    // group="Output"
-    // blockId=YFSENSORS_getArrayNumber weight=91 blockGap=15
-    // block="%serial_number"
-    // inlineInputMode=inline
-    // export function getArrayNumber(serial_number: Array<number>): void {
-    //     let sNumberArray = [];
-    //     for (let index = 0; index < serial_number.length; index++) {
-    //         sNumberArray[index] = serial_number[index];
-    //     } 
-    // }
-
-    /**
      * Fixed voice broadcast module function : Continuous Play.
      * @param vbmPin pin. eg: DigitalPin.P2
      * @param serial_number voice serial number list array.
