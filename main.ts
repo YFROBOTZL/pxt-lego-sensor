@@ -831,10 +831,6 @@ namespace YFSENSORS {
     //% inlineInputMode=inline
     export function voiceBroadcastModuleFunContPlay(vbmPin: DigitalPin, serial_number: Array<number>): void {
         let checksum = 0;
-    }
-    
-    function voiceBroadcastModuleFunContPly(vbmPin: DigitalPin, serial_number: Array<number>): void {
-        let checksum = 0;
         // voiceBroadcastModuleSendDataWithS(vbmPin, YFSENSORS.OTPFixedVoiceFun2.HeadCode); // 头码
         // checksum += YFSENSORS.OTPFixedVoiceFun2.HeadCode;
         // for (let index = 0; index < serial_number.length; index++) {
