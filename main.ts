@@ -10,10 +10,586 @@
  * @date  2021-11-23
 */
 
+
+enum IrProtocol {
+    //% block="Keyestudio"
+    Keyestudio = 0,
+    //% block="NEC"
+    NEC = 1,
+}
+
+enum IrButtonAction {
+    //% block="pressed"
+    Pressed = 0,
+    //% block="released"
+    Released = 1,
+}
+
+enum IrButton_Handle {
+    // any button
+    //% block="Any"
+    Any = -1,
+
+    //IR HANDLE
+    //% block="↑"
+    UP = 0x11,
+    //% block="↓"
+    DOWN = 0x91,
+    //% block="←"
+    LEFT = 0x81,
+    //% block="→"
+    RIGHT = 0xa1,
+    //% block="M1"
+    M1 = 0xe9,
+    //% block="M2"
+    M2 = 0x69,
+    //% block="A"
+    A = 0x21,
+    //% block="B"
+    B = 0x01
+}
+
+enum IrButton {
+    // any button
+    //% block="Any"
+    Any = -1,
+
+    //% block=" "
+    Null_01 = -1,
+    //% block=" "
+    Null_02 = -1,
+
+    // MINI IR 
+    //% block="A"
+    Mini_A = 0xa2,
+    //% block="B"
+    Mini_B = 0x62,
+    //% block="C"
+    Mini_C = 0xe2,
+    //% block="D"
+    Mini_D = 0x22,
+    //% block="︿"
+    Mini_UP = 0x02,
+    //% block="E"
+    Mini_E = 0xc2,
+    //% block="＜"
+    Mini_Left = 0xe0,
+    //% block="۞"
+    Mini_SET = 0xa8,
+    //% block="＞"
+    Mini_Right = 0x90,
+    //% block="0"
+    Number_0 = 0x68,
+    //% block="﹀"
+    Mini_Down = 0x98,
+    //% block="F"
+    Mini_F = 0xb0,
+    //% block="1"
+    Number_1 = 0x30,
+    //% block="2"
+    Number_2 = 0x18,
+    //% block="3"
+    Number_3 = 0x7a,
+    //% block="4"
+    Number_4 = 0x10,
+    //% block="5"
+    Number_5 = 0x38,
+    //% block="6"
+    Number_6 = 0x5a,
+    //% block="7"
+    Number_7 = 0x42,
+    //% block="8"
+    Number_8 = 0x4a,
+    //% block="9"
+    Number_9 = 0x52,
+}
+/************************* IR *************************/
+
+enum ADOutputModule {
+    //% blockId="YFDOM_LED" block="LED"
+    LED = 0x0,
+    //% blockId="YFDOM_FAN" block="FAN"
+    FAN = 0x2,
+    //% blockId="YFDOM_VIBRATION_MOTOR" block="VIBRATION_MOTOR"
+    VIBRATION_MOTOR = 0x4,
+}
+
+enum DigitalOutputModule {
+    //% blockId="YFDOM_LED" block="LED"
+    LED = 0x0,
+    //% blockId="YFDOM_BUZZER" block="BUZZER"
+    BUZZER = 0x1,
+    //% blockId="YFDOM_FAN" block="FAN"
+    FAN = 0x2,
+    //% blockId="YFDOM_RELAY" block="RELAY"
+    RELAY = 0x3,
+    //% blockId="YFDOM_VIBRATION_MOTOR" block="VIBRATION_MOTOR"
+    VIBRATION_MOTOR = 0x4,
+}
+
+/*************************  Output - OTP Fixed voice list  *************************/
+enum OTPFixedVoiceList {
+    //% blockId="YFOTPFVL_00" block="老师"
+    OTPFVL_00 = 0x00,
+    //% blockId="YFOTPFVL_01" block="爸爸"
+    OTPFVL_01 = 0x01,
+    //% blockId="YFOTPFVL_02" block="妈妈"
+    OTPFVL_02 = 0x02,
+    //% blockId="YFOTPFVL_03" block="爷爷"
+    OTPFVL_03 = 0x03,
+    //% blockId="YFOTPFVL_04" block="奶奶"
+    OTPFVL_04 = 0x04,
+    //% blockId="YFOTPFVL_05" block="姥姥"
+    OTPFVL_05 = 0x05,
+    //% blockId="YFOTPFVL_06" block="姥爷"
+    OTPFVL_06 = 0x06,
+    //% blockId="YFOTPFVL_07" block="哥哥"
+    OTPFVL_07 = 0x07,
+    //% blockId="YFOTPFVL_08" block="姐姐"
+    OTPFVL_08 = 0x08,
+    //% blockId="YFOTPFVL_09" block="叔叔"
+    OTPFVL_09 = 0x09,
+    //% blockId="YFOTPFVL_0A" block="阿姨"
+    OTPFVL_0A = 0x0A,
+    //% blockId="YFOTPFVL_0B" block="上午"
+    OTPFVL_0B = 0x0B,
+    //% blockId="YFOTPFVL_0C" block="下午"
+    OTPFVL_0C = 0x0C,
+    //% blockId="YFOTPFVL_0D" block="晚上"
+    OTPFVL_0D = 0x0D,
+    //% blockId="YFOTPFVL_0E" block="前方"
+    OTPFVL_0E = 0x0E,
+    //% blockId="YFOTPFVL_0F" block="厘米"
+    OTPFVL_0F = 0x0F,
+    //% blockId="YFOTPFVL_10" block="新年快乐"
+    OTPFVL_10 = 0x10,
+    //% blockId="YFOTPFVL_11" block="身体健康"
+    OTPFVL_11 = 0x11,
+    //% blockId="YFOTPFVL_12" block="工作顺利"
+    OTPFVL_12 = 0x12,
+    //% blockId="YFOTPFVL_13" block="学习进步"
+    OTPFVL_13 = 0x13,
+    //% blockId="YFOTPFVL_14" block="您好"
+    OTPFVL_14 = 0x14,
+    //% blockId="YFOTPFVL_15" block="谢谢"
+    OTPFVL_15 = 0x15,
+    //% blockId="YFOTPFVL_16" block="的"
+    OTPFVL_16 = 0x16,
+    //% blockId="YFOTPFVL_17" block="祝"
+    OTPFVL_17 = 0x17,
+    //% blockId="YFOTPFVL_18" block="慢走"
+    OTPFVL_18 = 0x18,
+    //% blockId="YFOTPFVL_19" block="欢迎光临"
+    OTPFVL_19 = 0x19,
+    //% blockId="YFOTPFVL_1A" block="亲爱的""
+    OTPFVL_1A = 0x1A,
+    //% blockId="YFOTPFVL_1B" block="同学们"
+    OTPFVL_1B = 0x1B,
+    //% blockId="YFOTPFVL_1C" block="工作辛苦了"
+    OTPFVL_1C = 0x1C,
+    //% blockId="YFOTPFVL_1D" block="点"
+    OTPFVL_1D = 0x1D,
+    //% blockId="YFOTPFVL_1E" block="打开"
+    OTPFVL_1E = 0x1E,
+    //% blockId="YFOTPFVL_1F" block="关闭"
+    OTPFVL_1F = 0x1F,
+    //% blockId="YFOTPFVL_20" block="千"
+    OTPFVL_20 = 0x20,
+    //% blockId="YFOTPFVL_21" block="百"
+    OTPFVL_21 = 0x21,
+    //% blockId="YFOTPFVL_22" block="十/时"
+    OTPFVL_22 = 0x22,
+    //% blockId="YFOTPFVL_23" block="1"
+    OTPFVL_23 = 0x23,
+    //% blockId="YFOTPFVL_24" block="2"
+    OTPFVL_24 = 0x24,
+    //% blockId="YFOTPFVL_25" block="3"
+    OTPFVL_25 = 0x25,
+    //% blockId="YFOTPFVL_26" block="4"
+    OTPFVL_26 = 0x26,
+    //% blockId="YFOTPFVL_27" block="5"
+    OTPFVL_27 = 0x27,
+    //% blockId="YFOTPFVL_28" block="6"
+    OTPFVL_28 = 0x28,
+    //% blockId="YFOTPFVL_29" block="7"
+    OTPFVL_29 = 0x29,
+    //% blockId="YFOTPFVL_2A" block="8"
+    OTPFVL_2A = 0x2A,
+    //% blockId="YFOTPFVL_2B" block="9"
+    OTPFVL_2B = 0x2B,
+    //% blockId="YFOTPFVL_2C" block="0"
+    OTPFVL_2C = 0x2C,
+    //% blockId="YFOTPFVL_2D" block="当前"
+    OTPFVL_2D = 0x2D,
+    //% blockId="YFOTPFVL_2E" block="转"
+    OTPFVL_2E = 0x2E,
+    //% blockId="YFOTPFVL_2F" block="左"
+    OTPFVL_2F = 0x2F,
+    //% blockId="YFOTPFVL_30" block="右"
+    OTPFVL_30 = 0x30,
+    //% blockId="YFOTPFVL_31" block="请"
+    OTPFVL_31 = 0x31,
+    //% blockId="YFOTPFVL_32" block="已"
+    OTPFVL_32 = 0x32,
+    //% blockId="YFOTPFVL_33" block="现在"
+    OTPFVL_33 = 0x33,
+    //% blockId="YFOTPFVL_34" block="是"
+    OTPFVL_34 = 0x34,
+    //% blockId="YFOTPFVL_35" block="红灯"
+    OTPFVL_35 = 0x35,
+    //% blockId="YFOTPFVL_36" block="绿灯"
+    OTPFVL_36 = 0x36,
+    //% blockId="YFOTPFVL_37" block="黄灯"
+    OTPFVL_37 = 0x37,
+    //% blockId="YFOTPFVL_38" block="温度"
+    OTPFVL_38 = 0x38,
+    //% blockId="YFOTPFVL_39" block="湿度"
+    OTPFVL_39 = 0x39,
+    //% blockId="YFOTPFVL_3A" block="欢迎常来"
+    OTPFVL_3A = 0x3A,
+    //% blockId="YFOTPFVL_3B" block="还有"
+    OTPFVL_3B = 0x3B,
+    //% blockId="YFOTPFVL_3C" block="秒"
+    OTPFVL_3C = 0x3C,
+    //% blockId="YFOTPFVL_3D" block="分"
+    OTPFVL_3D = 0x3D,
+    //% blockId="YFOTPFVL_3E" block="变"
+    OTPFVL_3E = 0x3E,
+    //% blockId="YFOTPFVL_3F" block="等"
+    OTPFVL_3F = 0x3F,
+    //% blockId="YFOTPFVL_40" block="下一次"
+    OTPFVL_40 = 0x40,
+    //% blockId="YFOTPFVL_41" block="功能"
+    OTPFVL_41 = 0x41,
+    //% blockId="YFOTPFVL_42" block="障碍物"
+    OTPFVL_42 = 0x42,
+    //% blockId="YFOTPFVL_43" block="世界那么大，我想去看看"
+    OTPFVL_43 = 0x43,
+}
+
+enum OTPFixedVoiceList2 {
+    //% blockId="YFOTPFVL_44" block="今天"
+    OTPFVL_44 = 0x44,
+    //% blockId="YFOTPFVL_45" block="年"
+    OTPFVL_45 = 0x45,
+    //% blockId="YFOTPFVL_46" block="月"
+    OTPFVL_46 = 0x46,
+    //% blockId="YFOTPFVL_47" block="日"
+    OTPFVL_47 = 0x47,
+    //% blockId="YFOTPFVL_48" block="星期"
+    OTPFVL_48 = 0x48,
+    //% blockId="YFOTPFVL_49" block="农历"
+    OTPFVL_49 = 0x49,
+    //% blockId="YFOTPFVL_4A" block="现在时刻"
+    OTPFVL_4A = 0x4A,
+    //% blockId="YFOTPFVL_4B" block="北京时间"
+    OTPFVL_4B = 0x4B,
+    //% blockId="YFOTPFVL_4C" block="整"
+    OTPFVL_4C = 0x4C,
+    //% blockId="YFOTPFVL_4D" block="度"
+    OTPFVL_4D = 0x4D,
+    //% blockId="YFOTPFVL_4E" block="百分之"
+    OTPFVL_4E = 0x4E,
+    //% blockId="YFOTPFVL_4F" block="距离"
+    OTPFVL_4F = 0x4F,
+    //% blockId="YFOTPFVL_50" block="厘米"
+    OTPFVL_50 = 0x50,
+    //% blockId="YFOTPFVL_51" block="明天"
+    OTPFVL_51 = 0x51,
+    //% blockId="YFOTPFVL_52" block="天气"
+    OTPFVL_52 = 0x52,
+    //% blockId="YFOTPFVL_53" block="白天"
+    OTPFVL_53 = 0x53,
+    //% blockId="YFOTPFVL_54" block="夜间"
+    OTPFVL_54 = 0x54,
+    //% blockId="YFOTPFVL_55" block="晴"
+    OTPFVL_55 = 0x55,
+    //% blockId="YFOTPFVL_56" block="多云"
+    OTPFVL_56 = 0x56,
+    //% blockId="YFOTPFVL_57" block="阴"
+    OTPFVL_57 = 0x57,
+    //% blockId="YFOTPFVL_58" block="雨"
+    OTPFVL_58 = 0x58,
+    //% blockId="YFOTPFVL_59" block="雷阵"
+    OTPFVL_59 = 0x59,
+    //% blockId="YFOTPFVL_5A" block="小"
+    OTPFVL_5A = 0x5A,
+    //% blockId="YFOTPFVL_5B" block="中"
+    OTPFVL_5B = 0x5B,
+    //% blockId="YFOTPFVL_5C" block="大"
+    OTPFVL_5C = 0x5C,
+    //% blockId="YFOTPFVL_5D" block="夹"
+    OTPFVL_5D = 0x5D,
+    //% blockId="YFOTPFVL_5E" block="雪""
+    OTPFVL_5E = 0x5E,
+    //% blockId="YFOTPFVL_5F" block="雾"
+    OTPFVL_5F = 0x5F,
+    //% blockId="YFOTPFVL_60" block="霾"
+    OTPFVL_60 = 0x60,
+    //% blockId="YFOTPFVL_61" block="风"
+    OTPFVL_61 = 0x61,
+    //% blockId="YFOTPFVL_62" block="东"
+    OTPFVL_62 = 0x62,
+    //% blockId="YFOTPFVL_63" block="南"
+    OTPFVL_63 = 0x63,
+    //% blockId="YFOTPFVL_64" block="西"
+    OTPFVL_64 = 0x64,
+    //% blockId="YFOTPFVL_65" block="北"
+    OTPFVL_65 = 0x65,
+    //% blockId="YFOTPFVL_66" block="到"
+    OTPFVL_66 = 0x66,
+    //% blockId="YFOTPFVL_67" block="级"
+    OTPFVL_67 = 0x67,
+    //% blockId="YFOTPFVL_68" block="偏"
+    OTPFVL_68 = 0x68,
+    //% blockId="YFOTPFVL_69" block="方向"
+    OTPFVL_69 = 0x69,
+    //% blockId="YFOTPFVL_6A" block="空气质量"
+    OTPFVL_6A = 0x6A,
+    //% blockId="YFOTPFVL_6B" block="优"
+    OTPFVL_6B = 0x6B,
+    //% blockId="YFOTPFVL_6C" block="良"
+    OTPFVL_6C = 0x6C,
+    //% blockId="YFOTPFVL_6D" block="轻度污染"
+    OTPFVL_6D = 0x6D,
+    //% blockId="YFOTPFVL_6E" block="中度污染"
+    OTPFVL_6E = 0x6E,
+    //% blockId="YFOTPFVL_6F" block="重度污染"
+    OTPFVL_6F = 0x6F,
+    //% blockId="YFOTPFVL_70" block="上"
+    OTPFVL_70 = 0x70,
+    //% blockId="YFOTPFVL_71" block="下"
+    OTPFVL_71 = 0x71,
+    //% blockId="YFOTPFVL_72" block="接近"
+    OTPFVL_72 = 0x72,
+    //% blockId="YFOTPFVL_73" block="远离"
+    OTPFVL_73 = 0x73,
+    //% blockId="YFOTPFVL_74" block="灯"
+    OTPFVL_74 = 0x74,
+    //% blockId="YFOTPFVL_75" block="风扇"
+    OTPFVL_75 = 0x75,
+    //% blockId="YFOTPFVL_76" block="红色"
+    OTPFVL_76 = 0x76,
+    //% blockId="YFOTPFVL_77" block="绿色"
+    OTPFVL_77 = 0x77,
+    //% blockId="YFOTPFVL_78" block="蓝色"
+    OTPFVL_78 = 0x78,
+    //% blockId="YFOTPFVL_79" block="黄色"
+    OTPFVL_79 = 0x79,
+    //% blockId="YFOTPFVL_7A" block="白色"
+    OTPFVL_7A = 0x7A,
+    //% blockId="YFOTPFVL_7B" block="叮音效"
+    OTPFVL_7B = 0x7B,
+    //% blockId="YFOTPFVL_7C" block="滴滴滴"
+    OTPFVL_7C = 0x7C,
+    //% blockId="YFOTPFVL_7D" block="叮叮音效"
+    OTPFVL_7D = 0x7D,
+    //% blockId="YFOTPFVL_7E" block="叮叮音效"
+    OTPFVL_7E = 0x7E
+}
+
+enum OTPFixedVoiceFun {
+    //% blockId="YFOTPFVF_VolumeLevel0" block="设置音量0"
+    VolumeLevel0 = 0xE0,
+    //% blockId="YFOTPFVF_VolumeLevel1" block="设置音量1"
+    VolumeLevel1 = 0xE1,
+    //% blockId="YFOTPFVF_VolumeLevel2" block="设置音量2"
+    VolumeLevel2 = 0xE2,
+    //% blockId="YFOTPFVF_VolumeLevel3" block="设置音量3"
+    VolumeLevel3 = 0xE3,
+    //% blockId="YFOTPFVF_VolumeLevel4" block="设置音量4"
+    VolumeLevel4 = 0xE4,
+    //% blockId="YFOTPFVF_VolumeLevel5" block="设置音量5"
+    VolumeLevel5 = 0xE5,
+    //% blockId="YFOTPFVF_VolumeLevel6" block="设置音量6"
+    VolumeLevel6 = 0xE6,
+    //% blockId="YFOTPFVF_VolumeLevel7" block="设置音量7"
+    VolumeLevel7 = 0xE7,
+    //% blockId="YFOTPFVF_LOOP" block="循环播放"
+    Loop = 0xF2,
+    //% blockId="YFOTPFVF_STOP" block="停止播放"
+    Stop = 0xFE
+}
+
+enum OTPFixedVoiceFun2 {
+    //% blockId="YFOTPFVF_HEADCODE" block="发送连码头码"
+    HeadCode = 0xF1,
+    //% blockId="YFOTPFVF_TAILCODE" block="发送连码尾码"
+    TailCode = 0xF3
+}
+
+enum OTPFixedVoiceFunMute {
+    //% blockId="YFOTPFVF_MUTECODE" block="静音"
+    MuteCode = 0xF4
+}
+
+/*************************  Output - MP3 audio playback module function  *************************/
+enum AudioPlaybackFunWithNum {
+    //% blockId="YFAPF_SelectPlay" block="Select Play"
+    SelectPlay = 0x0B,
+    //% blockId="YFAPF_SetVolume" block="Set Volume"
+    SetVolume = 0x0C,
+    //% blockId="YFAPF_SetEQ" block="Set EQ Mode"
+    SetEQ = 0x0D,
+    //% blockId="YFAPF_SetPlayMode" block="Set Play Mode"
+    SetPlayMode = 0x0E,
+    //% blockId="YFAPF_SetInsertTrack" block="Set the insert track"
+    SetInsertTrack = 0x10,
+}
+
+enum AudioPlaybackFun {
+    //% blockId="YFAPF_Play" block="Play"
+    Play = 0x11,
+    //% blockId="YFAPF_Pause" block="Pause"
+    Pause = 0x12,
+    //% blockId="YFAPF_Stop" block="Stop"
+    Stop = 0x13,
+    //% blockId="YFAPF_PreviousTrack" block="Previous track"
+    PreviousTrack = 0x14,
+    //% blockId="YFAPF_NextTrack" block="Next track"
+    NextTrack = 0x15,
+    //% blockId="YFAPF_PreviousContents" block="Previous contents"
+    PreviousContents = 0x16,
+    //% blockId="YFAPF_NextContents" block="Next contents"
+    NextContents = 0x17,
+    //% blockId="YFAPF_RemoveNumber" block="Remove Number"
+    RemoveNumber = 0x0A,
+    //% blockId="YFAPF_StopInsertTrack" block="Stop Insert Track"
+    StopInsertTrack = 0x1C,
+}
+
+enum MVModule {
+    //% blockId="YFMVM_MP3_AUDIO" block="MP3 Audio"
+    MP3_AUDIO,
+    //% blockId="YFMVM_VOICE_BROADCAST" block="Voice Broadcast"
+    VOICE_BROADCAST
+}
+
+/*************************  Output - Voice Recorder Module *************************/
+enum VRMFunction {
+    //% blockId="YFVRM_PLAY_ONCE" block="Play Once"
+    PLAY_ONCE,
+    //% blockId="YFVRM_PLAY_LOOP" block="Play loop(Stop with power off)"
+    PLAY_LOOP,
+    //% blockId="YFVRM_SPEAKER_ENABLE" block="Speaker Enable"
+    SPEAKER_ENABLE,
+    //% blockId="YFVRM_SPEAKER_DISABLE" block="Speaker Disable"
+    SPEAKER_DISABLE
+}
+
+/*************************  Output - Traffic Light LED Mode *************************/
+enum TrafficLightLED {
+    //% blockId="YFTLL_AllTurnOFF" block="ALL turn off"
+    AllTurnOFF = 0x00,
+    //% blockId="YFTLL_RedLED" block="Light red led"
+    RedLED = 0x01,
+    //% blockId="YFTLL_YellowLED" block="Light yellow led"
+    YellowLED = 0x02,
+    //% blockId="YFTLL_GreenLED" block="Light green led"
+    GreenLED = 0x03,
+}
+
+enum AnalogInputModule {
+    //% blockId="YFAIM_LIGHT" block="LIGHT"
+    LIGHT = 0x0,
+    //% blockId="YFAIM_SOUND" block="SOUND"
+    SOUND = 0x1,
+    //% blockId="YFAIM_POTENTIOMETER" block="POTENTIOMETER"
+    POTENTIOMETER = 0x2,
+    //% blockId="YFAIM_SOIL_HUMIDITY" block="SOIL_HUMIDITY"
+    SOIL_HUMIDITY = 0x3,
+    //% blockId="YFAIM_ROCKER_X" block="ROCKER_X"
+    ROCKER_X = 0x4,
+    //% blockId="YFAIM_ROCKER_Y" block="ROCKER_Y"
+    ROCKER_Y = 0x5,
+}
+
+enum DigitalInputModule {
+    //% blockId="YFDIM_MAGNETIC_SENSOR" block="MAGNETIC_SENSOR"
+    MAGNETIC_SENSOR = 0x0,
+    //% blockId="YFDIM_TILT_SENSOR" block="TILT_SENSOR"
+    TILT_SENSOR = 0x1,
+    //% blockId="YFDIM_INFRARED_PROXIMITY_SENSOR" block="INFRARED_PROXIMITY_SENSOR"
+    INFRARED_PROXIMITY_SENSOR = 0x2,
+    //% blockId="YFDIM_VIBRATION_SENSOR" block="VIBRATION_SENSOR"
+    VIBRATION_SENSOR  = 0x3,
+    //% blockId="YFDIM_PYROELECTRIC_SENSOR" block="PYROELECTRIC_SENSOR"
+    PYROELECTRIC_SENSOR = 0x4,
+    //% blockId="YFDIM_TOUCH_SENSOR" block="TOUCH_SENSOR"
+    TOUCH_SENSOR = 0x5,
+    //% blockId="YFDIM_BUTTON" block="BUTTON"
+    BUTTON = 0x6,
+    //% blockId="YFDIM_COLLISION_SWITCH" block="COLLISION_SWITCH"
+    COLLISION_SWITCH = 0x7,
+    //% blockId="YFDIM_PATROL_LEFT" block="PATROL_LEFT"
+    PATROL_LEFT = 0x08,
+    //% blockId="YFDIM_PATROL_RIGHT" block="PATROL_RIGHT"
+    PATROL_RIGHT = 0x09,
+}
+
+enum DigitalInputModuleE {
+    //% blockId="YFDIM_BUTTON" block="BUTTON"
+    BUTTON = 0x0,
+    //% blockId="YFDIM_COLLISION_SWITCH" block="COLLISION_SWITCH"
+    COLLISION_SWITCH = 0x1,
+}
+
+/** An action on a touch button */
+enum DigitalInputEvent {
+    //% block=touched
+    Clicked = DAL.MICROBIT_BUTTON_EVT_CLICK,  // MICROBIT_BUTTON_EVT_CLICK
+}
+
+enum SwitchState {
+    //% blockId="YF_OFF" block="OFF"
+    OFF = 0x0,
+    //% blockId="YF_ON" block="ON"
+    ON = 0x1
+}
+
+enum MotorsPin {
+    //% blockId="M1Motor" block="M1"
+    M1 = 0,
+    //% blockId="M2Motor" block="M2"
+    M2 = 1
+}
+
+enum Motors {
+    //% blockId="M1Motor" block="M1"
+    M1 = 0,
+    //% blockId="M2Motor" block="M2"
+    M2 = 1,
+    //% blockId="AllMotors" block="All"
+    MAll = 2
+}
+
+enum Dir {
+    //% blockId="CW" block="Forward"
+    CW = 0x0,
+    //% blockId="CCW" block="Reverse"
+    CCW = 0x1
+}
+
+enum PingUnit {
+    //% block="cm"
+    Centimeters,
+    //% block="μs"
+    MicroSeconds,
+    //% block="inches"
+    Inches
+}
+
+enum DHT11_state {
+    //% block="temperature(℃)" enumval=0
+    DHT11_temperature_C,
+    //% block="humidity(0~100%)" enumval=1
+    DHT11_humidity,
+}
+
 //% color="#45b787" weight=10 icon="\uf12e"
 namespace YFSENSORS {
-
-    /************************* IR *************************/
+    
+    ///////////////////// IR ///////////////////////
     let irState: IrState
 
     const MICROBIT_MAKERBIT_IR_NEC = 777
@@ -29,588 +605,9 @@ namespace YFSENSORS {
         bitsReceived: uint8;
         commandBits: uint8;
     }
-
-    export enum IrProtocol {
-        //% block="Keyestudio"
-        Keyestudio = 0,
-        //% block="NEC"
-        NEC = 1,
-    }
-
-    export enum IrButtonAction {
-        //% block="pressed"
-        Pressed = 0,
-        //% block="released"
-        Released = 1,
-    }
-
-    export enum IrButton_Handle {
-        // any button
-        //% block="Any"
-        Any = -1,
-
-        //IR HANDLE
-        //% block="↑"
-        UP = 0x11,
-        //% block="↓"
-        DOWN = 0x91,
-        //% block="←"
-        LEFT = 0x81,
-        //% block="→"
-        RIGHT = 0xa1,
-        //% block="M1"
-        M1 = 0xe9,
-        //% block="M2"
-        M2 = 0x69,
-        //% block="A"
-        A = 0x21,
-        //% block="B"
-        B = 0x01
-    }
-
-    export enum IrButton {
-        // any button
-        //% block="Any"
-        Any = -1,
-
-        //% block=" "
-        Null_01 = -1,
-        //% block=" "
-        Null_02 = -1,
-
-        // MINI IR 
-        //% block="A"
-        Mini_A = 0xa2,
-        //% block="B"
-        Mini_B = 0x62,
-        //% block="C"
-        Mini_C = 0xe2,
-        //% block="D"
-        Mini_D = 0x22,
-        //% block="︿"
-        Mini_UP = 0x02,
-        //% block="E"
-        Mini_E = 0xc2,
-        //% block="＜"
-        Mini_Left = 0xe0,
-        //% block="۞"
-        Mini_SET = 0xa8,
-        //% block="＞"
-        Mini_Right = 0x90,
-        //% block="0"
-        Number_0 = 0x68,
-        //% block="﹀"
-        Mini_Down = 0x98,
-        //% block="F"
-        Mini_F = 0xb0,
-        //% block="1"
-        Number_1 = 0x30,
-        //% block="2"
-        Number_2 = 0x18,
-        //% block="3"
-        Number_3 = 0x7a,
-        //% block="4"
-        Number_4 = 0x10,
-        //% block="5"
-        Number_5 = 0x38,
-        //% block="6"
-        Number_6 = 0x5a,
-        //% block="7"
-        Number_7 = 0x42,
-        //% block="8"
-        Number_8 = 0x4a,
-        //% block="9"
-        Number_9 = 0x52,
-    }
-    /************************* IR *************************/
-    
-    export enum ADOutputModule {
-        //% blockId="YFDOM_LED" block="LED"
-        LED = 0x0,
-        //% blockId="YFDOM_FAN" block="FAN"
-        FAN = 0x2,
-        //% blockId="YFDOM_VIBRATION_MOTOR" block="VIBRATION_MOTOR"
-        VIBRATION_MOTOR = 0x4,
-    }
-
-    export enum DigitalOutputModule {
-        //% blockId="YFDOM_LED" block="LED"
-        LED = 0x0,
-        //% blockId="YFDOM_BUZZER" block="BUZZER"
-        BUZZER = 0x1,
-        //% blockId="YFDOM_FAN" block="FAN"
-        FAN = 0x2,
-        //% blockId="YFDOM_RELAY" block="RELAY"
-        RELAY = 0x3,
-        //% blockId="YFDOM_VIBRATION_MOTOR" block="VIBRATION_MOTOR"
-        VIBRATION_MOTOR = 0x4,
-    }
-    
-    /*************************  Output - OTP Fixed voice list  *************************/
-    export enum OTPFixedVoiceList {
-        //% blockId="YFOTPFVL_00" block="老师"
-        OTPFVL_00 = 0x00,
-        //% blockId="YFOTPFVL_01" block="爸爸"
-        OTPFVL_01 = 0x01,
-        //% blockId="YFOTPFVL_02" block="妈妈"
-        OTPFVL_02 = 0x02,
-        //% blockId="YFOTPFVL_03" block="爷爷"
-        OTPFVL_03 = 0x03,
-        //% blockId="YFOTPFVL_04" block="奶奶"
-        OTPFVL_04 = 0x04,
-        //% blockId="YFOTPFVL_05" block="姥姥"
-        OTPFVL_05 = 0x05,
-        //% blockId="YFOTPFVL_06" block="姥爷"
-        OTPFVL_06 = 0x06,
-        //% blockId="YFOTPFVL_07" block="哥哥"
-        OTPFVL_07 = 0x07,
-        //% blockId="YFOTPFVL_08" block="姐姐"
-        OTPFVL_08 = 0x08,
-        //% blockId="YFOTPFVL_09" block="叔叔"
-        OTPFVL_09 = 0x09,
-        //% blockId="YFOTPFVL_0A" block="阿姨"
-        OTPFVL_0A = 0x0A,
-        //% blockId="YFOTPFVL_0B" block="上午"
-        OTPFVL_0B = 0x0B,
-        //% blockId="YFOTPFVL_0C" block="下午"
-        OTPFVL_0C = 0x0C,
-        //% blockId="YFOTPFVL_0D" block="晚上"
-        OTPFVL_0D = 0x0D,
-        //% blockId="YFOTPFVL_0E" block="前方"
-        OTPFVL_0E = 0x0E,
-        //% blockId="YFOTPFVL_0F" block="厘米"
-        OTPFVL_0F = 0x0F,
-        //% blockId="YFOTPFVL_10" block="新年快乐"
-        OTPFVL_10 = 0x10,
-        //% blockId="YFOTPFVL_11" block="身体健康"
-        OTPFVL_11 = 0x11,
-        //% blockId="YFOTPFVL_12" block="工作顺利"
-        OTPFVL_12 = 0x12,
-        //% blockId="YFOTPFVL_13" block="学习进步"
-        OTPFVL_13 = 0x13,
-        //% blockId="YFOTPFVL_14" block="您好"
-        OTPFVL_14 = 0x14,
-        //% blockId="YFOTPFVL_15" block="谢谢"
-        OTPFVL_15 = 0x15,
-        //% blockId="YFOTPFVL_16" block="的"
-        OTPFVL_16 = 0x16,
-        //% blockId="YFOTPFVL_17" block="祝"
-        OTPFVL_17 = 0x17,
-        //% blockId="YFOTPFVL_18" block="慢走"
-        OTPFVL_18 = 0x18,
-        //% blockId="YFOTPFVL_19" block="欢迎光临"
-        OTPFVL_19 = 0x19,
-        //% blockId="YFOTPFVL_1A" block="亲爱的""
-        OTPFVL_1A = 0x1A,
-        //% blockId="YFOTPFVL_1B" block="同学们"
-        OTPFVL_1B = 0x1B,
-        //% blockId="YFOTPFVL_1C" block="工作辛苦了"
-        OTPFVL_1C = 0x1C,
-        //% blockId="YFOTPFVL_1D" block="点"
-        OTPFVL_1D = 0x1D,
-        //% blockId="YFOTPFVL_1E" block="打开"
-        OTPFVL_1E = 0x1E,
-        //% blockId="YFOTPFVL_1F" block="关闭"
-        OTPFVL_1F = 0x1F,
-        //% blockId="YFOTPFVL_20" block="千"
-        OTPFVL_20 = 0x20,
-        //% blockId="YFOTPFVL_21" block="百"
-        OTPFVL_21 = 0x21,
-        //% blockId="YFOTPFVL_22" block="十/时"
-        OTPFVL_22 = 0x22,
-        //% blockId="YFOTPFVL_23" block="1"
-        OTPFVL_23 = 0x23,
-        //% blockId="YFOTPFVL_24" block="2"
-        OTPFVL_24 = 0x24,
-        //% blockId="YFOTPFVL_25" block="3"
-        OTPFVL_25 = 0x25,
-        //% blockId="YFOTPFVL_26" block="4"
-        OTPFVL_26 = 0x26,
-        //% blockId="YFOTPFVL_27" block="5"
-        OTPFVL_27 = 0x27,
-        //% blockId="YFOTPFVL_28" block="6"
-        OTPFVL_28 = 0x28,
-        //% blockId="YFOTPFVL_29" block="7"
-        OTPFVL_29 = 0x29,
-        //% blockId="YFOTPFVL_2A" block="8"
-        OTPFVL_2A = 0x2A,
-        //% blockId="YFOTPFVL_2B" block="9"
-        OTPFVL_2B = 0x2B,
-        //% blockId="YFOTPFVL_2C" block="0"
-        OTPFVL_2C = 0x2C,
-        //% blockId="YFOTPFVL_2D" block="当前"
-        OTPFVL_2D = 0x2D,
-        //% blockId="YFOTPFVL_2E" block="转"
-        OTPFVL_2E = 0x2E,
-        //% blockId="YFOTPFVL_2F" block="左"
-        OTPFVL_2F = 0x2F,
-        //% blockId="YFOTPFVL_30" block="右"
-        OTPFVL_30 = 0x30,
-        //% blockId="YFOTPFVL_31" block="请"
-        OTPFVL_31 = 0x31,
-        //% blockId="YFOTPFVL_32" block="已"
-        OTPFVL_32 = 0x32,
-        //% blockId="YFOTPFVL_33" block="现在"
-        OTPFVL_33 = 0x33,
-        //% blockId="YFOTPFVL_34" block="是"
-        OTPFVL_34 = 0x34,
-        //% blockId="YFOTPFVL_35" block="红灯"
-        OTPFVL_35 = 0x35,
-        //% blockId="YFOTPFVL_36" block="绿灯"
-        OTPFVL_36 = 0x36,
-        //% blockId="YFOTPFVL_37" block="黄灯"
-        OTPFVL_37 = 0x37,
-        //% blockId="YFOTPFVL_38" block="温度"
-        OTPFVL_38 = 0x38,
-        //% blockId="YFOTPFVL_39" block="湿度"
-        OTPFVL_39 = 0x39,
-        //% blockId="YFOTPFVL_3A" block="欢迎常来"
-        OTPFVL_3A = 0x3A,
-        //% blockId="YFOTPFVL_3B" block="还有"
-        OTPFVL_3B = 0x3B,
-        //% blockId="YFOTPFVL_3C" block="秒"
-        OTPFVL_3C = 0x3C,
-        //% blockId="YFOTPFVL_3D" block="分"
-        OTPFVL_3D = 0x3D,
-        //% blockId="YFOTPFVL_3E" block="变"
-        OTPFVL_3E = 0x3E,
-        //% blockId="YFOTPFVL_3F" block="等"
-        OTPFVL_3F = 0x3F,
-        //% blockId="YFOTPFVL_40" block="下一次"
-        OTPFVL_40 = 0x40,
-        //% blockId="YFOTPFVL_41" block="功能"
-        OTPFVL_41 = 0x41,
-        //% blockId="YFOTPFVL_42" block="障碍物"
-        OTPFVL_42 = 0x42,
-        //% blockId="YFOTPFVL_43" block="世界那么大，我想去看看"
-        OTPFVL_43 = 0x43,
-    }
-
-    export enum OTPFixedVoiceList2 {
-        //% blockId="YFOTPFVL_44" block="今天"
-        OTPFVL_44 = 0x44,
-        //% blockId="YFOTPFVL_45" block="年"
-        OTPFVL_45 = 0x45,
-        //% blockId="YFOTPFVL_46" block="月"
-        OTPFVL_46 = 0x46,
-        //% blockId="YFOTPFVL_47" block="日"
-        OTPFVL_47 = 0x47,
-        //% blockId="YFOTPFVL_48" block="星期"
-        OTPFVL_48 = 0x48,
-        //% blockId="YFOTPFVL_49" block="农历"
-        OTPFVL_49 = 0x49,
-        //% blockId="YFOTPFVL_4A" block="现在时刻"
-        OTPFVL_4A = 0x4A,
-        //% blockId="YFOTPFVL_4B" block="北京时间"
-        OTPFVL_4B = 0x4B,
-        //% blockId="YFOTPFVL_4C" block="整"
-        OTPFVL_4C = 0x4C,
-        //% blockId="YFOTPFVL_4D" block="度"
-        OTPFVL_4D = 0x4D,
-        //% blockId="YFOTPFVL_4E" block="百分之"
-        OTPFVL_4E = 0x4E,
-        //% blockId="YFOTPFVL_4F" block="距离"
-        OTPFVL_4F = 0x4F,
-        //% blockId="YFOTPFVL_50" block="厘米"
-        OTPFVL_50 = 0x50,
-        //% blockId="YFOTPFVL_51" block="明天"
-        OTPFVL_51 = 0x51,
-        //% blockId="YFOTPFVL_52" block="天气"
-        OTPFVL_52 = 0x52,
-        //% blockId="YFOTPFVL_53" block="白天"
-        OTPFVL_53 = 0x53,
-        //% blockId="YFOTPFVL_54" block="夜间"
-        OTPFVL_54 = 0x54,
-        //% blockId="YFOTPFVL_55" block="晴"
-        OTPFVL_55 = 0x55,
-        //% blockId="YFOTPFVL_56" block="多云"
-        OTPFVL_56 = 0x56,
-        //% blockId="YFOTPFVL_57" block="阴"
-        OTPFVL_57 = 0x57,
-        //% blockId="YFOTPFVL_58" block="雨"
-        OTPFVL_58 = 0x58,
-        //% blockId="YFOTPFVL_59" block="雷阵"
-        OTPFVL_59 = 0x59,
-        //% blockId="YFOTPFVL_5A" block="小"
-        OTPFVL_5A = 0x5A,
-        //% blockId="YFOTPFVL_5B" block="中"
-        OTPFVL_5B = 0x5B,
-        //% blockId="YFOTPFVL_5C" block="大"
-        OTPFVL_5C = 0x5C,
-        //% blockId="YFOTPFVL_5D" block="夹"
-        OTPFVL_5D = 0x5D,
-        //% blockId="YFOTPFVL_5E" block="雪""
-        OTPFVL_5E = 0x5E,
-        //% blockId="YFOTPFVL_5F" block="雾"
-        OTPFVL_5F = 0x5F,
-        //% blockId="YFOTPFVL_60" block="霾"
-        OTPFVL_60 = 0x60,
-        //% blockId="YFOTPFVL_61" block="风"
-        OTPFVL_61 = 0x61,
-        //% blockId="YFOTPFVL_62" block="东"
-        OTPFVL_62 = 0x62,
-        //% blockId="YFOTPFVL_63" block="南"
-        OTPFVL_63 = 0x63,
-        //% blockId="YFOTPFVL_64" block="西"
-        OTPFVL_64 = 0x64,
-        //% blockId="YFOTPFVL_65" block="北"
-        OTPFVL_65 = 0x65,
-        //% blockId="YFOTPFVL_66" block="到"
-        OTPFVL_66 = 0x66,
-        //% blockId="YFOTPFVL_67" block="级"
-        OTPFVL_67 = 0x67,
-        //% blockId="YFOTPFVL_68" block="偏"
-        OTPFVL_68 = 0x68,
-        //% blockId="YFOTPFVL_69" block="方向"
-        OTPFVL_69 = 0x69,
-        //% blockId="YFOTPFVL_6A" block="空气质量"
-        OTPFVL_6A = 0x6A,
-        //% blockId="YFOTPFVL_6B" block="优"
-        OTPFVL_6B = 0x6B,
-        //% blockId="YFOTPFVL_6C" block="良"
-        OTPFVL_6C = 0x6C,
-        //% blockId="YFOTPFVL_6D" block="轻度污染"
-        OTPFVL_6D = 0x6D,
-        //% blockId="YFOTPFVL_6E" block="中度污染"
-        OTPFVL_6E = 0x6E,
-        //% blockId="YFOTPFVL_6F" block="重度污染"
-        OTPFVL_6F = 0x6F,
-        //% blockId="YFOTPFVL_70" block="上"
-        OTPFVL_70 = 0x70,
-        //% blockId="YFOTPFVL_71" block="下"
-        OTPFVL_71 = 0x71,
-        //% blockId="YFOTPFVL_72" block="接近"
-        OTPFVL_72 = 0x72,
-        //% blockId="YFOTPFVL_73" block="远离"
-        OTPFVL_73 = 0x73,
-        //% blockId="YFOTPFVL_74" block="灯"
-        OTPFVL_74 = 0x74,
-        //% blockId="YFOTPFVL_75" block="风扇"
-        OTPFVL_75 = 0x75,
-        //% blockId="YFOTPFVL_76" block="红色"
-        OTPFVL_76 = 0x76,
-        //% blockId="YFOTPFVL_77" block="绿色"
-        OTPFVL_77 = 0x77,
-        //% blockId="YFOTPFVL_78" block="蓝色"
-        OTPFVL_78 = 0x78,
-        //% blockId="YFOTPFVL_79" block="黄色"
-        OTPFVL_79 = 0x79,
-        //% blockId="YFOTPFVL_7A" block="白色"
-        OTPFVL_7A = 0x7A,
-        //% blockId="YFOTPFVL_7B" block="叮音效"
-        OTPFVL_7B = 0x7B,
-        //% blockId="YFOTPFVL_7C" block="滴滴滴"
-        OTPFVL_7C = 0x7C,
-        //% blockId="YFOTPFVL_7D" block="叮叮音效"
-        OTPFVL_7D = 0x7D,
-        //% blockId="YFOTPFVL_7E" block="叮叮音效"
-        OTPFVL_7E = 0x7E
-    }
-
-    export enum OTPFixedVoiceFun {
-        //% blockId="YFOTPFVF_VolumeLevel0" block="设置音量0"
-        VolumeLevel0 = 0xE0,
-        //% blockId="YFOTPFVF_VolumeLevel1" block="设置音量1"
-        VolumeLevel1 = 0xE1,
-        //% blockId="YFOTPFVF_VolumeLevel2" block="设置音量2"
-        VolumeLevel2 = 0xE2,
-        //% blockId="YFOTPFVF_VolumeLevel3" block="设置音量3"
-        VolumeLevel3 = 0xE3,
-        //% blockId="YFOTPFVF_VolumeLevel4" block="设置音量4"
-        VolumeLevel4 = 0xE4,
-        //% blockId="YFOTPFVF_VolumeLevel5" block="设置音量5"
-        VolumeLevel5 = 0xE5,
-        //% blockId="YFOTPFVF_VolumeLevel6" block="设置音量6"
-        VolumeLevel6 = 0xE6,
-        //% blockId="YFOTPFVF_VolumeLevel7" block="设置音量7"
-        VolumeLevel7 = 0xE7,
-        //% blockId="YFOTPFVF_LOOP" block="循环播放"
-        Loop = 0xF2,
-        //% blockId="YFOTPFVF_STOP" block="停止播放"
-        Stop = 0xFE
-    }
-    
-    export enum OTPFixedVoiceFun2 {
-        //% blockId="YFOTPFVF_HEADCODE" block="发送连码头码"
-        HeadCode = 0xF1,
-        //% blockId="YFOTPFVF_TAILCODE" block="发送连码尾码"
-        TailCode = 0xF3
-    }
-
-    export enum OTPFixedVoiceFunMute {
-        //% blockId="YFOTPFVF_MUTECODE" block="静音"
-        MuteCode = 0xF4
-    }
-    
-    /*************************  Output - MP3 audio playback module function  *************************/
-    export enum AudioPlaybackFunWithNum {
-        //% blockId="YFAPF_SelectPlay" block="Select Play"
-        SelectPlay = 0x0B,
-        //% blockId="YFAPF_SetVolume" block="Set Volume"
-        SetVolume = 0x0C,
-        //% blockId="YFAPF_SetEQ" block="Set EQ Mode"
-        SetEQ = 0x0D,
-        //% blockId="YFAPF_SetPlayMode" block="Set Play Mode"
-        SetPlayMode = 0x0E,
-        //% blockId="YFAPF_SetInsertTrack" block="Set the insert track"
-        SetInsertTrack = 0x10,
-    }
-
-    export enum AudioPlaybackFun {
-        //% blockId="YFAPF_Play" block="Play"
-        Play = 0x11,
-        //% blockId="YFAPF_Pause" block="Pause"
-        Pause = 0x12,
-        //% blockId="YFAPF_Stop" block="Stop"
-        Stop = 0x13,
-        //% blockId="YFAPF_PreviousTrack" block="Previous track"
-        PreviousTrack = 0x14,
-        //% blockId="YFAPF_NextTrack" block="Next track"
-        NextTrack = 0x15,
-        //% blockId="YFAPF_PreviousContents" block="Previous contents"
-        PreviousContents = 0x16,
-        //% blockId="YFAPF_NextContents" block="Next contents"
-        NextContents = 0x17,
-        //% blockId="YFAPF_RemoveNumber" block="Remove Number"
-        RemoveNumber = 0x0A,
-        //% blockId="YFAPF_StopInsertTrack" block="Stop Insert Track"
-        StopInsertTrack = 0x1C,
-    }
-
-    export enum MVModule {
-        //% blockId="YFMVM_MP3_AUDIO" block="MP3 Audio"
-        MP3_AUDIO,
-        //% blockId="YFMVM_VOICE_BROADCAST" block="Voice Broadcast"
-        VOICE_BROADCAST
-    }
-
-    /*************************  Output - Voice Recorder Module *************************/
-    export enum VRMFunction {
-        //% blockId="YFVRM_PLAY_ONCE" block="Play Once"
-        PLAY_ONCE,
-        //% blockId="YFVRM_PLAY_LOOP" block="Play loop(Stop with power off)"
-        PLAY_LOOP,
-        //% blockId="YFVRM_SPEAKER_ENABLE" block="Speaker Enable"
-        SPEAKER_ENABLE,
-        //% blockId="YFVRM_SPEAKER_DISABLE" block="Speaker Disable"
-        SPEAKER_DISABLE
-    }
-    
-    /*************************  Output - Traffic Light LED Mode *************************/
-    export enum TrafficLightLED {
-        //% blockId="YFTLL_AllTurnOFF" block="ALL turn off"
-        AllTurnOFF = 0x00,
-        //% blockId="YFTLL_RedLED" block="Light red led"
-        RedLED = 0x01,
-        //% blockId="YFTLL_YellowLED" block="Light yellow led"
-        YellowLED = 0x02,
-        //% blockId="YFTLL_GreenLED" block="Light green led"
-        GreenLED = 0x03,
-    }
-
-    export enum AnalogInputModule {
-        //% blockId="YFAIM_LIGHT" block="LIGHT"
-        LIGHT = 0x0,
-        //% blockId="YFAIM_SOUND" block="SOUND"
-        SOUND = 0x1,
-        //% blockId="YFAIM_POTENTIOMETER" block="POTENTIOMETER"
-        POTENTIOMETER = 0x2,
-        //% blockId="YFAIM_SOIL_HUMIDITY" block="SOIL_HUMIDITY"
-        SOIL_HUMIDITY = 0x3,
-        //% blockId="YFAIM_ROCKER_X" block="ROCKER_X"
-        ROCKER_X = 0x4,
-        //% blockId="YFAIM_ROCKER_Y" block="ROCKER_Y"
-        ROCKER_Y = 0x5,
-    }
-
-    export enum DigitalInputModule {
-        //% blockId="YFDIM_MAGNETIC_SENSOR" block="MAGNETIC_SENSOR"
-        MAGNETIC_SENSOR = 0x0,
-        //% blockId="YFDIM_TILT_SENSOR" block="TILT_SENSOR"
-        TILT_SENSOR = 0x1,
-        //% blockId="YFDIM_INFRARED_PROXIMITY_SENSOR" block="INFRARED_PROXIMITY_SENSOR"
-        INFRARED_PROXIMITY_SENSOR = 0x2,
-        //% blockId="YFDIM_VIBRATION_SENSOR" block="VIBRATION_SENSOR"
-        VIBRATION_SENSOR  = 0x3,
-        //% blockId="YFDIM_PYROELECTRIC_SENSOR" block="PYROELECTRIC_SENSOR"
-        PYROELECTRIC_SENSOR = 0x4,
-        //% blockId="YFDIM_TOUCH_SENSOR" block="TOUCH_SENSOR"
-        TOUCH_SENSOR = 0x5,
-        //% blockId="YFDIM_BUTTON" block="BUTTON"
-        BUTTON = 0x6,
-        //% blockId="YFDIM_COLLISION_SWITCH" block="COLLISION_SWITCH"
-        COLLISION_SWITCH = 0x7,
-        //% blockId="YFDIM_PATROL_LEFT" block="PATROL_LEFT"
-        PATROL_LEFT = 0x08,
-        //% blockId="YFDIM_PATROL_RIGHT" block="PATROL_RIGHT"
-        PATROL_RIGHT = 0x09,
-    }
-
-    export enum DigitalInputModuleE {
-        //% blockId="YFDIM_BUTTON" block="BUTTON"
-        BUTTON = 0x0,
-        //% blockId="YFDIM_COLLISION_SWITCH" block="COLLISION_SWITCH"
-        COLLISION_SWITCH = 0x1,
-    }
-
-    /** An action on a touch button */
-    export enum DigitalInputEvent {
-        //% block=touched
-        Clicked = DAL.MICROBIT_BUTTON_EVT_CLICK,  // MICROBIT_BUTTON_EVT_CLICK
-    }
-
-    export enum SwitchState {
-        //% blockId="YF_OFF" block="OFF"
-        OFF = 0x0,
-        //% blockId="YF_ON" block="ON"
-        ON = 0x1
-    }
-
-    export enum MotorsPin {
-        //% blockId="M1Motor" block="M1"
-        M1 = 0,
-        //% blockId="M2Motor" block="M2"
-        M2 = 1
-    }
-
-    export enum Motors {
-        //% blockId="M1Motor" block="M1"
-        M1 = 0,
-        //% blockId="M2Motor" block="M2"
-        M2 = 1,
-        //% blockId="AllMotors" block="All"
-        MAll = 2
-    }
-
-    export enum Dir {
-        //% blockId="CW" block="Forward"
-        CW = 0x0,
-        //% blockId="CCW" block="Reverse"
-        CCW = 0x1
-    }
-
-    export enum PingUnit {
-        //% block="cm"
-        Centimeters,
-        //% block="μs"
-        MicroSeconds,
-        //% block="inches"
-        Inches
-    }
-
-    export enum DHT11_state {
-        //% block="temperature(℃)" enumval=0
-        DHT11_temperature_C,
-        //% block="humidity(0~100%)" enumval=1
-        DHT11_humidity,
-    }
-
-    /*************************  *************************/
-
     
     ///////////////////// Output - MP3 audio playback module ///////////////////////
     let AudioPlaybackPin_data = DigitalPin.P2;
-
     
     ///////////////////// Output - MOTOR DRIVE PIN ///////////////////////
     let YFSENSORSMotor1D = DigitalPin.P13
@@ -637,7 +634,7 @@ namespace YFSENSORS {
     ///////////////////// Output ///////////////////////
     /**
     * toggle  Turn the Digital Output Module ON or OFF.
-    * @param adom module. eg: YFSENSORS.ADOutputModule.LED
+    * @param adom module. eg: ADOutputModule.LED
     * @param adomPin pin. eg: AnalogPin.P1
     * @param state switch state.
     * @param percentage brightness of LED, Motor vibration strength, fan rotation speed.
@@ -664,7 +661,7 @@ namespace YFSENSORS {
 
     /**
      * ON or OFF.
-     * @param num on or off eg: YFSENSORS.SwitchState.ON
+     * @param num on or off eg: SwitchState.ON
      */
     //% advanced=true
     //% group="Output"
@@ -678,7 +675,7 @@ namespace YFSENSORS {
     /**
      * Turn the Digital Output Module ON or OFF.
      * @param domPin pin. eg: DigitalPin.P2
-     * @param dom pin. eg: YFSENSORS.DigitalOutputModule.LED
+     * @param dom pin. eg: DigitalOutputModule.LED
      * @param sws switch state.
      */
     //% group="Output"
@@ -696,7 +693,7 @@ namespace YFSENSORS {
     ///////////////////// Output - OTP Fixed voice broadcast module ///////////////////////
     /**
      * Returns the serial number of OTP fixed voice list.
-     * @param num serial number. eg: YFSENSORS.OTPFixedVoiceList.OTPFVL_00
+     * @param num serial number. eg: OTPFixedVoiceList.OTPFVL_00
      */
     //% advanced=true
     //% group="Output"
@@ -709,7 +706,7 @@ namespace YFSENSORS {
 
     /**
      * Returns the serial number of OTP fixed voice list.
-     * @param num serial number. eg: YFSENSORS.OTPFixedVoiceList2.OTPFVL_44
+     * @param num serial number. eg: OTPFixedVoiceList2.OTPFVL_44
      */
     //% group="Output"
     //% blockId=YFSENSORS_OTPFixedVoiceListNum2 weight=94 blockGap=15
@@ -792,7 +789,7 @@ namespace YFSENSORS {
     /**
      * Fixed voice broadcast module function : set volume level(0~7) / Stop play / loop play.
      * @param vbmfPin pin. eg: DigitalPin.P2
-     * @param serial_num voice serial number of function. eg: YFSENSORS.OTPFixedVoiceFun.VolumeLevel4
+     * @param serial_num voice serial number of function. eg: OTPFixedVoiceFun.VolumeLevel4
      */
     //% group="Output"
     //% blockId=YFSENSORS_voiceBroadcastModuleFun weight=93 blockGap=15
@@ -912,7 +909,7 @@ namespace YFSENSORS {
 
     /**
      * MP3 audio playback module Playback settings.
-     * @param specified_fun mp3 module specified track number. eg: YFSENSORS.AudioPlaybackFunWithNum.SelectPlay
+     * @param specified_fun mp3 module specified track number. eg: AudioPlaybackFunWithNum.SelectPlay
      */
     //% advanced=true
     //% group="Output"
@@ -925,7 +922,7 @@ namespace YFSENSORS {
 
     /**
      * MP3 audio playback module play specified track.
-     * @param specified_fun mp3 module specified function code. eg: YFSENSORS.AudioPlaybackFunWithNum.SelectPlay
+     * @param specified_fun mp3 module specified function code. eg: AudioPlaybackFunWithNum.SelectPlay
      * @param specified_track mp3 module specified track number. eg: 1
      */
     //% group="Output"
@@ -934,13 +931,13 @@ namespace YFSENSORS {
     //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=2
     //% specified_track.min=1
     export function audioPlaybackModuleFunWithNum(specified_fun: AudioPlaybackFunWithNum, specified_track: number): void {
-        if (specified_fun == YFSENSORS.AudioPlaybackFunWithNum.SelectPlay || specified_fun == YFSENSORS.AudioPlaybackFunWithNum.SetInsertTrack) {
+        if (specified_fun == AudioPlaybackFunWithNum.SelectPlay || specified_fun == AudioPlaybackFunWithNum.SetInsertTrack) {
             if (specified_track>= 255) specified_track = 255;
-        } else if (specified_fun == YFSENSORS.AudioPlaybackFunWithNum.SetVolume) {
+        } else if (specified_fun == AudioPlaybackFunWithNum.SetVolume) {
             if (specified_track>= 30) specified_track = 30;
-        } else if (specified_fun == YFSENSORS.AudioPlaybackFunWithNum.SetEQ) {
+        } else if (specified_fun == AudioPlaybackFunWithNum.SetEQ) {
             if (specified_track>= 4) specified_track = 4;
-        } else if (specified_fun == YFSENSORS.AudioPlaybackFunWithNum.SetPlayMode) {
+        } else if (specified_fun == AudioPlaybackFunWithNum.SetPlayMode) {
             if (specified_track>= 7) specified_track = 7;
         }
         
@@ -960,7 +957,7 @@ namespace YFSENSORS {
 
     /**
      * MP3 audio playback module Playback settings.
-     * @param specified_fun mp3 module specified function code. eg: YFSENSORS.AudioPlaybackFun.Play
+     * @param specified_fun mp3 module specified function code. eg: AudioPlaybackFun.Play
      */
     //% group="Output"
     //% blockId=YFSENSORS_audioPlaybackModuleFun weight=86 blockGap=15
@@ -973,7 +970,7 @@ namespace YFSENSORS {
     /**
      * Read the Busy Pin of the MP3 audio playback module or the Fixed voice broadcast.
      * @param pin_busy busy pin. eg: DigitalPin.P1
-     * @param m_busy mp3 module or voice broadcast. eg: YFSENSORS.MVModule.MP3_AUDIO
+     * @param m_busy mp3 module or voice broadcast. eg: MVModule.MP3_AUDIO
      */
     //% advanced=true
     //% group="Output"
@@ -993,7 +990,7 @@ namespace YFSENSORS {
     /**
      * voice recorder module play recorder once or loop, enable or disable speaker.
      * @param pin_vrm busy pin. eg: DigitalPin.P1
-     * @param vrmfun voice recorder module function. eg: YFSENSORS.VRMFunction.PLAY_ONCE
+     * @param vrmfun voice recorder module function. eg: VRMFunction.PLAY_ONCE
      */
     //% group="Output"
     //% blockId=YFSENSORS_voiceRecorderModule weight=84 blockGap=15
@@ -1001,21 +998,21 @@ namespace YFSENSORS {
     //% pin_vrm.fieldEditor="gridpicker" pin_vrm.fieldOptions.columns=4
     //% vrmfun.fieldEditor="gridpicker" vrmfun.fieldOptions.columns=2
     export function voiceRecorderModule(pin_vrm: DigitalPin, vrmfun: VRMFunction): void {
-        if (vrmfun == YFSENSORS.VRMFunction.PLAY_ONCE) {
+        if (vrmfun == VRMFunction.PLAY_ONCE) {
             pins.digitalWritePin(pin_vrm, 0)
             control.waitMicros(2); // 2us
             pins.digitalWritePin(pin_vrm, 1)
             basic.pause(50); // 30ms
             pins.digitalWritePin(pin_vrm, 0)
-        } else if (vrmfun == YFSENSORS.VRMFunction.PLAY_LOOP) {
+        } else if (vrmfun == VRMFunction.PLAY_LOOP) {
             pins.digitalWritePin(pin_vrm, 0)
             control.waitMicros(2); // 2us
             pins.digitalWritePin(pin_vrm, 1)
             basic.pause(2050); // 2s
             pins.digitalWritePin(pin_vrm, 0)
-        } else if (vrmfun == YFSENSORS.VRMFunction.SPEAKER_ENABLE) {
+        } else if (vrmfun == VRMFunction.SPEAKER_ENABLE) {
             pins.digitalWritePin(pin_vrm, 0)
-        } else if (vrmfun == YFSENSORS.VRMFunction.SPEAKER_DISABLE) {
+        } else if (vrmfun == VRMFunction.SPEAKER_DISABLE) {
             pins.digitalWritePin(pin_vrm, 1)
         }
     }
@@ -1025,7 +1022,7 @@ namespace YFSENSORS {
      * Traffic Light module light up red, green or yellow led.
      * @param tlm1Pin pin 1. eg: DigitalPin.P1
      * @param tlm2Pin pin 2. eg: DigitalPin.P2
-     * @param wColor which color led. eg: YFSENSORS.TrafficLightLED.AllTurnOFF
+     * @param wColor which color led. eg: TrafficLightLED.AllTurnOFF
      */
     //% group="Output"
     //% blockId=YFSENSORS_trafficLightModule weight=80 blockGap=15
@@ -1035,19 +1032,19 @@ namespace YFSENSORS {
     //% wColor.fieldEditor="gridpicker" wColor.fieldOptions.columns=2
     export function trafficLightModule(tlm1Pin: DigitalPin, tlm2Pin: DigitalPin, wColor: TrafficLightLED): void {
         switch (wColor) {
-            case YFSENSORS.TrafficLightLED.RedLED:            // Red LED
+            case TrafficLightLED.RedLED:            // Red LED
                 pins.digitalWritePin(tlm1Pin, 0);
                 pins.digitalWritePin(tlm2Pin, 1);
                 break;
-            case YFSENSORS.TrafficLightLED.YellowLED:         // Yellow LED
+            case TrafficLightLED.YellowLED:         // Yellow LED
                 pins.digitalWritePin(tlm1Pin, 1);
                 pins.digitalWritePin(tlm2Pin, 0);
                 break;
-            case YFSENSORS.TrafficLightLED.GreenLED:          // Green LED
+            case TrafficLightLED.GreenLED:          // Green LED
                 pins.digitalWritePin(tlm1Pin, 1);
                 pins.digitalWritePin(tlm2Pin, 2);
                 break;
-            default: // YFSENSORS.TrafficLightLED.AllTurnOFF: // all lights turn off
+            default: // TrafficLightLED.AllTurnOFF: // all lights turn off
                 pins.digitalWritePin(tlm1Pin, 0);
                 pins.digitalWritePin(tlm2Pin, 0);
                 break;
@@ -1058,7 +1055,7 @@ namespace YFSENSORS {
     /**
      * Read the Analog Input Sensor Module.
      * @param aimPin pin. eg: AnalogPin.P1
-     * @param aim pin. eg: YFSENSORS.AnalogInputModule.LIGHT
+     * @param aim pin. eg: AnalogInputModule.LIGHT
      */
     //% group="Input"
     //% blockId=YFSENSORS_analogInputModule weight=100 blockGap=15
@@ -1088,7 +1085,7 @@ namespace YFSENSORS {
     /**
      * Read the Digital Input Sensor Module (Default all modules trigger back true).
      * @param dimPin pin. eg: DigitalPin.P8
-     * @param dim pin. eg: YFSENSORS.DigitalInputModule.BUTTON
+     * @param dim pin. eg: DigitalInputModule.BUTTON
      */
     //% group="Input"
     //% blockId=YFSENSORS_digitalInputModule weight=90 blockGap=15
@@ -1099,13 +1096,13 @@ namespace YFSENSORS {
         
         pins.setPull(dimPin, PinPullMode.PullNone);
         let a: number = 0;
-        if(dim == YFSENSORS.DigitalInputModule.BUTTON 
-        || dim == YFSENSORS.DigitalInputModule.MAGNETIC_SENSOR 
-        || dim == YFSENSORS.DigitalInputModule.TILT_SENSOR 
-        || dim == YFSENSORS.DigitalInputModule.INFRARED_PROXIMITY_SENSOR 
-        || dim == YFSENSORS.DigitalInputModule.COLLISION_SWITCH
-        || dim == YFSENSORS.DigitalInputModule.PATROL_LEFT 
-        || dim == YFSENSORS.DigitalInputModule.PATROL_RIGHT ){
+        if(dim == DigitalInputModule.BUTTON 
+        || dim == DigitalInputModule.MAGNETIC_SENSOR 
+        || dim == DigitalInputModule.TILT_SENSOR 
+        || dim == DigitalInputModule.INFRARED_PROXIMITY_SENSOR 
+        || dim == DigitalInputModule.COLLISION_SWITCH
+        || dim == DigitalInputModule.PATROL_LEFT 
+        || dim == DigitalInputModule.PATROL_RIGHT ){
             a = pins.digitalReadPin(dimPin);
             if (a == 1) return false;
             else    return true;
@@ -1118,7 +1115,7 @@ namespace YFSENSORS {
 
     /** not work 
 	 * Registers code to run when a Button/Collision event is detected.
-     * param dimE module. eg: YFSENSORS.DigitalInputModuleE.BUTTON
+     * param dimE module. eg: DigitalInputModuleE.BUTTON
      * param dimEPin pin. eg: DigitalPin.P2
      * event event. eg: DigitalInputEvent.Clicked
 	 */
@@ -1143,7 +1140,7 @@ namespace YFSENSORS {
     /**
      * Get the temperature or humidity of the dht11 sensor.
      * @param pin pin. eg: DigitalPin.P2
-     * @param dht11state echo pin. eg: YFSENSORS.DHT11_state.DHT11_temperature_C
+     * @param dht11state echo pin. eg: DHT11_state.DHT11_temperature_C
      */
     //% group="Input"
     //% blockId=YFSENSORS_read_dht11 weight=82 blockGap=15
@@ -1191,10 +1188,10 @@ namespace YFSENSORS {
         if (checksumTmp >= 512) checksumTmp -= 512
         if (checksumTmp >= 256) checksumTmp -= 256
         switch (dht11state) {
-            case YFSENSORS.DHT11_state.DHT11_temperature_C:
+            case DHT11_state.DHT11_temperature_C:
                 _temperature = resultArray[2] + resultArray[3] / 100
                 return _temperature
-            case YFSENSORS.DHT11_state.DHT11_humidity:
+            case DHT11_state.DHT11_humidity:
                 _humidity = resultArray[0] + resultArray[1] / 100
                 return _humidity
         }
@@ -1206,7 +1203,7 @@ namespace YFSENSORS {
      * Send a ping and get the echo time (in microseconds) as a result
      * @param trig trigger pin. eg: DigitalPin.P2
      * @param echo echo pin. eg: DigitalPin.P8
-     * @param unit desired conversion unit. eg: YFSENSORS.PingUnit.Centimeters
+     * @param unit desired conversion unit. eg: PingUnit.Centimeters
      * @param maxCmDistance maximum distance in centimeters (default is 450)
      */
     //% group="Input"
@@ -1229,8 +1226,8 @@ namespace YFSENSORS {
         const d = pins.pulseIn(echo, PulseValue.High, maxCmDistance * 58);
 
         switch (unit) {
-            case YFSENSORS.PingUnit.Centimeters: return Math.idiv(d, 58);
-            case YFSENSORS.PingUnit.Inches: return Math.idiv(d, 148);
+            case PingUnit.Centimeters: return Math.idiv(d, 58);
+            case PingUnit.Inches: return Math.idiv(d, 148);
             default: return d ;
         }
     }
@@ -1248,10 +1245,10 @@ namespace YFSENSORS {
     //% pin_dir.fieldEditor="gridpicker" pin_dir.fieldOptions.columns=4 pin_dir.fieldOptions.tooltips="false"
     //% pin_pwm.fieldEditor="gridpicker" pin_pwm.fieldOptions.columns=4 pin_pwm.fieldOptions.tooltips="false"
     export function motorConnectPin(w_M: MotorsPin, pin_dir: DigitalPin, pin_pwm: AnalogPin): void {
-        if (w_M == YFSENSORS.MotorsPin.M1) {
+        if (w_M == MotorsPin.M1) {
             YFSENSORSMotor1D = pin_dir
             YFSENSORSMotor1A = pin_pwm
-        } else if (w_M == YFSENSORS.MotorsPin.M2) {
+        } else if (w_M == MotorsPin.M2) {
             YFSENSORSMotor2D = pin_dir
             YFSENSORSMotor2A = pin_pwm
         }
@@ -1262,8 +1259,8 @@ namespace YFSENSORS {
     }
     /**
      * Set the direction and speed of YFSENSORS motor.
-     * @param index motor m1/m2/all. eg: YFSENSORS.Motors.MAll
-     * @param direction direction to turn. eg: YFSENSORS.Dir.CW
+     * @param index motor m1/m2/all. eg: Motors.MAll
+     * @param direction direction to turn. eg: Dir.CW
      * @param speed speed of motors (0 to 255). eg: 120
      */
     //% subcategory="MotorDrive"
@@ -1276,16 +1273,16 @@ namespace YFSENSORS {
         if (index > 2 || index < 0)
             return
         
-        let dir_m2 = direction == YFSENSORS.Dir.CW ? YFSENSORS.Dir.CCW : YFSENSORS.Dir.CW;
+        let dir_m2 = direction == Dir.CW ? Dir.CCW : Dir.CW;
         speed = clamp(speed, 0, 255) * 4.01;  // 0~255 > 0~1023
 
-        if (index == YFSENSORS.Motors.M1) {
+        if (index == Motors.M1) {
             pins.digitalWritePin(YFSENSORSMotor1D, direction);
             pins.analogWritePin(YFSENSORSMotor1A, speed);
-        } else if (index == YFSENSORS.Motors.M2) {
+        } else if (index == Motors.M2) {
             pins.digitalWritePin(YFSENSORSMotor2D, dir_m2);
             pins.analogWritePin(YFSENSORSMotor2A, speed);
-        } else if (index == YFSENSORS.Motors.MAll) {
+        } else if (index == Motors.MAll) {
             pins.digitalWritePin(YFSENSORSMotor1D, direction);
             pins.analogWritePin(YFSENSORSMotor1A, speed);
             pins.digitalWritePin(YFSENSORSMotor2D, dir_m2);
@@ -1295,7 +1292,7 @@ namespace YFSENSORS {
 
     /**
      * Stop the YFSENSORS motor.
-     * @param motor motor m1/m2/all. eg: YFSENSORS.Motors.MAll
+     * @param motor motor m1/m2/all. eg: Motors.MAll
      */
     //% subcategory="MotorDrive"
     //% blockId=YFSENSORS_motorStop weight=10 blockGap=15
@@ -1540,7 +1537,7 @@ namespace YFSENSORS {
         irState.bitsReceived += 1;
         if (irState.bitsReceived <= 8) {
             // ignore all address bits
-            if (irState.protocol === YFSENSORS.IrProtocol.Keyestudio && bit === 1) {
+            if (irState.protocol === IrProtocol.Keyestudio && bit === 1) {
                 // recover from missing message bits at the beginning
                 // Keyestudio address is 0 and thus missing bits can be easily detected
                 // by checking for the first inverse address bit (which is a 1)
@@ -1609,7 +1606,7 @@ namespace YFSENSORS {
     /**
      * Connects to the IR receiver module at the specified pin and configures the IR protocol.
      * @param pin IR receiver pin. eg: DigitalPin.P2
-     * @param protocol IR protocol. eg: YFSENSORS.IrProtocol.NEC
+     * @param protocol IR protocol. eg: IrProtocol.NEC
      */
     //% subcategory="IR_Receiver"
     //% blockId="YFSENSORS_infrared_connect_receiver" weight=15 blockGap=15
@@ -1627,7 +1624,7 @@ namespace YFSENSORS {
             protocol: protocol,
             bitsReceived: 0,
             commandBits: 0,
-            command: YFSENSORS.IrButton.Any,
+            command: IrButton.Any,
             hasNewCommand: false,
         };
 
@@ -1701,10 +1698,10 @@ namespace YFSENSORS {
     //% button.fieldOptions.tooltips="false"
     export function onIrButton(button: IrButton, action: IrButtonAction, handler: () => void) {
         control.onEvent(
-            action === YFSENSORS.IrButtonAction.Pressed
+            action === IrButtonAction.Pressed
                 ? MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID
                 : MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID,
-            button === YFSENSORS.IrButton.Any ? EventBusValue.MICROBIT_EVT_ANY : button,
+            button === IrButton.Any ? EventBusValue.MICROBIT_EVT_ANY : button,
             () => {
                 irState.command = control.eventValue();
                 handler();
@@ -1720,7 +1717,7 @@ namespace YFSENSORS {
     //% block="IR button"
     export function irButton(): number {
         if (!irState) {
-            return YFSENSORS.IrButton.Any;
+            return IrButton.Any;
         }
         return irState.command;
     }
@@ -1771,8 +1768,8 @@ namespace YFSENSORS {
     //% button.fieldOptions.tooltips="false"
     export function onIrButton_Handle(button: IrButton_Handle, action: IrButtonAction, handler: () => void) {
         control.onEvent(
-            action === YFSENSORS.IrButtonAction.Pressed ? MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID : MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID,
-            button === YFSENSORS.IrButton_Handle.Any ? EventBusValue.MICROBIT_EVT_ANY : button,
+            action === IrButtonAction.Pressed ? MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID : MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID,
+            button === IrButton_Handle.Any ? EventBusValue.MICROBIT_EVT_ANY : button,
             () => {
                 irState.command = control.eventValue();
                 handler();
