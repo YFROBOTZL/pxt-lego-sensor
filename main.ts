@@ -651,7 +651,7 @@ namespace YFSENSORS {
     //% state.shadow="toggleOnOff"
     //% expandableArgumentMode="toggle"
     //% inlineInputMode=inline
-    export function aDOutputModule(adom: YFSENSORS.ADOutputModule, adomPin: AnalogPin, state: boolean, percentage: number = 100): void {
+    export function aDOutputModule(adom: ADOutputModule, adomPin: AnalogPin, state: boolean, percentage: number = 100): void {
         let adomM = adom;  // no work
         if (state) {
             pins.analogSetPeriod(adomPin, 100)
@@ -671,7 +671,7 @@ namespace YFSENSORS {
     //% blockId=YFSENSORS_domOnOff weight=11 blockGap=15
     //% block="%num"
     //% num.fieldEditor="gridpicker" num.fieldOptions.columns=2
-    export function domOnOff(num: YFSENSORS.SwitchState): number {
+    export function domOnOff(num: SwitchState): number {
         return num;
     }
 
@@ -687,7 +687,7 @@ namespace YFSENSORS {
     //% domPin.fieldEditor="gridpicker" domPin.fieldOptions.columns=4
     //% dom.fieldEditor="gridpicker" dom.fieldOptions.columns=2
     // sws.fieldEditor="gridpicker" sws.fieldOptions.columns=2
-    export function digitalOutputModule(dom: YFSENSORS.DigitalOutputModule, domPin: DigitalPin, sws: number): void {
+    export function digitalOutputModule(dom: DigitalOutputModule, domPin: DigitalPin, sws: number): void {
         let domM = dom;  // no work
         pins.digitalWritePin(domPin, sws);
     }
@@ -703,7 +703,7 @@ namespace YFSENSORS {
     //% blockId=YFSENSORS_OTPFixedVoiceListNum weight=10 blockGap=15
     //% block="%num| "
     //% num.fieldEditor="gridpicker" num.fieldOptions.columns=10
-    export function OTPFixedVoiceListNum(num: YFSENSORS.OTPFixedVoiceList): number {
+    export function OTPFixedVoiceListNum(num: OTPFixedVoiceList): number {
         return num;
     }
 
@@ -715,7 +715,7 @@ namespace YFSENSORS {
     //% blockId=YFSENSORS_OTPFixedVoiceListNum2 weight=94 blockGap=15
     //% block="%num"
     //% num.fieldEditor="gridpicker" num.fieldOptions.columns=10
-    export function OTPFixedVoiceListNum2(num: YFSENSORS.OTPFixedVoiceList2): number {
+    export function OTPFixedVoiceListNum2(num: OTPFixedVoiceList2): number {
         return num;
     }
 
@@ -734,8 +734,7 @@ namespace YFSENSORS {
     //% color.fieldOptions.colours='["#FF0000","#659900","#18E600","#80FF00","#00FF00","#FF8000","#D82600","#B24C00","#00FFC0","#00FF80","#FFC000","#FF0080","#FF00FF","#B09EFF","#00FFFF","#FFFF00","#8000FF","#0080FF","#0000FF","#FFFFFF","#FF8080","#80FF80","#40C0FF","#999999","#000000"]'
     //% color.fieldOptions.columns=5
     //% color.fieldOptions.className='rgbColorPicker'
-    export function BBColours(color: number): number
-    {
+    export function BBColours(color: number): number {
         return color;
     }
 
@@ -801,7 +800,7 @@ namespace YFSENSORS {
     //% vbmfPin.fieldEditor="gridpicker" vbmfPin.fieldOptions.columns=4
     //% serial_num.fieldEditor="gridpicker" serial_num.fieldOptions.columns=4
     //% inlineInputMode=inline
-    export function voiceBroadcastModuleFun(vbmfPin: DigitalPin, serial_num: YFSENSORS.OTPFixedVoiceFun): void {
+    export function voiceBroadcastModuleFun(vbmfPin: DigitalPin, serial_num: OTPFixedVoiceFun): void {
         let snumber = serial_num;
         voiceBroadcastModuleSendDataWithS(vbmfPin, snumber);
     }
@@ -819,6 +818,7 @@ namespace YFSENSORS {
     export function voiceBroadcastModuleSendNumber(vbmPin: DigitalPin, serial_number: number): void {
         voiceBroadcastModuleSendData(vbmPin, serial_number);
     }
+
     /**
      * Fixed voice broadcast module function : Continuous Play.
      * @param vbmPin pin. eg: DigitalPin.P2
@@ -919,7 +919,7 @@ namespace YFSENSORS {
     //% blockId=YFSENSORS_audioPlaybackModuleFunSelect weight=89 blockGap=15
     //% block="audio playback %specified_fun"
     //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=2
-    export function audioPlaybackModuleFunSelect(specified_fun: YFSENSORS.AudioPlaybackFunWithNum): void {
+    export function audioPlaybackModuleFunSelect(specified_fun: AudioPlaybackFunWithNum): void {
         audioPlaybackModule_sendData(specified_fun);
     }
 
@@ -933,7 +933,7 @@ namespace YFSENSORS {
     //% block="audio playback %specified_fun| %specified_track"
     //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=2
     //% specified_track.min=1
-    export function audioPlaybackModuleFunWithNum(specified_fun: YFSENSORS.AudioPlaybackFunWithNum, specified_track: number): void {
+    export function audioPlaybackModuleFunWithNum(specified_fun: AudioPlaybackFunWithNum, specified_track: number): void {
         if (specified_fun == YFSENSORS.AudioPlaybackFunWithNum.SelectPlay || specified_fun == YFSENSORS.AudioPlaybackFunWithNum.SetInsertTrack) {
             if (specified_track>= 255) specified_track = 255;
         } else if (specified_fun == YFSENSORS.AudioPlaybackFunWithNum.SetVolume) {
@@ -966,7 +966,7 @@ namespace YFSENSORS {
     //% blockId=YFSENSORS_audioPlaybackModuleFun weight=86 blockGap=15
     //% block="audio playback %specified_fun"
     //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=3
-    export function audioPlaybackModuleFun(specified_fun: YFSENSORS.AudioPlaybackFun): void {
+    export function audioPlaybackModuleFun(specified_fun: AudioPlaybackFun): void {
         audioPlaybackModule_sendData(specified_fun);
     }
 
@@ -981,7 +981,7 @@ namespace YFSENSORS {
     //% block="%m_busy read busy pin %pin_busy"
     //% pin_busy.fieldEditor="gridpicker" pin_busy.fieldOptions.columns=4
     //% m_busy.fieldEditor="gridpicker" m_busy.fieldOptions.columns=2
-    export function readBusyPin(m_busy: YFSENSORS.MVModule, pin_busy: DigitalPin): boolean {
+    export function readBusyPin(m_busy: MVModule, pin_busy: DigitalPin): boolean {
         let m_busyM = m_busy;  // no work
         let a: number = pins.digitalReadPin(pin_busy);
         if (a == 1) {
@@ -1000,7 +1000,7 @@ namespace YFSENSORS {
     //% block="voice recorder module %pin_vrm| %vrmfun"
     //% pin_vrm.fieldEditor="gridpicker" pin_vrm.fieldOptions.columns=4
     //% vrmfun.fieldEditor="gridpicker" vrmfun.fieldOptions.columns=2
-    export function voiceRecorderModule(pin_vrm: DigitalPin, vrmfun: YFSENSORS.VRMFunction): void {
+    export function voiceRecorderModule(pin_vrm: DigitalPin, vrmfun: VRMFunction): void {
         if (vrmfun == YFSENSORS.VRMFunction.PLAY_ONCE) {
             pins.digitalWritePin(pin_vrm, 0)
             control.waitMicros(2); // 2us
@@ -1033,7 +1033,7 @@ namespace YFSENSORS {
     //% tlm1Pin.fieldEditor="gridpicker" tlm1Pin.fieldOptions.columns=4
     //% tlm2Pin.fieldEditor="gridpicker" tlm2Pin.fieldOptions.columns=4
     //% wColor.fieldEditor="gridpicker" wColor.fieldOptions.columns=2
-    export function trafficLightModule(tlm1Pin: DigitalPin, tlm2Pin: DigitalPin, wColor: YFSENSORS.TrafficLightLED): void {
+    export function trafficLightModule(tlm1Pin: DigitalPin, tlm2Pin: DigitalPin, wColor: TrafficLightLED): void {
         switch (wColor) {
             case YFSENSORS.TrafficLightLED.RedLED:            // Red LED
                 pins.digitalWritePin(tlm1Pin, 0);
@@ -1065,7 +1065,7 @@ namespace YFSENSORS {
     //% block="at pin %aimPin| %aim| module"
     //% aimPin.fieldEditor="gridpicker" aimPin.fieldOptions.columns=4
     //% aim.fieldEditor="gridpicker" aim.fieldOptions.columns=2
-    export function analogInputModule(aimPin: AnalogPin, aim: YFSENSORS.AnalogInputModule): number {
+    export function analogInputModule(aimPin: AnalogPin, aim: AnalogInputModule): number {
         let aimM = aim;  // no work
         return pins.analogReadPin(aimPin);
     }
@@ -1095,7 +1095,7 @@ namespace YFSENSORS {
     //% block="at pin %dimPin| %dim| module"
     //% dimPin.fieldEditor="gridpicker" dimPin.fieldOptions.columns=4
     //% dim.fieldEditor="gridpicker" dim.fieldOptions.columns=2
-    export function digitalInputModule(dimPin: DigitalPin, dim: YFSENSORS.DigitalInputModule): boolean {
+    export function digitalInputModule(dimPin: DigitalPin, dim: DigitalInputModule): boolean {
         
         pins.setPull(dimPin, PinPullMode.PullNone);
         let a: number = 0;
@@ -1128,8 +1128,8 @@ namespace YFSENSORS {
     // block="%dimE on %dimEPin| pressed"
     // dimEPin.fieldEditor="gridpicker" dimEPin.fieldOptions.columns=4
     // event.fieldEditor="gridpicker" event.fieldOptions.columns=3
-    // export function onEvent(dimE: YFSENSORS.DigitalInputModuleE, dimEPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
-    // export function onEvent(dimE: YFSENSORS.DigitalInputModuleE, dimEPin: DigitalPin, handler: Action) {
+    // export function onEvent(dimE: DigitalInputModuleE, dimEPin: DigitalPin, event: DigitalInputEvent, handler: Action) {
+    // export function onEvent(dimE: DigitalInputModuleE, dimEPin: DigitalPin, handler: Action) {
     //     let dimME = dimE;  // no work
     //     // pins.setEvents(dimEPin, PinEventType.Edge);
     //     // control.onEvent(<number>dimEPin, <number>event, handler); // register handler
@@ -1151,7 +1151,7 @@ namespace YFSENSORS {
     //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4
     //% dht11state.fieldEditor="gridpicker" dht11state.fieldOptions.columns=1
     //% inlineInputMode=inline
-    export function dht11Sensor(pin: DigitalPin, dht11state: YFSENSORS.DHT11_state): number {
+    export function dht11Sensor(pin: DigitalPin, dht11state: DHT11_state): number {
         //initialize
         basic.pause(1000)
         let _temperature: number = -999.0
@@ -1216,7 +1216,7 @@ namespace YFSENSORS {
     //% echo.fieldEditor="gridpicker" echo.fieldOptions.columns=4 
     //% unit.fieldEditor="gridpicker" unit.fieldOptions.columns=3
     //% inlineInputMode=inline
-    export function ping(trig: DigitalPin, echo: DigitalPin, unit: YFSENSORS.PingUnit, maxCmDistance = 450): number {
+    export function ping(trig: DigitalPin, echo: DigitalPin, unit: PingUnit, maxCmDistance = 450): number {
         // send pulse
         pins.setPull(trig, PinPullMode.PullNone);
         pins.digitalWritePin(trig, 0);
@@ -1247,7 +1247,7 @@ namespace YFSENSORS {
     //% block="connect Motor drive %w_M| DIR %pin_dir| PWM %pin_pwm"
     //% pin_dir.fieldEditor="gridpicker" pin_dir.fieldOptions.columns=4 pin_dir.fieldOptions.tooltips="false"
     //% pin_pwm.fieldEditor="gridpicker" pin_pwm.fieldOptions.columns=4 pin_pwm.fieldOptions.tooltips="false"
-    export function motorConnectPin(w_M: YFSENSORS.MotorsPin, pin_dir: DigitalPin, pin_pwm: AnalogPin): void {
+    export function motorConnectPin(w_M: MotorsPin, pin_dir: DigitalPin, pin_pwm: AnalogPin): void {
         if (w_M == YFSENSORS.MotorsPin.M1) {
             YFSENSORSMotor1D = pin_dir
             YFSENSORSMotor1A = pin_pwm
@@ -1272,7 +1272,7 @@ namespace YFSENSORS {
     //% speed.min=0 speed.max=255
     //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
     //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
-    export function motorRun(index: YFSENSORS.Motors, direction: YFSENSORS.Dir, speed: number): void {
+    export function motorRun(index: Motors, direction: Dir, speed: number): void {
         if (index > 2 || index < 0)
             return
         
@@ -1301,7 +1301,7 @@ namespace YFSENSORS {
     //% blockId=YFSENSORS_motorStop weight=10 blockGap=15
     //% block="motor |%motor stop"
     //% motor.fieldEditor="gridpicker" motor.fieldOptions.columns=2 
-    export function motorStop(motor: YFSENSORS.Motors): void {
+    export function motorStop(motor: Motors): void {
         motorRun(motor, 0, 0);
     }
 
@@ -1618,7 +1618,7 @@ namespace YFSENSORS {
     //% pin.fieldOptions.columns=4
     //% pin.fieldOptions.tooltips="false"
     //%
-    export function connectIrReceiver(pin: DigitalPin, protocol: YFSENSORS.IrProtocol): void {
+    export function connectIrReceiver(pin: DigitalPin, protocol: IrProtocol): void {
         if (irState) {
             return;
         }
@@ -1699,7 +1699,7 @@ namespace YFSENSORS {
     //% button.fieldEditor="gridpicker"
     //% button.fieldOptions.columns=3
     //% button.fieldOptions.tooltips="false"
-    export function onIrButton(button: YFSENSORS.IrButton, action: YFSENSORS.IrButtonAction, handler: () => void) {
+    export function onIrButton(button: IrButton, action: IrButtonAction, handler: () => void) {
         control.onEvent(
             action === YFSENSORS.IrButtonAction.Pressed
                 ? MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID
@@ -1753,7 +1753,7 @@ namespace YFSENSORS {
     //% button.fieldOptions.columns=3
     //% button.fieldOptions.tooltips="false"
     //% block="IR button code %button"
-    export function irButtonCode(button: YFSENSORS.IrButton): number {
+    export function irButtonCode(button: IrButton): number {
         return button as number;
     }
 
@@ -1769,7 +1769,7 @@ namespace YFSENSORS {
     //% block="on IR button | %button | %action"
     //% button.fieldEditor="gridpicker" button.fieldOptions.columns=3
     //% button.fieldOptions.tooltips="false"
-    export function onIrButton_Handle(button: YFSENSORS.IrButton_Handle, action: YFSENSORS.IrButtonAction, handler: () => void) {
+    export function onIrButton_Handle(button: IrButton_Handle, action: IrButtonAction, handler: () => void) {
         control.onEvent(
             action === YFSENSORS.IrButtonAction.Pressed ? MICROBIT_MAKERBIT_IR_BUTTON_PRESSED_ID : MICROBIT_MAKERBIT_IR_BUTTON_RELEASED_ID,
             button === YFSENSORS.IrButton_Handle.Any ? EventBusValue.MICROBIT_EVT_ANY : button,
@@ -1790,7 +1790,7 @@ namespace YFSENSORS {
     //% block="Handle Type IR button code %button"
     //% button.fieldEditor="gridpicker" button.fieldOptions.columns=3
     //% button.fieldOptions.tooltips="false"
-    export function irButtonCode_Handle(button: YFSENSORS.IrButton_Handle): number {
+    export function irButtonCode_Handle(button: IrButton_Handle): number {
         return button as number;
     }
     /////////////////////// IR ///////////////////////
