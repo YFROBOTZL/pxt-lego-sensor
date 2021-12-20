@@ -829,13 +829,13 @@ namespace YFSENSORS {
     //% block="voice broadcast %vbmPin| continuous play %serial_number"
     //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
     //% inlineInputMode=inline
-    export function voiceBroadcastModuleFunContPlay(vbmPin: DigitalPin, serial_number: Array<number>): void {
+    export function voiceBroadcastModuleFunContPlay(vbmPin: DigitalPin, serial_number: number[]): void {
         let checksum = 0;
         // checksum = checksum + 1;
-        // for (let index = 0; index < serial_number.length; index++) {
+        for (let index = 0; index < serial_number.length; index++) {
             // voiceBroadcastModuleSendData(vbmPin, serial_number[index]); // 语音列表码
-            // checksum += serial_number[index];
-        // }
+            checksum += serial_number[index];
+        }
     }
 
     ///////////////////// Output - MP3 audio playback module ///////////////////////
