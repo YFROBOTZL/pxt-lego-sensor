@@ -803,20 +803,6 @@ namespace YFSENSORS {
     }
     
     /**
-     * Fixed voice broadcast module select voice list number.
-     * @param vbmPin pin. eg: DigitalPin.P2
-     * @param serial_number voice serial number. eg: 0
-     */
-    //% group="Output"
-    //% blockId=YFSENSORS_voiceBroadcastModuleSendNumber weight=91 blockGap=15
-    //% block="voice broadcast %vbmPin| send %serial_number"
-    //% vbmPin.fieldEditor="gridpicker" vbmPin.fieldOptions.columns=4
-    //% inlineInputMode=inline
-    export function voiceBroadcastModuleSendNumber(vbmPin: DigitalPin, serial_number: number): void {
-        voiceBroadcastModuleSendData(vbmPin, serial_number);
-    }
-    
-    /**
      * Fixed voice broadcast module function : Combination Voice Array.
      * @param serial_number voice serial number list array. eg: [YFOTPFixedVoiceList.OTPFVL_33,YFOTPFixedVoiceList.OTPFVL_34,YFOTPFixedVoiceList.OTPFVL_0B,YFOTPFixedVoiceList.OTPFVL_22,YFOTPFixedVoiceList.OTPFVL_1D]
      */
