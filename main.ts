@@ -809,10 +809,14 @@ namespace YFSENSORS {
     //% group="Output"
     //% blockId=YFSENSORS_getArrayNumber weight=91 blockGap=15
     //% block="%serial_number"
-    //% serial_number.defl=[YFOTPFixedVoiceList.OTPFVL_33,YFOTPFixedVoiceList.OTPFVL_34,YFOTPFixedVoiceList.OTPFVL_0B,YFOTPFixedVoiceList.OTPFVL_22,YFOTPFixedVoiceList.OTPFVL_1D]
     //% inlineInputMode=inline
     export function getArrayNumber(serial_number: number[]): number[] {
         let sNumberArray = [];
+        serial_number.push(YFSENSORS.OTPFixedVoiceListNum(YFOTPFixedVoiceList.OTPFVL_33));
+        serial_number.push(YFSENSORS.OTPFixedVoiceListNum(YFOTPFixedVoiceList.OTPFVL_34));
+        serial_number.push(YFSENSORS.OTPFixedVoiceListNum(YFOTPFixedVoiceList.OTPFVL_0B));
+        serial_number.push(YFSENSORS.OTPFixedVoiceListNum(YFOTPFixedVoiceList.OTPFVL_22));
+        serial_number.push(YFSENSORS.OTPFixedVoiceListNum(YFOTPFixedVoiceList.OTPFVL_1D));
         for (let index = 0; index < serial_number.length; index++) {
             sNumberArray[index] = serial_number[index];
         }
