@@ -804,11 +804,12 @@ namespace YFSENSORS {
     
     /**
      * Fixed voice broadcast module function : Combination Voice Array.
-     * @param serial_number voice serial number list array. eg: [YFOTPFixedVoiceList.OTPFVL_33,YFOTPFixedVoiceList.OTPFVL_34,YFOTPFixedVoiceList.OTPFVL_0B,YFOTPFixedVoiceList.OTPFVL_22,YFOTPFixedVoiceList.OTPFVL_1D]
+     * @param serial_number voice serial number list array.
      */
     //% group="Output"
     //% blockId=YFSENSORS_getArrayNumber weight=91 blockGap=15
     //% block="%serial_number"
+    //% serial_number.defl=[YFOTPFixedVoiceList.OTPFVL_33,YFOTPFixedVoiceList.OTPFVL_34,YFOTPFixedVoiceList.OTPFVL_0B,YFOTPFixedVoiceList.OTPFVL_22,YFOTPFixedVoiceList.OTPFVL_1D]
     //% inlineInputMode=inline
     export function getArrayNumber(serial_number: number[]): number[] {
         let sNumberArray = [];
