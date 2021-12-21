@@ -815,6 +815,22 @@ namespace YFSENSORS {
     export function voiceBroadcastModuleSendNumber(vbmPin: DigitalPin, serial_number: number): void {
         voiceBroadcastModuleSendData(vbmPin, serial_number);
     }
+    
+    /**
+     * Fixed voice broadcast module function : Combination Voice Array.
+     * @param serial_number voice serial number list array. eg: [YFOTPFixedVoiceList.OTPFVL_33,YFOTPFixedVoiceList.OTPFVL_34,YFOTPFixedVoiceList.OTPFVL_0B,YFOTPFixedVoiceList.OTPFVL_22,YFOTPFixedVoiceList.OTPFVL_1D]
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_getArrayNumber weight=91 blockGap=15
+    //% block="%serial_number"
+    //% inlineInputMode=inline
+    export function getArrayNumber(serial_number: number[]): number[] {
+        let sNumberArray = [];
+        for (let index = 0; index < serial_number.length; index++) {
+            sNumberArray[index] = serial_number[index];
+        }
+        return sNumberArray;
+    }
 
     /**
      * Fixed voice broadcast module function : Continuous Play.
@@ -828,11 +844,15 @@ namespace YFSENSORS {
     //% inlineInputMode=inline
     export function voiceBroadcastModuleFunContPlay(vbmPin: DigitalPin, serial_number: number[]): void {
         let checksum = 0;
-        // checksum = checksum + 1;
+        voiceBroadcastModuleSendDataWithS(vbmPin, YFOTPFixedVoiceFun2.HeadCode); // 头码
+        checksum += YFOTPFixedVoiceFun2.HeadCode;
         for (let index = 0; index < serial_number.length; index++) {
-            // voiceBroadcastModuleSendData(vbmPin, serial_number[index]); // 语音列表码
+            voiceBroadcastModuleSendData(vbmPin, serial_number[index]); // 语音列表码
             checksum += serial_number[index];
         }
+        voiceBroadcastModuleSendData(vbmPin, YFOTPFixedVoiceFun2.TailCode); // 尾码
+        checksum += YFOTPFixedVoiceFun2.TailCode;
+        voiceBroadcastModuleSendData(vbmPin, (checksum && 0xFF)); // 校验和
     }
 
     ///////////////////// Output - MP3 audio playback module ///////////////////////
