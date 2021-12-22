@@ -940,16 +940,15 @@ namespace YFSENSORS {
     //% blockId=YFSENSORS_audioPlaybackModuleFunWithNum weight=88 blockGap=15
     //% block="audio playback %specified_fun| %specified_track"
     //% specified_fun.fieldEditor="gridpicker" specified_fun.fieldOptions.columns=2
-    //% specified_track.min=1
     export function audioPlaybackModuleFunWithNum(specified_fun: YFAudioPlaybackFunWithNum, specified_track: number): void {
         if (specified_fun == YFAudioPlaybackFunWithNum.SelectPlay || specified_fun == YFAudioPlaybackFunWithNum.SetInsertTrack) {
-            if (specified_track>= 255) specified_track = 255;
+            if (specified_track >= 255) specified_track = 255;
         } else if (specified_fun == YFAudioPlaybackFunWithNum.SetVolume) {
-            if (specified_track>= 30) specified_track = 30;
+            if (specified_track > 30) specified_track = 30;
         } else if (specified_fun == YFAudioPlaybackFunWithNum.SetEQ) {
-            if (specified_track>= 4) specified_track = 4;
+            if (specified_track > 4) specified_track = 4;
         } else if (specified_fun == YFAudioPlaybackFunWithNum.SetPlayMode) {
-            if (specified_track>= 7) specified_track = 7;
+            if (specified_track > 7) specified_track = 7;
         }
         
         let s_track = specified_track;
