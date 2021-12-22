@@ -419,7 +419,7 @@ enum YFOTPFixedVoiceFun2 {
 }
 
 enum YFOTPFixedVoiceFunMute {
-    //% blockId="YFOTPFVF_MUTECODE" block="静音"
+    //% blockId="YFOTPFVF_MUTECODE" block="静音(后接数字，单位10ms)"
     MuteCode = 0xF4
 }
 
@@ -801,22 +801,6 @@ namespace YFSENSORS {
         let snumber = serial_num;
         voiceBroadcastModuleSendDataWithS(vbmfPin, snumber);
     }
-    
-    /**
-     * Fixed voice broadcast module function : Combination Voice Array.
-     * @param serial_number voice serial number list array.
-     */
-    //% group="Output"
-    //% blockId=YFSENSORS_getArrayNumber weight=91 blockGap=15
-    //% block="%serial_number"
-    //% inlineInputMode=inline
-    export function getArrayNumber(serial_number: number[]): number[] {
-        let sNumberArray = [];
-        for (let index = 0; index < serial_number.length; index++) {
-            sNumberArray[index] = serial_number[index];
-        }
-        return sNumberArray;
-    }
 
     /**
      * Fixed voice broadcast module function : Continuous Play.
@@ -839,6 +823,18 @@ namespace YFSENSORS {
         voiceBroadcastModuleSendData(vbmPin, YFOTPFixedVoiceFun2.TailCode); // 尾码
         checksum += YFOTPFixedVoiceFun2.TailCode;
         voiceBroadcastModuleSendData(vbmPin, (checksum && 0xFF)); // 校验和
+    }
+
+    /**
+     * Returns the mute code.
+     * @param mute mute code.
+     */
+    //% group="Output"
+    //% blockId=YFSENSORS_OTPFixedVoiceMute weight=91 blockGap=15
+    //% block="%mute"
+    //% num.fieldEditor="gridpicker" num.fieldOptions.columns=10
+    export function OTPFixedVoiceMute(mute: YFOTPFixedVoiceFunMute): number {
+        return mute;
     }
 
     ///////////////////// Output - MP3 audio playback module ///////////////////////
