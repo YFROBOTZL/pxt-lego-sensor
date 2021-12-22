@@ -902,7 +902,7 @@ namespace YFSENSORS {
     //% specified_track.min=1 specified_track.max=255
     export function audioPlaybackModuleSelectTrackNum(specified_track: number): void {
         let s_track = specified_track;
-        if(s_track < 10){
+        if(s_track >= 10){
             let s_track_num = splitToDigit(s_track);
             control.waitMicros(10);
             for (let index = s_track_num.length-1; index >= 0; index--) {
@@ -947,7 +947,7 @@ namespace YFSENSORS {
         }
         
         let s_track = specified_track;
-        if(s_track < 10){
+        if(s_track >= 10){
             let s_track_num = splitToDigit(s_track);
             control.waitMicros(10);
             for (let index = s_track_num.length-1; index >= 0; index--) {
