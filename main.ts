@@ -809,9 +809,8 @@ namespace YFSENSORS {
     //% group="Output"
     //% blockId=YFSENSORS_getArrayNumber weight=91 blockGap=15
     //% block="%serial_number"
-    //% serial_number.defl=[9, 8, 7, 6, 5]
     //% inlineInputMode=inline
-    export function getArrayNumber(serial_number: number[]): number[] {
+    export function getArrayNumber(serial_number: number[]=[9, 8, 7, 6, 5]): number[] {
         let sNumberArray = [];
         serial_number.push(YFSENSORS.OTPFixedVoiceListNum(YFOTPFixedVoiceList.OTPFVL_33));
         serial_number.push(YFSENSORS.OTPFixedVoiceListNum(YFOTPFixedVoiceList.OTPFVL_34));
