@@ -6,9 +6,6 @@
     "dependencies": {
         "core": "*",
         "microphone": "*",
-        "YFRTCPCF": "github:yfrobot-tm/pxt-yfrobot-rtc#V0.0.2",
-        "YFOLED": "github:yfrobot-tm/pxt-yfrobot-oled#V0.0.5",
-        "YFMATRIX57": "github:yfrobot-tm/pxt-yfrobot-LEDMatrix57#V0.0.8",
         "neopixel": "github:microsoft/pxt-neopixel#V0.7.3"
     },
     "files": [
